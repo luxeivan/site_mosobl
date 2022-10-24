@@ -9,13 +9,18 @@ export default function Contact() {
       .then((response) => {
         return response.json();
       })
-      .then((data) => setContact(data.data));
+      .then((data) => setContact(data.data))
+      .catch((err) => {
+        console.log(err)
+        setContact({})
+      }
+      );
   }, []);
   
   return (
     <div className="page-content">
-      <h2>{contact.attributes && contact.attributes.title}</h2>
-      <p>{contact.attributes && contact.attributes.content}</p>
+      <h2>{contact&&contact.attributes && contact.attributes.title}</h2>
+      <p>{contact&&contact.attributes && contact.attributes.content}</p>
       <a href="moetp.ru">Портал</a>
     </div>
   );
