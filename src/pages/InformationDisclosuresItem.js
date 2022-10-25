@@ -6,11 +6,11 @@ import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 const type = {
-    pdf,
-    doc,
-    docx,
-    rar
-}
+  pdf,
+  doc,
+  docx,
+  rar,
+};
 
 export default function InformationDisclosuresItem() {
   const params = useParams();
@@ -30,10 +30,14 @@ export default function InformationDisclosuresItem() {
 
   return (
     <div className="page-content">
-        <Link to="/informationDisclosures" className="button__back">Назад</Link>
+      <div>
+        <Link to="/informationDisclosures" className="button__back">
+          Назад
+        </Link>
+      </div>
       <ul>
         {informationDisclosureItem &&
-        informationDisclosureItem.attributes&&
+          informationDisclosureItem.attributes &&
           informationDisclosureItem.attributes.groupInfo &&
           informationDisclosureItem.attributes.groupInfo.map((item, index) => (
             <li className="page-grid__content" id="content" key={index}>

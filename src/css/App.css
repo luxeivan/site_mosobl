@@ -8926,7 +8926,7 @@ button {
     margin-bottom: 35px;
   }
   .page-grid__content {
-    padding-top: 0;
+    /* padding-top: 0; */
   }
   .link-block {
     margin-top: -36.5px;
