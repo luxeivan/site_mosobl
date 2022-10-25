@@ -20,6 +20,10 @@ export const mainMenu = [
         link: "",
       },
       {
+        title:"Раскрытие информации",
+        link:"/informationDisclosures"
+      },
+      {
         title: "Вакансии",
         link: "",
       },

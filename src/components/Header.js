@@ -193,7 +193,7 @@ export default function Header() {
                 </ul>
               </nav>
               <div className="page-header__right-block">
-                <div
+                {/* <div
                   className="search-block"
                   onClick={() => {
                     setOpenSearchLine(true);
@@ -210,7 +210,7 @@ export default function Header() {
                     <path d="M4.38464 9.46157C4.38464 6.65826 6.65826 4.38464 9.46157 4.38464" strokeWidth="2" strokeMiterlimit="10" />
                   </svg>
                   <span className="search-block__text">поиск </span>
-                </div>
+                </div> */}
                 <div
                   className="burger"
                   onClick={() => {
