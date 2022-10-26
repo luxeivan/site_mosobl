@@ -330,7 +330,7 @@ export default function Header() {
                                   event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "";
                                 }
                               }else{
-                                navigate('/')
+                                navigate(item.link)
                               }
                             }}
                             key={index}
