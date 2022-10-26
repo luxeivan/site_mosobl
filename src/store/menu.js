@@ -93,7 +93,7 @@ export const mainMenu = [
   },
   {
     mainTitle: "Филиалы",
-    link: "",
+    link: "/filials",
     submenu: [],
   },
   {

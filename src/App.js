@@ -9,6 +9,7 @@ import Main from './pages/Main';
 import Contact from './pages/Contact';
 import InformationDisclosures from './pages/InformationDisclosures';
 import InformationDisclosuresItem from './pages/InformationDisclosuresItem';
+import Filials from './pages/Filials';
 
 function App() {
   return (
@@ -20,9 +21,8 @@ function App() {
             <Route path='/contact' element={<Contact/>} />
             <Route path='/informationDisclosures/:id' element={<InformationDisclosuresItem/>} />
             <Route path='/informationDisclosures' element={<InformationDisclosures/>} />
-          </Routes>
-
-        
+            <Route path='/filials' element={<Filials/>} />
+          </Routes>        
         <Footer />
       </BrowserRouter>
     </div>

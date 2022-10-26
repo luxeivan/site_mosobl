@@ -253,3 +253,28 @@ button.wrap-link {
   background-color: gray;
   color: #fff;
 }
+.yandex-map{
+  width: 100%;
+  height: 500px;
+}
+.ballon-down{
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid gray;
+  padding: 10px;
+  padding-right: 30px;
+}
+.ymaps-2-1-79-balloon {
+  box-shadow: none !important;
+}
+
+.ymaps-2-1-79-balloon__content {
+  padding: 0 !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+.ymaps-2-1-79-balloon__layout {
+  background: transparent !important;
+  border: none !important;
+}
