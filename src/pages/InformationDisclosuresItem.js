@@ -45,7 +45,7 @@ export default function InformationDisclosuresItem() {
                 <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
                 <ul>
                   {item.list_files.data.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} className="page-grid__content__li">
                       <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
                         <div className="doc-line__wrap-icon">
                           <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />

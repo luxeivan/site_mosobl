@@ -16,7 +16,6 @@ export default function InformationDisclosures() {
         setInformationDisclosures([]);
       });
   }, []);
-console.log(informationDisclosures)
   return (
     <div className="page-content">
       <h1>Раскрытие информации</h1>

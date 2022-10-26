@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import InformationDisclosures from './pages/InformationDisclosures';
 import InformationDisclosuresItem from './pages/InformationDisclosuresItem';
 import Filials from './pages/Filials';
+import Filial from './pages/Filial';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/informationDisclosures/:id' element={<InformationDisclosuresItem/>} />
             <Route path='/informationDisclosures' element={<InformationDisclosures/>} />
             <Route path='/filials' element={<Filials/>} />
+            <Route path='/filials/:id' element={<Filial/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>

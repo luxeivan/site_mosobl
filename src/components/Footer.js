@@ -8,6 +8,27 @@ import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const handlerOpenAccordion = (event) => {
+    //console.log(event.currentTarget)
+    document.querySelectorAll(".page-footer__block").forEach((item) => {
+      if (event.currentTarget == item) {
+
+        return;
+      }
+      item.classList.remove("open-accordion");
+      item.querySelector(".caption-row").classList.remove("active");
+      if (item.querySelector(".accordion-content")) {
+        item.querySelector(".accordion-content").style.maxHeight = "";
+      }
+    });
+    event.currentTarget.classList.toggle("open-accordion");
+    event.currentTarget.querySelector(".caption-row").classList.toggle("active");
+    if (event.currentTarget.querySelector(".accordion-content").style.maxHeight == "inherit") {
+      event.currentTarget.querySelector(".accordion-content").style.maxHeight = "";
+    } else {
+      event.currentTarget.querySelector(".accordion-content").style.maxHeight = "inherit";
+    }
+  };
   return (
     <footer>
       <section className="line-contacts" id="i-25-i-24-bitrix-news-list-line-contacts-asDrK55qWv5z">
@@ -33,40 +54,43 @@ export default function Footer() {
       <section className="page-footer">
         <div className="container">
           <div className="page-footer__wrapper" id="i-11-i-10-bitrix-menu-footer-NMQc3w6cRZPp">
-
-
-          {mainMenu &&
-                    mainMenu.map((item,index) => (<div className="page-footer__block" key={index}>
-                    <div className="caption-row">
-                      <Link className="caption-row__caption" to={item.link} >
+            {mainMenu &&
+              mainMenu.map((item, index) => (
+                <div className="page-footer__block" key={index} onClick={item.link == "" ? handlerOpenAccordion : null}>
+                  <div className="caption-row">
+                    {item.link == "" ? (
+                      <span className="caption-row__caption">{item.mainTitle}</span>
+                    ) : (
+                      <Link className="caption-row__caption" to={item.link}>
                         {item.mainTitle}
-                      </Link>{" "}
-                      <span className="caption-row__plus"></span>
-                    </div>
-                    {item.submenu.length > 1 ? (
+                      </Link>
+                    )}
+
+                    <span className="caption-row__plus"></span>
+                  </div>
+                  {item.submenu.length > 1 ? (
                     <div className="accordion-content">
                       <ul className="footer-nav-list">
-                      {item.submenu.map((item,index)=>
-                        <li className="footer-nav-list__item" key={index}>
-                          <Link className="footer-nav-list__link" to={item.link} >
-                            {" "}
-                            <div className="footer-nav-list__wrap-arrow">
-                              <svg className="footer-nav-list__arrow">
-                                <path d="M42.7143 9L47 5M47 5L42.7143 0.999999M47 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </div>
-                            <span className="footer-nav-list__text">{item.title}</span>
-                          </Link>{" "}
-                        </li>)}
-                        
+                        {item.submenu.map((item, index) => (
+                          <li className="footer-nav-list__item" key={index}>
+                            <Link className="footer-nav-list__link" to={item.link}>
+                              {" "}
+                              <div className="footer-nav-list__wrap-arrow">
+                                <svg className="footer-nav-list__arrow">
+                                  <path d="M42.7143 9L47 5M47 5L42.7143 0.999999M47 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                              </div>
+                              <span className="footer-nav-list__text">{item.title}</span>
+                            </Link>{" "}
+                          </li>
+                        ))}
                       </ul>
-                    </div>):false}
-                  </div>))}
-
-          
-
-
-            
+                    </div>
+                  ) : (
+                    false
+                  )}
+                </div>
+              ))}
           </div>
           <div className="page-footer__down">
             <div className="page-footer__flex">
@@ -100,7 +124,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="footer-wrap-link" id="i-15-i-14-bitrix-menu-footer-wrap-link-QCJ7JgRxyjuV">
-                <a className="footer-wrap-link__row" href="#" >
+                <a className="footer-wrap-link__row" href="#">
                   <div className="footer-wrap-link__wrap-arrow">
                     <svg className="footer-nav-list__arrow">
                       <path d="M42.7143 9L47 5M47 5L42.7143 0.999999M47 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

@@ -237,11 +237,52 @@ button.wrap-link {
   margin-bottom: 30px;
   margin-left: 50px;
 }
+.caption-row__caption{
+cursor: pointer;
+}
+.accordion-content{
+  transition: max-height 1s ease-in-out;
+}
+@media (max-width: 575px){
+  .page-footer__wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+  .page-footer__block{
+    margin: 0;
+  }
+}
+  
+
+
 .burger, .close-menu{
   cursor: pointer;
 }
 .informationDisclosures__item{
   margin: 20px;
+}
+.page-grid__content{
+padding: 30px 30px;
+}
+.page-grid__content__li{
+  margin-bottom: 20px;
+}
+.page-title{
+  margin-bottom: 20px;
+}
+.yandex-map{
+  margin-top: 20px;
+}
+.yandex-map__button{
+  display: block;
+  width: 100px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.branches{
+  padding: 20px;
 }
 .button__back{
   padding: 10px;
