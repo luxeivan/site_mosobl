@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { addressServer } from "../config";
+import sun from "../img/sun.svg";
 const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')"] };
 export default function Filial() {
   const [filial, setFilial] = useState({});
@@ -26,6 +27,7 @@ export default function Filial() {
           Назад
         </Link>
       </div>
+      <h1 className="page-title">{filial.attributes&&filial.attributes.name}</h1>
       <YMaps className="YMaps">
         <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
           <ZoomControl />
@@ -33,7 +35,7 @@ export default function Filial() {
             <Placemark
               key={index}
               geometry={{
-                type: "Point",
+                    type: "Point",
                 coordinates: [item.attributes.latitude, item.attributes.longitude],
               }}
               properties={{
@@ -42,6 +44,8 @@ export default function Filial() {
               }}
               options={{
                 preset: "islands#greenDotIconWithCaption",
+                iconLayout: 'default#image',
+                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
               }}
             />
           ))}

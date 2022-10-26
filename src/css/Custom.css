@@ -268,7 +268,9 @@ padding: 30px 30px;
   margin-bottom: 20px;
 }
 .page-title{
-  margin-bottom: 20px;
+  /* margin-bottom: 20px;
+  margin-left: 20px; */
+  text-align: center;
 }
 .yandex-map{
   margin-top: 20px;
@@ -288,7 +290,9 @@ padding: 30px 30px;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 5px;
-  margin: 20px;
+  margin-left: 20px;
+  display: block;
+  width: 63px;
 }
 .button__back:hover{
   background-color: gray;

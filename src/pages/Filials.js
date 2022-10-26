@@ -53,6 +53,8 @@ export default function Filials() {
               }}
               options={{
                 preset: "islands#greenDotIconWithCaption",
+                iconLayout: 'default#image',
+                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
               }}
             />
           ))}
