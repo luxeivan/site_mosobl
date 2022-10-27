@@ -32,34 +32,9 @@ export default function Filials() {
   }, []);
   return (
     <div>
-      <h1 className="page-title">Филиалы</h1>
-      <YMaps>
-        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
-          <ZoomControl />
-          {filials.map((item, index) => (
-            <Placemark
-              key={index}
-              geometry={{
-                type: "Point",
-                coordinates: [item.attributes.latitude, item.attributes.longitude],
-              }}
-              properties={{
-                balloonContent: `<div class="ballon-down">${item.attributes.name}<br>
-                  <a href="/filials/${item.id}" class="yandex-map__button">
-                    Подробнее
-                  </a>
-                </div>`,
-                hintContent: item.attributes.address,
-              }}
-              options={{
-                preset: "islands#greenDotIconWithCaption",
-                iconLayout: 'default#image',
-                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
-              }}
-            />
-          ))}
-        </Map>
-      </YMaps>
+    <div className="container">
+      <h1 className="inner-post__title">Филиалы</h1>
+      
       <div class="branches">
         <div class="branches__grid">
           {filials &&
@@ -97,6 +72,34 @@ export default function Filials() {
             ))}
         </div>
       </div>
+      </div>
+      <YMaps>
+        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
+          <ZoomControl />
+          {filials.map((item, index) => (
+            <Placemark
+              key={index}
+              geometry={{
+                type: "Point",
+                coordinates: [item.attributes.latitude, item.attributes.longitude],
+              }}
+              properties={{
+                balloonContent: `<div class="ballon-down">${item.attributes.name}<br>
+                  <a href="/filials/${item.id}" class="yandex-map__button">
+                    Подробнее
+                  </a>
+                </div>`,
+                hintContent: item.attributes.address,
+              }}
+              options={{
+                preset: "islands#greenDotIconWithCaption",
+                iconLayout: 'default#image',
+                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
+              }}
+            />
+          ))}
+        </Map>
+      </YMaps>
     </div>
   );
 }

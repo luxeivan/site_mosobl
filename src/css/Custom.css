@@ -240,9 +240,6 @@ button.wrap-link {
 .caption-row__caption{
 cursor: pointer;
 }
-.accordion-content{
-  transition: max-height 1s ease-in-out;
-}
 @media (max-width: 575px){
   .page-footer__wrapper{
     display: flex;

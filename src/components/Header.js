@@ -17,7 +17,7 @@ export default function Header() {
   const [openMobMenu, setOpenMobMenu] = useState(false);
   const [openSearchLine, setOpenSearchLine] = useState(false);
   const hreff = useHref();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       //console.log("window.scrollY", window.scrollY);
@@ -324,13 +324,19 @@ export default function Header() {
                               if (item.submenu.length > 1) {
                                 event.currentTarget.classList.toggle("open-accordion");
                                 event.currentTarget.getElementsByClassName("mob-menu-middle__row")[0].classList.toggle("active");
-                                if (event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight === "") {
-                                  event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "inherit";
+                                const drop = event.currentTarget.querySelector(".mob-menu-drop");
+                                if (drop.style.maxHeight == "") {
+                                  drop.style.maxHeight = `${drop.scrollHeight}px`;
                                 } else {
-                                  event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "";
+                                  drop.style.maxHeight = "";
                                 }
-                              }else{
-                                navigate(item.link)
+                                // if (event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight === "") {
+                                //   event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "inherit";
+                                // } else {
+                                //   event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "";
+                                // }
+                              } else {
+                                navigate(item.link);
                               }
                             }}
                             key={index}

@@ -12,7 +12,6 @@ export default function Footer() {
     //console.log(event.currentTarget)
     document.querySelectorAll(".page-footer__block").forEach((item) => {
       if (event.currentTarget == item) {
-
         return;
       }
       item.classList.remove("open-accordion");
@@ -23,11 +22,17 @@ export default function Footer() {
     });
     event.currentTarget.classList.toggle("open-accordion");
     event.currentTarget.querySelector(".caption-row").classList.toggle("active");
-    if (event.currentTarget.querySelector(".accordion-content").style.maxHeight == "inherit") {
-      event.currentTarget.querySelector(".accordion-content").style.maxHeight = "";
+    const drop = event.currentTarget.querySelector(".accordion-content");
+    if (drop.style.maxHeight == "") {
+      drop.style.maxHeight = `${drop.scrollHeight}px`;
     } else {
-      event.currentTarget.querySelector(".accordion-content").style.maxHeight = "inherit";
+      drop.style.maxHeight = "";
     }
+    // if (event.currentTarget.querySelector(".accordion-content").style.maxHeight == "inherit") {
+    //   event.currentTarget.querySelector(".accordion-content").style.maxHeight = "";
+    // } else {
+    //   event.currentTarget.querySelector(".accordion-content").style.maxHeight = "inherit";
+    // }
   };
   return (
     <footer>
