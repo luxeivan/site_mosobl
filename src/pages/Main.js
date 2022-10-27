@@ -40,7 +40,7 @@ export default function Main() {
           <div className="grid-posts__wrapper">
             {publication&&publication.map((item, index) => (
               <div className="post-block" key={item.id}>
-                <a className="post-block__wrapper" href="#">
+                <a className="post-block__wrapper" href={item.attributes.url}>
                   {index < 4 ? (
                     <div>
                       <div className="post-block__bg"></div>
