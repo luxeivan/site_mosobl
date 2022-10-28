@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import sun from "../img/sun.svg";
 import { addressServer } from "../config";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   const [publication, setPublication] = useState([]);
@@ -40,7 +41,7 @@ export default function Main() {
           <div className="grid-posts__wrapper">
             {publication&&publication.map((item, index) => (
               <div className="post-block" key={item.id}>
-                <a className="post-block__wrapper" href={item.attributes.url}>
+                <Link className="post-block__wrapper" to={item.attributes.url}>
                   {index < 4 ? (
                     <div>
                       <div className="post-block__bg"></div>
@@ -73,7 +74,7 @@ export default function Main() {
                       </button>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

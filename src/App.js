@@ -17,6 +17,10 @@ import Goals from './pages/Goals';
 import MainDirections from './pages/MainDirections';
 import Recuisites from './pages/Recuisites';
 import AntiCorruption from './pages/AntiCorruption';
+import Certs from './pages/Certs';
+import Gardeners from './pages/Gardeners';
+import ContactForMedia from './pages/ContactForMedia';
+import News from './pages/News';
 
 function App() {
   return (
@@ -36,6 +40,10 @@ function App() {
             <Route path='/mainDirection' element={<MainDirections/>} />
             <Route path='/requisites' element={<Recuisites/>} />
             <Route path='/antiCorruption' element={<AntiCorruption/>} />
+            <Route path='/certs' element={<Certs/>} />
+            <Route path='/gardeners' element={<Gardeners/>} />
+            <Route path='/contactForMedia' element={<ContactForMedia/>} />
+            <Route path='/news' element={<News/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>

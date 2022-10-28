@@ -13,6 +13,7 @@ const known =[
 export default function AntiCorruption() {
   return (
     <div class="page-grid__content" id="content">
+        <h1 className="inner-post__title">Антикоррупционная деятельность</h1>
       <div class="text-area border-bottom">
         <p>Уважаемые посетители!</p>
         <p>

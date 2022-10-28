@@ -33,7 +33,7 @@ export const mainMenu = [
       },
       {
         title: "Сертификаты",
-        link: "",
+        link: "/certs",
       },
       // {
       //   title: "Отзывы",
@@ -41,7 +41,7 @@ export const mainMenu = [
       // },
       {
         title: "Вниманию объединений садоводов",
-        link: "",
+        link: "/gardeners",
       },
     ],
   },
@@ -102,11 +102,11 @@ export const mainMenu = [
     submenu: [
       {
         title: "Новости",
-        link: "",
+        link: "/news",
       },
       {
         title: "Контакты для СМИ",
-        link: "",
+        link: "/contactForMedia",
       },
     ],
   },
