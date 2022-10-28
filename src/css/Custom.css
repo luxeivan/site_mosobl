@@ -233,6 +233,7 @@ button.wrap-link {
   column-count: 3;
 }
 .page-footer__block{
+  break-inside:avoid;
   display: block;
   margin-bottom: 30px;
   margin-left: 50px;
