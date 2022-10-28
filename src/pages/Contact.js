@@ -19,7 +19,7 @@ export default function Contact() {
   
   return (
     <div className="page-content">
-      <h2>{contact&&contact.attributes && contact.attributes.title}</h2>
+      <h1 className="inner-post__title">{contact&&contact.attributes && contact.attributes.title}</h1>
       <p>{contact&&contact.attributes && contact.attributes.content}</p>
       <a href="moetp.ru">Портал</a>
     </div>

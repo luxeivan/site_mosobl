@@ -18,7 +18,7 @@ export default function InformationDisclosures() {
   }, []);
   return (
     <div className="page-content">
-      <h1>Раскрытие информации</h1>
+      <h1 className="inner-post__title">Раскрытие информации</h1>
 
       <ul>
         {informationDisclosures &&

@@ -27,7 +27,6 @@ export default function InformationDisclosuresItem() {
         setinformationDisclosureItem({});
       });
   }, []);
-
   return (
     <div className="page-content">
       <div>
@@ -35,6 +34,7 @@ export default function InformationDisclosuresItem() {
           Назад
         </Link>
       </div>
+      <h1 className="inner-post__title">{informationDisclosureItem.attributes &&informationDisclosureItem.attributes.title}</h1>
       <ul>
         {informationDisclosureItem &&
           informationDisclosureItem.attributes &&

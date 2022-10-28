@@ -5,7 +5,7 @@ export const mainMenu = [
     submenu: [
       {
         title: "Информация о компании",
-        link: "/",
+        link: "/about",
       },
       {
         title: "История",
