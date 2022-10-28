@@ -16,6 +16,7 @@ import History from './pages/History';
 import Goals from './pages/Goals';
 import MainDirections from './pages/MainDirections';
 import Recuisites from './pages/Recuisites';
+import AntiCorruption from './pages/AntiCorruption';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path='/goals' element={<Goals/>} />
             <Route path='/mainDirection' element={<MainDirections/>} />
             <Route path='/requisites' element={<Recuisites/>} />
+            <Route path='/antiCorruption' element={<AntiCorruption/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>

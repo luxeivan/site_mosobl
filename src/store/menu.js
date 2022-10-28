@@ -23,22 +23,22 @@ export const mainMenu = [
         title:"Раскрытие информации",
         link:"/informationDisclosures"
       },
-      {
-        title: "Вакансии",
-        link: "",
-      },
+      // {
+      //   title: "Вакансии",
+      //   link: "",
+      // },
       {
         title: "Антикоррупционная деятельность",
-        link: "",
+        link: "/antiCorruption",
       },
       {
         title: "Сертификаты",
         link: "",
       },
-      {
-        title: "Отзывы",
-        link: "",
-      },
+      // {
+      //   title: "Отзывы",
+      //   link: "",
+      // },
       {
         title: "Вниманию объединений садоводов",
         link: "",
@@ -122,10 +122,10 @@ export const mainMenu = [
         title: "Реквизиты компании",
         link: "/requisites",
       },
-      {
-        title: "Интернет-приемная",
-        link: "",
-      },
+      // {
+      //   title: "Интернет-приемная",
+      //   link: "",
+      // },
     ],
   },
 ];
