@@ -35,7 +35,7 @@ export default function About() {
         <p className="text-md">Основные направления деятельности:</p>
         <ul>
             {mainDirection.map((item,index)=>
-            <li>
+            <li key={index}>
             <p style={{ display: "flex", alignItems: "center" }}>
               <img src={checkIcon} style={{ marginRight: "10px" }} />{item}
             </p>

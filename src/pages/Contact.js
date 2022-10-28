@@ -1,27 +1,81 @@
 import React, { useEffect, useState } from "react";
 import { addressServer } from "../config";
+import telImg from '../img/contacts-icon2.svg'
+import emailImg from '../img/contacts-icon4.svg'
+import mapImg from '../img/contacts-icon1.svg'
 
 export default function Contact() {
-  const [contact, setContact] = useState({});
-  
-  useEffect(() => {
-    fetch(`${addressServer}/api/contact`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => setContact(data.data))
-      .catch((err) => {
-        console.log(err)
-        setContact({})
-      }
-      );
-  }, []);
-  
+  // const [contact, setContact] = useState({});
+
+  // useEffect(() => {
+  //   fetch(`${addressServer}/api/contact`)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => setContact(data.data))
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setContact({});
+  //     });
+  // }, []);
+
   return (
-    <div className="page-content">
-      <h1 className="inner-post__title">{contact&&contact.attributes && contact.attributes.title}</h1>
-      <p>{contact&&contact.attributes && contact.attributes.content}</p>
-      <a href="moetp.ru">Портал</a>
+    <div className="page-grid__content" id="content">
+        <h1 className="inner-post__title">Контакты</h1>
+      <div className="inner-post__middle">
+        <div className="contact-information">
+          <div className="contact-information__grid-text">
+            <div className="contact-information__up">
+              <img className="contact-information__icon" src={telImg} alt="icon" />
+              <span className="contact-information__text">Горячая линия «Мособлэнерго»:</span>
+              <a className="contact-information__tel" href="tel:84959950099">
+                8 (495) 99-500-99
+              </a>
+            </div>
+            <div className="contact-information__up">
+              <img className="contact-information__icon" src={telImg} alt="icon" />
+              <span className="contact-information__text">Справки по письмам:</span>
+              <a className="contact-information__tel" href="tel:84957803961">
+                8 (495) 780-39-61
+              </a>
+            </div>
+            <div className="contact-information__up">
+              <img className="contact-information__icon" src={emailImg} alt="icon" />
+              <span className="contact-information__text">Электронный адрес:</span>
+              <a className="contact-information__email" href="mailto:mail@mosoblenergo.ru">
+                mail@mosoblenergo.ru
+              </a>
+            </div>
+            <div className="contact-information__up">
+              <img className="contact-information__icon" src={emailImg} alt="icon" />
+              <span className="contact-information__text">Дополнительные услуги электронный адрес:</span>
+              <a className="contact-information__email" href="mailto:uslugi@mosoblenergo.ru">
+                uslugi@mosoblenergo.ru
+              </a>
+            </div>
+          </div>
+          <div className="contact-information__grid-text">
+            <div className="contacts-row">
+              <div className="contacts-row__wrap-icon">
+                <img className="contacts-row__icon" src={mapImg} alt="icon" />
+              </div>
+              <div className="contacts-row__wrap-text">
+                <span className="contacts-row__caption">АО «Мособлэнерго»</span>
+                <span className="contacts-row__text">143421, Красногорский р-н, 26 км автодороги «Балтия», Бизнес Центр «RigaLand», строение 5, подъезд 3.</span>
+              </div>
+            </div>
+            <div className="contacts-row">
+              <div className="contacts-row__wrap-icon">
+                <img className="contacts-row__icon" src={mapImg} alt="icon" />
+              </div>
+              <div className="contacts-row__wrap-text">
+                <span className="contacts-row__caption">ЦОК "Центральный"</span>
+                <span className="contacts-row__text">143421, Красногорский р-н, 26 км автодороги «Балтия», Бизнес Центр «RigaLand», строение 6, подъезд 4.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

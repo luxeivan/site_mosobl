@@ -1,7 +1,7 @@
 export const mainMenu = [
   {
     mainTitle: "О компании",
-    link: "",
+    link: "/about",
     submenu: [
       {
         title: "Информация о компании",
@@ -9,15 +9,15 @@ export const mainMenu = [
       },
       {
         title: "История",
-        link: "",
+        link: "/history",
       },
       {
         title: "Цели и задачи",
-        link: "",
+        link: "/goals",
       },
       {
         title: "Основные направления деятельности",
-        link: "",
+        link: "/mainDirection",
       },
       {
         title:"Раскрытие информации",
@@ -120,7 +120,7 @@ export const mainMenu = [
       },
       {
         title: "Реквизиты компании",
-        link: "",
+        link: "/requisites",
       },
       {
         title: "Интернет-приемная",

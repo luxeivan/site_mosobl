@@ -320,3 +320,6 @@ padding: 30px 30px;
   background: transparent !important;
   border: none !important;
 }
+.block-info__up{
+  margin-bottom: 20px;
+}

@@ -12,6 +12,10 @@ import InformationDisclosuresItem from './pages/InformationDisclosuresItem';
 import Filials from './pages/Filials';
 import Filial from './pages/Filial';
 import About from './pages/About';
+import History from './pages/History';
+import Goals from './pages/Goals';
+import MainDirections from './pages/MainDirections';
+import Recuisites from './pages/Recuisites';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
             <Route path='/filials' element={<Filials/>} />
             <Route path='/filials/:id' element={<Filial/>} />
             <Route path='/about' element={<About/>} />
+            <Route path='/history' element={<History/>} />
+            <Route path='/goals' element={<Goals/>} />
+            <Route path='/mainDirection' element={<MainDirections/>} />
+            <Route path='/requisites' element={<Recuisites/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>
