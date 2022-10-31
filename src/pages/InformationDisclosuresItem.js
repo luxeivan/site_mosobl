@@ -5,11 +5,13 @@ import pdf from "../img/pdf.svg";
 import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
+import xls from "../img/xls.svg";
 const type = {
   pdf,
   doc,
   docx,
   rar,
+  xls
 };
 
 export default function InformationDisclosuresItem() {
