@@ -11,32 +11,54 @@ const type = {
   doc,
   docx,
   rar,
-  xls
+  xls,
 };
 
 export default function InformationDisclosuresItem() {
   const params = useParams();
   const [informationDisclosureItem, setinformationDisclosureItem] = useState({});
+  const [copy, setCopy] = useState({});
 
   useEffect(() => {
     fetch(`${addressServer}/api/information-disclosures/${params.id}?populate[0]=groupInfo&populate[1]=groupInfo.list_files&populate[2]=groupInfo.list_files.file`)
       .then((response) => {
         return response.json();
       })
-      .then((data) => setinformationDisclosureItem(data.data))
+      .then((data) => {
+        setinformationDisclosureItem(data.data);
+        setCopy(data.data);
+      })
       .catch((err) => {
         console.log(err);
         setinformationDisclosureItem({});
       });
   }, []);
+  const handlerSearch = (event) => {
+    console.log(copy);
+    let copyObj = JSON.parse(JSON.stringify(copy));;
+    console.log(copyObj);
+    if (copyObj.attributes) {
+      copyObj.attributes.groupInfo.forEach(element => {
+        element.list_files.data = element.list_files.data.filter(item=>item.attributes.name.toLowerCase().includes(event.target.value.toLowerCase()))
+      });
+      //copyObj.attributes.groupInfo = copyObj.attributes.groupInfo.filter((item) => item.title.includes(event.target.value));
+      setinformationDisclosureItem(copyObj);
+    }
+  };
+
+  const handlerClear = event=>{
+    document.querySelector('.informationDisclosures_search').value = ''
+    document.querySelector('.informationDisclosures_search').click()  
+  }
   return (
     <div className="page-content">
       <div>
         <Link to="/informationDisclosures" className="button__back">
           Назад
         </Link>
+        <input type="text" className="informationDisclosures_search" placeholder="Поиск" onChange={handlerSearch} onClick={handlerSearch}/><button className="button__clear" onClick={handlerClear}>Очистить</button>
       </div>
-      <h1 className="inner-post__title">{informationDisclosureItem.attributes &&informationDisclosureItem.attributes.title}</h1>
+      <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1>
       <ul>
         {informationDisclosureItem &&
           informationDisclosureItem.attributes &&

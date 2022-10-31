@@ -251,13 +251,38 @@ cursor: pointer;
   }
 }
   
-
+.inner-post__title{
+margin-left: 20px;
+}
 
 .burger, .close-menu{
   cursor: pointer;
 }
 .informationDisclosures__item{
   margin: 20px;
+}
+.informationDisclosures_search{
+  width: 50%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 20px;  
+  border: 1px solid gray;
+
+  border-radius: 5px 0 0 5px;
+  display: inline;
+}
+.button__clear{
+  padding: 10px;
+  border: 1px solid gray;
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  margin-left: 0;
+  cursor: pointer;
+  display: inline;
+  background-color: #fff;
+}
+.button__clear:hover{
+background-color: #eee;
 }
 .page-grid__content{
 padding: 30px 30px;
@@ -292,6 +317,7 @@ padding: 30px 30px;
   display: block;
   width: 63px;
 }
+
 .button__back:hover{
   background-color: gray;
   color: #fff;
