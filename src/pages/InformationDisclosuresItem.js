@@ -35,58 +35,67 @@ export default function InformationDisclosuresItem() {
   }, []);
   const handlerSearch = (event) => {
     console.log(copy);
-    let copyObj = JSON.parse(JSON.stringify(copy));;
+    let copyObj = JSON.parse(JSON.stringify(copy));
     console.log(copyObj);
     if (copyObj.attributes) {
-      copyObj.attributes.groupInfo.forEach(element => {
-        element.list_files.data = element.list_files.data.filter(item=>item.attributes.name.toLowerCase().includes(event.target.value.toLowerCase()))
+      copyObj.attributes.groupInfo.forEach((element) => {
+        element.list_files.data = element.list_files.data.filter((item) => item.attributes.name.toLowerCase().includes(event.target.value.toLowerCase()));
       });
       //copyObj.attributes.groupInfo = copyObj.attributes.groupInfo.filter((item) => item.title.includes(event.target.value));
       setinformationDisclosureItem(copyObj);
     }
   };
 
-  const handlerClear = event=>{
-    document.querySelector('.informationDisclosures_search').value = ''
-    document.querySelector('.informationDisclosures_search').click()  
-  }
+  const handlerClear = (event) => {
+    document.querySelector(".informationDisclosures_search").value = "";
+    document.querySelector(".informationDisclosures_search").click();
+  };
   return (
     <div className="page-content">
       <div>
         <Link to="/informationDisclosures" className="button__back">
           Назад
         </Link>
-        <input type="text" className="informationDisclosures_search" placeholder="Поиск" onChange={handlerSearch} onClick={handlerSearch}/><button className="button__clear" onClick={handlerClear}>Очистить</button>
+        <input type="text" className="informationDisclosures_search" placeholder="Поиск" onChange={handlerSearch} onClick={handlerSearch} />
+        <button className="button__clear" onClick={handlerClear}>
+          Очистить
+        </button>
       </div>
       <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1>
       <ul>
         {informationDisclosureItem &&
           informationDisclosureItem.attributes &&
           informationDisclosureItem.attributes.groupInfo &&
-          informationDisclosureItem.attributes.groupInfo.map((item, index) => (
-            <li className="page-grid__content" id="content" key={index}>
-              <div className="row-docs-age">
-                <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
-                <ul>
-                  {item.list_files.data.map((item, index) => (
-                    <li key={index} className="page-grid__content__li">
-                      <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
-                        <div className="doc-line__wrap-icon">
-                          <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />
-                        </div>
-                        <div className="doc-line__wrap-text">
-                          <span className="doc-line__name">{item.attributes.name}</span>
-                          <span className="doc-line__file-info">
-                            {item.attributes.type} {Math.round(item.attributes.file.data.attributes.size)}kb
-                          </span>
-                        </div>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
+          informationDisclosureItem.attributes.groupInfo.map((item, index) => {
+            if (item.list_files.data.length < 1) {
+              return false;
+            } else {
+              return (
+                <li className="page-grid__content" id="content" key={index}>
+                  <div className="row-docs-age">
+                    <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
+                    <ul>
+                      {item.list_files.data.map((item, index) => (
+                        <li key={index} className="page-grid__content__li">
+                          <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
+                            <div className="doc-line__wrap-icon">
+                              <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />
+                            </div>
+                            <div className="doc-line__wrap-text">
+                              <span className="doc-line__name">{item.attributes.name}</span>
+                              <span className="doc-line__file-info">
+                                {item.attributes.type} {Math.round(item.attributes.file.data.attributes.size)}kb
+                              </span>
+                            </div>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+          })}
       </ul>
     </div>
   );
