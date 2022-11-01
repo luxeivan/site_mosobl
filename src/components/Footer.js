@@ -129,14 +129,14 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="footer-wrap-link" id="i-15-i-14-bitrix-menu-footer-wrap-link-QCJ7JgRxyjuV">
-                <a className="footer-wrap-link__row" href="#">
+                {/* <a className="footer-wrap-link__row" href="#">
                   <div className="footer-wrap-link__wrap-arrow">
                     <svg className="footer-nav-list__arrow">
                       <path d="M42.7143 9L47 5M47 5L42.7143 0.999999M47 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                   <span className="footer-wrap-link__text">Карта сайта</span>
-                </a>
+                </a> */}
                 <a className="footer-wrap-link__row" href="http://www.consultant.ru/cons/cgi/online.cgi?from=221444-0&amp;rnd=B368155CDEE9313B15DF85BD2F39D334&amp;req=doc&amp;base=LAW&amp;n=372838&amp;REFDOC=221444&amp;REFBASE=LAW#a9yu0niwfqw">
                   <div className="footer-wrap-link__wrap-arrow">
                     <svg className="footer-nav-list__arrow">
