@@ -48,11 +48,11 @@ export default function Filials() {
               <Link className="post-branches" to={`/filials/${item.id}`}>
                 <div className="post-branches__up">
                   <span className="post-branches__title">{item.attributes.name}</span>
-                  <div className="post-branches__wrap-arrow">
+                  {/* <div className="post-branches__wrap-arrow">
                     <svg className="mob-menu-middle__arrow">
                       <path d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="post-branches__down">
                   <ul class="post-branches__list">

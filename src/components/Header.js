@@ -114,7 +114,7 @@ export default function Header() {
                     </div>
                     <span className="wrap-link__text">Перейти на портал потребителя</span>
                   </a>
-                  <button className="wrap-link" href="#">
+                  <Link className="wrap-link" to="/news">
                     {" "}
                     <div className="wrap-link__wrap-icon">
                       <svg className="wrap-link__icon" viewBox="0 0 24 21" height="21" width="24" fill="none">
@@ -128,7 +128,7 @@ export default function Header() {
                       </svg>
                     </div>
                     <span className="wrap-link__text">Узнать об отключениях</span>
-                  </button>
+                  </Link>
                   <ul className="social-list" id="i-5-i-4-bitrix-news-list-social-list-jmonnOjsjk4V">
                     <li className="social-list__item">
                       <a className="social-list__link" href="https://vk.com/mosoblenergo" title="Вконтакте">
