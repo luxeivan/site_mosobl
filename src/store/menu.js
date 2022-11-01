@@ -1,7 +1,7 @@
 export const mainMenu = [
   {
     mainTitle: "О компании",
-    link: "/about",
+    link: "",
     submenu: [
       {
         title: "Информация о компании",

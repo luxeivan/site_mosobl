@@ -1,6 +1,7 @@
 import React from "react";
 import checkIcon from "../img/check-icon.svg";
 import pdf from "../img/pdf.svg";
+import {motion} from 'framer-motion'
 const mission = [
     "Развитие социально-ориентированного подхода в деятельности компании",
     "Обеспечение процесса консолидации электросетевых активов Московской области",
@@ -11,7 +12,12 @@ const mission = [
 
 export default function History() {
   return (
-    <div className="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
          <h1 className="inner-post__title">История</h1>
       <div className="text-area">
         <p>
@@ -40,6 +46,6 @@ export default function History() {
           </div>
         </a> */}
       </div>
-    </div>
+    </motion.div>
   );
 }

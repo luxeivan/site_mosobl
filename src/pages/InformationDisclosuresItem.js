@@ -6,6 +6,7 @@ import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 import xls from "../img/xls.svg";
+import {motion} from 'framer-motion'
 const type = {
   pdf,
   doc,
@@ -51,12 +52,17 @@ export default function InformationDisclosuresItem() {
     document.querySelector(".informationDisclosures_search").click();
   };
   return (
-    <div className="page-content">
+    <motion.div className="page-grid__content" 
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
       <div>
         <Link to="/informationDisclosures" className="button__back">
           Назад
         </Link>
-        <input type="text" className="informationDisclosures_search" placeholder="Поиск" onChange={handlerSearch} onClick={handlerSearch} />
+        <input type="text" className="informationDisclosures_search" placeholder="Поиск на текущей странице" onChange={handlerSearch} onClick={handlerSearch} />
         <button className="button__clear" onClick={handlerClear}>
           Очистить
         </button>
@@ -97,6 +103,6 @@ export default function InformationDisclosuresItem() {
             }
           })}
       </ul>
-    </div>
+    </motion.div>
   );
 }

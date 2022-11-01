@@ -2,10 +2,16 @@ import React from "react";
 import transferEnergy from '../img/a79b60e9cc2583a3cdf047c313bf657e.webp'
 import repairs from '../img/8fbf8269358c33a2d022ea0995bdd105.webp'
 import connection from '../img/bd1ac77a3da7d2d1f3d67d7ba2308deb.webp'
+import {motion} from 'framer-motion'
 
 export default function MainDirections() {
   return (
-    <div className="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
         <h1 className="inner-post__title">Основные направления деятельности</h1>
       <div className="page-grid__content" id="content">
         <div className="block-info__up">
@@ -45,6 +51,6 @@ export default function MainDirections() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import checkIcon from "../img/check-icon.svg";
+import {motion} from 'framer-motion'
 const goalsTasks = [
     "Повышение надежности и качества электроснабжения Подмосковья;",
     "Обеспечение взаимодействия электросетевых организаций, осуществляющих деятельность на территории Московской области;",
@@ -13,7 +14,12 @@ const goalsTasks = [
 
 export default function Goals() {
   return (
-    <div className="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
          <h1 className="inner-post__title">Цели и задачи</h1>
       <div className="text-area">
         
@@ -27,6 +33,6 @@ export default function Goals() {
         </ul>
       </div>
       
-    </div>
+    </motion.div>
   )
 }

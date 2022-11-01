@@ -1,10 +1,16 @@
 import React from "react";
 import pdf from "../img/pdf.svg";
 import { addressServer } from "../config";
+import {motion} from 'framer-motion'
 
 export default function Certs() {
   return (
-    <div class="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
       <h1 className="inner-post__title">Сертификаты</h1>
       <div class="row-docs-age">
         <a class="doc-line" href={`${addressServer}/uploads/b0bfad9761462fc15e13c0a467d3222a_compressed_16d27663a4.pdf?updated_at=2022-10-28T11:38:17.350Z`} download="" target="_blank">
@@ -27,6 +33,6 @@ export default function Certs() {
           </div>
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }

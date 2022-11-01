@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import sun from "../img/sun.svg";
 import { addressServer } from "../config";
 import { Link } from "react-router-dom";
+import {motion} from 'framer-motion'
 
 export default function Main() {
   const [publication, setPublication] = useState([]);
@@ -16,7 +17,12 @@ export default function Main() {
       );
   }, []);
   return (
-    <main>
+    <motion.main className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
       <div className="marquee-line marquee3k is-init" style={{ backgroundColor: "#E37021" }} data-speed="1">
         <div className="items-wrap">
           <div className="items marquee">
@@ -80,6 +86,6 @@ export default function Main() {
           </div>
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 }

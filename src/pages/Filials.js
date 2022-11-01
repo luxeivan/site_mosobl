@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { addressServer } from "../config";
+import {motion} from 'framer-motion'
 const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')"] };
 // const filials = [
 //   { name: "Сергиев Посад", coordinates: [56.284814, 38.124429],location: "Московская область, г. Сергиев Посад, Московское шоссе, д. 40" },
@@ -31,7 +32,12 @@ export default function Filials() {
       });
   }, []);
   return (
-    <div>
+    <motion.div
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
     <div className="container">
       <h1 className="inner-post__title">Филиалы</h1>
       
@@ -100,6 +106,6 @@ export default function Filials() {
           ))}
         </Map>
       </YMaps>
-    </div>
+    </motion.div>
   );
 }

@@ -3,10 +3,16 @@ import React from "react";
 import telImg from '../img/contacts-icon2.svg'
 import emailImg from '../img/contacts-icon4.svg'
 import mapImg from '../img/contacts-icon1.svg'
+import {motion} from 'framer-motion'
 
 export default function Recuisites() {
   return (
-    <div class="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
         <h1 className="inner-post__title">Реквизиты компании</h1>
       <div class="contacts-block">
         <div class="contacts-row">
@@ -66,6 +72,6 @@ export default function Recuisites() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

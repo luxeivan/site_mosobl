@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { addressServer } from "../config";
+import {motion} from 'framer-motion'
 
 export default function InformationDisclosures() {
   const [informationDisclosures, setInformationDisclosures] = useState([]);
@@ -17,7 +18,12 @@ export default function InformationDisclosures() {
       });
   }, []);
   return (
-    <div className="page-content">
+    <motion.div className="page-grid__content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
       <h1 className="inner-post__title">Раскрытие информации</h1>
 
       <ul>
@@ -35,6 +41,6 @@ export default function InformationDisclosures() {
             </li>
           ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }

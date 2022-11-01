@@ -3,6 +3,7 @@ import { addressServer } from "../config";
 import telImg from '../img/contacts-icon2.svg'
 import emailImg from '../img/contacts-icon4.svg'
 import mapImg from '../img/contacts-icon1.svg'
+import {motion} from 'framer-motion'
 
 export default function Contact() {
   // const [contact, setContact] = useState({});
@@ -20,7 +21,12 @@ export default function Contact() {
   // }, []);
 
   return (
-    <div className="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
         <h1 className="inner-post__title">Контакты</h1>
       <div className="inner-post__middle">
         <div className="contact-information">
@@ -76,6 +82,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

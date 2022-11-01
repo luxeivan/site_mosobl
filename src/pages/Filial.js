@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { addressServer } from "../config";
 import man from "../img/man.svg";
+import {motion} from 'framer-motion'
 const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')"] };
 export default function Filial() {
   const [filial, setFilial] = useState({});
@@ -21,7 +22,12 @@ export default function Filial() {
   }, []);
   console.log(filial);
   return (
-    <div>
+    <motion.div
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
       {/* <div>
         <Link to="/filials" className="button__back">
           Назад
@@ -161,6 +167,6 @@ export default function Filial() {
             ))}
         </Map>
       </YMaps>
-    </div>
+    </motion.div>
   );
 }

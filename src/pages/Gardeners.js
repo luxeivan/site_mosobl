@@ -6,6 +6,7 @@ import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 import xlsx from "../img/xlsx.svg";
+import {motion} from 'framer-motion'
 const result =[
     'Повышение надежности электрических сетей и качества потребляемой электроэнергии;',
     'Создание единых условий по технологическому присоединению потребителей;',
@@ -14,7 +15,12 @@ const result =[
 
 export default function Gardeners() {
   return (
-    <div class="page-grid__content">
+    <motion.div className="page-grid__content" 
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
         <h1 className="inner-post__title">Вниманию объединений садоводов</h1>
       <div class="text-line">
         <h3 class="line-bottom">Порядок действия заявителя при передаче сетей в АО «Мособлэнерго» </h3>
@@ -154,6 +160,6 @@ export default function Gardeners() {
           <li></li>
         </ul>{" "}
       </div>
-    </div>
+    </motion.div>
   );
 }

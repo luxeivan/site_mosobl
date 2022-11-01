@@ -2,6 +2,7 @@ import React from "react";
 import { addressServer } from "../config";
 import checkIcon from "../img/check-icon.svg";
 import pdf from "../img/pdf.svg";
+import {motion} from 'framer-motion'
 const known =[
     'о готовящихся или свершившихся фактах коррупции, мошенничества, хищений и других угрозах безопасности людей и объектов АО "Мособлэнерго";',
     'о нарушениях при проведении закупочных процедур в АО "Мособлэнерго";',
@@ -12,7 +13,12 @@ const known =[
 
 export default function AntiCorruption() {
   return (
-    <div class="page-grid__content" id="content">
+    <motion.div className="page-grid__content" id="content"
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    transition={{duration: .5}}
+    >
         <h1 className="inner-post__title">Антикоррупционная деятельность</h1>
       <div class="text-area border-bottom">
         <p>Уважаемые посетители!</p>
@@ -89,6 +95,6 @@ export default function AntiCorruption() {
           </div>
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 }
