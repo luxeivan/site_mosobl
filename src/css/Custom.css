@@ -356,3 +356,10 @@ padding: 30px 30px;
       line-height: 48px;
   }
 }
+@media (max-width: 767px){
+  .inner-post__title {
+    margin-left: 0;
+      font-size: 24px;
+      line-height: 36px;
+  }
+}
