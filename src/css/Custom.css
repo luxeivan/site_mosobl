@@ -2,6 +2,23 @@ img {
   max-width: 100%;
   height: auto;
 }
+.wrap-link_portal::before{
+  border: 3px solid;
+animation: wrapLink 2s;
+animation-iteration-count: infinite;
+}
+@keyframes wrapLink {
+  0%{
+    border-color: rgba(227, 112, 33, 1);
+  }
+  50%{
+    border-color: rgba(227, 112, 33, 0);
+  }
+  100%{
+    border-color: rgba(227, 112, 33, 1);
+
+  }
+}
 
 button.wrap-link {
   background-color: transparent;

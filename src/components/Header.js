@@ -10,6 +10,7 @@ import img34512673ce61b0db299f7e2405ac60e9 from "../img/34512673ce61b0db299f7e24
 import img7ad387832d629a52c87195d9cb795e3c from "../img/7ad387832d629a52c87195d9cb795e3c.svg";
 import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8b49a4e9b.svg";
 import img629d5332fa7791fcb59127d93f320c66 from "../img/629d5332fa7791fcb59127d93f320c66.jpg";
+import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -39,7 +40,7 @@ export default function Header() {
   }, [location]);
   return (
     <header>
-      <section className={`page-header vg-modal-fixed ${scroll} ${hreff !== "/" ? "sticky" : ""} ${openSearchLine ? "hide-line" : ""}`} id="myHeader">
+      <section className={`page-header vg-modal-fixed ${scroll} ${hreff !== "/" &&hreff !== "/about" ? "sticky" : ""} ${openSearchLine ? "hide-line" : ""}`} id="myHeader">
         <div className="container">
           <div className="page-header__container">
             <div className="page-header__up">
@@ -93,10 +94,11 @@ export default function Header() {
                   </div>
                 </div>
                 <div className="page-header__right">
-                  <a className="wrap-link" href="https://moetp.ru/" target="_blank" rel="noreferrer">
+                  <a className="wrap-link wrap-link_portal" href="https://moetp.ru/" target="_blank" rel="noreferrer">
                     <div className="wrap-link__wrap-icon">
-                      <svg width="16" height="24" id="consumer" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
+
+                    <svg className="wrap-link__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
+                    <path
                           d="M12.2 20.7143C13.7127 20.7143 15 19.3639 15 18.0857V12.1715C15 10.0009 10.4318 8.88574 8 8.88574C5.5682 8.88574 1 10.0003 1 12.1715V18.0857C1 19.3639 2.2873 20.7143 3.8 20.7143"
                           strokeWidth="2"
                           strokeMiterlimit="10"
@@ -106,11 +108,11 @@ export default function Header() {
                           d="M7.99995 6.91429C9.63165 6.91429 10.8 5.94828 10.8 4.54857V3.36572C10.8 1.966 9.63165 1 7.99995 1C6.36825 1 5.19995 1.966 5.19995 3.36572V4.54923C5.19995 5.94829 6.36825 6.91429 7.99995 6.91429Z"
                           strokeWidth="2"
                           strokeMiterlimit="10"
-                          strokeLinejoin="round"
                         ></path>
-                        <path d="M12 24.0001V13.4858" strokeWidth="2" strokeMiterlimit="10" strokeLinejoin="round"></path>
-                        <path d="M4 13.4858V24.0001" strokeWidth="2" strokeMiterlimit="10" strokeLinejoin="round"></path>
-                      </svg>
+                        <path d="M12 24.0001V13.4858" strokeWidth="2" strokeMiterlimit="10" ></path>
+                        <path d="M4 13.4858V24.0001" strokeWidth="2" strokeMiterlimit="10" ></path>
+                </svg>
+                      
                     </div>
                     <span className="wrap-link__text">Перейти на портал потребителя</span>
                   </a>
@@ -465,7 +467,28 @@ export default function Header() {
                 </div>
               </div>
             ) : (
-              <div className="dummy"></div>
+              false
+            )}
+
+            {hreff === "/about" ? (
+              <section className="first-screen-inner">
+                <picture className="first-screen-inner__bg-image">
+                  {/* <source srcSet={img37550ba6c53ac1236dc634e6c4f22cc1} type="image/webp" />
+                  <source srcset="/upload/iblock/375/37550ba6c53ac1236dc634e6c4f22cc1.jpg" type="image/jpeg" /> */}
+                  <img src={img37550ba6c53ac1236dc634e6c4f22cc1} alt="Информация о компании" />
+                </picture>
+                <div className="container">
+                  <div className="first-screen-inner__container">
+                    <div className="first-screen-inner__wrapper">
+                      <div className="first-screen-inner__down">
+                        <h1 className="title-page">О компании</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            ) : (
+              false
             )}
           </div>
         </div>

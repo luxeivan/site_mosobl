@@ -23,7 +23,7 @@ export default function About() {
     exit={{opacity:0}}
     transition={{duration: .5}}
     >
-        <h1 className="inner-post__title">О компании</h1>
+        {/* <h1 className="inner-post__title">О компании</h1> */}
       <div className="text-area border-bottom">
         <p>
           Акционерное общество «Московская областная энергосетевая компания» создано на основании постановления Правительства Московской области от 19.07.2005 № 456/26 «Об участии Московской области в создании открытого акционерного общества
