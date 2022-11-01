@@ -21,6 +21,7 @@ import Certs from './pages/Certs';
 import Gardeners from './pages/Gardeners';
 import ContactForMedia from './pages/ContactForMedia';
 import News from './pages/News';
+import Consumers from './pages/Consumers';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path='/gardeners' element={<Gardeners/>} />
             <Route path='/contactForMedia' element={<ContactForMedia/>} />
             <Route path='/news' element={<News/>} />
+            <Route path='/consumers' element={<Consumers/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>
