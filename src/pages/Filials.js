@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { addressServer } from "../config";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
+import loading from "../img/loading.png";
 const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')"] };
 // const filials = [
 //   { name: "Сергиев Посад", coordinates: [56.284814, 38.124429],location: "Московская область, г. Сергиев Посад, Московское шоссе, д. 40" },
@@ -20,89 +21,92 @@ const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scroll
 
 export default function Filials() {
   const [filials, setFilials] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`${addressServer}/api/filialies?populate=proizvodstvennye_otdeleniyas`)
       .then((response) => {
         return response.json();
       })
-      .then((data) => setFilials(data.data))
+      .then((data) => {
+        setIsLoading(false);
+        setFilials(data.data);
+      })
       .catch((err) => {
         console.log(err);
         setFilials([]);
       });
   }, []);
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage title={"Информация о компании"} />
-      <div className="page-grid__content" id="content">
-      <h1 className="inner-post__title">Филиалы</h1>
-      
-      <div class="branches">
-        <div class="branches__grid">
-          {filials &&
-            filials.map((item) => (
-              <Link className="post-branches" to={`/filials/${item.id}`}>
-                <div className="post-branches__up">
-                  <span className="post-branches__title">{item.attributes.name}</span>
-                  {/* <div className="post-branches__wrap-arrow">
-                    <svg className="mob-menu-middle__arrow">
-                      <path d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div> */}
-                </div>
-                <div className="post-branches__down">
-                  <ul class="post-branches__list">
-                    {item.attributes.proizvodstvennye_otdeleniyas.data.map((item) => (
-                      <li className="post-branches__item">
-                        <svg className="post-branches__icon" stroke="#e37021" viewBox="0 0 20 20">
-                          <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round" />
-                          <path
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
-                            stroke-width="2"
-                            stroke-miterlimit="10"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        <span className="post-branches__text">{item.attributes.name}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Link>
-            ))}
+  
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+        <TopImage title={"Информация о компании"} />
+        <div className="page-grid__content" id="content">
+          <h1 className="inner-post__title">Филиалы</h1>
+          <div class="branches">
+            {isLoading?<div className="isLoading"><img className="isLoading__img" src={loading}/></div>:
+            <div class="branches__grid">
+              {filials &&
+                filials.map((item) => (
+                  <Link className="post-branches" to={`/filials/${item.id}`}>
+                    <div className="post-branches__up">
+                      <span className="post-branches__title">{item.attributes.name}</span>
+                      
+                    </div>
+                    <div className="post-branches__down">
+                      <ul class="post-branches__list">
+                        {item.attributes.proizvodstvennye_otdeleniyas.data.map((item) => (
+                          <li className="post-branches__item">
+                            <svg className="post-branches__icon" stroke="#e37021" viewBox="0 0 20 20">
+                              <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round" />
+                              <path
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                stroke-width="2"
+                                stroke-miterlimit="10"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                            <span className="post-branches__text">{item.attributes.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Link>
+                ))}
+            </div>}
+          </div>
         </div>
-      </div>
-      </div>
-      <YMaps>
-        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
-          <ZoomControl />
-          {filials.map((item, index) => (
-            <Placemark
-              key={index}
-              geometry={{
-                type: "Point",
-                coordinates: [item.attributes.latitude, item.attributes.longitude],
-              }}
-              properties={{
-                balloonContent: `<div class="ballon-down">${item.attributes.name}<br>
+        <YMaps>
+          <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
+            <ZoomControl />
+            {filials.map((item, index) => (
+              <Placemark
+                key={index}
+                geometry={{
+                  type: "Point",
+                  coordinates: [item.attributes.latitude, item.attributes.longitude],
+                }}
+                properties={{
+                  balloonContent: `<div class="ballon-down">${item.attributes.name}<br>
                   <a href="/filials/${item.id}" class="yandex-map__button">
                     Подробнее
                   </a>
                 </div>`,
-                hintContent: item.attributes.address,
-              }}
-              options={{
-                preset: "islands#greenDotIconWithCaption",
-                iconLayout: 'default#image',
-                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
-              }}
-            />
-          ))}
-        </Map>
-      </YMaps>
-    </motion.div>
-  );
+                  hintContent: item.attributes.address,
+                }}
+                options={{
+                  preset: "islands#greenDotIconWithCaption",
+                  iconLayout: "default#image",
+                  iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
+                }}
+              />
+            ))}
+          </Map>
+        </YMaps>
+      </motion.div>
+    );
+  
 }
