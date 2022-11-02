@@ -97,7 +97,7 @@ export default function Header() {
                   <a className="wrap-link wrap-link_portal" href="https://moetp.ru/" target="_blank" rel="noreferrer">
                     <div className="wrap-link__wrap-icon">
 
-                    <svg className="wrap-link__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
+                    <svg className="wrap-link__icon wrap-link_portal__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
                     <path
                           d="M12.2 20.7143C13.7127 20.7143 15 19.3639 15 18.0857V12.1715C15 10.0009 10.4318 8.88574 8 8.88574C5.5682 8.88574 1 10.0003 1 12.1715V18.0857C1 19.3639 2.2873 20.7143 3.8 20.7143"
                           strokeWidth="2"
