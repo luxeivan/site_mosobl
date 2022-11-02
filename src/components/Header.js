@@ -40,7 +40,7 @@ export default function Header() {
   }, [location]);
   return (
     <header>
-      <section className={`page-header vg-modal-fixed ${scroll} ${hreff !== "/" &&hreff !== "/about" ? "sticky" : ""} ${openSearchLine ? "hide-line" : ""}`} id="myHeader">
+      <section className={`page-header vg-modal-fixed ${scroll}  ${openSearchLine ? "hide-line" : ""}`} id="myHeader">
         <div className="container">
           <div className="page-header__container">
             <div className="page-header__up">
@@ -470,11 +470,11 @@ export default function Header() {
               false
             )}
 
-            {hreff === "/about" ? (
+            {/* {hreff === "/about" ? (
               <section className="first-screen-inner">
                 <picture className="first-screen-inner__bg-image">
                   {/* <source srcSet={img37550ba6c53ac1236dc634e6c4f22cc1} type="image/webp" />
-                  <source srcset="/upload/iblock/375/37550ba6c53ac1236dc634e6c4f22cc1.jpg" type="image/jpeg" /> */}
+                  <source srcset="/upload/iblock/375/37550ba6c53ac1236dc634e6c4f22cc1.jpg" type="image/jpeg" /> }
                   <img src={img37550ba6c53ac1236dc634e6c4f22cc1} alt="Информация о компании" />
                 </picture>
                 <div className="container">
@@ -489,7 +489,7 @@ export default function Header() {
               </section>
             ) : (
               false
-            )}
+            )*/}
           </div>
         </div>
       </section>

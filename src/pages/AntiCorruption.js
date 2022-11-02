@@ -3,6 +3,8 @@ import { addressServer } from "../config";
 import checkIcon from "../img/check-icon.svg";
 import pdf from "../img/pdf.svg";
 import {motion} from 'framer-motion'
+import img645bacfd778f59d52bde903ed23400dd from "../img/645bacfd778f59d52bde903ed23400dd.jpg";
+import TopImage from "../components/TopImage";
 const known =[
     'о готовящихся или свершившихся фактах коррупции, мошенничества, хищений и других угрозах безопасности людей и объектов АО "Мособлэнерго";',
     'о нарушениях при проведении закупочных процедур в АО "Мособлэнерго";',
@@ -13,13 +15,9 @@ const known =[
 
 export default function AntiCorruption() {
   return (
-    <motion.div className="page-grid__content" id="content"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
-        <h1 className="inner-post__title">Антикоррупционная деятельность</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={img645bacfd778f59d52bde903ed23400dd} title={"Антикоррупционная деятельность"} />
+      <div className="page-grid__content" id="content">
       <div class="text-area border-bottom">
         <p>Уважаемые посетители!</p>
         <p>
@@ -94,6 +92,7 @@ export default function AntiCorruption() {
             <span class="doc-line__file-info">pdf, 118 кб</span>
           </div>
         </a>
+      </div>
       </div>
     </motion.div>
   );

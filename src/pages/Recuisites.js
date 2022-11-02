@@ -4,16 +4,15 @@ import telImg from '../img/contacts-icon2.svg'
 import emailImg from '../img/contacts-icon4.svg'
 import mapImg from '../img/contacts-icon1.svg'
 import {motion} from 'framer-motion'
+import img82aba1fa353db6b975974e566bb48a49 from "../img/82aba1fa353db6b975974e566bb48a49.jpg";
+import TopImage from "../components/TopImage";
+
 
 export default function Recuisites() {
   return (
-    <motion.div className="page-grid__content" id="content"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
-        <h1 className="inner-post__title">Реквизиты компании</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={img82aba1fa353db6b975974e566bb48a49}title={"Реквизиты компании"} />
+      <div className="page-grid__content" id="content">
       <div class="contacts-block">
         <div class="contacts-row">
           <div class="contacts-row__wrap-icon">
@@ -71,6 +70,7 @@ export default function Recuisites() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </motion.div>
   );

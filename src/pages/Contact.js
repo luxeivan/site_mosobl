@@ -4,6 +4,9 @@ import telImg from '../img/contacts-icon2.svg'
 import emailImg from '../img/contacts-icon4.svg'
 import mapImg from '../img/contacts-icon1.svg'
 import {motion} from 'framer-motion'
+import imgfile178scaled from "../img/file_178-scaled.jpg";
+import TopImage from "../components/TopImage";
+
 
 export default function Contact() {
   // const [contact, setContact] = useState({});
@@ -21,13 +24,9 @@ export default function Contact() {
   // }, []);
 
   return (
-    <motion.div className="page-grid__content" id="content"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
-        <h1 className="inner-post__title">Контакты</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={imgfile178scaled} title={"Контакты"} />
+      <div className="page-grid__content" id="content">
       <div className="inner-post__middle">
         <div className="contact-information">
           <div className="contact-information__grid-text">
@@ -81,6 +80,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </motion.div>
   );

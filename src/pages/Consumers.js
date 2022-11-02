@@ -1,8 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
+import TopImage from "../components/TopImage";
+import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 
 export default function Consumers() {
   return (
-    <div class="page-grid__content" id="content">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={img37550ba6c53ac1236dc634e6c4f22cc1} title={"Потребителям сетевой организации"} />
+      <div className="page-grid__content" id="content">
       <div class="text-area">
         <p>
           <b>Уважаемые клиенты!</b>
@@ -41,5 +46,7 @@ export default function Consumers() {
         </p>
       </div>{" "}
     </div>
+    
+    </motion.div>
   );
 }

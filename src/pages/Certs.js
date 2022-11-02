@@ -2,16 +2,14 @@ import React from "react";
 import pdf from "../img/pdf.svg";
 import { addressServer } from "../config";
 import {motion} from 'framer-motion'
+import TopImage from "../components/TopImage";
+import img4c2c362e8d8fa557788c556795d32fae from "../img/4c2c362e8d8fa557788c556795d32fae.jpg";
 
 export default function Certs() {
   return (
-    <motion.div className="page-grid__content" id="content"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
-      <h1 className="inner-post__title">Сертификаты</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={img4c2c362e8d8fa557788c556795d32fae} title={"Сертификаты"} />
+      <div className="page-grid__content" id="content">
       <div class="row-docs-age">
         <a class="doc-line" href={`${addressServer}/uploads/b0bfad9761462fc15e13c0a467d3222a_compressed_16d27663a4.pdf?updated_at=2022-10-28T11:38:17.350Z`} download="" target="_blank">
           <div class="doc-line__wrap-icon">
@@ -32,6 +30,7 @@ export default function Certs() {
             <span class="doc-line__file-info">pdf, 205 кб</span>
           </div>
         </a>
+      </div>
       </div>
     </motion.div>
   );

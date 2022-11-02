@@ -7,6 +7,10 @@ import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 import xls from "../img/xls.svg";
 import {motion} from 'framer-motion'
+
+import TopImage from "../components/TopImage";
+import imgf4f40bee4b8a3fb6f95707a4da41d873 from "../img/f4f40bee4b8a3fb6f95707a4da41d873.jpg";
+
 const type = {
   pdf,
   doc,
@@ -52,12 +56,9 @@ export default function InformationDisclosuresItem() {
     document.querySelector(".informationDisclosures_search").click();
   };
   return (
-    <motion.div className="page-grid__content" 
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={imgf4f40bee4b8a3fb6f95707a4da41d873} title={informationDisclosureItem.attributes && informationDisclosureItem.attributes.title} />
+      <div className="page-grid__content" id="content">
       <div>
         <Link to="/informationDisclosures" className="button__back">
           Назад
@@ -67,7 +68,7 @@ export default function InformationDisclosuresItem() {
           Очистить
         </button>
       </div>
-      <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1>
+      {/* <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1> */}
       <ul>
         {informationDisclosureItem &&
           informationDisclosureItem.attributes &&
@@ -103,6 +104,7 @@ export default function InformationDisclosuresItem() {
             }
           })}
       </ul>
+      </div>
     </motion.div>
   );
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import checkIcon from "../img/check-icon.svg";
 import {motion} from 'framer-motion'
+import TopImage from "../components/TopImage";
+import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 const goalsTasks = [
     "Повышение надежности и качества электроснабжения Подмосковья;",
     "Обеспечение взаимодействия электросетевых организаций, осуществляющих деятельность на территории Московской области;",
@@ -14,13 +16,9 @@ const goalsTasks = [
 
 export default function Goals() {
   return (
-    <motion.div className="page-grid__content" id="content"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration: .5}}
-    >
-         <h1 className="inner-post__title">Цели и задачи</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage image={img37550ba6c53ac1236dc634e6c4f22cc1} title={"Цели и задачи"} />
+      <div className="page-grid__content" id="content">
       <div className="text-area">
         
         <ul>
@@ -32,7 +30,7 @@ export default function Goals() {
           </li>)}
         </ul>
       </div>
-      
+      </div>
     </motion.div>
   )
 }

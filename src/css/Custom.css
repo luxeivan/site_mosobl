@@ -3,7 +3,7 @@ img {
   height: auto;
 }
 .wrap-link_portal::before{
-  border: 3px solid;
+  border: 2px solid;
 animation: wrapLink 2s;
 animation-iteration-count: infinite;
 }
@@ -243,7 +243,8 @@ button.wrap-link {
   padding: 20px;
 }
 .dummy{
-  height: 98px;
+  height: 165px;
+  background-color: #0061aa;
 }
 .page-footer__wrapper{
   display: block;
