@@ -41,8 +41,8 @@ export default function Filial() {
                 Назад
               </Link>
             </div>{" "}
-            <h1 className="inner-post__title">{filial.attributes && filial.attributes.name}</h1>
-            <span className="inner-post__date">{filial.attributes && filial.attributes.address} </span>
+            <h1 className="inner-post__title inner-post__margin">{filial.attributes && filial.attributes.name}</h1>
+            <span className="inner-post__date inner-post__margin">{filial.attributes && filial.attributes.address} </span>
           </div>
           <div className="inner-post__middle">
             <div className="branches">
@@ -141,6 +141,7 @@ export default function Filial() {
           </div>*/}
         </div> 
       </section>
+      </div>
       <YMaps className="YMaps">
         <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
           <ZoomControl />
@@ -165,7 +166,7 @@ export default function Filial() {
             ))}
         </Map>
       </YMaps>
-      </div>
+      
     </motion.div>
   );
 }

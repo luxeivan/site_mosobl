@@ -269,7 +269,7 @@ cursor: pointer;
   }
 }
   
-.inner-post__title{
+.inner-post__margin{
 margin-left: 20px;
 }
 
@@ -375,8 +375,14 @@ padding: 30px 30px;
   }
 }
 @media (max-width: 767px){
-  .inner-post__title {
+  .button__back{
     margin-left: 0;
+  }
+  .inner-post__margin{
+    margin-left: 0;
+  }
+  .inner-post__title {
+    
       font-size: 24px;
       line-height: 36px;
   }
