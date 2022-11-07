@@ -22,6 +22,7 @@ import Gardeners from './pages/Gardeners';
 import ContactForMedia from './pages/ContactForMedia';
 import News from './pages/News';
 import Consumers from './pages/Consumers';
+import Territory from './pages/consumers/Territory';
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
             <Route path='/contactForMedia' element={<ContactForMedia/>} />
             <Route path='/news' element={<News/>} />
             <Route path='/consumers' element={<Consumers/>} />
+
+            <Route path='/territory' element={<Territory/>} />
           </Routes>        
         <Footer />
       </BrowserRouter>

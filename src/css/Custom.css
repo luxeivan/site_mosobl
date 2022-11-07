@@ -35,7 +35,6 @@ img {
 }
 @keyframes wraplinkicon {
   0% {
-    
     stroke: rgb(255, 255, 255);
   }
   50% {
@@ -412,6 +411,12 @@ button.wrap-link {
     line-height: 48px;
   }
 }
+@media (max-width: 1023px) {
+  .dummy {
+    height: 100px;
+  }
+}
+
 @media (max-width: 767px) {
   .button__back {
     margin-left: 0;
@@ -422,5 +427,10 @@ button.wrap-link {
   .inner-post__title {
     font-size: 24px;
     line-height: 36px;
+  }
+}
+@media (max-width: 575px) {
+  .dummy {
+    height: 58px;
   }
 }

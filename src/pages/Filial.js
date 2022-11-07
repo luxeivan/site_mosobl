@@ -5,7 +5,7 @@ import { addressServer } from "../config";
 import man from "../img/man.svg";
 import {motion} from 'framer-motion'
 import TopImage from "../components/TopImage";
-const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')"] };
+const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')","drag"] };
 export default function Filial() {
   const [filial, setFilial] = useState({});
   const params = useParams();
