@@ -18,7 +18,7 @@ export default function News() {
             {actual.map((item, index) => (
               <li key={index}>
                 <p style={{ display: "flex", alignItems: "center" }}>
-                  <img src={checkIcon} style={{ marginRight: "10px" }} />
+                  {/* <img src={checkIcon} style={{ marginRight: "10px" }} /> */}
                   <a href={item}>{item}</a>{" "}
                 </p>{" "}
               </li>
@@ -29,7 +29,7 @@ export default function News() {
             {off.map((item, index) => (
               <li key={index}>
                 <p style={{ display: "flex", alignItems: "center" }}>
-                  <img src={checkIcon} style={{ marginRight: "10px" }} />
+                  {/* <img src={checkIcon} style={{ marginRight: "10px" }} /> */}
                   <a href={item}>{item}</a>{" "}
                 </p>{" "}
               </li>

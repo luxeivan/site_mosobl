@@ -25,7 +25,8 @@ export default function Goals() {
         {goalsTasks.map((item,index)=>
             <li key={index}>
             <p style={{ display: "flex", alignItems: "center" }}>
-              <img src={checkIcon} style={{ marginRight: "10px" }} />{item}
+              {/* <img src={checkIcon} style={{ marginRight: "10px" }} /> */}
+              {item}
             </p>
           </li>)}
         </ul>

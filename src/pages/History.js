@@ -27,7 +27,7 @@ export default function History() {
             {mission.map((item, index) => (
               <li key={index}>
                 <p style={{ display: "flex", alignItems: "center" }}>
-                  <img src={checkIcon} style={{ marginRight: "10px" }} />
+                  {/* <img src={checkIcon} style={{ marginRight: "10px" }} /> */}
                   {item}
                 </p>
               </li>
