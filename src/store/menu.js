@@ -55,7 +55,7 @@ export const mainMenu = [
       },
       {
         title: "Передача электрической энергии",
-        link: "",
+        link: "/servicePassports",
       },
       {
         title: "Технологическое присоединение",
@@ -87,7 +87,7 @@ export const mainMenu = [
       },
       {
         title: "Дополнительные услуги",
-        link: "",
+        link: "/additionalServices",
       },
     ],
   },

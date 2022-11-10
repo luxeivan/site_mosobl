@@ -23,6 +23,9 @@ import ContactForMedia from './pages/ContactForMedia';
 import News from './pages/News';
 import Consumers from './pages/Consumers';
 import Territory from './pages/consumers/Territory';
+import AdditionalServices from './pages/consumers/AdditionalServices';
+import ServicePassports from './pages/consumers/ServicePassports';
+import Page404 from './pages/Page404';
 
 function App() {
   return (
@@ -48,7 +51,12 @@ function App() {
             <Route path='/news' element={<News/>} />
             <Route path='/consumers' element={<Consumers/>} />
 
+            <Route path='/additionalServices' element={<AdditionalServices/>} />
+            <Route path='/servicePassports' element={<ServicePassports/>} />
             <Route path='/territory' element={<Territory/>} />
+
+            <Route path='/*' element={<Page404/>} />
+
           </Routes>        
         <Footer />
       </BrowserRouter>

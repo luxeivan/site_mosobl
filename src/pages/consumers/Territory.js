@@ -1,15 +1,14 @@
 import React from "react";
 import { addressServer } from "../../config";
-import checkIcon from "../../img/check-icon.svg";
 import xlsx from "../../img/xlsx.svg";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
-import img37550ba6c53ac1236dc634e6c4f22cc1 from "../../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
+import img2fde80ac63c76cbc7aa002fb91d2bd94 from "../../img/2fde80ac63c76cbc7aa002fb91d2bd94.jpg";
 
 export default function Territory() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage image={img37550ba6c53ac1236dc634e6c4f22cc1} title={"Информация о компании"} />
+      <TopImage image={img2fde80ac63c76cbc7aa002fb91d2bd94} title={"Территория обслуживания сетевой организации"} />
       <div className="page-grid__content" id="content">
       <div className="row-docs-age border-bottom">
           <a className="doc-line" href={`${addressServer}/uploads/4327781bb104dac248633e279f302619_29561a75e9.xlsx?updated_at=2022-11-03T07:14:20.680Z`} download="" target="_blank">
