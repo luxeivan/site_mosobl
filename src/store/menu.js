@@ -59,7 +59,7 @@ export const mainMenu = [
       },
       {
         title: "Технологическое присоединение",
-        link: "",
+        link: "/technologicalConnection",
       },
       {
         title: "Коммерческий учет электрической энергии",

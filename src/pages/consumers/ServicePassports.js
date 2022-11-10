@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { addressServer } from "../../config";
 import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
+import img7705c92ee469adb3142aa609f3e9e15a from "../../img/7705c92ee469adb3142aa609f3e9e15a.jpg";
 import pdf from "../../img/pdf.svg";
 import doc from "../../img/doc.svg";
 import docx from "../../img/docx.svg";
@@ -34,10 +35,9 @@ export default function ServicePassports() {
         setPasports([]);
       });
   }, []);
-  console.log(pasports);
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage title={""} />
+      <TopImage title={"Передача электрической энергии"} image={img7705c92ee469adb3142aa609f3e9e15a}/>
       <div className="page-grid__content">
         {pasports.attributes &&
           pasports.attributes.files.data.map((item, index) => (
