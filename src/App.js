@@ -33,6 +33,8 @@ import CustomerService from './pages/consumers/CustomerService';
 import RegulatoryLegalActs from './pages/consumers/RegulatoryLegalActs';
 import ConsolidationOfElectric from './pages/consumers/ConsolidationOfElectric';
 import ChargingStations from './pages/consumers/ChargingStations';
+import SaleOfItems from './pages/consumers/SaleOfItems';
+import AttentionFraud from './pages/consumers/AttentionFraud';
 
 function App() {
   return (
@@ -68,6 +70,8 @@ function App() {
             <Route path='/plannedOutages' element={<PlannedOutages/>} />
             <Route path='/consolidationOfElectric' element={<ConsolidationOfElectric/>} />
             <Route path='/chargingStations' element={<ChargingStations/>} />
+            <Route path='/saleOfItems' element={<SaleOfItems/>} />
+            <Route path='/attentionFraud' element={<AttentionFraud/>} />
 
             <Route path='/*' element={<Page404/>} />
 

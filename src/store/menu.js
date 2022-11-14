@@ -87,11 +87,15 @@ export const mainMenu = [
       },
       {
         title: "Реализация товарно-материальных ценностей",
-        link: "",
+        link: "/saleOfItems",
       },
       {
         title: "Дополнительные услуги",
         link: "/additionalServices",
+      },
+      {
+        title: "Внимание мошенничество",
+        link: "/attentionFraud",
       },
     ],
   },

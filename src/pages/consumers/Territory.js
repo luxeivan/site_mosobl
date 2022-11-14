@@ -17,7 +17,7 @@ export default function Territory() {
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">Перечень потребителей АО "Мособлэнерго"</span>
-              <span className="doc-line__file-info">pdf, 679КБ</span>
+              <span className="doc-line__file-info">xlsx, 663КБ</span>
             </div>
           </a>
         </div>
