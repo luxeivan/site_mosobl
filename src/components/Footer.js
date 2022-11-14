@@ -112,17 +112,17 @@ export default function Footer() {
                 <span className="social__text">Мы в социальных сетях</span>
                 <ul className="social__list">
                   <li className="social__item">
-                    <a className="social__link" href="https://vk.com/mosoblenergo" title="Вконтакте">
+                    <a className="social__link" href="https://vk.com/mosoblenergo" title="Вконтакте" target="_blank">
                       <img className="social__icon" src={img34512673ce61b0db299f7e2405ac60e9} alt="Вконтакте" />
                     </a>
                   </li>
                   <li className="social__item">
-                    <a className="social__link" href="https://ok.ru/mosoblenergo" title="Одноклассники">
+                    <a className="social__link" href="https://ok.ru/mosoblenergo" title="Одноклассники" target="_blank">
                       <img className="social__icon" src={img7ad387832d629a52c87195d9cb795e3c} alt="Одноклассники" />
                     </a>
                   </li>
                   <li className="social__item">
-                    <a className="social__link" href="https://t.me/mosoblenergo" title="Telegram">
+                    <a className="social__link" href="https://t.me/mosoblenergo" title="Telegram" target="_blank">
                       <img className="social__icon" src={img639bae9c47ff56a3f33bc8f8b49a4e9b} alt="Telegram" />
                     </a>
                   </li>
