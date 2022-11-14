@@ -66,20 +66,24 @@ export const mainMenu = [
         link: "/electricityAccounting",
       },
       {
+        title: "Обслуживание потребителей",
+        link: "/customerService",
+      },
+      {
         title: "Нормативные правовые акты",
-        link: "",
+        link: "/regulatoryLegalActs",
       },
       {
         title: "Плановые работы",
-        link: "",
+        link: "/plannedOutages",
       },
       {
         title: "Консолидация электросетевого имущества",
-        link: "",
+        link: "/consolidationOfElectric",
       },
       {
         title: "Зарядные станции для электромобилей",
-        link: "",
+        link: "/chargingStations",
       },
       {
         title: "Реализация товарно-материальных ценностей",

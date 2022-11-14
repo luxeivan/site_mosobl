@@ -28,6 +28,11 @@ import ServicePassports from './pages/consumers/ServicePassports';
 import Page404 from './pages/Page404';
 import TechnologicalConnection from './pages/consumers/TechnologicalConnection';
 import ElectricityAccounting from './pages/consumers/ElectricityAccounting';
+import PlannedOutages from './pages/consumers/PlannedOutages';
+import CustomerService from './pages/consumers/CustomerService';
+import RegulatoryLegalActs from './pages/consumers/RegulatoryLegalActs';
+import ConsolidationOfElectric from './pages/consumers/ConsolidationOfElectric';
+import ChargingStations from './pages/consumers/ChargingStations';
 
 function App() {
   return (
@@ -58,6 +63,11 @@ function App() {
             <Route path='/territory' element={<Territory/>} />
             <Route path='/technologicalConnection' element={<TechnologicalConnection/>} />
             <Route path='/electricityAccounting' element={<ElectricityAccounting/>} />
+            <Route path='/regulatoryLegalActs' element={<RegulatoryLegalActs/>} />
+            <Route path='/customerService' element={<CustomerService/>} />
+            <Route path='/plannedOutages' element={<PlannedOutages/>} />
+            <Route path='/consolidationOfElectric' element={<ConsolidationOfElectric/>} />
+            <Route path='/chargingStations' element={<ChargingStations/>} />
 
             <Route path='/*' element={<Page404/>} />
 

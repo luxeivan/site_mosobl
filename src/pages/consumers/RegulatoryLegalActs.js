@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { addressServer } from "../../config";
 import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
-import img7705c92ee469adb3142aa609f3e9e15a from "../../img/7705c92ee469adb3142aa609f3e9e15a.jpg";
 import pdf from "../../img/pdf.svg";
 import doc from "../../img/doc.svg";
 import docx from "../../img/docx.svg";
 import rar from "../../img/rar.svg";
 import xls from "../../img/xls.svg";
 import rtf from "../../img/rtf.svg";
+import img0ee8b84173f27d6237b20317168e863e from "../../img/0ee8b84173f27d6237b20317168e863e.jpg";
 const type = {
   pdf,
   doc,
@@ -18,33 +18,40 @@ const type = {
   xls,
   rtf
 };
-export default function ServicePassports() {
-  const [pasports, setPasports] = useState([]);
+
+export default function RegulatoryLegalActs() {
+  const [acts, setActs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${addressServer}/api/pasporta-uslug?populate=*`)
+    fetch(`${addressServer}/api/normativnye-pravovye-akty?populate=*`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setIsLoading(false);
-        setPasports(data.data);
+        setActs(data.data);
       })
       .catch((err) => {
         console.log(err);
-        setPasports([]);
+        setActs([]);
       });
   }, []);
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage title={"Передача электрической энергии"} image={img7705c92ee469adb3142aa609f3e9e15a} />
+      <TopImage image={img0ee8b84173f27d6237b20317168e863e} title={"Нормативные правовые акты"} />
       <div className="page-grid__content">
         <ul>
-          {pasports &&
-            pasports.attributes &&
-            pasports.attributes.files.data
+          {acts &&
+            acts.attributes &&
+            acts.attributes.files.data
+              .sort((a, b) => {
+                console.log(a, b);
+                return parseInt(a.attributes.name, 10) - parseInt(b.attributes.name, 10);
+              })
+              
               .map((item, index) => (
                 <li key={index} className="page-grid__content__li">
                   <a className="doc-line" href={`${addressServer}${item.attributes.url}`} download="" target="_blank">

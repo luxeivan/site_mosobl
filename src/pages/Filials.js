@@ -5,9 +5,7 @@ import { addressServer } from "../config";
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import loading from "../img/loading.png";
-const mapState = { center: [55.76, 37.64], zoom: 8, 
-  behaviors: ["disable('scrollZoom')","drag"] 
-};
+const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')", "drag"] };
 // const filials = [
 //   { name: "Сергиев Посад", coordinates: [56.284814, 38.124429],location: "Московская область, г. Сергиев Посад, Московское шоссе, д. 40" },
 //   { name: "Щелково", coordinates: [55.912773, 37.996608],location: "Московская область, г. Щелково, ул. Советская, д. 23" },
@@ -40,24 +38,41 @@ export default function Filials() {
         setFilials([]);
       });
   }, []);
-  
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-        <TopImage title={"Информация о компании"} />
-        <div className="page-grid__content" id="content">
-          <h1 className="inner-post__title">Филиалы</h1>
-          <div class="branches">
-            {isLoading?<div className="isLoading"><img className="isLoading__img" src={loading}/></div>:
-            <div class="branches__grid">
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+      <TopImage title={"Информация о компании"} />
+      <div className="page-grid__content" id="content">
+        <div className="branch-post">
+          <h4 className="branch-post__caption">Аппарат управления</h4>
+          <span className="branch-post__adrees">Московская область, Красногорский район, 26 км автодороги Балтия, Бизнес Центр "RigaLand", строение 6, подъезд 4 </span>
+          <span className="branch-post__tel">8 (495) 780-39-62 </span>
+          <a className="branch-post__email" href="tel:mail@mosoblenergo.ru">
+            mail@mosoblenergo.ru
+          </a>
+          <span className="branch-post__text">
+            Пн-Чт - <b>8:00 до 17:00</b>{" "}
+          </span>
+          <span className="branch-post__text">
+            Пт - <b>8:00 до 15:45</b>{" "}
+          </span>
+        </div>
+        <h4 className="branch-post__caption">Филиалы</h4>
+        <div className="branches">
+          {isLoading ? (
+            <div className="isLoading">
+              <img className="isLoading__img" src={loading} />
+            </div>
+          ) : (
+            <div className="branches__grid">
               {filials &&
                 filials.map((item) => (
                   <Link className="post-branches" to={`/filials/${item.id}`}>
                     <div className="post-branches__up">
                       <span className="post-branches__title">{item.attributes.name}</span>
-                      
                     </div>
                     <div className="post-branches__down">
-                      <ul class="post-branches__list">
+                      <ul className="post-branches__list">
                         {item.attributes.proizvodstvennye_otdeleniyas.data.map((item) => (
                           <li className="post-branches__item">
                             <svg className="post-branches__icon" stroke="#e37021" viewBox="0 0 20 20">
@@ -78,37 +93,37 @@ export default function Filials() {
                     </div>
                   </Link>
                 ))}
-            </div>}
-          </div>
+            </div>
+          )}
         </div>
-        <YMaps>
-          <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
-            <ZoomControl />
-            {filials.map((item, index) => (
-              <Placemark
-                key={index}
-                geometry={{
-                  type: "Point",
-                  coordinates: [item.attributes.latitude, item.attributes.longitude],
-                }}
-                properties={{
-                  balloonContent: `<div class="ballon-down">${item.attributes.name}<br>
-                  <a href="/filials/${item.id}" class="yandex-map__button">
+      </div>
+      <YMaps>
+        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
+          <ZoomControl />
+          {filials.map((item, index) => (
+            <Placemark
+              key={index}
+              geometry={{
+                type: "Point",
+                coordinates: [item.attributes.latitude, item.attributes.longitude],
+              }}
+              properties={{
+                balloonContent: `<div className="ballon-down">${item.attributes.name}<br>
+                  <a href="/filials/${item.id}" className="yandex-map__button">
                     Подробнее
                   </a>
                 </div>`,
-                  hintContent: item.attributes.address,
-                }}
-                options={{
-                  preset: "islands#greenDotIconWithCaption",
-                  iconLayout: "default#image",
-                  iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
-                }}
-              />
-            ))}
-          </Map>
-        </YMaps>
-      </motion.div>
-    );
-  
+                hintContent: item.attributes.address,
+              }}
+              options={{
+                preset: "islands#greenDotIconWithCaption",
+                iconLayout: "default#image",
+                iconImageHref: `${addressServer}/uploads/Point1_0971a3cd12.svg?updated_at=2022-10-26T13:39:22.952Z`,
+              }}
+            />
+          ))}
+        </Map>
+      </YMaps>
+    </motion.div>
+  );
 }
