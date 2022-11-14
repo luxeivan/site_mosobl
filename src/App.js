@@ -27,6 +27,7 @@ import AdditionalServices from './pages/consumers/AdditionalServices';
 import ServicePassports from './pages/consumers/ServicePassports';
 import Page404 from './pages/Page404';
 import TechnologicalConnection from './pages/consumers/TechnologicalConnection';
+import ElectricityAccounting from './pages/consumers/ElectricityAccounting';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
             <Route path='/servicePassports' element={<ServicePassports/>} />
             <Route path='/territory' element={<Territory/>} />
             <Route path='/technologicalConnection' element={<TechnologicalConnection/>} />
+            <Route path='/electricityAccounting' element={<ElectricityAccounting/>} />
 
             <Route path='/*' element={<Page404/>} />
 

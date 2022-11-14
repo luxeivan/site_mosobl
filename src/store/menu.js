@@ -63,7 +63,7 @@ export const mainMenu = [
       },
       {
         title: "Коммерческий учет электрической энергии",
-        link: "",
+        link: "/electricityAccounting",
       },
       {
         title: "Нормативные правовые акты",

@@ -155,9 +155,6 @@ export default function Gardeners() {
               {item}
             </p>
           </li>)}
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>{" "}
       </div>
       </div>
