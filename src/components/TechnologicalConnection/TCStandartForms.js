@@ -43,8 +43,8 @@ export default function TCStandartForms() {
           //   return parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10);
           // })
           .map((item, index) => (
-            <div>
-              <h3 class="row-docs-age__caption line-bottom">{item.attributes.title}</h3>
+            <div key={index}>
+              <h3 className="row-docs-age__caption line-bottom">{item.attributes.title}</h3>
               <ul>
                 {item.attributes&&item.attributes.files&&item.attributes.files.data.reverse().map((item, index) => (
                   <li key={index} className="page-grid__content__li">
