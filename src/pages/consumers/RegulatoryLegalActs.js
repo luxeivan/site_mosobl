@@ -48,7 +48,6 @@ export default function RegulatoryLegalActs() {
             acts.attributes &&
             acts.attributes.files.data
               .sort((a, b) => {
-                console.log(a, b);
                 return parseInt(a.attributes.name, 10) - parseInt(b.attributes.name, 10);
               })
               

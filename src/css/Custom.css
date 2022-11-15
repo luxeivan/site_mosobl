@@ -408,6 +408,12 @@ button.wrap-link {
 .leadership {
   margin-top: 0;
 }
+.link-block{
+margin-top: 20px;
+}
+.link-block__item{
+  cursor: pointer;
+}
 @media (min-width: 1360px) {
   .inner-post__title {
     font-size: 40px;
@@ -436,4 +442,14 @@ button.wrap-link {
   .dummy {
     height: 58px;
   }
+}
+@media (max-width: 1200px){
+  .link-block__drop-down {
+    max-height: inherit;
+  }
+  .link-back, .link-block__item--active {
+    display: block;
+  }
+
+
 }
