@@ -47,7 +47,7 @@ export const mainMenu = [
   },
   {
     mainTitle: "Потребителям",
-    link: "",
+    link: "/consumers",
     submenu: [
       {
         title: "Территория обслуживания сетевой организации",

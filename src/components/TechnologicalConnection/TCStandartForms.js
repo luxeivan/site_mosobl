@@ -34,7 +34,6 @@ export default function TCStandartForms() {
         setForms([]);
       });
   }, []);
-  console.log(forms);
   return (
     <div className="page-grid__content">
       {forms &&

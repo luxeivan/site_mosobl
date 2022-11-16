@@ -36,7 +36,6 @@ export default function MDVolumeUndelivered() {
         setFiles([]);
       });
   }, []);
-  console.log(files);
   return (
     <div className="page-grid__content">
       {files &&
