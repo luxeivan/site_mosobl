@@ -5,6 +5,7 @@ import doc from "../../img/doc.svg";
 import docx from "../../img/docx.svg";
 import rar from "../../img/rar.svg";
 import xls from "../../img/xls.svg";
+import xlsx from "../../img/xlsx.svg";
 import rtf from "../../img/rtf.svg";
 const type = {
   pdf,
@@ -12,33 +13,34 @@ const type = {
   docx,
   rar,
   xls,
+  xlsx,
   rtf,
 };
 
-export default function TCStandartForms() {
-  const [forms, setForms] = useState([]);
+export default function MDBalance() {
+  const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${addressServer}/api/tipovye-formy-dokumentovs?populate=*`)
+    fetch(`${addressServer}/api/balans-elektricheskoj-energiis?populate=*`)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setIsLoading(false);
-        setForms(data.data);
+        setFiles(data.data);
       })
       .catch((err) => {
         console.log(err);
-        setForms([]);
+        setFiles([]);
       });
   }, []);
-  console.log(forms);
+  console.log(files);
   return (
     <div className="page-grid__content">
-      {forms &&
-        forms
+      {files &&
+        files
           // .sort((a, b) => {
           //   return parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10);
           // })
@@ -65,5 +67,5 @@ export default function TCStandartForms() {
             </div>
           ))}
     </div>
-  );
+  )
 }

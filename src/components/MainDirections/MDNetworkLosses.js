@@ -1,0 +1,76 @@
+import React, { useEffect, useState } from "react";
+import { addressServer } from "../../config";
+import pdf from "../../img/pdf.svg";
+import doc from "../../img/doc.svg";
+import docx from "../../img/docx.svg";
+import rar from "../../img/rar.svg";
+import xls from "../../img/xls.svg";
+import xlsx from "../../img/xlsx.svg";
+import rtf from "../../img/rtf.svg";
+const type = {
+  pdf,
+  doc,
+  docx,
+  rar,
+  xls,
+  xlsx,
+  rtf,
+};
+
+export default function MDNetworkLosses() {
+  const [files, setFiles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(`${addressServer}/api/meropriyatiya-po-snizheniyu-poter-v-setyahs?populate=*`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+        setFiles(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setFiles([]);
+      });
+  }, []);
+  console.log(files);
+  return (
+    <div className="page-grid__content">
+      {files &&
+        files
+          // .sort((a, b) => {
+          //   return parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10);
+          // })
+          .map((item, index) => (
+            <div key={index}>
+              <h3 className="row-docs-age__caption line-bottom">{item.attributes.title}</h3>
+              <ul>
+                {item.attributes &&
+                  item.attributes.files &&
+                  item.attributes.files.data.reverse().map((item, index) => (
+                    <li key={index} className="page-grid__content__li">
+                      <a className="doc-line" href={`${addressServer}${item.attributes.url}`} download="" target="_blank">
+                        <div className="doc-line__wrap-icon">
+                          <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
+                        </div>
+                        <div className="doc-line__wrap-text">
+                          <span className="doc-line__name">{item.attributes.name}</span>
+                          <span className="doc-line__file-info">
+                            {item.attributes.ext.slice(1)} {Math.round(item.attributes.size)}kb
+                          </span>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+              <div className="text-area">
+                <p class="text-md">{item.attributes.text}</p>
+              </div>
+            </div>
+          ))}
+    </div>
+  );
+}

@@ -1,80 +1,69 @@
-import React from "react";
-import transferEnergy from "../img/a79b60e9cc2583a3cdf047c313bf657e.webp";
-import repairs from "../img/8fbf8269358c33a2d022ea0995bdd105.webp";
-import connection from "../img/bd1ac77a3da7d2d1f3d67d7ba2308deb.webp";
+import React, {useState} from "react";
+
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import img0bae28da0a97c417114a2d2330d6da0b from "../img/0bae28da0a97c417114a2d2330d6da0b.jpg";
-
+import MDMain from "../components/MainDirections/MDMain";
+import MDBalance from "../components/MainDirections/MDBalance";
+import MDNetworkLosses from "../components/MainDirections/MDNetworkLosses";
+import MDStandartLosses from "../components/MainDirections/MDStandartLosses";
+import MDVolumeUndelivered from "../components/MainDirections/MDVolumeUndelivered";
+import MDElectricTransmission from "../components/MainDirections/MDElectricTransmission";
+import MDReservedPower from "../components/MainDirections/MDReservedPower";
+const submenu = [
+  { id: 0, title: "Основные направления деятельности" },
+  { id: 1, title: "Баланс электрической энергии" },
+  { id: 2, title: "Мероприятия по снижению потерь в сетях" },
+  { id: 3, title: "Норматив технологических потерь электрической энергии" },
+  { id: 4, title: "Объем недопоставленной в результате аварийных отключений" },
+  { id: 5, title: "Передача электроэнергии" },
+  { id: 6, title: "Резервируемая максимальная мощность" },
+];
 export default function MainDirections() {
+  const [currentPage, setCurrentPage] = useState(0);
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage image={img0bae28da0a97c417114a2d2330d6da0b} title={"Основные направления деятельности"} />
-      <div className="page-grid__content" id="content">
-        <div className="page-grid__content" id="content">
-          <div className="block-info__up">
-            <div className="block-info__wrap-img">
-              <picture>
-                <source srcSet={transferEnergy} type="image/webp" />
-                <source srcSet={transferEnergy} type="image/png" />
-                <img className="positions-post__img" src={transferEnergy} alt="Передача электроэнергии" title="Передача электроэнергии" />
-              </picture>
+
+      <div className="page-grid">
+        <div className="container">
+          <div className="page-grid__wrapper">
+            <div className="page-grid__sidebar">
+              <div className="link-block">
+                <div className="link-block__drop-down">
+                  <ul className="link-block__list" id="i-11-i-10-bitrix-menu-left-NMQc3w6cRZPp">
+                    {submenu.map((item, index) => (
+                      <li key={index} className={currentPage === item.id ? "link-block__item link-block__item--active" : "link-block__item"}>
+                        <a
+                          className="link-block__link-row"
+                          onClick={() => {
+                            setCurrentPage(item.id);
+                          }}
+                        >
+                          <span className="link-block__text">{item.title}</span>
+                          <div className="link-block__wrap-hover">
+                            <div className="link-block__hover-arrow">
+                              <svg className="nav-menu__arrow">
+                                <path d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="block-info__wrap-text">
-              <h3 className="block-info__caption">Передача электроэнергии</h3>
-            </div>
-          </div>
-          <div className="block-info__up">
-            <div className="block-info__wrap-img">
-              <picture>
-                <source srcSet={repairs} type="image/webp" />
-                <source srcSet={repairs} type="image/png" />
-                <img className="positions-post__img" src={repairs} alt="Передача электроэнергии" title="Передача электроэнергии" />
-              </picture>
-            </div>
-            <div className="block-info__wrap-text">
-              <h3 className="block-info__caption">Капитальный ремонт</h3>
-            </div>
-          </div>
-          <h3 className="row-docs-age__caption line-bottom">Инвестиционная программа</h3>
-          <div className="text-area">
-            <p className="text-md">
-              АО «Мособлэнерго» осуществляет инвестиционную деятельность в виде капитальных вложений в развитие электросетевого комплекса Московской области для обеспечения качественного и надежного электроснабжения всех ее потребителей.
-            </p>{" "}
-          </div>
-          <div className="block-info__up">
-            <div className="block-info__wrap-img">
-              <picture>
-                <source srcSet={connection} type="image/webp" />
-                <source srcSet={connection} type="image/png" />
-                <img className="positions-post__img" src={connection} alt="Передача электроэнергии" title="Передача электроэнергии" />
-              </picture>
-            </div>
-            <div className="block-info__wrap-text">
-              <h3 className="block-info__caption">Технологическое присоединение</h3>
-            </div>
-          </div>
-          <div className="block-info__grid">
-            <div className="text-block">
-              <h4>Центр обслуживания клиентов:</h4>
-              <p>Московская область, Красногорский р-н, 26 км автодороги «Балтия», Бизнес Центр «RigaLand», строение А, подъезд 4</p>{" "}
-            </div>
-            <div className="text-block">
-              <h4>Режим работы:</h4>
-              <span>
-                По рабочим дням – <b>с 8.00 до 17.00</b>
-              </span>
-              <span>
-                в пятницу <b>с 8.00 до 15.45</b>
-              </span>
-              <span>(без обеденного перерыва)</span>{" "}
-            </div>
-            <div className="text-block">
-              <h4>Контактный телефон:</h4>
-              <a className="tel-contacts" href="tel:+74959950099">
-                +7 (495) 785-00-00
-              </a>{" "}
-            </div>
+
+            {currentPage===0?<MDMain />:false}{/*Главная */}
+            {currentPage===1?<MDBalance />:false}{/*Баланс электрической энергии */}
+            {currentPage===2?<MDNetworkLosses />:false}{/*Мероприятия по снижению потерь в сетях */}
+            {currentPage===3?<MDStandartLosses />:false}{/*Норматив технологических потерь электрической энергии */}
+            {currentPage===4?<MDVolumeUndelivered />:false}{/*Объем недопоставленной в результате аварийных отключений */}
+            {currentPage===5?<MDElectricTransmission />:false}{/*Передача электроэнергии */}
+            {currentPage===6?<MDReservedPower />:false}{/*Резервируемая максимальная мощность */}
+            
           </div>
         </div>
       </div>
