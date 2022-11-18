@@ -1,2 +1,2 @@
 // export const addressServer = "http://localhost:1337";
-export const addressServer = "https://luxeivan.ru/back";
+export const addressServer = "https://mosoblenergo.ru/back";
