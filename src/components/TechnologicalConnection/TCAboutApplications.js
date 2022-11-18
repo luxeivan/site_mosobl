@@ -11,7 +11,7 @@ export default function TCAboutApplications() {
       </div>
       <div className="row-docs-age">
         
-        <a className="doc-line" href={`${addressServer}`} download="" target="_blank">
+        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_avgust_cd4f93a7ff.pdf?updated_at=2022-11-18T10:01:33.562Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
