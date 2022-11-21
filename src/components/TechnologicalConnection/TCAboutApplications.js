@@ -17,7 +17,7 @@ export default function TCAboutApplications() {
           </div>
           <div className="doc-line__wrap-text">
             <span className="doc-line__name">2022</span>
-            <span className="doc-line__file-info">pdf, 0 кб</span>
+            <span className="doc-line__file-info">pdf, 1 мб</span>
           </div>
         </a>
         <a className="doc-line" href={`${addressServer}/uploads/7e19ac7ce1b985ed1cfa83ffe5fd54d5_compressed_84ebbd92b4.pdf?updated_at=2022-11-15T11:55:47.907Z`} download="" target="_blank">

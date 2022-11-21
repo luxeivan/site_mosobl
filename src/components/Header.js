@@ -439,7 +439,7 @@ export default function Header() {
                   </div>
                   <span className="mob-menu-down__text">Перейти на портал потребителя</span>
                 </a>
-                <a className="mob-menu-down__wrap" href="#">
+                <Link className="mob-menu-down__wrap" to="/plannedOutages">
                   {" "}
                   <div className="mob-menu-down__wrap-icon">
                     <svg className="mob-menu-down__icon" viewBox="0 0 24 21" height="21" width="24" fill="none">
@@ -447,7 +447,7 @@ export default function Header() {
                     </svg>
                   </div>
                   <span className="mob-menu-down__text">Узнать об отключениях</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
