@@ -116,7 +116,7 @@ export default function Header() {
                     </div>
                     <span className="wrap-link__text">Перейти на портал потребителя</span>
                   </a>
-                  <Link className="wrap-link" to="/news">
+                  <Link className="wrap-link" to="/plannedOutages">
                     {" "}
                     <div className="wrap-link__wrap-icon">
                       <svg className="wrap-link__icon" viewBox="0 0 24 21" height="21" width="24" fill="none">
