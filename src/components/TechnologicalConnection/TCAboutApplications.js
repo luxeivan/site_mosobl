@@ -11,13 +11,13 @@ export default function TCAboutApplications() {
       </div>
       <div className="row-docs-age">
         
-        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_avgust_cd4f93a7ff.pdf?updated_at=2022-11-18T10:01:33.562Z`} download="" target="_blank">
+        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_oktyabr_2022_e573c08cc7.pdf?updated_at=2022-11-22T07:06:43.190Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
           <div className="doc-line__wrap-text">
             <span className="doc-line__name">2022</span>
-            <span className="doc-line__file-info">pdf, 1 мб</span>
+            <span className="doc-line__file-info">pdf, 2 мб</span>
           </div>
         </a>
         <a className="doc-line" href={`${addressServer}/uploads/7e19ac7ce1b985ed1cfa83ffe5fd54d5_compressed_84ebbd92b4.pdf?updated_at=2022-11-15T11:55:47.907Z`} download="" target="_blank">
