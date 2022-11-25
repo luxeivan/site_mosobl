@@ -34,7 +34,7 @@ export default function AntiCorruption() {
             </p>
           </li>)}
         </ul>
-        <strong>8(495)780-39-62 доб. 1015, 3339 или 2136</strong>{" "}
+        <strong>8(495)780-39-62 доб. 1015, 3339</strong>{" "}
         <a className="email-link" href="mailto:sb@mosoblenergo.ru">
           sb@mosoblenergo.ru
         </a>
