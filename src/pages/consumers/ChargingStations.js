@@ -42,27 +42,6 @@ export default function ChargingStations() {
             Мобильное приложения&nbsp;<b>«PlugMe»</b>&nbsp;можно скачать&nbsp;в магазинах Google Play или AppStore.
           </p>{" "}
           <br />
-          <b>КОНТАКТНОЕ ЛИЦО ПО ВОПРОСАМ РАБОТЫ ЭЛЕКТРОЗАРАДНЫХ СТАНЦИЙ :</b>
-          <b>
-            <br />
-          </b>{" "}
-          <br />
-          <b>
-            —{" "}
-            <a href="tel:+79169058602" style={{fontSize: "16px", fontWeight: 700}}>
-              8 (916) 905-86-02
-            </a>
-            ;
-          </b>
-          <br />
-          <b>
-            —{" "}
-            <a href="tel:+79150359505" style={{fontSize: "16px", fontWeight: 700}}>
-              8 (915) 035-95-05
-            </a>
-            .
-          </b>
-          <br />
           <p>
             <br />
           </p>
