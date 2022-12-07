@@ -117,7 +117,7 @@ export default function Disconnect() {
                             <div className="street-table__th">Улицы</div>
                             <div className="street-table__th">Комментарий</div>
                             <div className="street-table__th">Начало</div>
-                            <div className="street-table__th">Конец</div>
+                            <div className="street-table__th">Окончание</div>
                           </li>
                           {item[1].map((item, index) => {
                             const begin = DateTime.fromISO(item.attributes.begin).toLocal().c;

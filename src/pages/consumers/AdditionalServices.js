@@ -60,13 +60,19 @@ export default function AdditionalServices() {
                 <p></p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_yuridicheskogo_licza_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_81660b069c.doc?updated_at=2022-11-15T07:42:53.791Z`}>Форма заявки для юридических лиц</a>
+                    <a href={`${addressServer}/uploads/Zayavka_yuridicheskogo_licza_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_81660b069c.doc?updated_at=2022-11-15T07:42:53.791Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_individualnogo_predprinimatelya_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_0ad3302398.doc?updated_at=2022-11-15T07:42:53.913Z`}>Форма заявки для индивидуальных предпринимателей</a>
+                    <a href={`${addressServer}/uploads/Zayavka_individualnogo_predprinimatelya_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_0ad3302398.doc?updated_at=2022-11-15T07:42:53.913Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_ot_fizicheskogo_licza_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_6c11fca5d2.doc?updated_at=2022-11-15T07:42:54.140Z`}>Форма заявки для физических лиц</a>
+                    <a href={`${addressServer}/uploads/Zayavka_ot_fizicheskogo_licza_na_zaklyuchenie_dogovora_tehnicheskogo_obsluzhivaniya_obektov_elektrosetevogo_hozyajstva_6c11fca5d2.doc?updated_at=2022-11-15T07:42:54.140Z`}>
+                      Форма заявки для физических лиц
+                    </a>
                   </li>
                 </ul>
                 <p></p>
@@ -2379,14 +2385,53 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>1&nbsp;000,00</td>
                       </tr>
 
+
+
                       <tr>
-                        <td style={{ textAlign: "center" }}>
+                        <td rowspan="5" style={{ textAlign: "center" }}>
                           <nobr>06-16</nobr>
                         </td>
-                        <td style={{ textAlign: "center" }}>Подготовка актов разграничения границ балансовой принадлежности сторон, актов разграничения эксплуатационной ответственности сторон</td>
-                        <td style={{ textAlign: "center" }}>Комплект документов</td>
-                        <td style={{ textAlign: "center" }}>4&nbsp;981,32</td>
+                        <td rowspan="5" style={{ textAlign: "center" }}>
+                          Подготовка актов разграничения границ балансовой принадлежности сторон, актов разграничения эксплуатационной ответственности сторон
+                        </td>
+                        <td rowspan="5" style={{ textAlign: "center" }}>
+                          Комплект документов
+                        </td>
+                        <td> Для лиц, относящихся к многодетным, малоимущим, ветеранам, инвалидам, подвергшимся воздействию радиации вследствие катастрофы на Чернобыльской АЭС <br />
+                          4 981,32</td>
                       </tr>
+                      <tr>
+                        <td>
+                          Максимальная присоединенная мощность до 15 кВт
+                          <br />
+                          24 000,00
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Максимальная присоединенная мощность от 15 кВт до 150 кВт
+                          <br />
+                          38 000,00
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Максимальная присоединенная мощность от 150 кВт до 670 кВт
+                          <br />
+                          79 000,00
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Максимальная присоединенная мощность свыше 670 кВт
+                          <br />
+                          159 000,00
+                        </td>
+                      </tr>
+
+
+
+
 
                       <tr>
                         <td style={{ textAlign: "center" }}>
@@ -2692,6 +2737,60 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>Предоставление дежурного персонала для передвижных источников электроснабжения</td>
                         <td style={{ textAlign: "center" }}>час</td>
                         <td style={{ textAlign: "center" }}>1 800,00</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" style={{ textAlign: "center" }}>
+                          <strong>Предоставление комплектной трансформаторной подстанции (КТП) с доставкой на объект без дежурного персонала:</strong>
+                          <strong>(минимальный срок аренды - 1 месяц)</strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-23</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 63 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>31 375,00</td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-24</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 100 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>33 875,00</td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-25</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 160 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>36 375,00</td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-26</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 250 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>39 500,00</td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-27</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 400 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>45 125,00</td>
+                      </tr>
+                      <tr>
+                        <td style={{ textAlign: "center" }}>
+                          <nobr>07-28</nobr>
+                        </td>
+                        <td style={{ textAlign: "center" }}>КТП 630 кВА</td>
+                        <td style={{ textAlign: "center" }}>месяц</td>
+                        <td style={{ textAlign: "center" }}>50 125,00</td>
                       </tr>
                     </tbody>
                   </table>
@@ -4030,13 +4129,13 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 250 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/78d94f0ef035a45613d769f1a7b19542_aad2809eec.pdf?updated_at=2022-11-15T06:31:49.787Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavlenij_2022_fb8e0509da.pdf?updated_at=2022-12-07T07:55:32.717Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Реестр заявлений о предоставлении доступа к инфраструктуре за 2022 год</span>
-                      <span className="doc-line__file-info">pdf, 211 кб</span>
+                      <span className="doc-line__file-info">pdf, 233 кб</span>
                     </div>
                   </a>
                   <a className="doc-line" href={`${addressServer}/uploads/a11750ab5c20d9b75111852c80d9999c_7af163050f.pdf?updated_at=2022-11-15T06:31:51.127Z`} download="" target="_blank">
@@ -4067,7 +4166,7 @@ export default function AdditionalServices() {
                     </div>
                   </a>
                 </div>
-                
+
                 <p></p>
                 <div className="wrap-table">
                   <table align="center">
@@ -4240,7 +4339,9 @@ export default function AdditionalServices() {
                     <a href={`${addressServer}/uploads/Zayavka_yuridicheskogo_licza_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_c4529dfb1f.doc?updated_at=2022-11-15T07:48:54.563Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_individualnogo_predprinimatelya_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_e6148e82bd.doc?updated_at=2022-11-15T07:48:54.763Z`}>Форма заявки для индивидуальных предпринимателей</a>
+                    <a href={`${addressServer}/uploads/Zayavka_individualnogo_predprinimatelya_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_e6148e82bd.doc?updated_at=2022-11-15T07:48:54.763Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
                   </li>
                   <li>
                     <a href={`${addressServer}/uploads/Zayavka_ot_fizicheskogo_licza_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_5ec491ae7b.doc?updated_at=2022-11-15T07:48:54.948Z`}>Форма заявки для физических лиц</a>
@@ -4588,7 +4689,7 @@ export default function AdditionalServices() {
         <br />
         <br />{" "}
         <div className="row-docs-age">
-          <a className="doc-line" href="/upload/iblock/c94/c946c2e2c800837bd0f69971774f94cf.pdf" download="" target="_blank">
+          <a className="doc-line" href={`${addressServer}/uploads/Prejskurant_410e4a5513.pdf?updated_at=2022-12-07T07:52:34.081Z`} download="" target="_blank">
             <div className="doc-line__wrap-icon">
               <img src={pdf} alt="icon pdf" />
             </div>
