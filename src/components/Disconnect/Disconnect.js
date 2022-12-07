@@ -111,7 +111,7 @@ export default function Disconnect() {
                   </div>
                   <div className="accordion-row__drop-down">
                     <div className="accordion-row__wrapper1">
-                      <div className="text-area1">
+                      <div className="text-area1 disconnect__for-desktop">
                         <ul className="street__list">
                           <li className="street__item street-row">
                             <div className="street-table__th">Улицы</div>
@@ -147,6 +147,48 @@ export default function Disconnect() {
                           })}
                         </ul>
                       </div>
+
+                      <div className="text-area1 disconnect__for-mobile">
+                        <ul className="street__list">
+                          <li className="street__item street-row">
+                            <div className="street-table__th">Улицы</div>
+                            <div className="street-table__th">Комментарий</div>
+                            <div className="street-table__th">Время</div>
+                          </li>
+                          {item[1].map((item, index) => {
+                            const begin = DateTime.fromISO(item.attributes.begin).toLocal().c;
+                            const end = DateTime.fromISO(item.attributes.end).toLocal().c;
+                            // console.log(item);
+                            return (
+                              <li key={index} className="street__item street-row">
+                                <div className="street-table__td street-table">
+                                  <ul>
+                                    {item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data.map((item, index) => (
+                                      <li className="street-table__item" type="none" style={{ listStyle: "none" }} key={index}>
+                                        <b>{item.attributes.name}</b> - {item.attributes.comment}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div className="street-table__td">{item.attributes.comment}</div>
+                                <div className="street-table__td">
+                                  <b>Начало:</b><br/>
+                                  {begin.day < 10 ? "0" + begin.day : begin.day}.{begin.month < 10 ? "0" + begin.month : begin.month}.{begin.year} {begin.hour < 10 ? "0" + begin.hour : begin.hour}:
+                                  {begin.minute < 10 ? "0" + begin.minute : begin.minute}
+                                  <br/>
+                                  <b>Окончание:</b>
+                                  <br/>
+                                  {end.day < 10 ? "0" + end.day : end.day}.{end.month < 10 ? "0" + end.month : end.month}.{end.year} {end.hour < 10 ? "0" + end.hour : end.hour}:{end.minute < 10 ? "0" + end.minute : end.minute}
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+
+
+
+
                       <div className="open-map">
                         <button
                           type="button"
