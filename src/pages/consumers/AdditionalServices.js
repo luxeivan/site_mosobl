@@ -4559,7 +4559,7 @@ export default function AdditionalServices() {
                           <strong>Ед. измерения</strong>
                         </td>
                         <td style={{ textAlign: "center" }}>
-                          <strong>Цена, руб. с НДС</strong>
+                          <strong>Норма расхода, %</strong>
                         </td>
                       </tr>
                       <tr>

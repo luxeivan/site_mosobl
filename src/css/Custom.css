@@ -496,20 +496,20 @@ button.wrap-link {
 tr,
 td,
 th {
-  border: 1px solid gray;
+  border: 1px solid #eee;
 }
 
-@media (min-width: 1360px) {
-  .inner-post__title {
-    font-size: 40px;
-    line-height: 48px;
-  }
-}
 .disconnect__for-mobile {
   display: none;
 }
 .disconnect__for-desktop {
   display: block;
+}
+@media (min-width: 1360px) {
+  .inner-post__title {
+    font-size: 40px;
+    line-height: 48px;
+  }
 }
 @media (max-width: 1200px) {
   .link-block__drop-down {
