@@ -68,6 +68,7 @@ function App() {
             <Route path='/regulatoryLegalActs' element={<RegulatoryLegalActs/>} />
             <Route path='/customerService' element={<CustomerService/>} />
             <Route path='/plannedOutages' element={<PlannedOutages/>} />
+            <Route path='/consumer/planovye-raboty/planovye-otklyucheniya' element={<PlannedOutages/>} />
             <Route path='/consolidationOfElectric' element={<ConsolidationOfElectric/>} />
             <Route path='/chargingStations' element={<ChargingStations/>} />
             <Route path='/saleOfItems' element={<SaleOfItems/>} />

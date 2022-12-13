@@ -58,7 +58,7 @@ export default function Disconnect() {
     }
   );
   useEffect(() => {
-    // console.log(query);
+    //console.log(query);
     axios
       .get("https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" + query + "&pagination[pageSize]=100000")
       .then((responce) => {
@@ -134,7 +134,7 @@ export default function Disconnect() {
                                     ))}
                                   </ul>
                                 </div>
-                                <div className="street-table__td">{item.attributes.comment}</div>
+                                <div className="street-table__td" style={{wordBreak:"break-all"}}>{item.attributes.comment}</div>
                                 <div className="street-table__td">
                                   {begin.day < 10 ? "0" + begin.day : begin.day}.{begin.month < 10 ? "0" + begin.month : begin.month}.{begin.year} {begin.hour < 10 ? "0" + begin.hour : begin.hour}:
                                   {begin.minute < 10 ? "0" + begin.minute : begin.minute}
