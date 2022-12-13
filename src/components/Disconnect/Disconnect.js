@@ -134,7 +134,7 @@ export default function Disconnect() {
                                     ))}
                                   </ul>
                                 </div>
-                                <div className="street-table__td" style={{wordBreak:"break-all"}}>{item.attributes.comment}</div>
+                                <div className="street-table__td" style={{wordBreak:"break-word"}}>{item.attributes.comment}</div>
                                 <div className="street-table__td">
                                   {begin.day < 10 ? "0" + begin.day : begin.day}.{begin.month < 10 ? "0" + begin.month : begin.month}.{begin.year} {begin.hour < 10 ? "0" + begin.hour : begin.hour}:
                                   {begin.minute < 10 ? "0" + begin.minute : begin.minute}
