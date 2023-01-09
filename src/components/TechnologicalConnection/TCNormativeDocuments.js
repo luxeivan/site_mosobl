@@ -42,13 +42,13 @@ export default function TCNormativeDocuments() {
             <span class="doc-line__file-info">pdf, 148 кб</span>
           </div>
         </a>
-        <a class="doc-line" href={`${addressServer}/uploads/418bd002e5a3b0883ca6835c5320ca02_compressed_4517d8844b.pdf?updated_at=2022-11-15T11:14:09.490Z`} download="" target="_blank">
+        <a class="doc-line" href={`${addressServer}/uploads/Rasporyazhenie_komiteta_po_czenam_i_tarifam_Moskovskoj_oblasti_ot_28_12_2022_286_R_5f6d2d481b.pdf?updated_at=2023-01-09T13:16:51.217Z`} download="" target="_blank">
           <div class="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
           <div class="doc-line__wrap-text">
-            <span class="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 17.12.2021 номер 276_Р Об установлении стандартизированных тарифных ставок.</span>
-            <span class="doc-line__file-info">pdf, 7 мб</span>
+            <span class="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 28.12.2022 N 286-Р.</span>
+            <span class="doc-line__file-info">pdf, 950 кб</span>
           </div>
         </a>
         <a class="doc-line" href={`${addressServer}/uploads/438c5f87850b9e58324c2304ae59b829_compressed_d9c3cfa0ed.pdf?updated_at=2022-11-15T11:14:08.320Z`} download="" target="_blank">
