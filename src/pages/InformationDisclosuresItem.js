@@ -6,7 +6,7 @@ import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 import xls from "../img/xls.svg";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 import TopImage from "../components/TopImage";
 import imgf4f40bee4b8a3fb6f95707a4da41d873 from "../img/f4f40bee4b8a3fb6f95707a4da41d873.jpg";
@@ -59,51 +59,54 @@ export default function InformationDisclosuresItem() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage image={imgf4f40bee4b8a3fb6f95707a4da41d873} title={informationDisclosureItem.attributes && informationDisclosureItem.attributes.title} />
       <div className="page-grid__content" id="content">
-      <div>
-        <Link to="/informationDisclosures" className="button__back">
-          Назад
-        </Link>
-        <input type="text" className="informationDisclosures_search" placeholder="Поиск на текущей странице" onChange={handlerSearch} onClick={handlerSearch} />
-        <button className="button__clear" onClick={handlerClear}>
-          Очистить
-        </button>
-      </div>
-      {/* <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1> */}
-      <ul>
-        {informationDisclosureItem &&
-          informationDisclosureItem.attributes &&
-          informationDisclosureItem.attributes.groupInfo &&
-          informationDisclosureItem.attributes.groupInfo.map((item, index) => {
-            if (item.list_files.data.length < 1) {
-              return false;
-            } else {
-              return (
-                <li className="page-grid__content" id="content" key={index}>
-                  <div className="row-docs-age">
-                    <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
-                    <ul>
-                      {item.list_files.data.map((item, index) => (
-                        <li key={index} className="page-grid__content__li">
-                          <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
-                            <div className="doc-line__wrap-icon">
-                              <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />
-                            </div>
-                            <div className="doc-line__wrap-text">
-                              <span className="doc-line__name">{item.attributes.name}</span>
-                              <span className="doc-line__file-info">
-                                {item.attributes.type} {Math.round(item.attributes.file.data.attributes.size)}kb
-                              </span>
-                            </div>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              );
-            }
-          })}
-      </ul>
+        <div>
+          <Link to="/informationDisclosures" className="button__back">
+            Назад
+          </Link>
+          <input type="text" className="informationDisclosures_search" placeholder="Поиск на текущей странице" onChange={handlerSearch} onClick={handlerSearch} />
+          <button className="button__clear" onClick={handlerClear}>
+            Очистить
+          </button>
+        </div>
+        {/* <h1 className="inner-post__title">{informationDisclosureItem.attributes && informationDisclosureItem.attributes.title}</h1> */}
+        <ul>
+          {informationDisclosureItem &&
+            informationDisclosureItem.attributes &&
+            informationDisclosureItem.attributes.groupInfo &&
+            informationDisclosureItem.attributes.groupInfo.map((item, index) => {
+              console.log(item);
+              if (item.list_files.data.length < 1) {
+                return false;
+              } else {
+                return (
+                  <li className="page-grid__content" id="content" key={index}>
+                    <div className="row-docs-age">
+                      <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
+                      <ul>
+                        {item.list_files.data
+                          .sort((a, b) => b.id - a.id)
+                          .map((item, index) => (
+                            <li key={index} className="page-grid__content__li">
+                              <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
+                                <div className="doc-line__wrap-icon">
+                                  <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />
+                                </div>
+                                <div className="doc-line__wrap-text">
+                                  <span className="doc-line__name">{item.attributes.name}</span>
+                                  <span className="doc-line__file-info">
+                                    {item.attributes.type} {Math.round(item.attributes.file.data.attributes.size)}kb
+                                  </span>
+                                </div>
+                              </a>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </li>
+                );
+              }
+            })}
+        </ul>
       </div>
     </motion.div>
   );
