@@ -74,7 +74,6 @@ export default function InformationDisclosuresItem() {
             informationDisclosureItem.attributes &&
             informationDisclosureItem.attributes.groupInfo &&
             informationDisclosureItem.attributes.groupInfo.map((item, index) => {
-              console.log(item);
               if (item.list_files.data.length < 1) {
                 return false;
               } else {
