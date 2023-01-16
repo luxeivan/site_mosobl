@@ -104,16 +104,40 @@ export default function TCRates() {
       </div>
       <br />{" "}
       <div className="row-docs-age">
-        <a className="doc-line" href={`${addressServer}/uploads/418bd002e5a3b0883ca6835c5320ca02_1_szhatyj_7319d6ad64.pdf?updated_at=2022-11-15T11:45:51.041Z`} download="" target="_blank">
+        <a className="doc-line" href={`${addressServer}/uploads/Rasporyazhenie_komiteta_po_czenam_i_tarifam_Moskovskoj_oblasti_ot_28_12_2022_286_R_5f6d2d481b.pdf?updated_at=2023-01-09T13:16:51.217Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
           <div className="doc-line__wrap-text">
-            <span className="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 17.12.2021 номер 276_Р Об установлении стандартизированных тарифных ставок</span>
-            <span className="doc-line__file-info">pdf, 3 мб</span>
+            <span className="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 28.12.2022 N 286-Р. "О внесении изменения в распоряжение Комитета по ценам и тарифам Московской области от 20.11.2022 № 215-Р "Об установлении стандартизированных тарифных ставок и формул платы за технологическое присоединение энергопринимающих устройств потребителей электрической энергии, объектов электросетевого хозяйства, принадлежащих сетевым организациям и иным лицам, к электрическим сетям территориальных сетевых организаций на территории Московской области на период с 01.12.2022 по 31.12.2023"</span>
+            <span className="doc-line__file-info">pdf, 950 кб</span>
+          </div>
+        </a>
+      </div>
+      <div className="row-docs-age">
+        <a className="doc-line" href={`${addressServer}/uploads/286_R_20_12_2022_compressed_c375c2fe74.pdf?updated_at=2023-01-16T13:29:30.282Z`} download="" target="_blank">
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 20.12.2021 № 286-Р "Об установлении единых (котловых) тарифов на услуги по передаче электрической энергии по сетям на территории Московской области на 2022 год"</span>
+            <span className="doc-line__file-info">pdf, 4 мб</span>
+          </div>
+        </a>
+      </div>
+      <div className="row-docs-age">
+        <a className="doc-line" href={`${addressServer}/uploads/255_R_19_12_2022_compressed_61a3cca946.pdf?updated_at=2023-01-16T13:29:30.040Z`} download="" target="_blank">
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">Распоряжение Комитета по ценам и тарифам Московской области от 19.12.2022 № 255-Р "О внесении изменений в распоряжение Комитета по ценам и тарифам Московской области от 20.11.2022 № 215-Р "Об установлении стандартизированных тарифных ставок и формул платы за технологическое присоединение энергопринимающих устройств потребителей электрической энергии, объектов электросетевого хозяйства, принадлежащих сетевым организациям и иным лицам, к электрическим сетям территориальных сетевых организаций на территории Московской области на период с 01.12.2022 по 31.12.2023"</span>
+            <span className="doc-line__file-info">pdf, 640 кб</span>
           </div>
         </a>
       </div>
     </div>
   );
 }
+// /uploads/286_R_20_12_2022_compressed_c375c2fe74.pdf?updated_at=2023-01-16T13:29:30.282Z
+// /uploads/255_R_19_12_2022_compressed_61a3cca946.pdf?updated_at=2023-01-16T13:29:30.040Z
