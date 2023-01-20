@@ -35,8 +35,14 @@ import ConsolidationOfElectric from './pages/consumers/ConsolidationOfElectric';
 import ChargingStations from './pages/consumers/ChargingStations';
 import SaleOfItems from './pages/consumers/SaleOfItems';
 import AttentionFraud from './pages/consumers/AttentionFraud';
+import Gosuslugi_banner from './components/Gosuslugi_banner';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    const event = new Event('rendered')
+    document.dispatchEvent(event)
+}, [])
   return (
     <div className="App">
       <BrowserRouter>
@@ -76,7 +82,8 @@ function App() {
 
             <Route path='/*' element={<Page404/>} />
 
-          </Routes>        
+          </Routes>   
+          <Gosuslugi_banner/>     
         <Footer />
       </BrowserRouter>
     </div>

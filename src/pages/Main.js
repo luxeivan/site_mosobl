@@ -119,6 +119,7 @@ export default function Main() {
             </div>
           </div>
         </section>
+        
       </motion.main>
     </>
   );
