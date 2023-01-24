@@ -90,13 +90,13 @@ export default function TCMain() {
               </a>
             </p>
           </div>
-          <a className="doc-line" href={`${addressServer}/uploads/d4c8e99d55247479de2dc4289235327c_szhatyj_a2f510fd10.pdf?updated_at=2022-11-09T10:53:31.716Z`} download="" target="_blank">
+          <a className="doc-line" href={`${addressServer}/uploads/Instrukcziya_Dogovor_Elektrika_69ae54d22f.pdf?updated_at=2023-01-24T18:12:01.094Z`} download="" target="_blank">
             <div className="doc-line__wrap-icon">
               <img src={pdf} alt="icon pdf" />
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">Инструкция по подаче заявки на технологическое присоединение (скачать)</span>
-              <span className="doc-line__file-info">pdf, 298 кб</span>
+              <span className="doc-line__file-info">pdf, 2 мб</span>
             </div>
           </a>
         </div>
