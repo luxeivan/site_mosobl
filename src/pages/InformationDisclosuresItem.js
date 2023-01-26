@@ -6,6 +6,7 @@ import doc from "../img/doc.svg";
 import docx from "../img/docx.svg";
 import rar from "../img/rar.svg";
 import xls from "../img/xls.svg";
+import jpg from "../img/jpg.svg";
 import { motion } from "framer-motion";
 
 import TopImage from "../components/TopImage";
@@ -17,6 +18,7 @@ const type = {
   docx,
   rar,
   xls,
+  jpg,
 };
 
 export default function InformationDisclosuresItem() {
