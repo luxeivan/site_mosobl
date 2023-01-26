@@ -85,7 +85,25 @@ export default function InformationDisclosuresItem() {
                       <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
                       <ul>
                         {item.list_files.data
-                          .sort((a, b) => b.id - a.id)
+                          .sort((a, b) => {
+                            console.log(a.attributes.name.search(/20[0-9]{2} /gm));
+                            console.log(b.attributes.name.search(/20[0-9]{2} /gm));
+                            console.log("-----------------------");
+                            if (a.attributes.name.search(/20[0-9]{2} /gm) != -1 && b.attributes.name.search(/20[0-9]{2} /gm) == -1) {
+                              return -1;
+                            }
+                            if (a.attributes.name.search(/20[0-9]{2} /gm) == -1 && b.attributes.name.search(/20[0-9]{2} /gm) != -1) {
+                              return 1;
+                            }
+                            //a.match(/20[0-9]{3} /gm)[0]
+                            //a.attributes.name.search(/20[0-9]{3} /gm)[0]
+                            return b.id - a.id;
+                          })
+                          .sort((a, b) => {
+                            if (a.attributes.name.search(/20[0-9]{2} /gm) != -1 && b.attributes.name.search(/20[0-9]{2} /gm) != -1) {
+                              return b.attributes.name.match(/20[0-9]{2} /gm)[0].slice(0, -1) - a.attributes.name.match(/20[0-9]{2} /gm)[0].slice(0, -1);
+                            }
+                          })
                           .map((item, index) => (
                             <li key={index} className="page-grid__content__li">
                               <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">

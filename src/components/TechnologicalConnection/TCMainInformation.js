@@ -2,8 +2,8 @@ import React from "react";
 
 export default function TCMainInformation() {
   return (
-    <div class="page-grid__content" id="content">
-      <div class="text-area">
+    <div className="page-grid__content" id="content">
+      <div className="text-area">
         <h3>Технологическое присоединение </h3>
         <p>Технологическое присоединение – это услуга, оказываемая сетевой организацией для подключения энергопринимающих устройств юридических, физических лиц и индивидуальных предпринимателей к электрическим сетям.</p>
         <p>
