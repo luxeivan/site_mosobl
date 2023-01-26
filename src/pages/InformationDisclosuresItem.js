@@ -86,9 +86,6 @@ export default function InformationDisclosuresItem() {
                       <ul>
                         {item.list_files.data
                           .sort((a, b) => {
-                            console.log(a.attributes.name.search(/20[0-9]{2} /gm));
-                            console.log(b.attributes.name.search(/20[0-9]{2} /gm));
-                            console.log("-----------------------");
                             if (a.attributes.name.search(/20[0-9]{2} /gm) != -1 && b.attributes.name.search(/20[0-9]{2} /gm) == -1) {
                               return -1;
                             }
