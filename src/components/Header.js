@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHref, useLocation, useNavigate } from "react-router";
 import { mainMenu } from "../store/menu";
 import logo from "../img/logo.svg";
+import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
 import logo2 from "../img/logo2.svg";
 import logoTwo from "../img/logo-two.svg";
 import searchIcon2 from "../img/search-icon2.svg";
@@ -96,9 +97,8 @@ export default function Header() {
                 <div className="page-header__right">
                   <a className="wrap-link wrap-link_portal" href="https://moetp.ru/" target="_blank" rel="noreferrer">
                     <div className="wrap-link__wrap-icon">
-
-                    <svg className="wrap-link__icon wrap-link_portal__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
-                    <path
+                      <svg className="wrap-link__icon wrap-link_portal__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
+                        <path
                           d="M12.2 20.7143C13.7127 20.7143 15 19.3639 15 18.0857V12.1715C15 10.0009 10.4318 8.88574 8 8.88574C5.5682 8.88574 1 10.0003 1 12.1715V18.0857C1 19.3639 2.2873 20.7143 3.8 20.7143"
                           strokeWidth="2"
                           strokeMiterlimit="10"
@@ -109,10 +109,9 @@ export default function Header() {
                           strokeWidth="2"
                           strokeMiterlimit="10"
                         ></path>
-                        <path d="M12 24.0001V13.4858" strokeWidth="2" strokeMiterlimit="10" ></path>
-                        <path d="M4 13.4858V24.0001" strokeWidth="2" strokeMiterlimit="10" ></path>
-                </svg>
-                      
+                        <path d="M12 24.0001V13.4858" strokeWidth="2" strokeMiterlimit="10"></path>
+                        <path d="M4 13.4858V24.0001" strokeWidth="2" strokeMiterlimit="10"></path>
+                      </svg>
                     </div>
                     <span className="wrap-link__text">Перейти на портал потребителя</span>
                   </a>
@@ -462,6 +461,22 @@ export default function Header() {
                   <div className="container">
                     <div className="first-screen__block">
                       <img className="first-screen__img" src={firstScreenLogo} alt="logo" />
+                      <br />
+                      <div className="creditRating">
+                        <img className="creditRating__img" src={creditRating} alt="logo" />
+                        <div className="creditRating__desc">
+                          <h3 className="creditRating__title">АО «Мособлэнерго» присвоен кредитный рейтинг АА+ «Стабильный»</h3>
+                          <p className="creditRating__text">
+                            Одно из крупнейших рейтинговых агентств АКРА присвоило АО «Мособлэнерго» кредитный рейтинг АА+(RU) «Стабильный». Рейтинг отражает сильную рыночную позицию компании в Подмосковье, хороший операционный профиль, высокую
+                            рентабельность бизнеса, низкий уровень долговой нагрузки и хороший уровень ликвидности.
+                          </p>
+                          <div className="creditRating__link-area">
+                            <Link className="creditRating__link block-btn" to="/creditRating">
+                              Подробнее
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
