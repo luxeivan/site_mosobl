@@ -224,13 +224,6 @@ export default function Header() {
                 </div>
               </div>
             </div>
-
-
-
-            
-
-
-
             <div className={openSearchLine ? "search-line search-line--open" : "search-line"}>
               <span className="search-line__text">поиск по сайту </span>
               <form className="search-line__form" action="https://mosoblenergo.ru/search/">
@@ -255,7 +248,20 @@ export default function Header() {
           </div>
         </div>
       </section>
-      
+      {/* ------------------------------------------------------------------------------ */}
+      <section className="mob-contact">
+        <div className="page-header__wrap_mob">
+          <span className="page-header__text_mob">Горячая линия:</span>  <a className="page-header__tel_mob" href="tel:+74959950099">
+              +7 (495) 99-500-99
+            </a>
+        </div>
+        <div className="page-header__wrap_mob">
+          <span className="page-header__text_mob">Тех. присоединение:</span>  <a className="page-header__tel_mob" href="tel:+74957850000">
+              +7 (495) 785-00-00
+            </a>
+        </div>
+      </section>
+{/* ------------------------------------------------------------------------------ */}
       <section className={openMobMenu ? "mob-menu open-menu" : "mob-menu"}>
         <div className="mob-menu-up">
           <div className="container">
@@ -470,7 +476,7 @@ export default function Header() {
                     <div className="first-screen__block">
                       <img className="first-screen__img" src={firstScreenLogo} alt="logo" />
                       <br />
-                      <div className="creditRating">
+                      {/* <div className="creditRating">
                         <img className="creditRating__img" src={creditRating} alt="logo" />
                         <div className="creditRating__desc">
                           <h3 className="creditRating__title">АО «Мособлэнерго» присвоен кредитный рейтинг АА+ «Стабильный»</h3>
@@ -484,7 +490,7 @@ export default function Header() {
                             </Link>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

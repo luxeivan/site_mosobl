@@ -14,7 +14,7 @@ export default function News() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage image={img5d1dda82e3641ae19df5a51619ffb49c} title={"Новости компании"} />
       <div className="page-grid__content" id="content">
-        <div className="creditRating-area">
+        {/* <div className="creditRating-area">
           <div className="creditRating">
             <img className="creditRating__img" src={creditRating} alt="logo" />
             <div className="creditRating__desc">
@@ -30,7 +30,7 @@ export default function News() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div class="text-area">
           <p>Актуальная информация о работе компании публикуется в Telegram и соцсетях:</p>
           <ul>
