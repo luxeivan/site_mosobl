@@ -37,7 +37,7 @@ export const mainMenu = [
       },
       // {
       //   title: "Отзывы",
-      //   link: "",
+      //   link: "/reviews",
       // },
       {
         title: "Вниманию объединений садоводов",

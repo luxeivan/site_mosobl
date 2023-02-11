@@ -18,6 +18,7 @@ import MainDirections from './pages/MainDirections';
 import Recuisites from './pages/Recuisites';
 import AntiCorruption from './pages/AntiCorruption';
 import Certs from './pages/Certs';
+// import Reviews from './pages/Reviews';
 import Gardeners from './pages/Gardeners';
 import ContactForMedia from './pages/ContactForMedia';
 import News from './pages/News';
@@ -62,6 +63,7 @@ function App() {
             <Route path='/requisites' element={<Recuisites/>} />
             <Route path='/antiCorruption' element={<AntiCorruption/>} />
             <Route path='/certs' element={<Certs/>} />
+            {/* <Route path='/reviews' element={<Reviews/>} /> */}
             <Route path='/gardeners' element={<Gardeners/>} />
             <Route path='/contactForMedia' element={<ContactForMedia/>} />
             <Route path='/news' element={<News/>} />

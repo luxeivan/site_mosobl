@@ -224,6 +224,13 @@ export default function Header() {
                 </div>
               </div>
             </div>
+
+
+
+            
+
+
+
             <div className={openSearchLine ? "search-line search-line--open" : "search-line"}>
               <span className="search-line__text">поиск по сайту </span>
               <form className="search-line__form" action="https://mosoblenergo.ru/search/">
@@ -248,6 +255,7 @@ export default function Header() {
           </div>
         </div>
       </section>
+      
       <section className={openMobMenu ? "mob-menu open-menu" : "mob-menu"}>
         <div className="mob-menu-up">
           <div className="container">
