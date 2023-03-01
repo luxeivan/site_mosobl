@@ -1,8 +1,10 @@
 import React from 'react'
-import checkIcon from "../img/check-icon.svg";
+// import checkIcon from "../img/check-icon.svg";
 import {motion} from 'framer-motion'
 import TopImage from "../components/TopImage";
 import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
+import { addressServer } from "../config";
+// import { Link } from 'react-router-dom';
 const goalsTasks = [
     "Повышение надежности и качества электроснабжения Подмосковья;",
     "Обеспечение взаимодействия электросетевых организаций, осуществляющих деятельность на территории Московской области;",
@@ -22,6 +24,7 @@ export default function Goals() {
       <div className="text-area">
         
         <ul>
+          <li> <a href={`${addressServer}/uploads/karta_g_o_Podolsk_s_IP_PKR_PPN_ac8b5b2074.jpeg?updated_at=2023-03-01T11:09:30.335Z`} download="" target="_blank">Производственные программы АО "Мособлэнерго" на 2023 год. г.о. Подольск</a></li>
         {goalsTasks.map((item,index)=>
             <li key={index}>
             <p style={{ display: "flex", alignItems: "center" }}>
