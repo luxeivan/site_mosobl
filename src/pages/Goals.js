@@ -24,7 +24,7 @@ export default function Goals() {
       <div className="text-area">
         
         <ul>
-          <li> <a href={`${addressServer}/uploads/karta_g_o_Podolsk_s_IP_PKR_PPN_ac8b5b2074.jpeg?updated_at=2023-03-01T11:09:30.335Z`} download="" target="_blank">Производственные программы АО "Мособлэнерго" на 2023 год. г.о. Подольск</a></li>
+         
         {goalsTasks.map((item,index)=>
             <li key={index}>
             <p style={{ display: "flex", alignItems: "center" }}>

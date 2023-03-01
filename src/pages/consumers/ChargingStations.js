@@ -5,6 +5,7 @@ import TopImage from "../../components/TopImage";
 import { addressServer } from "../../config";
 import imge52d6b93112691c58929068e092b99f2 from "../../img/e52d6b93112691c58929068e092b99f2.jpg";
 import docx from "../../img/docx.svg";
+import ElectricChargingStations from "../../components/ElectricChargingStations";
 
 export default function ChargingStations() {
   return (
@@ -12,6 +13,7 @@ export default function ChargingStations() {
       <TopImage image={imge52d6b93112691c58929068e092b99f2} title={"Зарядные станции для электромобилей"} />
       <div className="page-grid__content" id="content">
         <div className="text-area">
+          {/* <ElectricChargingStations/> */}
           <p>Уважаемые клиенты!</p>
           <p>
             Информируем Вас, о том, что для улучшения работы ЭЗС, в период с августа по ноябрь 2022 года, на ЭЗС марки «Сигма», проводятся ремонтные работы. По завершению ремонтных работ, управление ЭЗС АО «Мособлэнерго» будет осуществляться

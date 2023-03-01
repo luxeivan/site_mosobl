@@ -97,6 +97,10 @@ export const mainMenu = [
         title: "Внимание мошенничество",
         link: "/attentionFraud",
       },
+      {
+        title: 'Производственные программы на 2023 год',
+        link: "/productionPrograms",
+      },
     ],
   },
   {

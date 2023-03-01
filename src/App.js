@@ -39,6 +39,7 @@ import AttentionFraud from './pages/consumers/AttentionFraud';
 import Gosuslugi_banner from './components/Gosuslugi_banner';
 import { useEffect } from 'react';
 import CreditRating from './pages/СreditRating';
+import ProductionPrograms from './pages/consumers/ProductionPrograms';
 
 function App() {
   useEffect(() => {
@@ -82,6 +83,7 @@ function App() {
             <Route path='/chargingStations' element={<ChargingStations/>} />
             <Route path='/saleOfItems' element={<SaleOfItems/>} />
             <Route path='/attentionFraud' element={<AttentionFraud/>} />
+            <Route path='/productionPrograms' element={<ProductionPrograms/>} />
             
             <Route path='/creditRating' element={<CreditRating/>} />
 
