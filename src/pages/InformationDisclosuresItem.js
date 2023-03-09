@@ -41,9 +41,9 @@ export default function InformationDisclosuresItem() {
       });
   }, []);
   const handlerSearch = (event) => {
-    console.log(copy);
+    //console.log(copy);
     let copyObj = JSON.parse(JSON.stringify(copy));
-    console.log(copyObj);
+    //console.log(copyObj);
     if (copyObj.attributes) {
       copyObj.attributes.groupInfo.forEach((element) => {
         element.list_files.data = element.list_files.data.filter((item) => item.attributes.name.toLowerCase().includes(event.target.value.toLowerCase()));
