@@ -830,7 +830,7 @@ th {
 
 @media (max-width: 1023px) {
   .dummy {
-    height: 100px;
+    height: 120px;
   }
 
   .qr-plugme-comp__img {
@@ -873,7 +873,7 @@ th {
   }
 
   .dummy {
-    height: 58px;
+    height: 130px;
   }
 
   .page-grid__content {
