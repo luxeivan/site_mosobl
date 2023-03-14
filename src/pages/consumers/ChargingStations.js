@@ -5,6 +5,14 @@ import TopImage from "../../components/TopImage";
 import { addressServer } from "../../config";
 import imge52d6b93112691c58929068e092b99f2 from "../../img/e52d6b93112691c58929068e092b99f2.jpg";
 import docx from "../../img/docx.svg";
+import img1 from "../../img/charging/1.jpg";
+import img2 from "../../img/charging/2.jpg";
+import img3 from "../../img/charging/3.jpg";
+import img4 from "../../img/charging/4.jpg";
+import img5 from "../../img/charging/5.jpg";
+import img6 from "../../img/charging/6.jpg";
+import img7 from "../../img/charging/7.jpg";
+import img8 from "../../img/charging/8.jpg";
 import ElectricChargingStations from "../../components/ElectricChargingStations";
 
 export default function ChargingStations() {
@@ -15,10 +23,8 @@ export default function ChargingStations() {
         <div className="text-area">
           <ElectricChargingStations />
 
-          <p>
-            <b>Технические характеристики электрических зарядных станций АО «Мособлэнерго»:</b>
-          </p>
-          <ul>
+          <h3 className="charging__title">Технические характеристики электрических зарядных станций АО «Мособлэнерго»:</h3>
+          <ul style={{margin: "0 auto", maxWidth: "1200px"}}>
             <li>
               <p>Мощность от 3,5 до 22 кВт</p>
             </li>
@@ -35,12 +41,8 @@ export default function ChargingStations() {
               <p>Класс защиты от механических воздействий: IK8 Температура эксплуатации: от -30 °C до +40 °C Управление энергопотреблением: мониторинг потребления (по приложению)</p>
             </li>
           </ul>
-          <p>
-            <b>
-              Типы разъемов:
-            </b>
-          </p>
-          <ul>
+          <h3 className="charging__title">Типы разъемов:</h3>
+          <ul style={{margin: "0 auto", maxWidth: "1200px"}}>
             <li>
               <p>Shuko (стандартная евро розетка)</p>
             </li>
@@ -51,94 +53,74 @@ export default function ChargingStations() {
           <div>
             <br />
           </div>
-          <h2>
-            {" "}
+          <h3 className="charging__title">
             Зарядка автомобиля никогда не была настолько проста
-            <br />
-          </h2>
-          <b>
-            <p></p>
-            <b>
-              <br />
-            </b>
-            <p style={{ textAlign: "center" }}>
+
+          </h3>
+
+          {/* <p style={{ textAlign: "center" }}>
               <img alt="быстрый способ зарядить автомобиль" src={`${addressServer}/uploads/24b2a02a593a04f610f047315a9c21f0_2c1a9efef7.jpg?updated_at=2022-11-14T11:45:15.654Z`} title="Слайд1.jpg" />
-            </p>
-            <br />
-            <p style={{ textAlign: "center" }}>
-              <img alt="Слайд2.jpg" src={`${addressServer}/uploads/19f4e43cea4481f249a24b800d1a26e0_3bf048a6fd.jpg?updated_at=2022-11-14T11:45:15.850Z`} title="все зарядные станции в 1м мобильном приложении" />
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <img alt="Слайд3.jpg" src={`${addressServer}/uploads/c94cc6038b67b985adb59129a8631db8_763a5b28b0.jpg?updated_at=2022-11-14T11:45:15.997Z`} title="зарядка автомобиля никогда не была настолько проста" />
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <img alt="Слайд4.jpg" src={`${addressServer}/uploads/69c9c3ec0e6808dd52146384d46cdfcc_4654ba688f.jpg?updated_at=2022-11-14T11:45:16.231Z`} title="скачайте приложение" />
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <img alt="Слайд5.jpg" src={`${addressServer}/uploads/e68cda5586ea121590e69913d5104dd0_5a31bd835b.jpg?updated_at=2022-11-14T11:45:14.678Z`} title="постройте маршрут до зарядной станции" />
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <img alt="Слайд6.jpg" src={`${addressServer}/uploads/b2bea2edf8c490ed2668ee45d5c29122_6480ef2bc1.jpg?updated_at=2022-11-14T11:45:14.557Z`} title="оплачивайте зарядку прямо из приложения" />
-            </p>
-            <p>
-              <b>
-                <br />
-              </b>{" "}
-              <b>
-                ФОТОГРАФИИ ЭЗС УСТАНОВЛЕННЫЕ В «УМНЫХ ОПОРАХ» МОЩНОСТЬЮ 3,5 КВТ
-                <br />
-              </b>
-              <b>
-                <br />
-              </b>
-            </p>
-            <p style={{ textAlign: "center" }}>
-              <img
-                width="885"
-                alt="Фотографии ЭЗС установленные в «Умных опорах» мощностью 3,5 кВт.jpg"
-                src={`${addressServer}/uploads/0f0e752c1bfd77fadde51f5442e9f82e_bb9c8150a5.jpg?updated_at=2022-11-14T11:45:14.960Z`}
-                height="597"
-                title="Фотографии ЭЗС установленные в «Умных опорах» мощностью 3,5 кВт.jpg"
-              />
-            </p>
-            <p>
-              <b>
-                <br />
-              </b>
-            </p>
-            <b>
-              ФОТОГРАФИИ ОТДЕЛЬНОСТОЯЩИХ ЭЗС 3,5 КВТ <br />
-            </b>
+            </p> */}
+          <div className="charging-app">
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">1. Регистрация</h4>
+              <img className="charging-app__img" src={img1} alt="1. Регистрация" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">2. Выбор станции</h4>
+              <img className="charging-app__img" src={img2} alt="2. Выбор станции" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">3. Привязка карты</h4>
+              <img className="charging-app__img" src={img3} alt="3. Привязка карты" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">4. Зарядка</h4>
+              <img className="charging-app__img" src={img4} alt="4. Зарядка" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">5. Уведомления</h4>
+              <img className="charging-app__img" src={img5} alt="5. Уведомления" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">6. Информация </h4>
+              <img className="charging-app__img" src={img6} alt="6. Информация" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">7. Режим зарядки</h4>
+              <img className="charging-app__img" src={img7} alt="7. Режим зарядки" />
+            </div>
+            <div className="charging-app__item">
+              <h4 className="charging-app__title">8. Меню</h4>
+              <img className="charging-app__img" src={img8} alt="8. Меню" />
+            </div>
+          </div>
+          <h3 className="charging__title">ФОТОГРАФИИ ЭЗС УСТАНОВЛЕННЫЕ В «УМНЫХ ОПОРАХ» МОЩНОСТЬЮ 3,5 КВТ</h3>
+          <p style={{ textAlign: "center" }}>
+            <img style={{ display: "inline", maxWidth: "100%" }} alt="Фотографии ЭЗС установленные в «Умных опорах» мощностью 3,5 кВт.jpg"
+              src={`${addressServer}/uploads/0f0e752c1bfd77fadde51f5442e9f82e_bb9c8150a5.jpg?updated_at=2022-11-14T11:45:14.960Z`}
+            />
+          </p>
+
+          <h3 className="charging__title">ФОТОГРАФИИ ОТДЕЛЬНОСТОЯЩИХ ЭЗС 3,5 КВТ</h3>
+
+          <p style={{ textAlign: "center" }}>
+            <img style={{ display: "inline", maxWidth: "100%" }} alt="Фотографии отдельностоящих ЭЗС 3,5 кВт.jpg" src={`${addressServer}/uploads/7fec8b6dd87ab98a2c9daaaef4d71c94_73156842c3.jpg?updated_at=2022-11-14T11:45:15.167Z`} />
+          </p>
+          <h3 className="charging__title">ФОТОГРАФИИ ОТДЕЛЬНОСТОЯЩИХ ЭЗС 22 КВТ</h3>
+
+          <b>
             <b>
               <br />
-              <p style={{ textAlign: "center" }}>
-                <img width="925" alt="Фотографии отдельностоящих ЭЗС 3,5 кВт.jpg" src={`${addressServer}/uploads/7fec8b6dd87ab98a2c9daaaef4d71c94_73156842c3.jpg?updated_at=2022-11-14T11:45:15.167Z`} height="592" title="Фотографии отдельностоящих ЭЗС 3,5 кВт.jpg" />
-              </p>
-              <b>
-                <br />
-              </b>
-              <p>
-                <b>
-                  <br />
-                </b>
-              </p>
-              <b>
-                ФОТОГРАФИИ ОТДЕЛЬНОСТОЯЩИХ ЭЗС 22 КВТ
-                <br />
-              </b>
             </b>
-            <b>
+            <p style={{ textAlign: "center" }}>
               <b>
+                <img style={{ display: "inline", maxWidth: "100%" }} alt="Фотографии отдельностоящих ЭЗС 22 кВт.jpg" src={`${addressServer}/uploads/85efa49946a258785d2db9365a2f0805_ac74800947.jpg?updated_at=2022-11-14T11:45:15.345Z`} />
                 <br />
               </b>
-              <p style={{ textAlign: "center" }}>
-                <b>
-                  <img width="1003" alt="Фотографии отдельностоящих ЭЗС 22 кВт.jpg" src={`${addressServer}/uploads/85efa49946a258785d2db9365a2f0805_ac74800947.jpg?updated_at=2022-11-14T11:45:15.345Z`} height="560" title="Фотографии отдельностоящих ЭЗС 22 кВт.jpg" />
-                  <br />
-                </b>
-              </p>
-            </b>{" "}
-          </b>
+            </p>
+          </b>{" "}
+
           <br />
           <b>
             {" "}

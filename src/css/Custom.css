@@ -826,7 +826,7 @@ th {
   flex-wrap: wrap; */
   display: inline-grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(8, auto); 
+  grid-template-rows: repeat(8, auto);
 }
 
 .nav-menu__item {
@@ -843,6 +843,32 @@ th {
 
 .nav-menu__link {
   width: 100%;
+}
+.charging__title{
+  text-align: center;
+}
+
+.charging-app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.charging-app__item {
+  width: 246px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.charging-app__title{
+  text-align: center;
+}
+.charging-app__img{
+  display: block;
+  text-align: center;
 }
 
 @media (min-width: 1360px) {

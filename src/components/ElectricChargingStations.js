@@ -81,7 +81,7 @@ export default function ElectricChargingStations() {
                 <div className='qr-plugme-comp__text-area'>
                     <div className='qr-plugme-comp__title-area'>
                         <img src={plugme} />
-                        <h3>PlugMe - зарядные станции</h3>
+                        <h3 style={{ textTransform: 'inherit' }}>PlugMe - зарядные станции</h3>
                     </div>
                     <p>Мобильное приложение для управление ЭЗС АО «Мособлэнерго»</p>
 
@@ -101,6 +101,16 @@ export default function ElectricChargingStations() {
 
                 </div>
 
+            </div>
+            <div style={{ display: "flex", marginBottom: "-15px" }}>
+                <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                    <img style={{ width: `25px` }} src={chargingIco} />
+                    <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч;</h4>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                    <img style={{ width: `25px` }} src={chargingIco22} />
+                    <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч;</h4>
+                </div>
             </div>
             {listAllStation.length > 0 ?
 
@@ -134,6 +144,7 @@ export default function ElectricChargingStations() {
                                                             <b>Мощность:</b> ${item.attributes.power} кВт/ч<br>
                                                             <b>Тип разьема:</b> ${item.attributes.connector_type}<br>
                                                             <b>Режим зарядки:</b> ${item.attributes.charging_mode}<br>
+                                                            <b>Способ монтажа:</b> ${item.attributes.method_of_installation}<br>
                                                             <b>Мобильное приложение:</b> ${item.attributes.mobile_applications}<br>
                                                             <b>Тех. поддержка:</b> ${item.attributes.support_phone_number}<br>
                                                             <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
