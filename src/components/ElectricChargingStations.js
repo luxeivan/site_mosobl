@@ -102,44 +102,44 @@ export default function ElectricChargingStations() {
                 </div>
 
             </div>
-            <div style={{ display: "flex", marginBottom: "-15px" }}>
-                <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-                    <img style={{ width: `25px` }} src={chargingIco} />
-                    <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч;</h4>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-                    <img style={{ width: `25px` }} src={chargingIco22} />
-                    <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч;</h4>
-                </div>
-            </div>
+
             {listAllStation.length > 0 ?
-
-
-                <YMaps>
-                    <Map
-                        state={{
-                            center: [55.754475, 37.621869],
-                            zoom: 8,
-                            behaviors: ["scrollZoom", "drag"],
-                        }}
-                        className="yandex-map"
-                        modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
-                    >
-                        <ZoomControl />
-                        {listAllStation.map((item, index) => {
-                            return (
-                                <Placemark
-                                    // onClick={(event) => {
-                                    //     event.preventDefault()
-                                    //     console.log(item.attributes.address)
-                                    // }}
-                                    key={index}
-                                    geometry={{
-                                        type: "Point",
-                                        coordinates: [item.attributes.latitude, item.attributes.longitude],
-                                    }}
-                                    properties={{
-                                        balloonContent: `<div className="ballon-down">
+                <>
+                    <div style={{ display: "flex", marginBottom: "-15px" }}>
+                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <img style={{ width: `25px` }} src={chargingIco} />
+                            <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч;</h4>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <img style={{ width: `25px` }} src={chargingIco22} />
+                            <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч;</h4>
+                        </div>
+                    </div>
+                    <YMaps>
+                        <Map
+                            state={{
+                                center: [55.754475, 37.621869],
+                                zoom: 8,
+                                behaviors: ["scrollZoom", "drag"],
+                            }}
+                            className="yandex-map"
+                            modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+                        >
+                            <ZoomControl />
+                            {listAllStation.map((item, index) => {
+                                return (
+                                    <Placemark
+                                        // onClick={(event) => {
+                                        //     event.preventDefault()
+                                        //     console.log(item.attributes.address)
+                                        // }}
+                                        key={index}
+                                        geometry={{
+                                            type: "Point",
+                                            coordinates: [item.attributes.latitude, item.attributes.longitude],
+                                        }}
+                                        properties={{
+                                            balloonContent: `<div className="ballon-down">
                                                             <b>Адрес:</b> ${item.attributes.address}<br>
                                                             <b>Мощность:</b> ${item.attributes.power} кВт/ч<br>
                                                             <b>Тип разьема:</b> ${item.attributes.connector_type}<br>
@@ -150,36 +150,37 @@ export default function ElectricChargingStations() {
                                                             <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
                                                             ${item.attributes.disabled ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
                                                             </div>`,
-                                        //iconContent: "X",
-                                        //hintContent: "Ну давай уже тащи",
-                                        //balloonContent: 'А эта — новогодняя',
-                                        iconContent: '12',
-                                        hintContent: `${item.attributes.address}`,
-                                    }}
-                                    options={{
-                                        iconLayout: 'default#image',
-                                        // Своё изображение иконки метки.
-                                        iconImageHref:
-                                            item.attributes.power == 22 ?
-                                                item.attributes.disabled ? chargingIco_dis : chargingIco22 :
-                                                item.attributes.disabled ? chargingIco_dis : chargingIco,
-                                        // Размеры метки.
-                                        iconImageSize,
-                                        // Смещение левого верхнего угла иконки относительно
-                                        // её "ножки" (точки привязки).
-                                        //iconImageOffset: [-5, -38],
-                                        //preset: "islands#orangeAutoIcon",
-                                        // preset: "islands#icon",
-                                        // preset: "islands#greenDotIconWithCaption",
-                                        // iconLayout: "default#image",
-                                        // iconColor: "red",
-                                        //iconImageHref: noPlug,
-                                    }}
-                                />
-                            );
-                        })}
-                    </Map>
-                </YMaps>
+                                            //iconContent: "X",
+                                            //hintContent: "Ну давай уже тащи",
+                                            //balloonContent: 'А эта — новогодняя',
+                                            iconContent: '12',
+                                            hintContent: `${item.attributes.address}`,
+                                        }}
+                                        options={{
+                                            iconLayout: 'default#image',
+                                            // Своё изображение иконки метки.
+                                            iconImageHref:
+                                                item.attributes.power == 22 ?
+                                                    item.attributes.disabled ? chargingIco_dis : chargingIco22 :
+                                                    item.attributes.disabled ? chargingIco_dis : chargingIco,
+                                            // Размеры метки.
+                                            iconImageSize,
+                                            // Смещение левого верхнего угла иконки относительно
+                                            // её "ножки" (точки привязки).
+                                            //iconImageOffset: [-5, -38],
+                                            //preset: "islands#orangeAutoIcon",
+                                            // preset: "islands#icon",
+                                            // preset: "islands#greenDotIconWithCaption",
+                                            // iconLayout: "default#image",
+                                            // iconColor: "red",
+                                            //iconImageHref: noPlug,
+                                        }}
+                                    />
+                                );
+                            })}
+                        </Map>
+                    </YMaps>
+                </>
                 : false}
             <input type="text" className="informationDisclosures_search" placeholder="Поиск по городу" onChange={handlerSearch} onClick={handlerSearch} />
             <button className="button__clear" onClick={handlerClear}>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { YMaps, Map, Placemark, ZoomControl  } from "react-yandex-maps";
 // import checkIcon from "../img/check-icon.svg";
 import { motion } from 'framer-motion'
 import TopImage from "../../components/TopImage";
@@ -8,6 +9,7 @@ import { addressServer } from "../../config";
 export default function ProductionPrograms() {
 
     const [productionPrograms, setProductionPrograms] = useState([]);
+    
 
     useEffect(() => {
         fetch(`${addressServer}/api/proizvodstvennye-programmies?populate=*&pagination[pageSize]=100`)
@@ -17,8 +19,9 @@ export default function ProductionPrograms() {
             .then((data) => {
                 //console.log(data)
                 setProductionPrograms(data.data.sort((a, b) => {
-                    //console.log(a)
-                    return a.attributes.name - b.attributes.name
+                    if (a.attributes.name < b.attributes.name) {return -1;}
+                    if (a.attributes.name > b.attributes.name) {return 1;}
+                    return 0;
                 }))
             })
             .catch((err) => {
@@ -41,9 +44,72 @@ export default function ProductionPrograms() {
                             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aba566851628bd46cba2e35d6bfbe5302343ab8ae6898f06bee49eae2e714d846&amp;source=constructor" width="800" height="600" frameBorder="0"></iframe>
                         </div>
                     </div> */}
-                    <ul>
+                  
+                    <YMaps>
+                        <Map
+                            state={{
+                                center: [55.754475, 37.621869],
+                                zoom: 8,
+                                behaviors: ["scrollZoom", "drag"],
+                            }}
+                            className="yandex-map"
+                            modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+                        >
+                            <ZoomControl />
+                            {productionPrograms.map((item, index) => {
+                                return (
+                                    <Placemark
+                                        // onClick={(event) => {
+                                        //     event.preventDefault()
+                                        //     console.log(item.attributes.address)
+                                        // }}
+                                        key={index}
+                                        geometry={{
+                                            type: "Point",
+                                            coordinates: [item.attributes.latitude, item.attributes.longitude],
+                                        }}
+                                        properties={{
+                                            balloonContent: `<div className="ballon-down">
+                                            <p style="color: #000; margin-bottom: 5px">Производственная программа ${item.attributes.name}</p>
+                                            <a href="${addressServer}${item.attributes.file.data[0].attributes.url}" target="_blank"> Скачать </a>
+                                            </div>`,
+                                            //iconContent: "X",
+                                            //hintContent: "Ну давай уже тащи",
+                                            //balloonContent: 'А эта — новогодняя',
+                                            iconContent: `${item.attributes.name}`,
+                                            hintContent: `${item.attributes.name}`,
+                                        }}
+                                        options={{
+                                            //iconLayout: 'default#image',
+                                            // Своё изображение иконки метки.
+                                            //iconImageHref:                                                
+                                            // Размеры метки.
+                                            //iconImageSize,
+                                            // Смещение левого верхнего угла иконки относительно
+                                            // её "ножки" (точки привязки).
+                                            //iconImageOffset: [-5, -38],
+                                            preset: "islands#orangeStretchyIcon",
+                                            // preset: "islands#icon",
+                                            // preset: "islands#greenDotIconWithCaption",
+                                            //iconLayout: "islands#orangeStretchyIcon",
+                                             //iconColor: "red",
+                                            //iconImageHref: noPlug,
+                                        }}
+                                    />
+                                );
+                            })}
+                        </Map>
+                    </YMaps>
+                    <ul style={{
+                        marginTop: "20px",
+                        // display: 'flex', 
+                        // flexWrap: 'wrap',
+                        columnWidth: "300px"
+                        }}>
                         {productionPrograms.map((item, index) =>
-                            <li style={{ maxWidth: '50%' }} key={index}>
+                            <li style={{ 
+                                // width: '20%'
+                                 }} key={index}>
                                 <a href={`${addressServer}${item.attributes.file.data[0].attributes.url}`} target="_blank">{item.attributes.name}</a>
                             </li>
                         )}
