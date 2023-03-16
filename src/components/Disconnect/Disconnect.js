@@ -85,6 +85,77 @@ export default function Disconnect() {
       <span style={{ fontWeight: 700 }}>Дата отключений: </span>
       <DatePicker onChange={setCurrentDate} value={currentDate} showLeadingZeros={true} clearIcon={null} />
 
+
+
+      <YMaps>
+        <Map
+          state={{
+            center: [55.754475, 37.621869],
+            zoom: 8,
+            behaviors: ["scrollZoom", "drag"],
+          }}
+          className="yandex-map"
+          modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+        >
+          <ZoomControl />
+          {listDisconnect && Object.keys(listDisconnect).length !== 0 && Object.entries(listDisconnect).map((item, index) => {
+            // console.log(item)
+            return (
+              <Placemark
+                onClick={(event) => {
+                  event.preventDefault()
+                  const element = document.getElementById(`City-${index}`)
+                  element.click();
+                  window.scrollTo(
+                    {
+                      top: element.getBoundingClientRect().top + window.pageYOffset - 85,
+                      left: 0,
+                      behavior: 'smooth'
+                    });
+                  //window.location.assign(`${window.location.href.split('#')[0]}#City-${index}`);
+                  //window.moveBy(0, -40);
+                  // console.log(item.attributes.address)
+                }}
+                key={index}
+                geometry={{
+                  type: "Point",
+                  coordinates: [item[1][0].attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.fias.data.geo_lat, item[1][0].attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.fias.data.geo_lon],
+                }}
+                properties={{
+                  // balloonContent: `<div className="ballon-down">
+                  //                           <p style="color: #000; margin-bottom: 5px">Производственная программа ${item[0]}</p>
+                  //                           <a href="${item.attributes.file.data[0].attributes.url}" target="_blank">Посмотреть</a>
+                  //                           </div>`,
+                  //iconContent: "X",
+                  //hintContent: "Ну давай уже тащи",
+                  //balloonContent: 'А эта — новогодняя',
+                  iconContent: `${item[0]}`,
+                  hintContent: `${item[0]}`,
+                }}
+                options={{
+                  //iconLayout: 'default#image',
+                  // Своё изображение иконки метки.
+                  //iconImageHref:                                                
+                  // Размеры метки.
+                  //iconImageSize,
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  //iconImageOffset: [-5, -38],
+                  preset: "islands#redStretchyIcon",
+                  // preset: "islands#icon",
+                  // preset: "islands#greenDotIconWithCaption",
+                  //iconLayout: "islands#orangeStretchyIcon",
+                  //iconColor: "red",
+                  //iconImageHref: noPlug,
+                }}
+              />
+            );
+          })}
+        </Map>
+      </YMaps>
+
+
+
       <div className="disconnect__area">
         {listDisconnect && Object.keys(listDisconnect).length !== 0 && (
           <ul className="disconnect__list">
@@ -94,6 +165,7 @@ export default function Disconnect() {
               return (
                 <div key={index} className="accordion-row">
                   <div
+                    id={`City-${index}`}
                     className="accordion-row__up"
                     onClick={(event) => {
                       document.querySelectorAll(".accordion-row");
@@ -134,7 +206,7 @@ export default function Disconnect() {
                                     ))}
                                   </ul>
                                 </div>
-                                <div className="street-table__td" style={{wordBreak:"break-word"}}>{item.attributes.comment}</div>
+                                <div className="street-table__td" style={{ wordBreak: "break-word" }}>{item.attributes.comment}</div>
                                 <div className="street-table__td">
                                   {begin.day < 10 ? "0" + begin.day : begin.day}.{begin.month < 10 ? "0" + begin.month : begin.month}.{begin.year} {begin.hour < 10 ? "0" + begin.hour : begin.hour}:
                                   {begin.minute < 10 ? "0" + begin.minute : begin.minute}
@@ -172,12 +244,12 @@ export default function Disconnect() {
                                 </div>
                                 <div className="street-table__td">{item.attributes.comment}</div>
                                 <div className="street-table__td">
-                                  <b>Начало:</b><br/>
+                                  <b>Начало:</b><br />
                                   {begin.day < 10 ? "0" + begin.day : begin.day}.{begin.month < 10 ? "0" + begin.month : begin.month}.{begin.year} {begin.hour < 10 ? "0" + begin.hour : begin.hour}:
                                   {begin.minute < 10 ? "0" + begin.minute : begin.minute}
-                                  <br/>
+                                  <br />
                                   <b>Окончание:</b>
-                                  <br/>
+                                  <br />
                                   {end.day < 10 ? "0" + end.day : end.day}.{end.month < 10 ? "0" + end.month : end.month}.{end.year} {end.hour < 10 ? "0" + end.hour : end.hour}:{end.minute < 10 ? "0" + end.minute : end.minute}
                                 </div>
                               </li>
@@ -201,8 +273,8 @@ export default function Disconnect() {
                             }
                           }}
                         >
-                          {currentOpenRow === index?"Скрыть карту":"Показать на карте"}
-                          
+                          {currentOpenRow === index ? "Скрыть карту" : "Показать на карте"}
+
                         </button>
                       </div>
                       {currentOpenRow === index && (

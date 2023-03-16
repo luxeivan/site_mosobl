@@ -71,7 +71,7 @@ export default function ProductionPrograms() {
                                         properties={{
                                             balloonContent: `<div className="ballon-down">
                                             <p style="color: #000; margin-bottom: 5px">Производственная программа ${item.attributes.name}</p>
-                                            <a href="${addressServer}${item.attributes.file.data[0].attributes.url}" target="_blank"> Скачать </a>
+                                            <a href="${addressServer}${item.attributes.file.data[0].attributes.url}" target="_blank">Посмотреть</a>
                                             </div>`,
                                             //iconContent: "X",
                                             //hintContent: "Ну давай уже тащи",
