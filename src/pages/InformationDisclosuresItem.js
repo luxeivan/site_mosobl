@@ -86,10 +86,10 @@ export default function InformationDisclosuresItem() {
                       <ul>
                         {item.list_files.data
                           .sort((a, b) => {
-                            if (a.attributes.name.search(/20[0-9]{2} /gm) != -1 && b.attributes.name.search(/20[0-9]{2} /gm) == -1) {
+                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) == -1) {
                               return -1;
                             }
-                            if (a.attributes.name.search(/20[0-9]{2} /gm) == -1 && b.attributes.name.search(/20[0-9]{2} /gm) != -1) {
+                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) == -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1) {
                               return 1;
                             }
                             //a.match(/20[0-9]{3} /gm)[0]
@@ -97,8 +97,8 @@ export default function InformationDisclosuresItem() {
                             return b.id - a.id;
                           })
                           .sort((a, b) => {
-                            if (a.attributes.name.search(/20[0-9]{2} /gm) != -1 && b.attributes.name.search(/20[0-9]{2} /gm) != -1) {
-                              return b.attributes.name.match(/20[0-9]{2} /gm)[0].slice(0, -1) - a.attributes.name.match(/20[0-9]{2} /gm)[0].slice(0, -1);
+                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1) {
+                              return b.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1) - a.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1);
                             }
                           })
                           .map((item, index) => (

@@ -40,6 +40,7 @@ import Gosuslugi_banner from './components/Gosuslugi_banner';
 import { useEffect } from 'react';
 import CreditRating from './pages/СreditRating';
 import ProductionPrograms from './pages/consumers/ProductionPrograms';
+import Vacancies from './pages/Vacancies';
 
 function App() {
   useEffect(() => {
@@ -64,6 +65,7 @@ function App() {
             <Route path='/requisites' element={<Recuisites/>} />
             <Route path='/antiCorruption' element={<AntiCorruption/>} />
             <Route path='/certs' element={<Certs/>} />
+            <Route path='/vacancies' element={<Vacancies/>} />
             {/* <Route path='/reviews' element={<Reviews/>} /> */}
             <Route path='/gardeners' element={<Gardeners/>} />
             <Route path='/contactForMedia' element={<ContactForMedia/>} />

@@ -23,10 +23,10 @@ export const mainMenu = [
         title:"Раскрытие информации",
         link:"/informationDisclosures"
       },
-      // {
-      //   title: "Вакансии",
-      //   link: "",
-      // },
+      {
+        title: "Вакансии",
+        link: "vacancies",
+      },
       {
         title: "Антикоррупционная деятельность",
         link: "/antiCorruption",
