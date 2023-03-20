@@ -11,7 +11,7 @@ export default function Vacancies() {
             <div className="page-grid__content" id="content">
                 <div className='vacancies'>
                     <div className='vacancies__text-area'>
-                        <h3 >Актуальные вакансии компании можно посмотреть на официальной странице HeadHunter </h3>
+                        <h3 >Актуальные вакансии можно посмотреть на платформе HeadHunter </h3>
                         <div className='vacancies__button-area'> <a href='https://hh.ru/employer/221874' target="_blank" className='open-map__button'>Перейти на HH</a></div>
                     </div>
                     <img className='vacancies__img' src={QR_vacansies} />
