@@ -1,5 +1,6 @@
 import React from "react";
 import pdf from "../img/pdf.svg";
+import jpg from "../img/jpg.svg";
 import { addressServer } from "../config";
 import {motion} from 'framer-motion'
 import TopImage from "../components/TopImage";
@@ -11,6 +12,15 @@ export default function Certs() {
       <TopImage image={img4c2c362e8d8fa557788c556795d32fae} title={"Сертификаты"} />
       <div className="page-grid__content" id="content">
       <div class="row-docs-age">
+        <a class="doc-line" href={`${addressServer}/uploads/PHOTO_2023_01_27_13_58_30_5009cb645d.jpg?updated_at=2023-03-29T13:28:33.640Z`} download="" target="_blank">
+          <div class="doc-line__wrap-icon">
+            <img src={jpg} alt="icon jpg" />
+          </div>
+          <div class="doc-line__wrap-text">
+            <span class="doc-line__name">Кредитный рейтинг: АА+ "Стабильный"</span>
+            <span class="doc-line__file-info">jpg, 75кб</span>
+          </div>
+        </a>
         <a class="doc-line" href={`${addressServer}/uploads/b0bfad9761462fc15e13c0a467d3222a_compressed_16d27663a4.pdf?updated_at=2022-10-28T11:38:17.350Z`} download="" target="_blank">
           <div class="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
