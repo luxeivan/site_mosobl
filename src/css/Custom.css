@@ -1040,6 +1040,13 @@ th {
 }
 
 @media (max-width: 1023px) {
+  .main-info__item {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-info__col-left{
+    margin-bottom: 10px;
+  }
 
   .vacancies-main__item {
     width: 98%;
