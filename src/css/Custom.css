@@ -874,13 +874,128 @@ th {
   text-align: center;
 }
 
-.vacancies {
+.vacancies-main {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
+  justify-content: center;
+}
+
+.vacancies-main__item {
+  width: 45%;
+  margin: 20px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.main-info__item {
+  /* background-color: #0061aa; */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.main-info__item * {
+  color: #0061aa;
+}
+
+.main-info__filialcount {
+  text-align: center;
+  font-size: 100px;
+  font-weight: 800;
+  transform: scale(1, 1.5);
+}
+
+.main-info__filialcount-info {
+  text-align: center;
+}
+
+.main-info__col-left {
+  margin-right: 10px;
+}
+
+.main-info__row {
+  padding: 5px;
+  display: flex;
+  /* align-items: center; */
+  margin-bottom: 10px;
+}
+
+.main-info__col {
+  width: 48%;
+}
+
+.main-info__col p:nth-child(odd) {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.vacancies-main__title {
+  /* color: #0061aa; */
+}
+
+
+.vacancies__tel {
+  color: #0061aa;
+  font-weight: 600;
+}
+
+.vacancies-main__list-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.development__year-area {
+  width: 70px;
+  height: 70px;
+  background-color: #0061aa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 10px;
+
+}
+
+.development__year {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+
+}
+
+.targeted-training__item::before {
+  content: "";
+  margin-right: 10px;
+  left: 0;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../img/check-icon.svg);
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.targeted-training__title {
+  margin-bottom: 10px;
+}
+
+.vacancies-main__list-item h3 {
+  margin-bottom: 10px;
+}
+
+.vacancies {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
 }
 
 .vacancies__text-area {
@@ -893,8 +1008,13 @@ th {
   margin: 20px;
   text-align: center;
 }
+
 .vacancies__button-area a {
   color: #fff;
+}
+
+.vacancies__col {
+  display: flex;
 }
 
 .vacancies__img {
@@ -920,6 +1040,12 @@ th {
 }
 
 @media (max-width: 1023px) {
+
+  .vacancies-main__item {
+    width: 98%;
+    margin: 20px;
+  }
+
   .dummy {
     height: 120px;
   }
