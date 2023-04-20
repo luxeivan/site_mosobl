@@ -1023,6 +1023,7 @@ th {
 
 /* ------------------------------------------------------------------- */
 .search-territory {
+  /* padding: 10px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -1059,12 +1060,15 @@ th {
   width: 290px;
   height: 300px;
   position: absolute;
-  top: 45px;
+  top: 50px;
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #fff;
   z-index: 10;
   overflow-y: scroll;
+}
+.search-city__city-district{
+  color: #aaa;
 }
 .search-territory__item{
   width: 28%;
@@ -1171,7 +1175,7 @@ th {
   }
 
   .page-grid__content {
-    padding: 5px;
+    padding: 10px;
   }
 
   .disconnect__for-mobile {

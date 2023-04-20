@@ -52,13 +52,13 @@ export default function Territory() {
       <TopImage image={img2fde80ac63c76cbc7aa002fb91d2bd94} title={"Территория обслуживания сетевой организации"} />
       <div className="page-grid__content" id="content">
         <div className="row-docs-age border-bottom">
-        <p class="row-docs-age__caption line-bottom">Список адресов обслуживаемых АО «Мособлэнерго»:</p>
+        <p class="row-docs-age__caption line-bottom">Список адресов, обслуживаемых АО «Мособлэнерго»:</p>
         {/* <p>Если в списках</p> */}
           <div className="search-territory">
             <div className="search-territory__item ">
               <div className="search-city">
 
-                <p>Введите город:</p>
+                <p>Введите населенный пункт:</p>
                 <DelayInput
                   className="search-city__city-input"
                   delayTimeout={1000}
@@ -88,7 +88,7 @@ export default function Territory() {
                           setInputCity(event.target.dataset.locality)
                           setSelectCity(event.target.dataset.locality)
                           setListStreet(listCity)
-                        }}>{item.locality}</li>
+                        }}>{item.locality} <span className="search-city__city-district">({item.cityDistrict})</span></li>
                       )}
                     </ul>
                   </div>
