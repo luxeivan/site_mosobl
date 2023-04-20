@@ -85,8 +85,8 @@ export default function Territory() {
                     <ul>
                       {listCity.filter((value, index, self) => self.findIndex((Emp) => Emp.locality === value.locality) === index).map((item, index) =>
                         <li key={index} data-locality={item.locality} className="search-city__city-item" onClick={event => {
-                          setInputCity(event.target.dataset.locality)
-                          setSelectCity(event.target.dataset.locality)
+                          setInputCity(event.currentTarget.dataset.locality)
+                          setSelectCity(event.currentTarget.dataset.locality)
                           setListStreet(listCity)
                         }}>{item.locality} <span className="search-city__city-district">({item.cityDistrict})</span></li>
                       )}
