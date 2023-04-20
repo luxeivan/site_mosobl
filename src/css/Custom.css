@@ -1030,7 +1030,8 @@ th {
   margin-bottom: 20px;
   min-height: 200px;
 }
-.search-territory__title{
+
+.search-territory__title {
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 10px;
@@ -1039,7 +1040,8 @@ th {
 .search-city {
   position: relative;
 }
-.search-street{
+
+.search-street {
   position: relative;
 }
 
@@ -1050,12 +1052,13 @@ th {
   width: 290px;
 }
 
-.search-city__sity-list{
+.search-city__sity-list {
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
   width: 290px;
 }
+
 .search-city__city-list {
   width: 290px;
   height: 300px;
@@ -1067,25 +1070,33 @@ th {
   z-index: 10;
   overflow-y: scroll;
 }
-.search-city__city-district{
+
+.search-city__city-district {
   color: #aaa;
 }
-.search-territory__item{
+
+.search-territory__item {
   width: 28%;
   min-width: 300px;
   margin-bottom: 10px;
 }
-.search-territory__item p{
+
+.search-territory__item p {
   /* margin-bottom: 5px; */
 }
-.search-city__city-item{
+
+.search-city__city-item {
   cursor: pointer;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
 }
-.search-city__city-item:hover{
+
+.search-city__city-item:hover {
   background-color: #ddd;
 }
-.description__item{
+
+.description__item {
   margin-bottom: 5px;
 }
 
@@ -1137,6 +1148,7 @@ th {
 }
 
 @media (max-width: 767px) {
+
   .creditRating {
     max-width: 500px;
   }
