@@ -11,6 +11,15 @@ export default function TCAboutApplications() {
       </div>
       <div className="row-docs-age">
         
+        <a className="doc-line" href={`${addressServer}/uploads/2023_aprel_f6e344ca6a.pdf?updated_at=2023-05-17T05:54:19.445Z`} download="" target="_blank">
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">2023, апрель</span>
+            <span className="doc-line__file-info">pdf, 534 кб</span>
+          </div>
+        </a>
         <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_1_kv_2023_b5afc94b59.pdf?updated_at=2023-04-06T04:17:32.668Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
