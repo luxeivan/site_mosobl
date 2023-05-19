@@ -1029,6 +1029,7 @@ th {
   justify-content: space-between;
   margin-bottom: 20px;
   min-height: 200px;
+  max-width: 1600px;
 }
 
 .search-territory__title {
@@ -1100,7 +1101,74 @@ th {
   margin-bottom: 5px;
 }
 
+/* ---Уведомления о плановых отключениях---------------------------------------------------------------- */
+.planned-notification {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.planned-notification__area {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.planned-notification__area_col {
+  flex-direction: column;
+}
+
+.planned-notification__title-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.planned-notification__picture {
+  max-width: 50px;
+  margin: 0 20px;
+  
+}
+
+.planned-notification__text {
+  line-height: 150%;
+}
+
+.planned-notification__link-area {
+  text-align: center;
+}
+
+.planned-notification__link {
+  font-weight: 500;
+  color: #0061aa;
+  border: 1px solid #0061aa;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.planned-notification__link:hover {
+  background-color: #0061aa;
+  color: #fff;
+}
+
+.planned-notification__qr {
+  max-width: 200px;
+}
+
+
 /* ------------------------------------------------------------------- */
+
+
+
+
+/* -----Медиа запросы ширины экрана-------------------------------------------------------------- */
 @media (min-width: 1360px) {
   .inner-post__title {
     font-size: 40px;
@@ -1120,6 +1188,8 @@ th {
 }
 
 @media (max-width: 1023px) {
+
+
   .main-info__item {
     flex-wrap: wrap;
     justify-content: center;
@@ -1148,6 +1218,13 @@ th {
 }
 
 @media (max-width: 767px) {
+  .planned-notification__area {
+    max-width: 100%;
+  }
+
+  .planned-notification__qr {
+    display: none;
+  }
 
   .creditRating {
     max-width: 500px;
