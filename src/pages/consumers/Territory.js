@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import img2fde80ac63c76cbc7aa002fb91d2bd94 from "../../img/2fde80ac63c76cbc7aa002fb91d2bd94.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Territory() {
   const [loading, setLoading] = useState(false)
@@ -41,6 +42,39 @@ export default function Territory() {
       setListStreet(listCity)
     }
   }, [inputStreet])
+  const getFilialLink = (filial) => {
+    if (filial == 'Домодедовский') {
+      return <Link className="description_link-to-filial" to='/filials/1'>{filial}</Link>
+    }
+    if (filial == 'Красногорский') {
+      return <Link className="description_link-to-filial" to='/filials/2'>{filial}</Link>
+    }
+    if (filial == 'Раменский') {
+      return <Link className="description_link-to-filial" to='/filials/3'>{filial}</Link>
+    }
+    if (filial == 'Коломенский') {
+      return <Link className="description_link-to-filial" to='/filials/4'>{filial}</Link>
+    }
+    if (filial == 'Одинцовский') {
+      return <Link className="description_link-to-filial" to='/filials/5'>{filial}</Link>
+    }
+    if (filial == 'Павлово-Посадский') {
+      return <Link className="description_link-to-filial" to='/filials/6'>{filial}</Link>
+    }
+    if (filial == 'Сергиево-Посадский') {
+      return <Link className="description_link-to-filial" to='/filials/7'>{filial}</Link>
+    }
+    if (filial == 'Щёлковский') {
+      return <Link className="description_link-to-filial" to='/filials/8'>{filial}</Link>
+    }
+    if (filial == 'Мытищинский') {
+      return <Link className="description_link-to-filial" to='/filials/9'>{filial}</Link>
+    }
+    if (filial == 'Краснознаменский') {
+      return <Link className="description_link-to-filial" to='/filials/10'>{filial}</Link>
+    }
+    return filial
+  }
   // useEffect(() => {
   //   console.log(selectCity)
   // }, [selectCity])
@@ -52,8 +86,8 @@ export default function Territory() {
       <TopImage image={img2fde80ac63c76cbc7aa002fb91d2bd94} title={"Территория обслуживания сетевой организации"} />
       <div className="page-grid__content" id="content">
         <div className="row-docs-age border-bottom">
-        <p class="row-docs-age__caption line-bottom">Список адресов, обслуживаемых АО «Мособлэнерго»:</p>
-        {/* <p>Если в списках</p> */}
+          <p class="row-docs-age__caption line-bottom">Список адресов, обслуживаемых АО «Мособлэнерго»:</p>
+          {/* <p>Если в списках</p> */}
           <div className="search-territory">
             <div className="search-territory__item ">
               <div className="search-city">
@@ -118,7 +152,7 @@ export default function Territory() {
                         Загрузка...
                       </div>
                     }
-                    {!loading && !selectStreet && listCity.length > 0  &&
+                    {!loading && !selectStreet && listCity.length > 0 &&
                       <div className="search-city__city-list">
                         <ul>
                           {listStreet &&
@@ -168,10 +202,10 @@ export default function Territory() {
               {selectStreet && listCity.length > 0 && <>
                 <ul className="description">
                   <li className="description__item"><strong>Номера домов: </strong>{listCity.find(item => item.street == selectStreet).houseNumbers}</li>
-                  <li className="description__item"><strong>Обслуживающий филиал: </strong>{listCity.find(item => item.street == selectStreet).addressingApplications}</li>
+                  {/* <li className="description__item"><strong>Обслуживающий филиал: </strong>{listCity.find(item => item.street == selectStreet).addressingApplications}</li> */}
+                  {/* <li className="description__item"><strong>Производственное отделение: </strong>{listCity.find(item => item.street == selectStreet).po}</li> */}
+                  <li className="description__item"><strong>Филиал: </strong>{getFilialLink(listCity.find(item => item.street == selectStreet).filial)}, {listCity.find(item => item.street == selectStreet).po}</li>
                   <li className="description__item"><strong>Городской округ: </strong>{listCity.find(item => item.street == selectStreet).cityDistrict}</li>
-                  <li className="description__item"><strong>Производственное отделение: </strong>{listCity.find(item => item.street == selectStreet).po}</li>
-                  <li className="description__item"><strong>Филиал: </strong>{listCity.find(item => item.street == selectStreet).filial}</li>
                   {listCity.find(item => item.street == selectStreet).note &&
                     <li className="description__item"><strong>Примечание: </strong>{listCity.find(item => item.street == selectStreet).note}</li>
                   }
@@ -179,7 +213,7 @@ export default function Territory() {
               </>}
             </div>
           </div>
-          <a className="doc-line" href={`${addressServer}/uploads/4327781bb104dac248633e279f302619_29561a75e9.xlsx?updated_at=2022-11-03T07:14:20.680Z`} download="" target="_blank">
+          {/* <a className="doc-line" href={`${addressServer}/uploads/4327781bb104dac248633e279f302619_29561a75e9.xlsx?updated_at=2022-11-03T07:14:20.680Z`} download="" target="_blank">
             <div className="doc-line__wrap-icon">
               <img src={xlsx} alt="icon xlsx" />
             </div>
@@ -187,7 +221,7 @@ export default function Territory() {
               <span className="doc-line__name">Перечень потребителей АО "Мособлэнерго"</span>
               <span className="doc-line__file-info">xlsx, 663КБ</span>
             </div>
-          </a>
+          </a> */}
         </div >
         <div className="text-area ">
           <p>Обеспечив географию присутствия наших филиалов в большинстве муниципальных образований Подмосковья, «Мособлэнерго» всего за несколько лет стало одной из крупнейших электросетевых компаний области.</p>

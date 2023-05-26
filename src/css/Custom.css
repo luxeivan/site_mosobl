@@ -1100,6 +1100,11 @@ th {
 .description__item {
   margin-bottom: 5px;
 }
+.description_link-to-filial{
+  color: #0061aa;
+  text-decoration-line: underline;
+  text-decoration-color: #cdddfc;
+}
 
 /* ---Уведомления о плановых отключениях---------------------------------------------------------------- */
 .planned-notification {
