@@ -13,10 +13,13 @@ import Playmarket from '../img/playmarket.png'
 import Appstore from '../img/appstore.png'
 import plugme from '../img/plugme.webp'
 
+import { utils, writeFileXLSX } from 'xlsx'
+
 const iconImageSize = [130 / 4, 221 / 4]
 
 
 export default function ElectricChargingStations() {
+    const [loadingAllStation, setLoadingAllStation] = useState(false)
     const [listStation, setListStation] = useState([])
     const [listAllStation, setAllListStation] = useState([])
     const [currentOpenRow, setCurrentOpenRow] = useState();
@@ -54,7 +57,7 @@ export default function ElectricChargingStations() {
         getStation();
     }, [])
     useEffect(() => {
-        // console.log(listAllStation)
+        console.log(listAllStation)
     }, [listAllStation])
 
 
@@ -73,6 +76,34 @@ export default function ElectricChargingStations() {
         document.querySelector(".informationDisclosures_search").value = "";
         document.querySelector(".informationDisclosures_search").click();
     };
+
+    const getXlsxFile = () => {
+        setLoadingAllStation(true)
+        const arrayStation = listAllStation.map(item => {
+            return {
+                "Адрес": item.attributes.address,
+                "Режим зарядки": item.attributes.charging_mode,
+                "Тип разьема": item.attributes.connector_type,
+                "Статус": item.attributes.disabled ? 'Временно отключена' : 'Работает',
+                "Широта": item.attributes.latitude,
+                "Долгота": item.attributes.longitude,
+                "Метод установки": item.attributes.method_of_installation,
+                "Мобильное приложение": item.attributes.mobile_applications,
+                "Кол-во разьемов": item.attributes.number_of_connectors,
+                "Режим работы": item.attributes.operating_mode,
+                "Мощность": item.attributes.power,
+                "Тех. поддержка": item.attributes.support_phone_number
+            }
+        })
+        const wb = utils.book_new();
+        const ws = utils.json_to_sheet(arrayStation);
+        ws["!cols"] = [{ wch: 50 }];
+        utils.book_append_sheet(wb, ws, "Таблица1");
+        writeFileXLSX(wb, "ЭЗС Мособлэнерго.xlsx");
+        setLoadingAllStation(false)
+
+    }
+
     return (
         <>
             {/* <h2>Карта электрических зарядных станций</h2> */}
@@ -318,6 +349,7 @@ export default function ElectricChargingStations() {
                 </div>
             })
             }
+            <button className="planned-notification__link" onClick={getXlsxFile} disabled={loadingAllStation} style={{ display: 'block', width: '300px', margin: '30px auto' }}>{!loadingAllStation ? 'Скачать полный список ЭЗС' : 'Загрузка...'}</button>
         </>
     )
 }

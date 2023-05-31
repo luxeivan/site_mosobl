@@ -1100,7 +1100,8 @@ th {
 .description__item {
   margin-bottom: 5px;
 }
-.description_link-to-filial{
+
+.description_link-to-filial {
   color: #0061aa;
   text-decoration-line: underline;
   text-decoration-color: #cdddfc;
@@ -1138,7 +1139,7 @@ th {
 .planned-notification__picture {
   max-width: 50px;
   margin: 0 20px;
-  
+
 }
 
 .planned-notification__text {
@@ -1150,17 +1151,26 @@ th {
 }
 
 .planned-notification__link {
+  background-color: #fff;
   font-weight: 500;
   color: #0061aa;
   border: 1px solid #0061aa;
   padding: 10px 20px;
   border-radius: 10px;
   display: inline-block;
+  cursor: pointer;
 }
+
 
 .planned-notification__link:hover {
   background-color: #0061aa;
   color: #fff;
+}
+.planned-notification__link:disabled {
+  background-color: #eee;
+  cursor: default;
+  color: #aaa;
+  border-color: #ccc;
 }
 
 .planned-notification__qr {

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DelayInput } from 'react-delay-input';
 import { addressServer, chargingAddressServer } from "../../config";
-import xlsx from "../../img/xlsx.svg";
+import xlsxPic from "../../img/xlsx.svg";
+import { utils, writeFileXLSX } from 'xlsx'
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import img2fde80ac63c76cbc7aa002fb91d2bd94 from "../../img/2fde80ac63c76cbc7aa002fb91d2bd94.jpg";
@@ -9,6 +10,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Territory() {
+  const [loadingAllTerritory, setLoadingAllTerritory] = useState(false)
   const [loading, setLoading] = useState(false)
   const [inputCity, setInputCity] = useState()
   const [inputStreet, setInputStreet] = useState()
@@ -75,6 +77,20 @@ export default function Territory() {
     }
     return filial
   }
+  const getXlsxFile = () => {
+    setLoadingAllTerritory(true)
+    axios.get('https://nopowersupply.mosoblenergo.ru/station/api/allFilials').then(data => {
+      //console.log(res.data)
+      if (data.data) {
+        const wb = utils.book_new();
+        const ws = utils.json_to_sheet(data.data);
+        ws["!cols"] = [{ wch: 5 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }];
+        utils.book_append_sheet(wb, ws, "Таблица1");
+        writeFileXLSX(wb, "Территория обслуживания Мособлэнерго.xlsx");
+        setLoadingAllTerritory(false)
+      }
+    })
+  }
   // useEffect(() => {
   //   console.log(selectCity)
   // }, [selectCity])
@@ -86,7 +102,7 @@ export default function Territory() {
       <TopImage image={img2fde80ac63c76cbc7aa002fb91d2bd94} title={"Территория обслуживания сетевой организации"} />
       <div className="page-grid__content" id="content">
         <div className="row-docs-age border-bottom">
-          <p class="row-docs-age__caption line-bottom">Список адресов, обслуживаемых АО «Мособлэнерго»:</p>
+          <p className="row-docs-age__caption line-bottom">Список адресов, обслуживаемых АО «Мособлэнерго»:</p>
           {/* <p>Если в списках</p> */}
           <div className="search-territory">
             <div className="search-territory__item ">
@@ -213,9 +229,10 @@ export default function Territory() {
               </>}
             </div>
           </div>
+          <button className="planned-notification__link" onClick={getXlsxFile} disabled={loadingAllTerritory} style={{ width: '300px' }}>{!loadingAllTerritory ? 'Скачать полный список адресов' : 'Загрузка...'}</button>
           {/* <a className="doc-line" href={`${addressServer}/uploads/4327781bb104dac248633e279f302619_29561a75e9.xlsx?updated_at=2022-11-03T07:14:20.680Z`} download="" target="_blank">
             <div className="doc-line__wrap-icon">
-              <img src={xlsx} alt="icon xlsx" />
+              <img src={xlsxPic} alt="icon xlsx" />
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">Перечень потребителей АО "Мособлэнерго"</span>
@@ -224,6 +241,7 @@ export default function Territory() {
           </a> */}
         </div >
         <div className="text-area ">
+
           <p>Обеспечив географию присутствия наших филиалов в большинстве муниципальных образований Подмосковья, «Мособлэнерго» всего за несколько лет стало одной из крупнейших электросетевых компаний области.</p>
         </div>
 
