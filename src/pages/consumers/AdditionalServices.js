@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import pdf from "../../img/pdf.svg";
+import docx from "../../img/docx.svg";
 import { addressServer } from "../../config";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -34,13 +35,24 @@ export default function AdditionalServices() {
       drop.style.maxHeight = "";
     }
   };
+  const handlerRowUp = (event) => {
+    document.querySelectorAll(".accordion-row");
+    event.currentTarget.closest(".accordion-row").classList.toggle("open-accordion");
+    event.currentTarget.classList.toggle("active");
+    const drop = event.currentTarget.closest(".accordion-row").querySelector(".accordion-row__drop-down");
+    if (drop.style.maxHeight == "") {
+      drop.style.maxHeight = `${drop.scrollHeight + 1200}px`;
+    } else {
+      drop.style.maxHeight = "";
+    }
+  }
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage image={img4c2c362e8d8fa557788c556795d32fae} title={"Дополнительные услуги"} />
       <div className="page-grid__content" id="content">
         <div className="text-area">
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">1. Техническое и оперативное обслуживание электросетевых объектов</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -302,8 +314,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">2. Ремонт электросетевых объектов</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -418,8 +430,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">3. Испытание и диагностика защитных средств, оборудования и приборов</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -780,8 +792,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">4. Проектные и строительно-монтажные работы на электросетевых объектах клиентов</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -1770,8 +1782,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">5. Предоставление доступа к инфраструктуре АО «Мособлэнерго» (за исключением линий связи ВОЛС)</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -2037,8 +2049,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">6. Консультационные и организационно-технические услуги</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -2489,8 +2501,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">7. Транспортные услуги</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -2799,8 +2811,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">8. Организация учёта электроэнергии, энергоаудит</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -2934,8 +2946,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">9. Ремонт, проверка, калибровка, техобслуживание, программирование приборов учёта</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -3186,8 +3198,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">10. Установка комплекса АИИС КУЭ</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -3473,8 +3485,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">11. Монтаж и обслуживание сетей наружного освещения</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -3700,8 +3712,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up"  onClick={handlerRowUp}>
               <span className="accordion-row__text">12. Подключение к электрическим сетям жилых домов и садовых участков. Комплексные решения</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -3720,7 +3732,7 @@ export default function AdditionalServices() {
                 <p></p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/p_12_Zayavka_na_raboty_po_TP_6151953e30.docx?updated_at=2022-11-15T07:47:36.766Z`}>Форма заявки на оказание услуги</a>
+                    <a href={`${addressServer}/uploads/zayavka_na_zaklyuchenie_dogovora_TP_6d4a5bbc57.docx?updated_at=2023-06-06T05:30:18.446Z`}>Форма заявки на оказание услуги</a>
                   </li>
                 </ul>
                 <p></p>
@@ -4076,8 +4088,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">13. Предоставление доступа к электросетевой инфраструктуре для размещения линии связи (ВОЛС) и другого оборудования</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -4147,18 +4159,18 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 405 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/72945a211ccb024af1f21fd34e81582c_c9836e4de1.docx?updated_at=2022-11-15T06:31:50.033Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_VOLS_1_dba9de8f88.docx?updated_at=2023-06-06T05:30:18.676Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
-                      <img src={pdf} alt="icon pdf" />
+                      <img src={docx} alt="icon docx" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий - этап 1</span>
-                      <span className="doc-line__file-info">docx, 40 кб</span>
+                      <span className="doc-line__file-info">docx, 25 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/6f9f77809efc005e6e99ab3c15172529_2476c577ae.docx?updated_at=2022-11-15T06:31:50.182Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_VOLS_2_d69bb47cc3.docx?updated_at=2023-06-06T05:30:18.496Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
-                      <img src={pdf} alt="icon pdf" />
+                      <img src={docx} alt="icon docx" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Форма заявки на предоставление доступа (заключение договора аренды) - этап 2</span>
@@ -4318,8 +4330,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">14. Вынос (переустройство) объектов электросетевого хозяйства</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -4336,15 +4348,15 @@ export default function AdditionalServices() {
                 <p></p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_yuridicheskogo_licza_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_c4529dfb1f.doc?updated_at=2022-11-15T07:48:54.563Z`}>Форма заявки для юридических лиц</a>
+                    <a href={`${addressServer}/uploads/forma_dlya_yur_licz_vynos_2ef3cb97bd.doc?updated_at=2023-06-06T05:30:18.477Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_individualnogo_predprinimatelya_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_e6148e82bd.doc?updated_at=2022-11-15T07:48:54.763Z`}>
+                    <a href={`${addressServer}/uploads/forma_dlya_IP_vynos_d3d510d879.doc?updated_at=2023-06-06T05:30:18.423Z`}>
                       Форма заявки для индивидуальных предпринимателей
                     </a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Zayavka_ot_fizicheskogo_licza_na_osvobozhdenie_zemelnogo_uchastka_ot_obektov_elektrosetevogo_hozyajstva_5ec491ae7b.doc?updated_at=2022-11-15T07:48:54.948Z`}>Форма заявки для физических лиц</a>
+                    <a href={`${addressServer}/uploads/forma_dlya_fiz_licz_vynos_89a5cb06c4.doc?updated_at=2023-06-06T05:30:18.464Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p></p>
@@ -4494,8 +4506,8 @@ export default function AdditionalServices() {
             </div>
           </div>
 
-          <div className="accordion-row" onClick={handlerAccordion}>
-            <div className="accordion-row__up">
+          <div className="accordion-row">
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">15. Услуги по техническому надзору за сооружением электросетевых объектов</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -4511,6 +4523,11 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_strojkontrol_910ad79820.docx?updated_at=2023-06-06T05:30:18.518Z`}>Форма заявки на оказание услуг строительного контроля</a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Качественное выполнение строительно-монтажных работ является главным условием обеспечения надежности и долговечности строящихся объектов электросетевого хозяйства. АО «Мособлэнерго» предоставляет услуги по техническому надзору за
