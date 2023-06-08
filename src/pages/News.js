@@ -4,6 +4,8 @@ import checkIcon from "../img/check-icon.svg";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
 import TopImage from "../components/TopImage";
+import telegramQR from "../img/planned/YQR.svg";
+import alarm from "../img/planned/alarm_alert_bell.svg";
 import { Link } from "react-router-dom";
 
 const actual = ["https://t.me/mosoblenergo", "https://vk.com/mosoblenergo", "https://ok.ru/mosoblenergo", "https://dzen.ru/mosoblenergo"];
@@ -54,6 +56,24 @@ export default function News() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className='planned-notification'>
+          <div className='planned-notification__area planned-notification__area_col'>
+            <div className='planned-notification__title-area'>
+              <img src={alarm} className='planned-notification__picture' />
+              <h3 className="planned-notification__title">Уведомления о возможных плановых отключениях в Telegram по указанному адресу</h3>
+            </div>
+            <div className="planned-notification__text">
+              <p>Уважаемые потребители! АО «Мособлэнерго» предлагает вам воспользоваться удобным способом получения информации о возможных плановых отключениях электроэнергии в сетях компании через специальный <a style={{ color: "#0061aa", textDecorationColor: '#85a0b5', textDecorationLine: 'underline' }} href='https://t.me/Mosoblenergo24_bot' target="_blank">Telegram-бот</a> </p>
+              <p style={{ fontWeight: 600 }}>Подписывайтесь!</p>
+            </div>
+          </div>
+          <div className='planned-notification__area'>
+            <div className='planned-notification__link-area' >
+              <img src={telegramQR} alt='qr' className='planned-notification__qr' />
+              <a type="button" className="planned-notification__link" href='https://t.me/Mosoblenergo24_bot' target='_blank'>Перейти в Telegram</a>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>
