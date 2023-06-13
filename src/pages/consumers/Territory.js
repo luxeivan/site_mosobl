@@ -25,6 +25,7 @@ export default function Territory() {
       setLoading(true)
       axios.get(chargingAddressServer + `/api/allFilials?locality=${inputCity}`)
         .then((response) => {
+          console.log(response)
           setListCity(response.data);
           setLoading(false)
         }
