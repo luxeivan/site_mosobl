@@ -41,6 +41,7 @@ import { useEffect } from 'react';
 import CreditRating from './pages/СreditRating';
 import ProductionPrograms from './pages/consumers/ProductionPrograms';
 import Vacancies from './pages/Vacancies';
+import Plugme from './pages/Plugme';
 
 function App() {
   useEffect(() => {
@@ -87,6 +88,7 @@ function App() {
             <Route path='/attentionFraud' element={<AttentionFraud/>} />
             <Route path='/productionPrograms' element={<ProductionPrograms/>} />
             
+            <Route path='/plugme' element={<Plugme/>} />
             <Route path='/creditRating' element={<CreditRating/>} />
 
             <Route path='/*' element={<Page404/>} />
