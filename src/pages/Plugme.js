@@ -20,12 +20,12 @@ export default function Plugme() {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
-    console.log(res.data.access_token)
-    Cookies.set('plugmetoken', res.data.access_token)
+    //console.log(res.data.access_token)
+    Cookies.set('plugmetoken', res.data.access_token, { expires: 1 })
     getChargePoint()
   }
   const getChargePoint = async () => {
-    console.log(Cookies.get('plugmetoken'))
+    //console.log(Cookies.get('plugmetoken'))
     try {
       const res = await axios.post('https://plugme.ru/api/v1/charge_point/list',{}, {
         headers: {

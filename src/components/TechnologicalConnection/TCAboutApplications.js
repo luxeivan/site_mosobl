@@ -10,7 +10,7 @@ export default function TCAboutApplications() {
         <p>Информация о заключенных договорах об осуществлении технологического присоединения к электрическим сетям, содержащих сведения об объеме присоединяемой мощности, о сроках и плате по каждому договору.</p>
       </div>
       <div className="row-docs-age">
-      <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_maj_2023_2e661e4368.pdf?updated_at=2023-06-13T10:22:03.398Z`} download="" target="_blank">
+        {/* <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_maj_2023_2e661e4368.pdf?updated_at=2023-06-13T10:22:03.398Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
@@ -27,14 +27,14 @@ export default function TCAboutApplications() {
             <span className="doc-line__name">2023, апрель</span>
             <span className="doc-line__file-info">pdf, 534 кб</span>
           </div>
-        </a>
-        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_1_kv_2023_b5afc94b59.pdf?updated_at=2023-04-06T04:17:32.668Z`} download="" target="_blank">
+        </a> */}
+        <a className="doc-line" href={`${addressServer}/uploads/otchet_na_sajt_1_polugodie_2023_932cdce8a3.pdf?updated_at=2023-07-03T08:15:56.532Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
           <div className="doc-line__wrap-text">
-            <span className="doc-line__name">2023, первый квартал</span>
-            <span className="doc-line__file-info">pdf, 440 кб</span>
+            <span className="doc-line__name">2023, первое полугодие</span>
+            <span className="doc-line__file-info">pdf, 735 кб</span>
           </div>
         </a>
         <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_oktyabr_2022_e573c08cc7.pdf?updated_at=2022-11-22T07:06:43.190Z`} download="" target="_blank">
