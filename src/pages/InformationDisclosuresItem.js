@@ -84,7 +84,7 @@ export default function InformationDisclosuresItem() {
                     <div className="row-docs-age">
                       <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
                       <ul>
-                        {item.list_files.data
+                        {item.list_files.data                          
                           .sort((a, b) => {
                             if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) == -1) {
                               return -1;
@@ -100,6 +100,21 @@ export default function InformationDisclosuresItem() {
                             if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1) {
                               return b.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1) - a.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1);
                             }
+                          })
+                          .map(item => {
+                            let searchDate = 0
+                            if (item.attributes.name.search(/[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm) != -1) {
+                              let arr = item.attributes.name.match(/[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm)
+                              let str = arr[arr.length - 1].split('.')
+                              let reredate = new Date(str[2], str[1] - 1, str[0])
+                              searchDate = reredate.getTime()
+                              console.log(reredate.getTime())
+                            }
+                            return { ...item, searchDate }
+                          })
+                          .sort((a, b) => {
+                            console.log()
+                            return b.searchDate - a.searchDate
                           })
                           .map((item, index) => (
                             <li key={index} className="page-grid__content__li">
