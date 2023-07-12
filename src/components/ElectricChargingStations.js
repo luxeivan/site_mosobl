@@ -80,13 +80,16 @@ export default function ElectricChargingStations() {
                     const result = res.data.find(plugmeStation => station.attributes.idStation === plugmeStation.label)
                     //console.log(station.attributes.idStation)
                     if (result) {
+                        if (!result.connected) {
+                            return { ...station, statecode: "not available" }
+                        }
                         return { ...station, statecode: result.statecode, statelabel: result.statelabel }
                     } else {
-                        return { ...station, statecode: "available", statelabel: null }
+                        return { ...station, statecode: "available" }
                     }
 
                 } else {
-                    return { ...station, statecode: "available", statelabel: null }
+                    return { ...station, statecode: "available" }
                 }
             })
             setAllListStationWithStatus(statusArray)
