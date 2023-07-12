@@ -27,7 +27,7 @@ export default function Plugme() {
   const getChargePoint = async () => {
     //console.log(Cookies.get('plugmetoken'))
     try {
-      const res = await axios.post('https://plugme.ru/api/v1/charge_point/list',{}, {
+      const res = await axios.post('https://plugme.ru/api/v1/charge_point/list', {}, {
         headers: {
           'Authorization': `Bearer ${Cookies.get('plugmetoken')}`
         }

@@ -12,6 +12,7 @@ import qrAppstore from '../img/qr_plugme_appstore.svg'
 import Playmarket from '../img/playmarket.png'
 import Appstore from '../img/appstore.png'
 import plugme from '../img/plugme.webp'
+import Cookies from 'js-cookie'
 
 import { utils, writeFileXLSX } from 'xlsx'
 
@@ -22,6 +23,7 @@ export default function ElectricChargingStations() {
     const [loadingAllStation, setLoadingAllStation] = useState(false)
     const [listStation, setListStation] = useState([])
     const [listAllStation, setAllListStation] = useState([])
+    const [listAllStationWithStatus, setAllListStationWithStatus] = useState([])
     const [currentOpenRow, setCurrentOpenRow] = useState();
     const [copy, setCopy] = useState([]);
     function getStation(page = 1) {
@@ -36,28 +38,76 @@ export default function ElectricChargingStations() {
             console.log(err);
         })
     }
-    // let tempAllStation = []
-    function getAllStation(page = 1) {
-        axios.get(`${chargingAddressServer}/api/ezses?populate=*&pagination[page]=${page}&pagination[pageSize]=100`).then(res => {
-            setAllListStation(prev => prev.concat(res.data.data))
-            // tempAllStation.concat(res.data.data)
-            // console.log(res.data)
+    async function getAllStation(page = 1) {
+        await axios.get(`${chargingAddressServer}/api/ezses?populate=*&pagination[page]=${page}&pagination[pageSize]=100`).then(async res => {
+            await setAllListStation(prev => prev.concat(res.data.data))
             if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
-                getAllStation(res.data.meta.pagination.page + 1)
+                await getAllStation(res.data.meta.pagination.page + 1)
+            } else {
+
             }
-            // else {
-            //     setAllListStation(tempAllStation)
-            // }
         }).catch(err => {
             console.log(err);
         })
     }
+    //--------PLUGME API START--------------
+    const getPlugmeToken = async () => {
+        const res = await axios.post('https://plugme.ru/oauth2/token', {
+            client_id: process.env.REACT_APP_PLUGME_CLIENT_ID,
+            client_secret: process.env.REACT_APP_PLUGME_CLIENT_SECRET,
+            grant_type: 'client_credentials',
+            scope: 'plugme'
+        }, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        //console.log(res.data.access_token)
+        Cookies.set('plugmetoken', res.data.access_token, { expires: 1 })
+        getChargePoint()
+    }
+    const getChargePoint = async () => {
+        //console.log(Cookies.get('plugmetoken'))
+        try {
+            const res = await axios.post('https://plugme.ru/api/v1/charge_point/list', {}, {
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('plugmetoken')}`
+                }
+            })
+            //console.log(res.data)
+            const statusArray = listAllStation.map(station => {
+                if (station.attributes.idStation) {
+                    const result = res.data.find(plugmeStation => station.attributes.idStation === plugmeStation.label)
+                    //console.log(station.attributes.idStation)
+                    if (result) {
+                        return { ...station, statecode: result.statecode, statelabel: result.statelabel }
+                    } else {
+                        return { ...station, statecode: "available", statelabel: null }
+                    }
+
+                } else {
+                    return { ...station, statecode: "available", statelabel: null }
+                }
+            })
+            setAllListStationWithStatus(statusArray)
+            //console.log(statusArray)
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+    //--------PLUGME API END--------------
     useEffect(() => {
         getAllStation();
         getStation();
     }, [])
     useEffect(() => {
-        console.log(listAllStation)
+        if (Cookies.get('plugmetoken')) {
+            getChargePoint()
+        } else {
+            getPlugmeToken()
+        }
+        //console.log(listAllStation)
     }, [listAllStation])
 
 
@@ -134,7 +184,7 @@ export default function ElectricChargingStations() {
 
             </div>
 
-            {listAllStation.length > 0 ?
+            {listAllStationWithStatus.length > 0 ?
                 <>
                     <div style={{ display: "flex", marginBottom: "-15px" }}>
                         <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
@@ -144,6 +194,10 @@ export default function ElectricChargingStations() {
                         <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
                             <img style={{ width: `25px` }} src={chargingIco22} />
                             <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч;</h4>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <img style={{ width: `25px` }} src={chargingIco_dis} />
+                            <h4 style={{ marginBottom: "0" }}>- временно недоступна;</h4>
                         </div>
                     </div>
                     <YMaps>
@@ -157,7 +211,7 @@ export default function ElectricChargingStations() {
                             modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
                         >
                             <ZoomControl />
-                            {listAllStation.map((item, index) => {
+                            {listAllStationWithStatus.map((item, index) => {
                                 return (
                                     <Placemark
                                         // onClick={(event) => {
@@ -179,7 +233,7 @@ export default function ElectricChargingStations() {
                                                             <b>Мобильное приложение:</b> ${item.attributes.mobile_applications}<br>
                                                             <b>Тех. поддержка:</b> ${item.attributes.support_phone_number}<br>
                                                             <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
-                                                            ${item.attributes.disabled ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
+                                                            ${item.attributes.disabled || item.statecode != "available" ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
                                                             </div>`,
                                             //iconContent: "X",
                                             //hintContent: "Ну давай уже тащи",
@@ -192,8 +246,8 @@ export default function ElectricChargingStations() {
                                             // Своё изображение иконки метки.
                                             iconImageHref:
                                                 item.attributes.power == 22 ?
-                                                    item.attributes.disabled ? chargingIco_dis : chargingIco22 :
-                                                    item.attributes.disabled ? chargingIco_dis : chargingIco,
+                                                    item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco22 :
+                                                    item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco,
                                             // Размеры метки.
                                             iconImageSize,
                                             // Смещение левого верхнего угла иконки относительно
