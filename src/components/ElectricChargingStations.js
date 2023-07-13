@@ -167,7 +167,7 @@ export default function ElectricChargingStations() {
                         <img src={plugme} />
                         <h3 style={{ textTransform: 'inherit' }}>PlugMe - зарядные станции</h3>
                     </div>
-                    <p>Мобильное приложение для управление ЭЗС АО «Мособлэнерго»</p>
+                    <p>Мобильное приложение для управления ЭЗС АО «Мособлэнерго»</p>
 
                     <p>
                         Круглосуточная техническая поддержка: <a href="tel:+78002509779" className='qr-plugme-comp__tel'>+7 (800) 250-97-79</a>
