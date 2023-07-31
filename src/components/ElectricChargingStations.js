@@ -26,6 +26,11 @@ export default function ElectricChargingStations() {
     const [listAllStationWithStatus, setAllListStationWithStatus] = useState([])
     const [currentOpenRow, setCurrentOpenRow] = useState();
     const [copy, setCopy] = useState([]);
+    const [filter, setFilter] = useState({
+        power3_5: true,
+        power22: true,
+        unavailable: true
+    })
     function getStation(page = 1) {
         axios.get(`${chargingAddressServer}/api/gorodskoj-okrugs?populate=*&pagination[page]=${page}&pagination[pageSize]=100`).then(res => {
             setListStation(prev => prev.concat(res.data.data))
@@ -157,6 +162,16 @@ export default function ElectricChargingStations() {
 
     }
 
+    const changePower3_5 = (event) => {
+        setFilter({ ...filter, power3_5: !filter.power3_5 })
+    }
+    const changePower22 = (event) => {
+        setFilter({ ...filter, power22: !filter.power22 })
+    }
+    const changeUnavailable = (event) => {
+        setFilter({ ...filter, unavailable: !filter.unavailable })
+    }
+
     return (
         <>
             {/* <h2>Карта электрических зарядных станций</h2> */}
@@ -189,18 +204,28 @@ export default function ElectricChargingStations() {
 
             {listAllStationWithStatus.length > 0 ?
                 <>
-                    <div style={{ display: "flex", marginBottom: "-15px" }}>
-                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-                            <img style={{ width: `25px` }} src={chargingIco} />
-                            <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч;</h4>
+                    <h3 style={{ marginBottom: "5px" }}>Отображать на карте:</h3>
+                    <div style={{ display: "flex", marginBottom: "-15px", flexWrap: "wrap" }}>
+                        <div class="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <input class="form-check-input" type="checkbox" onChange={changePower3_5} checked={filter.power3_5} id="power3_5" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
+                            <label class="form-check-label" for="power3_5" style={{ display: "flex", alignItems: "center" }} >
+                                <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч: </h4>
+                                <img style={{ width: `25px` }} src={chargingIco} />
+                            </label>
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-                            <img style={{ width: `25px` }} src={chargingIco22} />
-                            <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч;</h4>
+                        <div class="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <input class="form-check-input" type="checkbox" onChange={changePower22} checked={filter.power22} id="power22" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
+                            <label class="form-check-label" for="power22" style={{ display: "flex", alignItems: "center" }} >
+                                <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч: </h4>
+                                <img style={{ width: `25px` }} src={chargingIco22} />
+                            </label>
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-                            <img style={{ width: `25px` }} src={chargingIco_dis} />
-                            <h4 style={{ marginBottom: "0" }}>- временно недоступна;</h4>
+                        <div class="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
+                            <input class="form-check-input" type="checkbox" onChange={changeUnavailable} checked={filter.unavailable} id="unavailable" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
+                            <label class="form-check-label" for="unavailable" style={{ display: "flex", alignItems: "center" }} >
+                                <h4 style={{ marginBottom: "0" }}>- временно недоступна: </h4>
+                                <img style={{ width: `25px` }} src={chargingIco_dis} />
+                            </label>
                         </div>
                     </div>
                     <YMaps>
@@ -214,7 +239,13 @@ export default function ElectricChargingStations() {
                             modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
                         >
                             <ZoomControl />
-                            {listAllStationWithStatus.map((item, index) => {
+                            {listAllStationWithStatus.filter(item => {
+                                if ( item.statecode != "available" && !filter.unavailable) return false
+                                if (item.attributes.disabled && !filter.unavailable) return false
+                                if (item.attributes.power == 22 && filter.power22) return true
+                                if (item.attributes.power == 3.5 && filter.power3_5) return true
+                                return false
+                            }).map((item, index) => {
                                 return (
                                     <Placemark
                                         // onClick={(event) => {
