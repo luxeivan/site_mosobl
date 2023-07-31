@@ -64,35 +64,35 @@ export default function ChargingStations() {
           <div className="charging-app">
             <div className="charging-app__item">
               <h4 className="charging-app__title">1. Регистрация</h4>
-              <img className="charging-app__img" src={img1} alt="1. Регистрация" />
+              <img className="charging-app__img" src={addressServer + '/uploads/1_Registracziya_718f4f32c4.png?updated_at=2023-07-31T06:34:10.423Z'} alt="1. Регистрация" />
             </div>
             <div className="charging-app__item">
               <h4 className="charging-app__title">2. Выбор станции</h4>
-              <img className="charging-app__img" src={img2} alt="2. Выбор станции" />
+              <img className="charging-app__img" src={addressServer + '/uploads/2_Vybor_stanczii_114ea0584e.png?updated_at=2023-07-31T06:34:11.965Z'} alt="2. Выбор станции" />
             </div>
             <div className="charging-app__item">
               <h4 className="charging-app__title">3. Привязка карты</h4>
-              <img className="charging-app__img" src={img3} alt="3. Привязка карты" />
+              <img className="charging-app__img" src={addressServer + '/uploads/3_Privyazka_karty_f3ea621b1f.png?updated_at=2023-07-31T06:34:10.679Z'} alt="3. Привязка карты" />
             </div>
             <div className="charging-app__item">
               <h4 className="charging-app__title">4. Зарядка</h4>
-              <img className="charging-app__img" src={img4} alt="4. Зарядка" />
+              <img className="charging-app__img" src={addressServer + '/uploads/4_Zaryadka_3c5ec28cf2.png?updated_at=2023-07-31T06:34:11.999Z'} alt="4. Зарядка" />
             </div>
             <div className="charging-app__item">
               <h4 className="charging-app__title">5. Уведомления</h4>
-              <img className="charging-app__img" src={img5} alt="5. Уведомления" />
+              <img className="charging-app__img" src={addressServer + '/uploads/5_Uvedomleniya_79d3dfb7d1.png?updated_at=2023-07-31T06:34:12.115Z'} alt="5. Уведомления" />
             </div>
             <div className="charging-app__item">
-              <h4 className="charging-app__title">6. Информация </h4>
-              <img className="charging-app__img" src={img6} alt="6. Информация" />
+              <h4 className="charging-app__title">6. Информация о станции </h4>
+              <img className="charging-app__img" src={addressServer + '/uploads/6_Informacziya_o_stanczii_47927d3aa1.png?updated_at=2023-07-31T06:34:12.261Z'} alt="6. Информация" />
             </div>
             <div className="charging-app__item">
-              <h4 className="charging-app__title">7. Режим зарядки</h4>
-              <img className="charging-app__img" src={img7} alt="7. Режим зарядки" />
+              <h4 className="charging-app__title">7. Выбор режима зарядки</h4>
+              <img className="charging-app__img" src={addressServer + '/uploads/7_Vybor_rezhima_zaryadki_736cfe9034.png?updated_at=2023-07-31T06:34:11.662Z'} alt="7. Режим зарядки" />
             </div>
             <div className="charging-app__item">
               <h4 className="charging-app__title">8. Меню</h4>
-              <img className="charging-app__img" src={img8} alt="8. Меню" />
+              <img className="charging-app__img" src={addressServer + '/uploads/8_Menyu_a78731c4eb.png?updated_at=2023-07-31T06:34:12.044Z'} alt="8. Меню" />
             </div>
           </div>
           <h3 className="charging__title">ФОТОГРАФИИ ЭЗС УСТАНОВЛЕННЫЕ В «УМНЫХ ОПОРАХ» МОЩНОСТЬЮ 3,5 КВТ</h3>
