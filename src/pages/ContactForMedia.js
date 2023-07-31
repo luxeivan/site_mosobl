@@ -29,11 +29,11 @@ export default function ContactForMedia() {
         <div class="contacts-row__wrap-text">
           <span class="contacts-row__caption">Наш телефон:</span>
           <span class="contacts-row__text">
-            <b>(495) 780-39-62</b> (доб.1036), факс <b>(495) 780-39-60</b>
+            <b>+7 (495) 780-39-62</b>, факс <b>+7 (495) 780-39-60</b>
           </span>
         </div>
       </div>
-      <p class="text">Следите за анонсами пресс-центра "Мособлэнерго"!</p>{" "}
+      <p class="text">Следите за анонсами пресс-центра "Мособлэнерго"</p>{" "}
       </div>
     </motion.div>
   );
