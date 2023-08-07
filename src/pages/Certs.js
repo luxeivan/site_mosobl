@@ -31,7 +31,7 @@ export default function Certs() {
           </div>
         </a>
 
-        <a class="doc-line" href={`${addressServer}/uploads/6c361f0b60af4fb806c890d0f972112d_compressed_be901966f5.pdf?updated_at=2022-10-28T11:38:17.248Z`} download="" target="_blank">
+        {/* <a class="doc-line" href={`${addressServer}/uploads/6c361f0b60af4fb806c890d0f972112d_compressed_be901966f5.pdf?updated_at=2022-10-28T11:38:17.248Z`} download="" target="_blank">
           <div class="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
@@ -39,7 +39,7 @@ export default function Certs() {
             <span class="doc-line__name">Cертификационный аудит систем экологического менеджмента на соответствие требованиям ГОСТ Р ИСО 14001-2016 «Системы экологического менеджмента. Требования и руководство по применению»</span>
             <span class="doc-line__file-info">pdf, 205 кб</span>
           </div>
-        </a>
+        </a> */}
       </div>
       </div>
     </motion.div>
