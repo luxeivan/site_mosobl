@@ -62,7 +62,7 @@ export default function Disconnect() {
     axios
       .get("https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" + query + "&pagination[pageSize]=100000")
       .then((responce) => {
-        console.log(responce.data.data);
+        //console.log(responce.data.data);
         const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
           const value = obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name;
           objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
@@ -80,6 +80,9 @@ export default function Disconnect() {
     //console.log(currentOpenRow);
   }, [currentOpenRow]);
   // console.log(listDisconnect);
+  const addGO = (name) => {
+    return name.match(/г\s/gm).length > 1 || name.match(/деревня\s/gm) || name.match(/рп\s/gm) || name.match(/дп\s/gm) || name.match(/поселок\s/gm) || name.match(/село\s/gm) ? "г.о." + name.slice(1) : name;
+  };
   return (
     <div className="disconnect">
       <span style={{ fontWeight: 700 }}>Дата отключений: </span>
@@ -128,20 +131,8 @@ export default function Disconnect() {
                     //iconContent: "X",
                     //hintContent: "Ну давай уже тащи",
                     //balloonContent: 'А эта — новогодняя',
-                    iconContent: `${item[0].match(/г\s/gm).length > 1 || 
-                    item[0].match(/деревня\s/gm) || 
-                    item[0].match(/рп\s/gm) || 
-                    item[0].match(/дп\s/gm) || 
-                    item[0].match(/поселок\s/gm) || 
-                    item[0].match(/село\s/gm)
-                    ? 'г.о.' + item[0].slice(1) : item[0]}`,
-                    hintContent: `${item[0].match(/г\s/gm).length > 1 || 
-                    item[0].match(/деревня\s/gm) || 
-                    item[0].match(/рп\s/gm) || 
-                    item[0].match(/дп\s/gm) || 
-                    item[0].match(/поселок\s/gm) || 
-                    item[0].match(/село\s/gm)
-                    ? 'г.о.' + item[0].slice(1) : item[0]}`,
+                    iconContent: `${addGO(item[0])}`,
+                    hintContent: `${addGO(item[0])}`,
                   }}
                   options={{
                     //iconLayout: 'default#image',
@@ -188,13 +179,7 @@ export default function Disconnect() {
                       }
                     }}
                   >
-                    <span className="accordion-row__text city">{item[0].match(/г\s/gm).length > 1 || 
-                    item[0].match(/деревня\s/gm) || 
-                    item[0].match(/рп\s/gm) || 
-                    item[0].match(/дп\s/gm) || 
-                    item[0].match(/поселок\s/gm) || 
-                    item[0].match(/село\s/gm)
-                    ? 'г.о.' + item[0].slice(1) : item[0]}</span>
+                    <span className="accordion-row__text city">{addGO(item[0])}</span>
                   </div>
                   <div className="accordion-row__drop-down">
                     <div className="accordion-row__wrapper1">
