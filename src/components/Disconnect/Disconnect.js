@@ -128,8 +128,20 @@ export default function Disconnect() {
                     //iconContent: "X",
                     //hintContent: "Ну давай уже тащи",
                     //balloonContent: 'А эта — новогодняя',
-                    iconContent: `${item[0]}`,
-                    hintContent: `${item[0]}`,
+                    iconContent: `${item[0].match(/г\s/gm).length > 1 || 
+                    item[0].match(/деревня\s/gm) || 
+                    item[0].match(/рп\s/gm) || 
+                    item[0].match(/дп\s/gm) || 
+                    item[0].match(/поселок\s/gm) || 
+                    item[0].match(/село\s/gm)
+                    ? 'г.о.' + item[0].slice(1) : item[0]}`,
+                    hintContent: `${item[0].match(/г\s/gm).length > 1 || 
+                    item[0].match(/деревня\s/gm) || 
+                    item[0].match(/рп\s/gm) || 
+                    item[0].match(/дп\s/gm) || 
+                    item[0].match(/поселок\s/gm) || 
+                    item[0].match(/село\s/gm)
+                    ? 'г.о.' + item[0].slice(1) : item[0]}`,
                   }}
                   options={{
                     //iconLayout: 'default#image',
@@ -176,7 +188,13 @@ export default function Disconnect() {
                       }
                     }}
                   >
-                    <span className="accordion-row__text city">{item[0].match(/г\s/gm).length > 1 ? 'г.о.' + item[0].slice(1) : item[0]}</span>
+                    <span className="accordion-row__text city">{item[0].match(/г\s/gm).length > 1 || 
+                    item[0].match(/деревня\s/gm) || 
+                    item[0].match(/рп\s/gm) || 
+                    item[0].match(/дп\s/gm) || 
+                    item[0].match(/поселок\s/gm) || 
+                    item[0].match(/село\s/gm)
+                    ? 'г.о.' + item[0].slice(1) : item[0]}</span>
                   </div>
                   <div className="accordion-row__drop-down">
                     <div className="accordion-row__wrapper1">
