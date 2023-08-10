@@ -118,7 +118,7 @@ export default function ElectricChargingStations() {
   //--------PLUGME API END--------------
   useEffect(() => {
     getAllStation();
-    getStation();
+    //getStation();
   }, []);
   useEffect(() => {
     if (Cookies.get("plugmetoken")) {
@@ -145,7 +145,7 @@ export default function ElectricChargingStations() {
         newarr.push({ city: key, ezs: temp[key] });
       }
     }
-    console.log(newarr);
+    //console.log(newarr);
     setAllStationForListCity(newarr);
   }, [listAllStationWithStatus]);
 
