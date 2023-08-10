@@ -418,7 +418,7 @@ export default function ElectricChargingStations() {
                     <YMaps>
                       <Map
                         state={{
-                          center: [item.attributes.ezs.data[0].attributes.latitude, item.attributes.ezs.data[0].attributes.longitude],
+                          center: [item.ezs[0].attributes.latitude, item.ezs[0].attributes.longitude],
                           zoom: 11,
                           behaviors: ["disable('scrollZoom')", "drag"],
                         }}
@@ -426,7 +426,7 @@ export default function ElectricChargingStations() {
                         modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
                       >
                         <ZoomControl />
-                        {item.attributes.ezs.data.map((item, index) => {
+                        {item.ezs.map((item, index) => {
                           return (
                             <Placemark
                               key={index}
