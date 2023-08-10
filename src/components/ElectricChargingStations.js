@@ -443,6 +443,7 @@ export default function ElectricChargingStations() {
                                                             <b>Мобильное приложение:</b> ${item.attributes.mobile_applications}<br>
                                                             <b>Тех. поддержка:</b> ${item.attributes.support_phone_number}<br>
                                                             <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
+                                                            ${item.attributes.disabled || item.statecode != "available" ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
                                                             </div>`,
                                 //iconContent: "X",
                                 //hintContent: "Ну давай уже тащи",
@@ -453,7 +454,7 @@ export default function ElectricChargingStations() {
                               options={{
                                 iconLayout: "default#image",
                                 // Своё изображение иконки метки.
-                                iconImageHref: chargingIco,
+                                iconImageHref: item.attributes.power == 22 ? (item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco22) : item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco,
                                 // Размеры метки.
                                 iconImageSize,
                                 // Смещение левого верхнего угла иконки относительно
