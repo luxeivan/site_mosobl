@@ -201,7 +201,7 @@ export default function Disconnect() {
                                   <ul>
                                     {item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data.map((item, index) => (
                                       <li className="street-table__item" type="none" style={{ listStyle: "none" }} key={index}>
-                                        <b>{item.attributes.name}</b> - {item.attributes.comment}
+                                        <b>{addGO(item.attributes.name)}</b> - {item.attributes.comment}
                                       </li>
                                     ))}
                                   </ul>
