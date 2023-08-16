@@ -4159,22 +4159,22 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 405 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_VOLS_1_dba9de8f88.docx?updated_at=2023-06-06T05:30:18.676Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_550bf8a474.docx?updated_at=2023-08-16T06:19:34.276Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={docx} alt="icon docx" />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий - этап 1</span>
-                      <span className="doc-line__file-info">docx, 25 кб</span>
+                      <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий</span>
+                      <span className="doc-line__file-info">docx, 22 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_VOLS_2_d69bb47cc3.docx?updated_at=2023-06-06T05:30:18.496Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_DOGOVOR_0a393bb9cb.docx?updated_at=2023-08-16T06:19:34.293Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={docx} alt="icon docx" />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">Форма заявки на предоставление доступа (заключение договора аренды) - этап 2</span>
-                      <span className="doc-line__file-info">docx, 21 кб</span>
+                      <span className="doc-line__name">Форма заявки на заключение возмездного договора о предоставлении доступа к инфраструктуре</span>
+                      <span className="doc-line__file-info">docx, 18 кб</span>
                     </div>
                   </a>
                 </div>
