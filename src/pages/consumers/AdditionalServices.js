@@ -4141,13 +4141,13 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 250 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavlenij_2022_fb8e0509da.pdf?updated_at=2022-12-07T07:55:32.717Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_15_08_23_b9a9571175.pdf?updated_at=2023-08-20T08:28:34.008Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">Реестр заявлений о предоставлении доступа к инфраструктуре за 2022 год</span>
-                      <span className="doc-line__file-info">pdf, 233 кб</span>
+                      <span className="doc-line__name">Реестр заявлений о предоставлении доступа к инфраструктуре за 2023 год</span>
+                      <span className="doc-line__file-info">pdf, 261 кб</span>
                     </div>
                   </a>
                   <a className="doc-line" href={`${addressServer}/uploads/a11750ab5c20d9b75111852c80d9999c_7af163050f.pdf?updated_at=2022-11-15T06:31:51.127Z`} download="" target="_blank">
