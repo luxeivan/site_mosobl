@@ -62,7 +62,7 @@ export default function Disconnect() {
     axios
       .get("https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" + query + "&pagination[pageSize]=100000")
       .then((responce) => {
-        //console.log(responce.data.data);
+        console.log(responce.data.data);
         const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
           const value = obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name;
           objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
@@ -81,7 +81,12 @@ export default function Disconnect() {
   }, [currentOpenRow]);
   // console.log(listDisconnect);
   const addGO = (name) => {
-    return name.match(/г\s/gm).length > 1 || name.match(/деревня\s/gm) || name.match(/рп\s/gm) || name.match(/дп\s/gm) || name.match(/поселок\s/gm) || name.match(/село\s/gm) ? "г.о." + name.slice(1) : name;
+    if (name.match(/г\s/gm)) {
+      // console.log(name);
+      return name.match(/г\s/gm).length > 1 || name.match(/деревня\s/gm) || name.match(/рп\s/gm) || name.match(/дп\s/gm) || name.match(/поселок\s/gm) || name.match(/село\s/gm) ? "г.о." + name.slice(1) : name;
+    }else{
+      return name
+    }
   };
   return (
     <div className="disconnect">
