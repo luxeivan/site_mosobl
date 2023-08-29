@@ -17,7 +17,7 @@ export default function PlannedOutages() {
             <div className='planned-notification__area planned-notification__area_col'>
               <div className='planned-notification__title-area'>
                 <img src={alarm} className='planned-notification__picture' />
-                <h3 className="planned-notification__title">Уведомления о возможных плановых отключениях в Telegram по указанному адресу</h3>
+                <h3 className="planned-notification__title">Уведомления в Telegram о возможных плановых отключениях по указанному адресу</h3>
               </div>
               <div className="planned-notification__text">
                 <p>Уважаемые потребители! АО «Мособлэнерго» предлагает вам воспользоваться удобным способом получения информации о возможных <span style={{ fontWeight: "700" }}>плановых</span> (НЕ аварийных) отключениях электроэнергии в сетях компании через специальный <a style={{ color: "#0061aa", textDecorationColor: '#85a0b5', textDecorationLine: 'underline' }} href='https://t.me/Mosoblenergo24_bot' target="_blank">Telegram-бот</a> </p>

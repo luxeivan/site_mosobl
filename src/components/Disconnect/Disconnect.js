@@ -62,7 +62,7 @@ export default function Disconnect() {
     axios
       .get("https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" + query + "&pagination[pageSize]=100000")
       .then((responce) => {
-        console.log(responce.data.data);
+        //console.log(responce.data.data);
         const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
           const value = obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name;
           objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
