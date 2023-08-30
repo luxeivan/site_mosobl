@@ -331,6 +331,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   <strong>Ремонт электрических сетей</strong> — мероприятия, производимые как для восстановления работоспособности электрических сетей, так и отдельного оборудования.
                 </p>
@@ -447,6 +464,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   Электрозащитные средства служат для защиты персонала от поражения электрическим током, воздействия электрической дуги или электромагнитного поля при работах в электроустановках. Защитными средствами нужно пользоваться только по их
                   прямому назначению в электроустановках, напряжением не выше того, на которое они рассчитаны. Всё оборудование и все средства защиты при проведении работ в электроустановках должны быть исправными и испытанными.
@@ -1799,6 +1833,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   АО «Мособлэнерго» предоставляет возможность доступа к своей инфраструктуре, а также площади на собственных объектах в Московской области, которые будут отвечать высоким стандартам качества, всем критериям полезности, удобства,
@@ -2066,6 +2117,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>АО «Мособлэнерго» предлагает своим клиентам широкий спектр организационно-технических услуг – от консультаций до надзора за выполняемыми работами.</p>
                 <p>Наша компания готова помочь в решении вопросов, с которыми потребитель может столкнуться при создании системы электроснабжения своего объекта.</p>
                 <p>
@@ -2518,6 +2586,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Аренда специализированной техники — отличное решение для компаний, не имеющих собственной техники. Данное решение позволяет значительно сэкономить средства тем, кому необходима специализированная техника для строительно-монтажных
@@ -2828,6 +2913,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Одной из самых актуальных задач для любого промышленного предприятия сегодня является эффективное энергоснабжение и энергосбережение, которое позволяет поддерживать конкурентоспособность в условиях постоянного роста стоимости
@@ -2963,6 +3065,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Качество выполнения электромонтажных работ в цепях электрического учета и их грамотная эксплуатация являются одним ключевых факторов, от которых зависит бесперебойная работа электрической сети на Вашем объекте, и её безопасность
@@ -3215,6 +3334,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Перечень услуг нашей компании включает проектирование, установку, запуск и обслуживание АИИСКУЭ. Благодаря нашей работе многие компании и производственные объекты Подмосковья получили современное оборудование для учета расходов
@@ -3502,6 +3638,23 @@ export default function AdditionalServices() {
                     <b>uslugi@mosoblenergo.ru</b>
                   </a>
                 </p>
+                <ul>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
+                      Форма заявки для юридических лиц
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
+                      Форма заявки для индивидуальных предпринимателей
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
+                      Форма заявки для физических лиц
+                    </a>
+                  </li>
+                </ul>
                 <p>
                   {" "}
                   Различные осветительные устройства на протяжении многих десятилетий используются для наружного освещения промышленных и уличных территорий. Сейчас невозможно представить современные улицы и объекты без освещения в темное время
@@ -4159,7 +4312,7 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 405 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_550bf8a474.docx?updated_at=2023-08-16T06:19:34.276Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_72d9fa96fa.docx?updated_at=2023-08-30T11:03:18.335Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={docx} alt="icon docx" />
                     </div>
@@ -4168,7 +4321,7 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">docx, 22 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_DOGOVOR_0a393bb9cb.docx?updated_at=2023-08-16T06:19:34.293Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_DOGOVOR_8c22ce923a.docx?updated_at=2023-08-30T11:03:18.321Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={docx} alt="icon docx" />
                     </div>
