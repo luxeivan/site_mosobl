@@ -45,7 +45,7 @@ export default function AdditionalServices() {
     } else {
       drop.style.maxHeight = "";
     }
-  }
+  };
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage image={img4c2c362e8d8fa557788c556795d32fae} title={"Дополнительные услуги"} />
@@ -333,19 +333,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -466,19 +460,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -937,7 +925,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>индивидуально</td>
                     </tr>
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         <strong>Монтажные работы электрооборудования до 1000 В (без материалов)</strong>
                       </td>
                     </tr>
@@ -1300,7 +1288,7 @@ export default function AdditionalServices() {
                     </tr>
 
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         <strong>
                           Установка автоматического выключателя <nobr>3-фазного</nobr> в электроустановках: до 1000В
                         </strong>
@@ -1339,7 +1327,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>индивидуально</td>
                     </tr>
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         <strong>
                           Замена автоматического выключателя <nobr>3-фазного</nobr> в электроустановках: до 1000В
                         </strong>
@@ -1378,7 +1366,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>индивидуально</td>
                     </tr>
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         Отключение/подключение энергопринимающих устройств
                       </td>
                     </tr>
@@ -1476,7 +1464,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>1 350,00</td>
                     </tr>
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         <strong>Монтажные работы электрооборудования свыше 1000 В (без материалов)</strong>
                       </td>
                     </tr>
@@ -1668,7 +1656,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>от 25&nbsp;000,00</td>
                     </tr>
                     <tr>
-                      <td colspan="4" style={{ textAlign: "center" }}>
+                      <td colSpan="4" style={{ textAlign: "center" }}>
                         <strong>Работы общего назначения</strong>
                       </td>
                     </tr>
@@ -1835,19 +1823,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -2119,19 +2101,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>АО «Мособлэнерго» предлагает своим клиентам широкий спектр организационно-технических услуг – от консультаций до надзора за выполняемыми работами.</p>
@@ -2217,7 +2193,7 @@ export default function AdditionalServices() {
                       </tr>
 
                       <tr>
-                        <td colspan="4" style={{ textAlign: "center" }}>
+                        <td colSpan="4" style={{ textAlign: "center" }}>
                           <strong>Допуск бригад сторонних организаций к работам на объектах АО&nbsp;«Мособлэнерго» по заявке заинтересованного лица:</strong>
                         </td>
                       </tr>
@@ -2276,10 +2252,10 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>12 600,00</td>
                       </tr>
                       <tr>
-                        <td rowspan="4" style={{ textAlign: "center" }}>
+                        <td rowSpan="4" style={{ textAlign: "center" }}>
                           <nobr>06-10</nobr>
                         </td>
-                        <td rowspan="4" style={{ textAlign: "center" }}>
+                        <td rowSpan="4" style={{ textAlign: "center" }}>
                           Рассмотрение для согласования
                           <br />
                           &nbsp;топографических съемок, <br />
@@ -2354,7 +2330,7 @@ export default function AdditionalServices() {
                           <i>только за первый гектар.</i>
                         </td>
                         <td style={{ textAlign: "center" }}>Для физических лиц</td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           3 900,00
                         </td>
                       </tr>
@@ -2365,7 +2341,7 @@ export default function AdditionalServices() {
                       </tr>
                       <tr>
                         <td style={{ textAlign: "center" }}>Для юридических лиц</td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           5 000,00 + 3 000,00
                         </td>
                       </tr>
@@ -2373,10 +2349,10 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>до 1 Га + *за каждый последующий</td>
                       </tr>
                       <tr>
-                        <td rowspan="3" style={{ textAlign: "center" }}>
+                        <td rowSpan="3" style={{ textAlign: "center" }}>
                           <nobr>06-11</nobr>
                         </td>
-                        <td rowspan="3" style={{ textAlign: "center" }}>
+                        <td rowSpan="3" style={{ textAlign: "center" }}>
                           Рассмотрение для согласования <br />
                           рабочей и/или проектной документации
                           <br />
@@ -2390,7 +2366,7 @@ export default function AdditionalServices() {
                           <br />
                           **под точечным объектом понимается — 1 одна опора, <br />1 щит, 1 шлагбаум и т.п.
                         </td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           Для юридических лиц
                           <br />
                           &nbsp;
@@ -2465,20 +2441,20 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>1&nbsp;000,00</td>
                       </tr>
 
-
-
                       <tr>
-                        <td rowspan="5" style={{ textAlign: "center" }}>
+                        <td rowSpan="5" style={{ textAlign: "center" }}>
                           <nobr>06-16</nobr>
                         </td>
-                        <td rowspan="5" style={{ textAlign: "center" }}>
+                        <td rowSpan="5" style={{ textAlign: "center" }}>
                           Подготовка актов разграничения границ балансовой принадлежности сторон, актов разграничения эксплуатационной ответственности сторон
                         </td>
-                        <td rowspan="5" style={{ textAlign: "center" }}>
+                        <td rowSpan="5" style={{ textAlign: "center" }}>
                           Комплект документов
                         </td>
-                        <td> Для лиц, относящихся к многодетным, малоимущим, ветеранам, инвалидам, подвергшимся воздействию радиации вследствие катастрофы на Чернобыльской АЭС <br />
-                          4 981,32</td>
+                        <td>
+                          {" "}
+                          Для лиц, относящихся к многодетным, малоимущим, ветеранам, инвалидам, подвергшимся воздействию радиации вследствие катастрофы на Чернобыльской АЭС <br />4 981,32
+                        </td>
                       </tr>
                       <tr>
                         <td>
@@ -2508,10 +2484,6 @@ export default function AdditionalServices() {
                           159 000,00
                         </td>
                       </tr>
-
-
-
-
 
                       <tr>
                         <td style={{ textAlign: "center" }}>
@@ -2588,19 +2560,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -2796,7 +2762,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>3 027,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4" style={{ textAlign: "center" }}>
+                        <td colSpan="4" style={{ textAlign: "center" }}>
                           <strong>Предоставление автономных источников электроснабжения (передвижных электростанций) без дежурного персонала:</strong>
                           <strong>(</strong>
                           <strong>минимальное время аренды — 8 часов</strong>
@@ -2836,7 +2802,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>1 800,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4" style={{ textAlign: "center" }}>
+                        <td colSpan="4" style={{ textAlign: "center" }}>
                           <strong>Предоставление комплектной трансформаторной подстанции (КТП) с доставкой на объект без дежурного персонала:</strong>
                           <strong>(минимальный срок аренды - 1 месяц)</strong>
                         </td>
@@ -2915,19 +2881,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -3067,19 +3027,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -3104,7 +3058,7 @@ export default function AdditionalServices() {
                         <th style={{ textAlign: "center" }}>Цена, руб. с НДС</th>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача показаний прибора учета с выездом:</strong>
                         </td>
                       </tr>
@@ -3129,7 +3083,7 @@ export default function AdditionalServices() {
                         <td>65,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача показаний прибора учета с выездом:</strong>
                         </td>
                       </tr>
@@ -3142,7 +3096,7 @@ export default function AdditionalServices() {
                         <td>от 700</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача профиля мощности прибора учета с выездом:</strong>
                         </td>
                       </tr>
@@ -3165,7 +3119,7 @@ export default function AdditionalServices() {
                         <td>130,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">Снятие и передача профиля мощности прибора учета с выездом:</td>
+                        <td colSpan="4">Снятие и передача профиля мощности прибора учета с выездом:</td>
                       </tr>
                       <tr>
                         <td>
@@ -3176,7 +3130,7 @@ export default function AdditionalServices() {
                         <td>от 650</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Проверка схемы подключения электросчетчика:</strong>
                         </td>
                       </tr>
@@ -3225,7 +3179,7 @@ export default function AdditionalServices() {
                       </tr>
 
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Программирование электросчетчика:</strong>
                         </td>
                       </tr>
@@ -3246,7 +3200,7 @@ export default function AdditionalServices() {
                         <td>от 780</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Настройка и программирование точки учета в базе клиента:</strong>
                         </td>
                       </tr>
@@ -3267,7 +3221,7 @@ export default function AdditionalServices() {
                         <td>от 900</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Годовое техническое обслуживание прибора учета в электроустановках до 1000 В:</strong>
                         </td>
                       </tr>
@@ -3288,7 +3242,7 @@ export default function AdditionalServices() {
                         <td>индивидуально</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>
                             Годовое техническое обслуживание прибора учета в электроустановках <nobr>6-10 кВ:</nobr>
                           </strong>
@@ -3336,19 +3290,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -3409,7 +3357,7 @@ export default function AdditionalServices() {
                         <td>4 500,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача показаний прибора учета без выезда:</strong>
                         </td>
                       </tr>
@@ -3434,7 +3382,7 @@ export default function AdditionalServices() {
                         <td>от 60</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача показаний прибора учета с выездом:</strong>
                         </td>
                       </tr>
@@ -3459,7 +3407,7 @@ export default function AdditionalServices() {
                         <td>650,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача профиля мощности прибора учета без выезда:</strong>
                         </td>
                       </tr>
@@ -3484,7 +3432,7 @@ export default function AdditionalServices() {
                         <td>от 300</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Снятие и передача профиля мощности прибора учета с выездом:</strong>
                         </td>
                       </tr>
@@ -3507,7 +3455,7 @@ export default function AdditionalServices() {
                         <td>от 370</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Настройка автоматизированной информационно — измерительной системы:</strong>
                         </td>
                       </tr>
@@ -3544,7 +3492,7 @@ export default function AdditionalServices() {
                         <td>индивидуально</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Годовое техническое обслуживание средств автоматизации учета электроэнергии (АИИС КУЭ):</strong>
                         </td>
                       </tr>
@@ -3565,7 +3513,7 @@ export default function AdditionalServices() {
                         <td>25 700,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Аудит системы АИИС КУЭ:</strong>
                         </td>
                       </tr>
@@ -3602,7 +3550,7 @@ export default function AdditionalServices() {
                         <td>1 400,00</td>
                       </tr>
                       <tr>
-                        <td colspan="4">
+                        <td colSpan="4">
                           <strong>Дополнительное оборудование:</strong>
                         </td>
                       </tr>
@@ -3640,19 +3588,13 @@ export default function AdditionalServices() {
                 </p>
                 <ul>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>
-                      Форма заявки для юридических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>
-                      Форма заявки для физических лиц
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
                   </li>
                 </ul>
                 <p>
@@ -3716,7 +3658,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>индивидуально</td>
                       </tr>
                       <tr>
-                        <td colspan="4" style={{ textAlign: "center" }}>
+                        <td colSpan="4" style={{ textAlign: "center" }}>
                           <strong>Единичные расценки по уличному освещению (в том числе материал):</strong>
                         </td>
                       </tr>
@@ -3866,7 +3808,7 @@ export default function AdditionalServices() {
           </div>
 
           <div className="accordion-row">
-            <div className="accordion-row__up"  onClick={handlerRowUp}>
+            <div className="accordion-row__up" onClick={handlerRowUp}>
               <span className="accordion-row__text">12. Подключение к электрическим сетям жилых домов и садовых участков. Комплексные решения</span>
               <div className="accordion-row__wrap-arrow"></div>
             </div>
@@ -4051,7 +3993,7 @@ export default function AdditionalServices() {
                         <td>Однофазный: индивидуально Трехфазный: индивидуально</td>
                       </tr>
                       <tr>
-                        <td colspan="5">
+                        <td colSpan="5">
                           <strong>Дополнительные опции (без учета материалов)</strong>
                         </td>
                       </tr>
@@ -4061,7 +4003,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Установка «трубостойки» высотой 7 метров</td>
                         <td>шт.</td>
-                        <td colspan="2">12 000,00</td>
+                        <td colSpan="2">12 000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4069,7 +4011,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Установка дополнительной (промежуточной) «трубостойки»</td>
                         <td>шт.</td>
-                        <td colspan="2">12 000,00</td>
+                        <td colSpan="2">12 000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4077,7 +4019,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Установка дополнительной железобетонной опоры</td>
                         <td>шт.</td>
-                        <td colspan="2">25&nbsp;000,00</td>
+                        <td colSpan="2">25&nbsp;000,00</td>
                       </tr>
 
                       <tr>
@@ -4088,7 +4030,7 @@ export default function AdditionalServices() {
                           Установка розетки <nobr>3-фазной</nobr>
                         </td>
                         <td>шт.</td>
-                        <td colspan="2">1 200,00</td>
+                        <td colSpan="2">1 200,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4098,7 +4040,7 @@ export default function AdditionalServices() {
                           Установка розетки <nobr>1-фазной</nobr>
                         </td>
                         <td>шт.</td>
-                        <td colspan="2">700,00</td>
+                        <td colSpan="2">700,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4106,7 +4048,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Подведение кабеля в траншее под землей до объекта</td>
                         <td>шт.</td>
-                        <td colspan="2">индивидуально</td>
+                        <td colSpan="2">индивидуально</td>
                       </tr>
                       <tr>
                         <td>
@@ -4114,7 +4056,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Прокладка провода по фасаду здания</td>
                         <td>шт.</td>
-                        <td colspan="2">индивидуально</td>
+                        <td colSpan="2">индивидуально</td>
                       </tr>
                       <tr>
                         <td>
@@ -4122,7 +4064,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Установка светодиодного светильника (15 Вт), фотореле и автоматического выключателя (до 50 А) на «трубостойке»</td>
                         <td>шт.</td>
-                        <td colspan="2">10&nbsp;000,00</td>
+                        <td colSpan="2">10&nbsp;000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4130,7 +4072,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Установка светодиодного светильника (30 Вт), фотореле и автоматического выключателя (до 50 А) на «трубостойке»</td>
                         <td>шт.</td>
-                        <td colspan="2">11&nbsp;000,00</td>
+                        <td colSpan="2">11&nbsp;000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4138,7 +4080,7 @@ export default function AdditionalServices() {
                         </td>
                         <td>Монтаж контура заземления объекта (с учетом стоимости проведения замера сопротивления и составления соответствующего акта)</td>
                         <td>шт.</td>
-                        <td colspan="2">35&nbsp;500,00</td>
+                        <td colSpan="2">35&nbsp;500,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -4251,233 +4193,228 @@ export default function AdditionalServices() {
                 <p>
                   По вопросам оказания дополнительных услуг свяжитесь с нами: тел.:{" "}
                   <a href="tel:+74957803962">
-                    <b>8 (495) 780-39-62</b>
-                  </a>{" "}
-                  доб. 3327, доб. 1096; e-mail:{" "}
+                    {" "}
+                    <b>8 (495) 780-39-62</b>{" "}
+                  </a>
+                  доб. 3327, доб. 1096; e-mail:
                   <a href="mailto:uslugi@mosoblenergo.ru">
-                    <b>uslugi@mosoblenergo.ru</b>
+                    {" "}
+                    <b>uslugi@mosoblenergo.ru</b>{" "}
                   </a>
                 </p>
                 <p> АО «Мособлэнерго» предлагает интернет-провайдерам услуги по размещению волоконно-оптических линий связи (ВОЛС) на воздушных линиях электропередач.</p>
-                <p> Кроме того, АО «Мособлэнерго предоставляет услуги по размещению системы наружного освещения на воздушных линиях электропередач, а также мест под телекоммуникационное оборудование: видеокамеры, антенны и прочее оборудование.</p>
                 <p>
-                  {" "}
                   Размещение волоконно-оптических линий связи на воздушных линиях электропередачи АО&nbsp;«Мособлэнерго», находящихся в 60 муниципальных районах Московской области, позволит провести интернет в самые отдаленные населенные пункты
                   Московской области при минимальных затратах, а также установить системы видеонаблюдения и телекоммуникаций в максимально удобно расположенных местах.
                 </p>
-                <p></p>
+
                 <div className="row-docs-age">
-                  <a className="doc-line" href={`${addressServer}/uploads/f366784391c8a5f09e78997333f57b7b_2e2ef71d5f.pdf?updated_at=2022-11-15T06:31:50.754Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Perechen_speczialnyh_obektov_infrastruktury_k_kotorym_mozhet_byt_predostavlen_dostup_vladelczem_infrastruktury_639de4d43c.pdf?updated_at=2023-09-06T06:30:51.943Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Перечень специальных объектов инфраструктуры, к которым может быть предоставлен доступ владельцем инфраструктуры</span>
-                      <span className="doc-line__file-info">pdf, 291 кб</span>
+                      <span className="doc-line__file-info">pdf, 298 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/b27a8edef1f59eac7efe436df58e9d6d_bbf7582031.pdf?updated_at=2022-11-15T06:31:50.902Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Poryadok_formirovaniya_tarifov_za_predostavlenie_dostupa_k_infrastrukture_d3b574f538.pdf?updated_at=2023-09-06T06:30:51.957Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Порядок формирования тарифов за предоставление доступа к инфраструктуре</span>
-                      <span className="doc-line__file-info">pdf, 595 кб</span>
+                      <span className="doc-line__file-info">pdf, 609 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/a53cc43e2b723caeb0985abc1bf9c370_026c0ae6f6.pdf?updated_at=2022-11-15T06:31:50.425Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Informacziya_o_poryadke_i_usloviyah_vypolneniya_zaprosov_na_predostavlenie_informaczii_o_dostupe_k_konkretnym_obektam_infrastruktury_c4785a7164.pdf?updated_at=2023-09-06T06:30:51.928Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Информация о порядке и условиях выполнения запросов на предоставление информации о доступе к конкретным объектам инфраструктуры</span>
-                      <span className="doc-line__file-info">pdf, 250 кб</span>
+                      <span className="doc-line__file-info">pdf, 255 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_15_08_23_b9a9571175.pdf?updated_at=2023-08-20T08:28:34.008Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavlenij_o_predostavlenii_dostupa_k_infrastrukture_b859d7d609.pdf?updated_at=2023-09-06T06:30:51.527Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Реестр заявлений о предоставлении доступа к инфраструктуре за 2023 год</span>
-                      <span className="doc-line__file-info">pdf, 261 кб</span>
+                      <span className="doc-line__file-info">pdf, 273 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/a11750ab5c20d9b75111852c80d9999c_7af163050f.pdf?updated_at=2022-11-15T06:31:51.127Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/svedeniya_o_razmere_platy_za_predostavlenie_informaczii_96c24cada8.pdf?updated_at=2023-09-06T06:30:51.640Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Сведения о размере платы за предоставление информации</span>
-                      <span className="doc-line__file-info">pdf, 405 кб</span>
-                    </div>
-                  </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_72d9fa96fa.docx?updated_at=2023-08-30T11:03:18.335Z`} download="" target="_blank">
-                    <div className="doc-line__wrap-icon">
-                      <img src={docx} alt="icon docx" />
-                    </div>
-                    <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий</span>
-                      <span className="doc-line__file-info">docx, 22 кб</span>
-                    </div>
-                  </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_DOGOVOR_8c22ce923a.docx?updated_at=2023-08-30T11:03:18.321Z`} download="" target="_blank">
-                    <div className="doc-line__wrap-icon">
-                      <img src={docx} alt="icon docx" />
-                    </div>
-                    <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">Форма заявки на заключение возмездного договора о предоставлении доступа к инфраструктуре</span>
-                      <span className="doc-line__file-info">docx, 18 кб</span>
+                      <span className="doc-line__file-info">pdf, 318 кб</span>
                     </div>
                   </a>
                 </div>
 
-                <p></p>
-                <div className="wrap-table">
-                  <table align="center">
-                    <colgroup>
-                      <col /> <col /> <col /> <col />
-                    </colgroup>
-                    <tbody>
-                      <tr>
-                        <th>Код</th>
-                        <th style={{ textAlign: "center" }}>Наименование услуги</th>
-                        <th style={{ textAlign: "center" }}>Ед. измерения</th>
-                        <th style={{ textAlign: "center" }}>Цена, руб. с НДС</th>
-                      </tr>
+                <div className="accordion-row">
+                  <div className="accordion-row__up" onClick={handlerRowUp}>
+                    <span className="accordion-row__text">
+                      13.1. Условия доступа к инфраструктуре (заключение договора опредоставлении доступа к инфраструктуре на основании пункта 20 Правил недискриминационного доступа к инфраструктуре для размещения сетей электросвязи)
+                    </span>
+                    <div className="accordion-row__wrap-arrow"></div>
+                  </div>
+                  <div className="accordion-row__drop-down">
+                    <div className="accordion-row__wrapper">
+                      <div className="row-docs-age">
+                        <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_DOGOVOR_c65ab212b4.docx?updated_at=2023-09-06T06:30:51.504Z`} download="" target="_blank">
+                          <div className="doc-line__wrap-icon">
+                            <img src={docx} alt="icon docx" />
+                          </div>
+                          <div className="doc-line__wrap-text">
+                            <span className="doc-line__name">Форма заявки на заключение возмездного договора о предоставлении доступа к инфраструктуре</span>
+                            <span className="doc-line__file-info">docx, 18 кб</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div className="wrap-table">
+                        <table align="center">
+                          <colgroup>
+                            <col /> <col /> <col /> <col />
+                          </colgroup>
+                          <tbody>
+                            <tr>
+                              <th style={{ textAlign: "center" }}>Код</th>
+                              <th style={{ textAlign: "center" }}>Наименование услуги</th>
+                              <th style={{ textAlign: "center" }}>Ед. измерения</th>
+                              <th style={{ textAlign: "center" }}>Цена, руб. с НДС (в месяц)*</th>
+                            </tr>
 
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-01</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Тариф за предоставление <br />
-                          доступа сторонним <br />
-                          лицам (пользователям) <br />к воздушным линиям <br />
-                          0,4 кВ для размещения
-                          <br />
-                          &nbsp;волоконно-оптических <br />
-                          линий связи
-                        </td>
-                        <td style={{ textAlign: "center" }}>1 место подвеса на опоре</td>
-                        <td style={{ textAlign: "center" }}>74,06</td>
-                      </tr>
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-02</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Тариф за предоставление <br />
-                          доступа сторонним лицам
-                          <br />
-                          &nbsp;(пользователям) к воздушным <br />
-                          линиям 6/10 кВ для <br />
-                          размещения волоконно-оптических
-                          <br />
-                          &nbsp;линий связи
-                        </td>
-                        <td style={{ textAlign: "center" }}>1 место подвеса на опоре</td>
-                        <td style={{ textAlign: "center" }}>99,29</td>
-                      </tr>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-01</td>
+                              <td style={{ textAlign: "center" }}>Тариф за предоставление доступа сторонним лицам (пользователям) к воздушным линиям 0,4 кВ для размещения волоконно-оптических линий связи </td>
+                              <td style={{ textAlign: "center" }}>1 место подвеса на опоре</td>
+                              <td style={{ textAlign: "center" }}>74,06</td>
+                            </tr>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-02</td>
+                              <td style={{ textAlign: "center" }}>Тариф за предоставление доступа сторонним лицам (пользователям) к воздушным линиям 6/10 кВ для размещения волоконно-оптических линий связи</td>
+                              <td style={{ textAlign: "center" }}>1 место подвеса на опоре</td>
+                              <td style={{ textAlign: "center" }}>99,29</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p>
+                          * Дифференциация тарифа в зависимости от количества объектов инфраструктуры или их частей, к которым предоставлен доступ, сроков их использования, а также технологических особенностей размещения сети электросвязи или
+                          отдельных ее элементов, не предусмотрена.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-05</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Подготовка и выдача <br />
-                          технических условий <br />
-                          по размещению ВОЛС <br />и оборудования
-                        </td>
-                        <td style={{ textAlign: "center" }}>ТУ</td>
-                        <td style={{ textAlign: "center" }}>
-                          для юридических лиц
-                          <br />
-                          &nbsp;19 000,00
-                          <br />
-                          для физических лиц
-                          <br />
-                          &nbsp;2 500,00
-                          <br />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-06</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Рассмотрение и согласование <br />
-                          проектной и рабочей <br />
-                          документации по размещению
-                          <br />
-                          &nbsp;ВОЛС и оборудования
-                        </td>
-                        <td style={{ textAlign: "center" }}>ТУ</td>
-                        <td style={{ textAlign: "center" }}>8 400,00</td>
-                      </tr>
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-07</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Организация доступа <br />к объектам электросетевого
-                          <br />
-                          &nbsp;хозяйства для производства
-                          <br />
-                          &nbsp;работ по монтажу <br />
-                          ВОЛС и оборудования
-                        </td>
-                        <td style={{ textAlign: "center" }}>шт.</td>
-                        <td style={{ textAlign: "center" }}>9 200,00</td>
-                      </tr>
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-08</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Участие в работе комиссии <br />
-                          по приемке размещения
-                          <br />
-                          &nbsp;ВОЛС/оборудования
-                        </td>
-                        <td style={{ textAlign: "center" }}>день/1 чел.</td>
-                        <td style={{ textAlign: "center" }}>7 700,00</td>
-                      </tr>
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>13-09</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Выезд представителя <br />
-                          АО «Мособлэнерго» <br />
-                          для определения принадлежности
-                          <br />
-                          &nbsp;коммуникаций на местности
-                        </td>
-                        <td style={{ textAlign: "center" }}>выезд</td>
-                        <td style={{ textAlign: "center" }}>3&nbsp;000,00</td>
-                      </tr>
+                <div className="accordion-row">
+                  <div className="accordion-row__up" onClick={handlerRowUp}>
+                    <span className="accordion-row__text">
+                      13.2. Условия и порядок представления информации об условиях доступа к инфраструктуре (представление информации, предусмотренной пунктом 13 Правил недискриминационного доступа к инфраструктуре для размещения сетей электросвязи)
+                    </span>
+                    <div className="accordion-row__wrap-arrow"></div>
+                  </div>
+                  <div className="accordion-row__drop-down">
+                    <div className="accordion-row__wrapper">
+                      <div className="row-docs-age">
+                        <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_dc78807675.docx?updated_at=2023-09-06T06:30:51.362Z`} download="" target="_blank">
+                          <div className="doc-line__wrap-icon">
+                            <img src={docx} alt="icon docx" />
+                          </div>
+                          <div className="doc-line__wrap-text">
+                            <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий</span>
+                            <span className="doc-line__file-info">docx, 23 кб</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div className="wrap-table">
+                        <table align="center">                          
+                          <tbody>
+                            <tr>
+                              <th style={{ textAlign: "center" }}>Код</th>
+                              <th style={{ textAlign: "center" }}>Наименование услуги</th>
+                              <th style={{ textAlign: "center" }}>Ед. измерения</th>
+                              <th style={{ textAlign: "center" }}>Цена, руб. с НДС (в месяц)*</th>
+                            </tr>
 
-                      <tr>
-                        <td style={{ textAlign: "center" }}>
-                          <nobr>06-05</nobr>
-                        </td>
-                        <td style={{ textAlign: "center" }}>
-                          Надзор за выполнением <br />
-                          сторонними организациями
-                          <br />
-                          строительных работ <br />
-                          вблизи линий электропередачи <br />и другого электрооборудования
-                        </td>
-                        <td style={{ textAlign: "center" }}>1 день (8&nbsp;часов)</td>
-                        <td style={{ textAlign: "center" }}>14 300,00</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p>
-                    * Дифференциация тарифа в зависимости от количества объектов инфраструктуры или их частей, к которым предоставлен доступ, сроков их использования, а также технологических особенностей размещения сети электросвязи или отдельных ее
-                    элементов, не предусмотрена.
-                  </p>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-05</td>
+                              <td style={{ textAlign: "center" }}>Подготовка и выдача технических условий по размещению ВОЛС и оборудования</td>
+                              <td style={{ textAlign: "center" }}>ТУ</td>
+                              <td style={{ textAlign: "center" }}>19 000,00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="accordion-row">
+                  <div className="accordion-row__up" onClick={handlerRowUp}>
+                    <span className="accordion-row__text">13.3. Дополнительные услуги по запросу пользователя инфраструктуры</span>
+                    <div className="accordion-row__wrap-arrow"></div>
+                  </div>
+                  <div className="accordion-row__drop-down">
+                    <div className="accordion-row__wrapper">
+                      <ul>
+                        <li>
+                          <a href={`${addressServer}/uploads/forma_zayavki_dlya_yuridicheskogo_licza_543ad332e0.doc?updated_at=2023-08-30T11:03:18.346Z`}>Форма заявки для юридических лиц</a>
+                        </li>
+                        <li>
+                          <a href={`${addressServer}/uploads/Forma_zayavki_dlya_individualnyh_predprinimatelej_78e37b533f.doc?updated_at=2023-08-30T11:03:18.164Z`}>Форма заявки для индивидуальных предпринимателей</a>
+                        </li>
+                        <li>
+                          <a href={`${addressServer}/uploads/forma_zayavki_dlya_fizicheskih_licz_b8172f82b0.doc?updated_at=2023-08-30T11:03:18.356Z`}>Форма заявки для физических лиц</a>
+                        </li>
+                      </ul>
+                      <div className="wrap-table">
+                        <table align="center">
+                          <colgroup>
+                            <col /> <col /> <col /> <col />
+                          </colgroup>
+                          <tbody>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-06</td>
+                              <td style={{ textAlign: "center" }}>Рассмотрение и согласование проектной и рабочей документации по размещению ВОЛС и оборудования</td>
+                              <td style={{ textAlign: "center" }}>ТУ</td>
+                              <td style={{ textAlign: "center" }}>8 400,00</td>
+                            </tr>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-07</td>
+                              <td style={{ textAlign: "center" }}>Организация доступа к объектам электросетевого хозяйства для производства работ по монтажу ВОЛС и оборудования</td>
+                              <td style={{ textAlign: "center" }}>шт.</td>
+                              <td style={{ textAlign: "center" }}>9 200,00</td>
+                            </tr>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-08</td>
+                              <td style={{ textAlign: "center" }}>Участие в работе комиссии по приемке размещения ВОЛС/оборудования</td>
+                              <td style={{ textAlign: "center" }}>день/1 чел.</td>
+                              <td style={{ textAlign: "center" }}>7 700,00</td>
+                            </tr>
+                            <tr>
+                              <td style={{ textAlign: "center" }}>13-09</td>
+                              <td style={{ textAlign: "center" }}>Выезд представителя АО «Мособлэнерго» для определения принадлежностикоммуникаций на местности</td>
+                              <td style={{ textAlign: "center" }}>выезд</td>
+                              <td style={{ textAlign: "center" }}>3 000,00</td>
+                            </tr>
+
+                            <tr>
+                              <td style={{ textAlign: "center" }}>06-05</td>
+                              <td style={{ textAlign: "center" }}>Надзор за выполнением сторонними организациями строительных работ вблизи линий электропередачи и другого электрооборудования</td>
+                              <td style={{ textAlign: "center" }}>1 день (8 часов)</td>
+                              <td style={{ textAlign: "center" }}>14 300,00</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4504,9 +4441,7 @@ export default function AdditionalServices() {
                     <a href={`${addressServer}/uploads/forma_dlya_yur_licz_vynos_2ef3cb97bd.doc?updated_at=2023-06-06T05:30:18.477Z`}>Форма заявки для юридических лиц</a>
                   </li>
                   <li>
-                    <a href={`${addressServer}/uploads/forma_dlya_IP_vynos_d3d510d879.doc?updated_at=2023-06-06T05:30:18.423Z`}>
-                      Форма заявки для индивидуальных предпринимателей
-                    </a>
+                    <a href={`${addressServer}/uploads/forma_dlya_IP_vynos_d3d510d879.doc?updated_at=2023-06-06T05:30:18.423Z`}>Форма заявки для индивидуальных предпринимателей</a>
                   </li>
                   <li>
                     <a href={`${addressServer}/uploads/forma_dlya_fiz_licz_vynos_89a5cb06c4.doc?updated_at=2023-06-06T05:30:18.464Z`}>Форма заявки для физических лиц</a>
@@ -4584,19 +4519,19 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>индивидуально</td>
                       </tr>
                       <tr>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           <nobr>14-02</nobr>
                         </td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           Разработка Технических условий (заданий) <br />
                           на вынос (переустройство) объектов <br />
                           электросетевого хозяйства <br />
                           АО «Мособлэнерго» из зоны застройки
                         </td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           объект
                         </td>
-                        <td rowspan="2" style={{ textAlign: "center" }}>
+                        <td rowSpan="2" style={{ textAlign: "center" }}>
                           48 000,00
                           <br />
                           Стандартизированная ставка**

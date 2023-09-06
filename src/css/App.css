@@ -1682,7 +1682,7 @@ button {
 .accordion-row .text-area:last-child {
   margin: 0;
 }
-.accordion-row.open-accordion .accordion-row__up::before {
+.accordion-row.open-accordion > .accordion-row__up::before {
   opacity: 1;
   left: -1px;
   top: -1px;
@@ -1696,7 +1696,7 @@ button {
   width: 16px;
   margin-left: 12.5px;
 }
-.accordion-row.open-accordion .accordion-row__text {
+.accordion-row.open-accordion .accordion-row__up.active>.accordion-row__text {
   color: #fff;
 }
 .accordion-row.open-accordion .accordion-row__wrap-arrow {

@@ -19,6 +19,15 @@ export default function TCAboutApplications() {
             <span className="doc-line__file-info">pdf, 311 кб</span>
           </div>
         </a>*/}
+        <a className="doc-line" href={`${addressServer}/uploads/otchet_na_sajt_avgust_2023_5f040e7352.pdf?updated_at=2023-09-06T05:20:06.199Z`} download="" target="_blank">
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">2023, август</span>
+            <span className="doc-line__file-info">pdf, 1 мб</span>
+          </div>
+        </a> 
         <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_za_iyul_2023_3a61dc7b0b.pdf?updated_at=2023-08-16T06:33:08.911Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
