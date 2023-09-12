@@ -4209,7 +4209,7 @@ export default function AdditionalServices() {
                 </p>
 
                 <div className="row-docs-age">
-                  <a className="doc-line" href={`${addressServer}/uploads/Perechen_speczialnyh_obektov_infrastruktury_k_kotorym_mozhet_byt_predostavlen_dostup_vladelczem_infrastruktury_639de4d43c.pdf?updated_at=2023-09-06T06:30:51.943Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/perechen_speczialnyh_obektov_infrastruktury_k_kotorym_mozhet_byt_predostavlen_dostup_vladelczem_infrastruktury_c0de23cf7a.pdf?updated_at=2023-09-12T10:30:21.579Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
@@ -4227,7 +4227,7 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 609 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/Informacziya_o_poryadke_i_usloviyah_vypolneniya_zaprosov_na_predostavlenie_informaczii_o_dostupe_k_konkretnym_obektam_infrastruktury_c4785a7164.pdf?updated_at=2023-09-06T06:30:51.928Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/informacziya_o_poryadke_i_usloviyah_vypolneniya_zaprosov_na_predostavlenie_informaczii_o_dostupe_k_konkretnym_obektam_infrastruktury_1377920769.pdf?updated_at=2023-09-12T10:30:21.553Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
@@ -4259,7 +4259,7 @@ export default function AdditionalServices() {
                 <div className="accordion-row">
                   <div className="accordion-row__up" onClick={handlerRowUp}>
                     <span className="accordion-row__text">
-                      13.1. Условия доступа к инфраструктуре (заключение договора опредоставлении доступа к инфраструктуре на основании пункта 20 Правил недискриминационного доступа к инфраструктуре для размещения сетей электросвязи)
+                      13.1. Условия доступа к инфраструктуре (заключение договора о предоставлении доступа к инфраструктуре на основании пункта 20 Правил недискриминационного доступа к инфраструктуре для размещения сетей электросвязи)
                     </span>
                     <div className="accordion-row__wrap-arrow"></div>
                   </div>
