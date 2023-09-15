@@ -4245,7 +4245,7 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 273 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/svedeniya_o_razmere_platy_za_predostavlenie_informaczii_96c24cada8.pdf?updated_at=2023-09-06T06:30:51.640Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Svedeniya_o_razmere_platy_za_predostavlenie_informaczii_15023783b0.pdf?updated_at=2023-09-15T10:37:46.193Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
