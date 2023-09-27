@@ -42,6 +42,7 @@ import CreditRating from './pages/СreditRating';
 import ProductionPrograms from './pages/consumers/ProductionPrograms';
 import Vacancies from './pages/Vacancies';
 import Plugme from './pages/Plugme';
+import SpecialProjects from './pages/SpecialProjects';
 
 function App() {
   useEffect(() => {
@@ -70,6 +71,7 @@ function App() {
             {/* <Route path='/reviews' element={<Reviews/>} /> */}
             <Route path='/gardeners' element={<Gardeners/>} />
             <Route path='/contactForMedia' element={<ContactForMedia/>} />
+            <Route path='/specialProjects' element={<SpecialProjects/>} />
             <Route path='/news' element={<News/>} />
             <Route path='/consumers' element={<Consumers/>} />
 

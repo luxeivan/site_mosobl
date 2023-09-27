@@ -120,6 +120,10 @@ export const mainMenu = [
         title: "Контакты для СМИ",
         link: "/contactForMedia",
       },
+      {
+        title: "Специальные проекты",
+        link: "/specialProjects",
+      },
     ],
   },
   {
