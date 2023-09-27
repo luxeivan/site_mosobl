@@ -10,8 +10,8 @@ export default function SpecialProjects() {
       <TopImage image={img5d1dda82e3641ae19df5a51619ffb49c} title={"Специальные проекты"} />
       <div className="page-grid__content" id="content">
         <h1>Специальные проекты</h1>
-        <embed width="100%" height="500" src={`${addressServer}/uploads/Profilaktika_VI_Ch_dlya_rabotayushhego_naseleniya_2023_fcab394e2b.pdf?updated_at=2023-09-27T07:47:38.961Z`}/>
-        <embed width="100%" height="500" src={`${addressServer}/uploads/Aktualnyj_adres_i_telefony_Czentra_SPID_a14c80a877.pdf?updated_at=2023-09-27T07:47:38.782Z`}/>
+        <embed width="100%" height="1000" src={`${addressServer}/uploads/Profilaktika_VI_Ch_dlya_rabotayushhego_naseleniya_2023_fcab394e2b.pdf?updated_at=2023-09-27T07:47:38.961Z`}/>
+        <embed width="100%" height="1000" src={`${addressServer}/uploads/Aktualnyj_adres_i_telefony_Czentra_SPID_a14c80a877.pdf?updated_at=2023-09-27T07:47:38.782Z`}/>
   
       </div>
     </motion.div>
