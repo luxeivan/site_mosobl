@@ -251,17 +251,19 @@ export default function Header() {
       {/* ------------------------------------------------------------------------------ */}
       <section className="mob-contact">
         <div className="page-header__wrap_mob">
-          <span className="page-header__text_mob">Горячая линия:</span>  <a className="page-header__tel_mob" href="tel:+74959950099">
-              +7 (495) 99-500-99
-            </a>
+          <span className="page-header__text_mob">Горячая линия:</span>{" "}
+          <a className="page-header__tel_mob" href="tel:+74959950099">
+            +7 (495) 99-500-99
+          </a>
         </div>
         <div className="page-header__wrap_mob">
-          <span className="page-header__text_mob">Тех. присоединение:</span>  <a className="page-header__tel_mob" href="tel:+74957850000">
-              +7 (495) 785-00-00
-            </a>
+          <span className="page-header__text_mob">Тех. присоединение:</span>{" "}
+          <a className="page-header__tel_mob" href="tel:+74957850000">
+            +7 (495) 785-00-00
+          </a>
         </div>
       </section>
-{/* ------------------------------------------------------------------------------ */}
+      {/* ------------------------------------------------------------------------------ */}
       <section className={openMobMenu ? "mob-menu open-menu" : "mob-menu"}>
         <div className="mob-menu-up">
           <div className="container">
@@ -491,6 +493,21 @@ export default function Header() {
                           </div>
                         </div>
                       </div> */}
+                      <div className="creditRating">
+                        <div className="creditRating__desc">
+                          <div style={{ margin: "0 auto", fontSize: "25px", padding: "10px 40px",lineHeight:"1.5" }}>
+                            <h2 style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>Осторожно! Мошенники!</h2>
+                            <p style={{ fontWeight: 700, marginBottom: "10px" }}>Уважаемые клиенты!</p>
+                            <p style={{ marginBottom: "10px" }}>
+                              Обращаем ваше внимание! Участились случаи, когда <b>мошенники</b> под видом и именем сетевой компании «Мособлэнерго» направляют смс с просьбой осуществить обратный звонок!
+                            </p>
+                            <p style={{ marginBottom: "10px" }}>
+                              <b>Не сообщайте</b> свои личные данные! <b>Не сообщайте</b> данные о ваших заключенных договорах! <b>Не переходите</b> по ссылкам, они могут быть вредоносными!
+                            </p>
+                            <p style={{ marginBottom: "10px" }}>Актуальные номера телефонов Акционерного Общества «Мособлэнерго» размещены на официальном сайте.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
