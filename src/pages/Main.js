@@ -37,11 +37,7 @@ export default function Main() {
       </div>
 
       <motion.main className="page-grid__content" id="content" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-        <div style={{ margin: "0 auto", fontSize: "20px", maxWidth: "80%", marginTop: "-20px" }}>
-          <h2 style={{ color: "red", fontSize: "30px" }}>Осторожно! Мошенники!</h2>
-          <p style={{ fontWeight: 700 }}>Уважаемые клиенты!</p>
-          <p>Обращаем ваше внимание!</p>
-        </div>
+        
         <section className="grid-posts">
           <div className="container">
             <div className="grid-posts__wrapper">
