@@ -476,7 +476,7 @@ export default function Header() {
                 <div className="first-screen__wrap" style={{ backgroundImage: `url(${img629d5332fa7791fcb59127d93f320c66})` }}>
                   <div className="container">
                     <div className="first-screen__block">
-                      <img className="first-screen__img" src={firstScreenLogo} alt="logo" />
+                      <img className="first-screen__img" src={firstScreenLogo} alt="logo" style={{marginTop:"50px"}} />
                       <br />
                       {/* <div className="creditRating">
                         <img className="creditRating__img" src={creditRating} alt="logo" />
