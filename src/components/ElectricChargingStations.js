@@ -240,14 +240,14 @@ export default function ElectricChargingStations() {
             <div className="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
               <input className="form-check-input" type="checkbox" onChange={changePower3_5} checked={filter.power3_5} id="power3_5" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
               <label className="form-check-label" htmlFor="power3_5" style={{ display: "flex", alignItems: "center" }}>
-                <h4 style={{ marginBottom: "0" }}>- 3,5 кВт/ч: </h4>
+                <h4 style={{ marginBottom: "0" }}>- 3,5 кВт: </h4>
                 <img style={{ width: `25px` }} src={chargingIco} />
               </label>
             </div>
             <div className="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
               <input className="form-check-input" type="checkbox" onChange={changePower22} checked={filter.power22} id="power22" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
               <label className="form-check-label" htmlFor="power22" style={{ display: "flex", alignItems: "center" }}>
-                <h4 style={{ marginBottom: "0" }}>- 22 кВт/ч: </h4>
+                <h4 style={{ marginBottom: "0" }}>- 22 кВт: </h4>
                 <img style={{ width: `25px` }} src={chargingIco22} />
               </label>
             </div>
