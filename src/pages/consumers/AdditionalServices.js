@@ -803,6 +803,38 @@ export default function AdditionalServices() {
                         <td>
                           <nobr>03-31</nobr>
                         </td>
+                        <td>Шурфование кабельных линий 0,4/6-10 кВ</td>
+                        <td>1 кабель</td>
+                        <td>25 500,00</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <nobr>03-32</nobr>
+                        </td>
+                        <td>Фазировка кабельной линии/воздушной линии</td>
+                        <td>1 КЛ/ВЛ</td>
+                        <td>12 500,00</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <nobr>03-33</nobr>
+                        </td>
+                        <td>Определение кабельной линии в пучке</td>
+                        <td>1 кабель</td>
+                        <td>17 000,00</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <nobr>03-34</nobr>
+                        </td>
+                        <td>Прочие испытания</td>
+                        <td>1 единица</td>
+                        <td>индивидуально</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <nobr>03-31</nobr>
+                        </td>
                         <td>Прочие испытания</td>
                         <td>1 единица</td>
                         <td>индивидуально</td>
@@ -2365,6 +2397,8 @@ export default function AdditionalServices() {
                           &nbsp;*но не более 100 тыс. рублей (с НДС)
                           <br />
                           **под точечным объектом понимается — 1 одна опора, <br />1 щит, 1 шлагбаум и т.п.
+                          <br />
+                          ***услуга оказывается по указанной цене при условии предоставления физическим лицом документов, подтверждающих право собственности на земельный участок
                         </td>
                         <td rowSpan="2" style={{ textAlign: "center" }}>
                           Для юридических лиц
@@ -2392,7 +2426,7 @@ export default function AdditionalServices() {
                             <br />
                           </p>
                         </td>
-                        <td style={{ textAlign: "center" }}>4 000,00</td>
+                        <td style={{ textAlign: "center" }}>***4 000,00</td>
                       </tr>
                       <tr>
                         <td style={{ textAlign: "center" }}>
@@ -3562,6 +3596,16 @@ export default function AdditionalServices() {
                         <td>1 шт.</td>
                         <td>1 450,00</td>
                       </tr>
+                      <tr>
+                        <td>
+                          <span style={{ whiteSpace: "nowrap" }}>10-23</span>
+                        </td>
+                        <td>Удаленный дисплей для приборов учета электрической энергии<br/>
+                        Цена за услугу включает в себя стоимость удаленного дисплея включает в себя стоимость самого дисплея, а также работу по его настройке и программированию. Услуга оказывается при негарантийных случаях выхода дисплея из строя, а также при его утере.
+                        </td>
+                        <td>1 шт.</td>
+                        <td>от 4200</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -4236,13 +4280,13 @@ export default function AdditionalServices() {
                       <span className="doc-line__file-info">pdf, 255 кб</span>
                     </div>
                   </a>
-                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavlenij_o_predostavlenii_dostupa_k_infrastrukture_b859d7d609.pdf?updated_at=2023-09-06T06:30:51.527Z`} download="" target="_blank">
+                  <a className="doc-line" href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_23_11_23_6ba6b0e3e3.pdf?updated_at=2023-11-27T07:08:14.249Z`} download="" target="_blank">
                     <div className="doc-line__wrap-icon">
                       <img src={pdf} alt="icon pdf" />
                     </div>
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">Реестр заявлений о предоставлении доступа к инфраструктуре за 2023 год</span>
-                      <span className="doc-line__file-info">pdf, 273 кб</span>
+                      <span className="doc-line__file-info">pdf, 291 кб</span>
                     </div>
                   </a>
                   <a className="doc-line" href={`${addressServer}/uploads/Svedeniya_o_razmere_platy_za_predostavlenie_informaczii_15023783b0.pdf?updated_at=2023-09-15T10:37:46.193Z`} download="" target="_blank">
@@ -4322,13 +4366,13 @@ export default function AdditionalServices() {
                   <div className="accordion-row__drop-down">
                     <div className="accordion-row__wrapper">
                       <div className="row-docs-age">
-                        <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_dc78807675.docx?updated_at=2023-09-06T06:30:51.362Z`} download="" target="_blank">
+                        <a className="doc-line" href={`${addressServer}/uploads/forma_zayavki_PREDOSTAVLENIE_INFORMACII_1_94fcb3771d.docx?updated_at=2023-11-27T07:14:43.665Z`} download="" target="_blank">
                           <div className="doc-line__wrap-icon">
                             <img src={docx} alt="icon docx" />
                           </div>
                           <div className="doc-line__wrap-text">
                             <span className="doc-line__name">Форма заявки на предоставление информации о возможности доступа к электросетевой инфраструктуре и выдачу технических условий</span>
-                            <span className="doc-line__file-info">docx, 23 кб</span>
+                            <span className="doc-line__file-info">docx, 25 кб</span>
                           </div>
                         </a>
                       </div>
@@ -4379,7 +4423,7 @@ export default function AdditionalServices() {
                             <col /> <col /> <col /> <col />
                           </colgroup>
                           <tbody>
-                            <tr>
+                            {/* <tr>
                               <td style={{ textAlign: "center" }}>13-06</td>
                               <td style={{ textAlign: "center" }}>Рассмотрение и согласование проектной и рабочей документации по размещению ВОЛС и оборудования</td>
                               <td style={{ textAlign: "center" }}>ТУ</td>
@@ -4390,7 +4434,7 @@ export default function AdditionalServices() {
                               <td style={{ textAlign: "center" }}>Организация доступа к объектам электросетевого хозяйства для производства работ по монтажу ВОЛС и оборудования</td>
                               <td style={{ textAlign: "center" }}>шт.</td>
                               <td style={{ textAlign: "center" }}>9 200,00</td>
-                            </tr>
+                            </tr> */}
                             <tr>
                               <td style={{ textAlign: "center" }}>13-08</td>
                               <td style={{ textAlign: "center" }}>Участие в работе комиссии по приемке размещения ВОЛС/оборудования</td>
@@ -4794,13 +4838,13 @@ export default function AdditionalServices() {
         <br />
         <br />{" "}
         <div className="row-docs-age">
-          <a className="doc-line" href={`${addressServer}/uploads/Prejskurant_410e4a5513.pdf?updated_at=2022-12-07T07:52:34.081Z`} download="" target="_blank">
+          <a className="doc-line" href={`${addressServer}/uploads/Prejskurant_dlya_skachivaniya_0f9659072a.pdf?updated_at=2023-11-27T07:15:17.564Z`} download="" target="_blank">
             <div className="doc-line__wrap-icon">
               <img src={pdf} alt="icon pdf" />
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">Скачать прейскурант дополнительных услуг</span>
-              <span className="doc-line__file-info">pdf, 2 кб</span>
+              <span className="doc-line__file-info">pdf, 3 мб</span>
             </div>
           </a>
         </div>
