@@ -831,14 +831,6 @@ export default function AdditionalServices() {
                         <td>1 единица</td>
                         <td>индивидуально</td>
                       </tr>
-                      <tr>
-                        <td>
-                          <nobr>03-31</nobr>
-                        </td>
-                        <td>Прочие испытания</td>
-                        <td>1 единица</td>
-                        <td>индивидуально</td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
