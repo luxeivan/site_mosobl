@@ -21,7 +21,7 @@ export default function Certs() {
             <span class="doc-line__file-info">jpg, 75кб</span>
           </div>
         </a>
-        <a class="doc-line" href={`${addressServer}/uploads/b0bfad9761462fc15e13c0a467d3222a_compressed_16d27663a4.pdf?updated_at=2022-10-28T11:38:17.350Z`} download="" target="_blank">
+        <a class="doc-line" href={`${addressServer}/uploads/0086_C0_6dfcd1b059.pdf?updated_at=2023-11-28T04:56:59.610Z`} download="" target="_blank">
           <div class="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
