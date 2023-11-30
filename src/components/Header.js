@@ -496,10 +496,10 @@ export default function Header() {
                       <div className="creditRating">
                         <div className="creditRating__desc">
                           <div style={{ margin: "0 auto", fontSize: "25px", padding: "10px 40px",lineHeight:"1.5" }}>
-                            <h2 style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>Осторожно! Мошенники!</h2>
+                            <h2 style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>Внимание!</h2>
                             <p style={{ fontWeight: 700, marginBottom: "10px" }}>Уважаемые клиенты!</p>
                             <p style={{ marginBottom: "10px" }}>
-                              Обращаем ваше внимание! Участились случаи, когда <b>мошенники</b> под видом и именем сетевой компании «Мособлэнерго» направляют смс с просьбой осуществить обратный звонок!
+                              Обращаем ваше внимание! Участились случаи, когда <b style={{color:'red'}}>мошенники</b> под видом и именем сетевой компании «Мособлэнерго» направляют смс с просьбой осуществить обратный звонок!
                             </p>
                             <p style={{ marginBottom: "10px" }}>
                               <b>Не сообщайте</b> свои личные данные! <b>Не сообщайте</b> данные о ваших заключенных договорах! <b>Не переходите</b> по ссылкам, они могут быть вредоносными!
