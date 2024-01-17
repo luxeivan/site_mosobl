@@ -19,7 +19,16 @@ export default function TCAboutApplications() {
             <span className="doc-line__file-info">pdf, 311 кб</span>
           </div>
         </a>*/}
-        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_noyabr_2023_ba994d246e.pdf?updated_at=2023-12-12T05:24:01.980Z`} download="" target="_blank">
+        <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_2023_god_00f2a36c85.pdf?updated_at=2024-01-17T09:55:22.982Z`} download="" target="_blank">
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">2023</span>
+            <span className="doc-line__file-info">pdf, 2 мб</span>
+          </div>
+        </a> 
+        {/* <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_noyabr_2023_ba994d246e.pdf?updated_at=2023-12-12T05:24:01.980Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>
@@ -72,7 +81,7 @@ export default function TCAboutApplications() {
             <span className="doc-line__name">2023, первое полугодие</span>
             <span className="doc-line__file-info">pdf, 735 кб</span>
           </div>
-        </a>
+        </a> */}
         <a className="doc-line" href={`${addressServer}/uploads/Otchet_na_sajt_oktyabr_2022_e573c08cc7.pdf?updated_at=2022-11-22T07:06:43.190Z`} download="" target="_blank">
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
