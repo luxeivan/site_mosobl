@@ -17,25 +17,51 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: "LatoWeb", sans-serif;
+  max-width: 500px;
+  min-width: 500px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="datetime-local"],
+textarea,
+select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: "LatoWeb", sans-serif;
+}
+
+textarea {
+  height: 100px;
+}
+
+select {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button {
-  display: inline-block;
+  display: block;
+  width: 100%;
   background: #0d4cd3;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 15px;
+  margin-top: 10px;
   cursor: pointer;
   border-radius: 8px;
   font-family: "LatoWebBold", sans-serif;
+  font-size: 16px;
 }
 
 button:hover {
@@ -44,4 +70,59 @@ button:hover {
 
 button:focus {
   background: #2a63ad;
+  outline: none;
 }
+
+button:active {
+  background: #0c3ca3;
+}
+
+.dopinformation {
+  font-size: 14px; 
+  color: #333; 
+  line-height: 1.5;
+  margin-top: 20px; 
+  max-width: 100%; 
+  overflow-wrap: break-word;
+  text-align: justify; 
+}
+
+.dopinformation a {
+  color: #0d4cd3; 
+  text-decoration: underline;
+}
+
+.dopinformation a:hover {
+  color: #1d5deb;
+}
+
+/* Стиль для контейнера чекбокса */
+.checkboxContainer {
+  display: flex;
+  align-items: center; /* Выравнивание элементов контейнера по центру */
+  margin-top: 10px;
+}
+
+/* Стиль для текста рядом с чекбоксом */
+.checkboxText {
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 1.4; /* Установка высоты строки для соответствия высоте чекбокса */
+}
+
+/* Стиль для самого чекбокса */
+input[type="checkbox"] {
+  accent-color: #0d4cd3;
+  margin-right: 5px; /* Для небольшого отступа от текста */
+  align-self: center; /* Выравнивание чекбокса по центру по вертикали */
+}
+
+
+.disclaimer {
+  font-size: 12px; /* Ещё меньший размер шрифта для примечаний */
+  color: #666; /* Серый цвет для текста примечания */
+  margin-top: 5px; /* Меньше места сверху */
+  text-align: left; /* Выравнивание текста по левому краю */
+}
+
+
