@@ -96,33 +96,30 @@ button:active {
   color: #1d5deb;
 }
 
-/* Стиль для контейнера чекбокса */
 .checkboxContainer {
   display: flex;
-  align-items: center; /* Выравнивание элементов контейнера по центру */
+  align-items: center;
   margin-top: 10px;
 }
 
-/* Стиль для текста рядом с чекбоксом */
 .checkboxText {
   margin-left: 10px;
   font-size: 14px;
-  line-height: 1.4; /* Установка высоты строки для соответствия высоте чекбокса */
+  line-height: 1.4;
 }
 
-/* Стиль для самого чекбокса */
 input[type="checkbox"] {
   accent-color: #0d4cd3;
-  margin-right: 5px; /* Для небольшого отступа от текста */
-  align-self: center; /* Выравнивание чекбокса по центру по вертикали */
+  margin-right: 5px;
+  align-self: center;
 }
 
 
 .disclaimer {
-  font-size: 12px; /* Ещё меньший размер шрифта для примечаний */
-  color: #666; /* Серый цвет для текста примечания */
-  margin-top: 5px; /* Меньше места сверху */
-  text-align: left; /* Выравнивание текста по левому краю */
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  text-align: left;
 }
 
 

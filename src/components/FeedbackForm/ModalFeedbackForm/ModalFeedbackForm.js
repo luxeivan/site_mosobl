@@ -14,6 +14,7 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
+
   return (
     <div className={style.modalBackground}>
       <div className={style.modalContent}>
@@ -263,4 +264,4 @@ export default function Modal({ onClose }) {
       </div>
     </div>
   );
-}
+};
