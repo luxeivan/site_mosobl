@@ -4,6 +4,25 @@ import style from "./ModalFeedbackForm.module.css";
 export default function Modal({ onClose }) {
   const [selectedIssue, setSelectedIssue] = useState("");
   const [selectedSubIssue, setSelectedSubIssue] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [incidentDate, setIncidentDate] = useState("");
+
+  const issueOptions = {
+    powerOutage: "Отключение электроэнергии",
+    powerQuality: "Качество электроснабжения",
+    carElectricChargingStations: "Автомобильные электрозарядные станции",
+    electricitymeteringdevices: `Приборы учета электроэнергии (в т. ч. в
+          садоводческих/огороднических некоммерческих товариществах)`,
+    malfunctionofpowerlines: "Неисправности линий электропередач",
+    transferoftheelectricgrid: `Передача электросетевого хозяйства на баланс электросетевой организации`,
+    connectionelectricnetworks:
+      "Технологическое присоединение к электрическим сетям",
+    additionalservices: "Дополнительные услуги",
+    other: "Другое",
+  };
 
   const handleIssueChange = (event) => {
     setSelectedIssue(event.target.value);
@@ -14,11 +33,26 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const subject = encodeURIComponent(
+      issueOptions[selectedIssue] || "Обращение в службу поддержки"
+    );
+    const body = encodeURIComponent(
+      `ФИО заявителя:\n${fullName}\n\n` +
+        `адрес электронной почты для обратной связи:\n${email}\n\n` +
+        `телефон для обратной связи:\n${phone}\n\n` +
+        `адрес места инцидента:\n${address}\n\n` +
+        `дата и время инцидента:\n${incidentDate}\n`
+    );
+
+    window.location.href = `mailto:mail@mosoblenergo.ru?subject=${subject}&body=${body}`;
+  };
 
   return (
     <div className={style.modalBackground}>
       <div className={style.modalContent}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <select onChange={handleIssueChange} defaultValue="">
             <option value="" disabled>
               Выберите вопрос
@@ -70,28 +104,67 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "powerOutage" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
-              <input type="text" placeholder="адрес места инцидента" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <input
+                type="text"
+                name="address"
+                placeholder="адрес места инцидента"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
               <input
                 type="datetime-local"
+                name="incidentDate"
                 placeholder="дата и время инцидента"
+                value={incidentDate}
+                onChange={(e) => setIncidentDate(e.target.value)}
               />
             </>
           )}
 
           {selectedIssue === "powerQuality" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="адрес нахождения энергопринимающих устройств"
@@ -104,12 +177,27 @@ export default function Modal({ onClose }) {
           {selectedIssue === "carElectricChargingStations" &&
             selectedSubIssue && (
               <>
-                <input type="text" placeholder="ФИО заявителя" />
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
                 <input
                   type="email"
+                  name="email"
                   placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <input type="tel" placeholder="телефон для обратной связи" />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
                 <input
                   type="text"
                   placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
@@ -122,12 +210,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "electricitymeteringdevices" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input type="text" placeholder="адрес нахождения объекта" />
               <input
                 type="text"
@@ -138,12 +241,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "malfunctionofpowerlines" && selectedSubIssue && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
@@ -163,12 +281,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "transferoftheelectricgrid" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
@@ -183,12 +316,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "connectionelectricnetworks" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input
                 type="text"
                 placeholder="номер заявки/договора (при наличии)"
@@ -198,12 +346,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "additionalservices" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
               <input type="text" placeholder="причина обращения" />
               <p className={style.dopinformation}>
                 С полным списком и условиями оказания дополнительных услуг, а
@@ -231,12 +394,27 @@ export default function Modal({ onClose }) {
 
           {selectedIssue === "other" && (
             <>
-              <input type="text" placeholder="ФИО заявителя" />
+              <input
+                type="text"
+                name="fullName"
+                placeholder="ФИО заявителя"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
+                name="email"
                 placeholder="адрес электронной почты для обратной связи"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <input type="tel" placeholder="телефон для обратной связи" />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="телефон для обратной связи"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
             </>
           )}
 
@@ -264,4 +442,4 @@ export default function Modal({ onClose }) {
       </div>
     </div>
   );
-};
+}
