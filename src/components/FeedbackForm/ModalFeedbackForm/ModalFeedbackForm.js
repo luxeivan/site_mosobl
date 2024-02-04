@@ -9,6 +9,9 @@ export default function Modal({ onClose }) {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [incidentDate, setIncidentDate] = useState("");
+  const [deviceLocationAddress, setDeviceLocationAddress] = useState("");
+  const [inquiryReason, setInquiryReason] = useState("");
+  const [claimDateRange, setClaimDateRange] = useState("");
 
   const issueOptions = {
     powerOutage: "Отключение электроэнергии",
@@ -33,20 +36,52 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
+  const generateEmailBody = (issue, details) => {
+    const commonDetails =
+      `ФИО заявителя:\n${details.fullName}\n\n` +
+      `адрес электронной почты для обратной связи:\n${details.email}\n\n` +
+      `телефон для обратной связи:\n${details.phone}\n\n`;
+
+    switch (issue) {
+      case "powerOutage":
+        return (
+          commonDetails +
+          `адрес места инцидента:\n${details.address}\n\n` +
+          `дата и время инцидента:\n${details.incidentDate}\n`
+        );
+      case "powerQuality":
+        return (
+          commonDetails +
+          `адрес нахождения энергопринимающих устройств:\n${details.deviceLocationAddress}\n\n` +
+          `причина обращения:\n${details.inquiryReason}\n\n` +
+          `дата/период времени претензии:\n${details.claimDateRange}\n`
+        );
+      // Добавьте дополнительные case для других тем
+      default:
+        return commonDetails;
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const emailBodyDetails = {
+      fullName,
+      email,
+      phone,
+      address,
+      incidentDate,
+      deviceLocationAddress,
+      inquiryReason,
+      claimDateRange,
+    };
+
+    const body = generateEmailBody(selectedIssue, emailBodyDetails);
     const subject = encodeURIComponent(
       issueOptions[selectedIssue] || "Обращение в службу поддержки"
     );
-    const body = encodeURIComponent(
-      `ФИО заявителя:\n${fullName}\n\n` +
-        `адрес электронной почты для обратной связи:\n${email}\n\n` +
-        `телефон для обратной связи:\n${phone}\n\n` +
-        `адрес места инцидента:\n${address}\n\n` +
-        `дата и время инцидента:\n${incidentDate}\n`
-    );
+    const encodedBody = encodeURIComponent(body);
 
-    window.location.href = `mailto:mail@mosoblenergo.ru?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:mail@mosoblenergo.ru?subject=${subject}&body=${encodedBody}`;
   };
 
   return (
@@ -167,10 +202,24 @@ export default function Modal({ onClose }) {
               />
               <input
                 type="text"
+                name="deviceLocationAddress"
                 placeholder="адрес нахождения энергопринимающих устройств"
+                value={deviceLocationAddress}
+                onChange={(e) => setDeviceLocationAddress(e.target.value)}
               />
-              <textarea placeholder="причина обращения" />
-              <input type="text" placeholder="дата/период времени претензии" />
+              <textarea
+                name="inquiryReason"
+                placeholder="причина обращения"
+                value={inquiryReason}
+                onChange={(e) => setInquiryReason(e.target.value)}
+              />
+              <input
+                type="text"
+                name="claimDateRange"
+                placeholder="дата/период времени претензии"
+                value={claimDateRange}
+                onChange={(e) => setClaimDateRange(e.target.value)}
+              />
             </>
           )}
 
