@@ -12,6 +12,16 @@ export default function Modal({ onClose }) {
   const [deviceLocationAddress, setDeviceLocationAddress] = useState("");
   const [inquiryReason, setInquiryReason] = useState("");
   const [claimDateRange, setClaimDateRange] = useState("");
+  const [chargingStationAddress, setChargingStationAddress] = useState("");
+  const [chargingStationId, setChargingStationId] = useState("");
+  const [objectLocationAddress, setObjectLocationAddress] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [photoMaterials, setPhotoMaterials] = useState("");
+  const [lineCharacteristics, setLineCharacteristics] = useState("");
+  const [objectName, setObjectName] = useState("");
+  const [technicalSpecs, setTechnicalSpecs] = useState("");
+  const [applicationOrContractNumber, setApplicationOrContractNumber] =
+    useState("");
 
   const issueOptions = {
     powerOutage: "Отключение электроэнергии",
@@ -36,7 +46,7 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
-  const generateEmailBody = (issue, details) => {
+  const generateEmailBody = (issue, subIssue, details) => {
     const commonDetails =
       `ФИО заявителя:\n${details.fullName}\n\n` +
       `адрес электронной почты для обратной связи:\n${details.email}\n\n` +
@@ -56,9 +66,61 @@ export default function Modal({ onClose }) {
           `причина обращения:\n${details.inquiryReason}\n\n` +
           `дата/период времени претензии:\n${details.claimDateRange}\n`
         );
-      // Добавьте дополнительные case для других тем
+      case "carElectricChargingStations":
+        let chargingStationDetails =
+          commonDetails +
+          `адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС:\n${details.chargingStationAddress}\n\n`;
+        if (subIssue === "malfunction") {
+          chargingStationDetails += `номер ЭЗС:\n${details.chargingStationId}\n\n`;
+        }
+        return chargingStationDetails;
+      case "electricitymeteringdevices":
+        return (
+          commonDetails +
+          `адрес нахождения объекта:\n${details.objectLocationAddress}\n\n` +
+          `номер лицевого счета (при наличии):\n${details.accountNumber}\n`
+        );
+      case "malfunctionofpowerlines":
+        let malfunctionDetails =
+          commonDetails +
+          `адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома):\n${details.address}\n\n` +
+          `дата и время инцидента:\n${details.incidentDate}\n\n` +
+          `причина обращения:\n${details.inquiryReason}\n\n` +
+          `фотоматериалы:\n${details.photoMaterials}\n\n` +
+          `характеристика линии (магистральная линия/вводной провод в дом):\n${details.lineCharacteristics}\n\n` +
+          `Выбранная подтема: ${subIssueText(subIssue)}\n\n`;
+        return malfunctionDetails;
+      case "transferoftheelectricgrid":
+        return (
+          commonDetails +
+          `наименование объекта (ТП, линии электропередачи и ид.):\n${details.objectName}\n\n` +
+          `адрес нахождения объекта:\n${details.address}\n\n` +
+          `технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность):\n${details.technicalSpecs}\n`
+        );
+      case "connectionelectricnetworks":
+        return (
+          commonDetails +
+          `номер заявки/договора (при наличии):\n${details.applicationOrContractNumber}\n`
+        );
+      case "additionalservices":
+        return commonDetails + `причина обращения:\n${details.inquiryReason}\n`;
       default:
         return commonDetails;
+    }
+  };
+
+  const subIssueText = (subIssue) => {
+    switch (subIssue) {
+      case "zoneMalfunction":
+        return "Охранные зоны";
+      case "pruning":
+        return "Опиловка";
+      case "wireBreak":
+        return "Обрыв проводов";
+      case "pillarCondition":
+        return "Состояние опор";
+      default:
+        return "Не указано";
     }
   };
 
@@ -73,9 +135,22 @@ export default function Modal({ onClose }) {
       deviceLocationAddress,
       inquiryReason,
       claimDateRange,
+      chargingStationAddress,
+      chargingStationId,
+      objectLocationAddress,
+      accountNumber,
+      lineCharacteristics,
+      photoMaterials,
+      objectName,
+      technicalSpecs,
+      applicationOrContractNumber,
     };
 
-    const body = generateEmailBody(selectedIssue, emailBodyDetails);
+    const body = generateEmailBody(
+      selectedIssue,
+      selectedSubIssue,
+      emailBodyDetails
+    );
     const subject = encodeURIComponent(
       issueOptions[selectedIssue] || "Обращение в службу поддержки"
     );
@@ -130,10 +205,10 @@ export default function Modal({ onClose }) {
               <option value="" disabled>
                 Выберите подтему
               </option>
-              <option value="malfunction">Охранные зоны</option>
-              <option value="installation">Опиловка</option>
-              <option value="malfunction">Обрыв проводов</option>
-              <option value="malfunction">Состояние опор</option>
+              <option value="zoneMalfunction">Охранные зоны</option>
+              <option value="pruning">Опиловка</option>
+              <option value="wireBreak">Обрыв проводов</option>
+              <option value="pillarCondition">Состояние опор</option>
             </select>
           )}
 
@@ -249,10 +324,19 @@ export default function Modal({ onClose }) {
                 />
                 <input
                   type="text"
+                  name="chargingStationAddress"
                   placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
+                  value={chargingStationAddress}
+                  onChange={(e) => setChargingStationAddress(e.target.value)}
                 />
                 {selectedSubIssue === "malfunction" && (
-                  <input type="text" placeholder="номер ЭЗС" />
+                  <input
+                    type="text"
+                    name="chargingStationId"
+                    placeholder="номер ЭЗС"
+                    value={chargingStationId}
+                    onChange={(e) => setChargingStationId(e.target.value)}
+                  />
                 )}
               </>
             )}
@@ -280,10 +364,19 @@ export default function Modal({ onClose }) {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
-              <input type="text" placeholder="адрес нахождения объекта" />
               <input
                 type="text"
+                name="objectLocationAddress"
+                placeholder="адрес нахождения объекта"
+                value={objectLocationAddress}
+                onChange={(e) => setObjectLocationAddress(e.target.value)}
+              />
+              <input
+                type="text"
+                name="accountNumber"
                 placeholder="номер лицевого счета (при наличии)"
+                value={accountNumber}
+                onChange={(e) => setAccountNumber(e.target.value)}
               />
             </>
           )}
@@ -313,17 +406,38 @@ export default function Modal({ onClose }) {
               />
               <input
                 type="text"
+                name="address"
                 placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
               <input
                 type="datetime-local"
+                name="incidentDate"
                 placeholder="дата и время инцидента"
+                value={incidentDate}
+                onChange={(e) => setIncidentDate(e.target.value)}
               />
-              <input type="text" placeholder="причина обращения" />
-              <input type="text" placeholder="фотоматериалы" />
               <input
                 type="text"
+                name="inquiryReason"
+                placeholder="причина обращения"
+                value={inquiryReason}
+                onChange={(e) => setInquiryReason(e.target.value)}
+              />
+              <input
+                type="text"
+                name="photoMaterials"
+                placeholder="фотоматериалы"
+                value={photoMaterials}
+                onChange={(e) => setPhotoMaterials(e.target.value)}
+              />
+              <input
+                type="text"
+                name="lineCharacteristics"
                 placeholder="характеристика линии (магистральная линия/вводной провод в дом)"
+                value={lineCharacteristics}
+                onChange={(e) => setLineCharacteristics(e.target.value)}
               />
             </>
           )}
@@ -353,12 +467,24 @@ export default function Modal({ onClose }) {
               />
               <input
                 type="text"
+                name="objectName"
                 placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
+                value={objectName}
+                onChange={(e) => setObjectName(e.target.value)}
               />
-              <input type="text" placeholder="адрес нахождения объекта" />
               <input
                 type="text"
+                placeholder="адрес нахождения объекта"
+                name="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              <input
+                type="text"
+                name="technicalSpecs"
                 placeholder="технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность)"
+                value={technicalSpecs}
+                onChange={(e) => setTechnicalSpecs(e.target.value)}
               />
             </>
           )}
@@ -388,7 +514,10 @@ export default function Modal({ onClose }) {
               />
               <input
                 type="text"
+                name="applicationOrContractNumber"
                 placeholder="номер заявки/договора (при наличии)"
+                value={applicationOrContractNumber}
+                onChange={(e) => setApplicationOrContractNumber(e.target.value)}
               />
             </>
           )}
@@ -416,7 +545,13 @@ export default function Modal({ onClose }) {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
-              <input type="text" placeholder="причина обращения" />
+              <input
+                type="text"
+                name="inquiryReason"
+                placeholder="причина обращения"
+                value={inquiryReason}
+                onChange={(e) => setInquiryReason(e.target.value)}
+              />
               <p className={style.dopinformation}>
                 С полным списком и условиями оказания дополнительных услуг, а
                 также с формами заявок и перечнем обязательных документов для
