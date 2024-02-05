@@ -71,7 +71,9 @@ export default function Contact() {
                 <span className="contact-information__text">
                   Электронный адрес:
                 </span>
-                <FeedbackForm />
+                <div className="wrapper__btn">
+                  <FeedbackForm />
+                </div>
                 {/* <a className="contact-information__email" href="mailto:mail@mosoblenergo.ru">
                 mail@mosoblenergo.ru
               </a> */}

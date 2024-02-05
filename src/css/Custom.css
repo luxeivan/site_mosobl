@@ -199,7 +199,7 @@ button.wrap-link {
   color: #0061aa;
 }
 
-.contact-information>.contact-information__grid-text:first-child {
+.contact-information > .contact-information__grid-text:first-child {
   margin-bottom: 0;
 }
 
@@ -936,7 +936,6 @@ th {
   /* color: #0061aa; */
 }
 
-
 .vacancies__tel {
   color: #0061aa;
   font-weight: 600;
@@ -957,7 +956,6 @@ th {
   justify-content: center;
   margin-right: 10px;
   padding: 10px;
-
 }
 
 .development__year {
@@ -965,7 +963,6 @@ th {
   color: #fff;
   font-size: 20px;
   font-weight: 600;
-
 }
 
 .targeted-training__item::before {
@@ -1139,7 +1136,6 @@ th {
 .planned-notification__picture {
   max-width: 50px;
   margin: 0 20px;
-
 }
 
 .planned-notification__text {
@@ -1161,7 +1157,6 @@ th {
   cursor: pointer;
 }
 
-
 .planned-notification__link:hover {
   background-color: #0061aa;
   color: #fff;
@@ -1177,11 +1172,11 @@ th {
   max-width: 200px;
 }
 
+.wrapper__btn {
+  display: flex;
+}
 
 /* ------------------------------------------------------------------- */
-
-
-
 
 /* -----Медиа запросы ширины экрана-------------------------------------------------------------- */
 @media (min-width: 1360px) {
@@ -1203,8 +1198,6 @@ th {
 }
 
 @media (max-width: 1023px) {
-
-
   .main-info__item {
     flex-wrap: wrap;
     justify-content: center;

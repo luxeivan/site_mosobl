@@ -631,11 +631,11 @@ export default function Modal({ onClose }) {
               обращений граждан Российской Федерации.
             </p>
 
-            <button className="btn__send" type="submit">
+            <button style={{marginTop:'5px'}} className="btn__send" type="submit">
               Отправить
             </button>
           </form>
-          <button className="btn__close" onClick={onClose}>
+          <button style={{marginTop:'15px'}} className="btn__close" onClick={onClose}>
             Закрыть
           </button>
         </div>
