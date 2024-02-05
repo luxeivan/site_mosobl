@@ -90,8 +90,8 @@ export default function Modal({ onClose }) {
           `адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома):\n${details.address}\n\n` +
           `дата и время инцидента:\n${details.incidentDate}\n\n` +
           `причина обращения:\n${details.inquiryReason}\n\n` +
-          `фотоматериалы:\n${details.photoMaterials}\n\n` +
-          `характеристика линии (магистральная линия/вводной провод в дом):\n${details.lineCharacteristics}\n\n`
+          // `фотоматериалы:\n${details.photoMaterials}\n\n` +
+          `характеристика линии (магистральная линия/вводной провод в дом):\n${details.lineCharacteristics}\n\n`;
         return malfunctionDetails;
       case "transferoftheelectricgrid":
         return (
@@ -392,6 +392,10 @@ export default function Modal({ onClose }) {
             {selectedIssue === "malfunctionofpowerlines" &&
               selectedSubIssue && (
                 <>
+                  <p className={style.photoInstruction}>
+                    Если у вас есть фото неисправностей линий электропередач,
+                    пожалуйста, приложите их на следующем шаге.
+                  </p>
                   <input
                     type="text"
                     name="fullName"
@@ -434,13 +438,13 @@ export default function Modal({ onClose }) {
                     value={inquiryReason}
                     onChange={(e) => setInquiryReason(e.target.value)}
                   />
-                  <input
+                  {/* <input
                     type="text"
                     name="photoMaterials"
                     placeholder="фотоматериалы"
                     value={photoMaterials}
                     onChange={(e) => setPhotoMaterials(e.target.value)}
-                  />
+                  /> */}
                   <input
                     type="text"
                     name="lineCharacteristics"
@@ -631,11 +635,19 @@ export default function Modal({ onClose }) {
               обращений граждан Российской Федерации.
             </p>
 
-            <button style={{marginTop:'5px'}} className="btn__send" type="submit">
+            <button
+              style={{ marginTop: "5px" }}
+              className="btn__send"
+              type="submit"
+            >
               Отправить
             </button>
           </form>
-          <button style={{marginTop:'15px'}} className="btn__close" onClick={onClose}>
+          <button
+            style={{ marginTop: "15px" }}
+            className="btn__close"
+            onClick={onClose}
+          >
             Закрыть
           </button>
         </div>
