@@ -43,23 +43,39 @@ export default function TCStandartForms() {
           // })
           .map((item, index) => (
             <div key={index}>
-              <h3 className="row-docs-age__caption line-bottom">{item.attributes.title}</h3>
+              <h3 className="row-docs-age__caption line-bottom">
+                {item.attributes.title}
+              </h3>
               <ul>
-                {item.attributes&&item.attributes.files&&item.attributes.files.data.reverse().map((item, index) => (
-                  <li key={index} className="page-grid__content__li">
-                    <a className="doc-line" href={`${addressServer}${item.attributes.url}`} download="" target="_blank">
-                      <div className="doc-line__wrap-icon">
-                        <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
-                      </div>
-                      <div className="doc-line__wrap-text">
-                        <span className="doc-line__name">{item.attributes.name}</span>
-                        <span className="doc-line__file-info">
-                          {item.attributes.ext.slice(1)} {Math.round(item.attributes.size)}kb
-                        </span>
-                      </div>
-                    </a>
-                  </li>
-                ))}
+                {item.attributes &&
+                  item.attributes.files &&
+                  item.attributes.files.data.reverse().map((item, index) => (
+                    <li key={index} className="page-grid__content__li">
+                      <a
+                        className="doc-line"
+                        href={`${addressServer}${item.attributes.url}`}
+                        download=""
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <div className="doc-line__wrap-icon">
+                          <img
+                            src={type[item.attributes.ext.slice(1)]}
+                            alt={`icon ${item.attributes.ext.slice(1)}`}
+                          />
+                        </div>
+                        <div className="doc-line__wrap-text">
+                          <span className="doc-line__name">
+                            {item.attributes.name}
+                          </span>
+                          <span className="doc-line__file-info">
+                            {item.attributes.ext.slice(1)}{" "}
+                            {Math.round(item.attributes.size)}kb
+                          </span>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
           ))}

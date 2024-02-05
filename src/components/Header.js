@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHref, useLocation, useNavigate } from "react-router";
 import { mainMenu } from "../store/menu";
 import logo from "../img/logo.svg";
-import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
+// import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
 import logo2 from "../img/logo2.svg";
 import logoTwo from "../img/logo-two.svg";
 import searchIcon2 from "../img/search-icon2.svg";
@@ -11,7 +11,7 @@ import img34512673ce61b0db299f7e2405ac60e9 from "../img/34512673ce61b0db299f7e24
 import img7ad387832d629a52c87195d9cb795e3c from "../img/7ad387832d629a52c87195d9cb795e3c.svg";
 import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8b49a4e9b.svg";
 import img629d5332fa7791fcb59127d93f320c66 from "../img/629d5332fa7791fcb59127d93f320c66.jpg";
-import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
+// import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -41,29 +41,73 @@ export default function Header() {
   }, [location]);
   return (
     <header>
-      <section className={`page-header vg-modal-fixed ${scroll}  ${openSearchLine ? "hide-line" : ""}`} id="myHeader">
+      <section
+        className={`page-header vg-modal-fixed ${scroll}  ${
+          openSearchLine ? "hide-line" : ""
+        }`}
+        id="myHeader"
+      >
         <div className="container">
           <div className="page-header__container">
             <div className="page-header__up">
               <div className="page-header__flex">
                 <div className="page-header__left">
-                  <Link className="wrap-logo" to="/" id="i-1-i-0-bitrix-main-include-header-logo-IgWGoplpYkDt">
-                    <img className="logo" src={logo} alt="АО «Мособлэнерго»" title="АО «Мособлэнерго»" />
-                    <img className="logo logo--inner-mob" src={logo2} alt="АО «Мособлэнерго»" title="АО «Мособлэнерго»" />
+                  <Link
+                    className="wrap-logo"
+                    to="/"
+                    id="i-1-i-0-bitrix-main-include-header-logo-IgWGoplpYkDt"
+                  >
+                    <img
+                      className="logo"
+                      src={logo}
+                      alt="АО «Мособлэнерго»"
+                      title="АО «Мособлэнерго»"
+                    />
+                    <img
+                      className="logo logo--inner-mob"
+                      src={logo2}
+                      alt="АО «Мособлэнерго»"
+                      title="АО «Мособлэнерго»"
+                    />
                   </Link>{" "}
-                  <div className="page-header__block" id="i-3-i-2-bitrix-news-list-line-contacts-header-7DqYycKlRukS">
+                  <div
+                    className="page-header__block"
+                    id="i-3-i-2-bitrix-news-list-line-contacts-header-7DqYycKlRukS"
+                  >
                     <div className="page-header__wrap">
-                      <span className="page-header__text">Горячая линия «Мособлэнерго»</span>
+                      <span className="page-header__text">
+                        Горячая линия «Мособлэнерго»
+                      </span>
                       <div className="page-header__row">
                         <div className="circle-hint">
-                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <circle cx="12" cy="12" r="12"></circle>
-                            <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                            <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                            <path
+                              d="M12 6V14"
+                              stroke="white"
+                              fill="none"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            ></path>
+                            <path
+                              d="M12 16.1094V18.3315"
+                              stroke="white"
+                              fill="none"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            ></path>
                           </svg>
                           <div className="circle-hint__hint">
                             <div className="circle-hint__wrap-text">
-                              <span>По вопросам аварийных отключений и качеству электроэнергии</span>
+                              <span>
+                                По вопросам аварийных отключений и качеству
+                                электроэнергии
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -73,17 +117,39 @@ export default function Header() {
                       </div>
                     </div>
                     <div className="page-header__wrap">
-                      <span className="page-header__text">Технологическое присоединение</span>
+                      <span className="page-header__text">
+                        Технологическое присоединение
+                      </span>
                       <div className="page-header__row">
                         <div className="circle-hint">
-                          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <circle cx="12" cy="12" r="12"></circle>
-                            <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                            <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                            <path
+                              d="M12 6V14"
+                              stroke="white"
+                              fill="none"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            ></path>
+                            <path
+                              d="M12 16.1094V18.3315"
+                              stroke="white"
+                              fill="none"
+                              strokeWidth="2"
+                              strokeMiterlimit="10"
+                            ></path>
                           </svg>
                           <div className="circle-hint__hint">
                             <div className="circle-hint__wrap-text">
-                              <span>Консультации по вопросам присоединения к электросети</span>
+                              <span>
+                                Консультации по вопросам присоединения к
+                                электросети
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -95,9 +161,20 @@ export default function Header() {
                   </div>
                 </div>
                 <div className="page-header__right">
-                  <a className="wrap-link wrap-link_portal" href="https://moetp.ru/" target="_blank" rel="noreferrer">
+                  <a
+                    className="wrap-link wrap-link_portal"
+                    href="https://moetp.ru/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <div className="wrap-link__wrap-icon">
-                      <svg className="wrap-link__icon wrap-link_portal__icon" viewBox="0 0 16 24" height="24" fill="none" width="16">
+                      <svg
+                        className="wrap-link__icon wrap-link_portal__icon"
+                        viewBox="0 0 16 24"
+                        height="24"
+                        fill="none"
+                        width="16"
+                      >
                         <path
                           d="M12.2 20.7143C13.7127 20.7143 15 19.3639 15 18.0857V12.1715C15 10.0009 10.4318 8.88574 8 8.88574C5.5682 8.88574 1 10.0003 1 12.1715V18.0857C1 19.3639 2.2873 20.7143 3.8 20.7143"
                           strokeWidth="2"
@@ -109,41 +186,100 @@ export default function Header() {
                           strokeWidth="2"
                           strokeMiterlimit="10"
                         ></path>
-                        <path d="M12 24.0001V13.4858" strokeWidth="2" strokeMiterlimit="10"></path>
-                        <path d="M4 13.4858V24.0001" strokeWidth="2" strokeMiterlimit="10"></path>
+                        <path
+                          d="M12 24.0001V13.4858"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        ></path>
+                        <path
+                          d="M4 13.4858V24.0001"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        ></path>
                       </svg>
                     </div>
-                    <span className="wrap-link__text">Перейти на портал потребителя</span>
+                    <span className="wrap-link__text">
+                      Перейти на портал потребителя
+                    </span>
                   </a>
                   <Link className="wrap-link" to="/plannedOutages">
                     {" "}
                     <div className="wrap-link__wrap-icon">
-                      <svg className="wrap-link__icon" viewBox="0 0 24 21" height="21" width="24" fill="none">
+                      <svg
+                        className="wrap-link__icon"
+                        viewBox="0 0 24 21"
+                        height="21"
+                        width="24"
+                        fill="none"
+                      >
                         <path
                           d="M8.69987 19.889H1.77842C1.1613 19.889 0.790604 19.1379 1.12722 18.5713L11.3488 1.38665C11.6557 0.871118 12.3443 0.871118 12.6512 1.38665L22.8728 18.5713C23.2094 19.1379 22.8387 19.889 22.2216 19.889H15.3001"
                           strokeWidth="2"
                           strokeMiterlimit="10"
                         />
-                        <path d="M12 7.66736V16.5557" strokeWidth="2" strokeMiterlimit="10" />
-                        <path d="M12 18.7778V20.9999" strokeWidth="2" strokeMiterlimit="10" />
+                        <path
+                          d="M12 7.66736V16.5557"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
+                        <path
+                          d="M12 18.7778V20.9999"
+                          strokeWidth="2"
+                          strokeMiterlimit="10"
+                        />
                       </svg>
                     </div>
-                    <span className="wrap-link__text">Узнать об отключениях</span>
+                    <span className="wrap-link__text">
+                      Узнать об отключениях
+                    </span>
                   </Link>
-                  <ul className="social-list" id="i-5-i-4-bitrix-news-list-social-list-jmonnOjsjk4V">
+                  <ul
+                    className="social-list"
+                    id="i-5-i-4-bitrix-news-list-social-list-jmonnOjsjk4V"
+                  >
                     <li className="social-list__item">
-                      <a className="social-list__link" href="https://vk.com/mosoblenergo" title="Вконтакте" target="_blank">
-                        <img className="social-list__icon" src={img34512673ce61b0db299f7e2405ac60e9} alt="Вконтакте" />
+                      <a
+                        className="social-list__link"
+                        href="https://vk.com/mosoblenergo"
+                        title="Вконтакте"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          className="social-list__icon"
+                          src={img34512673ce61b0db299f7e2405ac60e9}
+                          alt="Вконтакте"
+                        />
                       </a>
                     </li>
                     <li className="social-list__item">
-                      <a className="social-list__link" href="https://ok.ru/mosoblenergo" title="Одноклассники" target="_blank">
-                        <img className="social-list__icon" src={img7ad387832d629a52c87195d9cb795e3c} alt="Одноклассники" />
+                      <a
+                        className="social-list__link"
+                        href="https://ok.ru/mosoblenergo"
+                        title="Одноклассники"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          className="social-list__icon"
+                          src={img7ad387832d629a52c87195d9cb795e3c}
+                          alt="Одноклассники"
+                        />
                       </a>
                     </li>
                     <li className="social-list__item">
-                      <a className="social-list__link" href="https://t.me/mosoblenergo" title="Telegram" target="_blank">
-                        <img className="social-list__icon" src={img639bae9c47ff56a3f33bc8f8b49a4e9b} alt="Telegram" />
+                      <a
+                        className="social-list__link"
+                        href="https://t.me/mosoblenergo"
+                        title="Telegram"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          className="social-list__icon"
+                          src={img639bae9c47ff56a3f33bc8f8b49a4e9b}
+                          alt="Telegram"
+                        />
                       </a>
                     </li>
                   </ul>
@@ -156,11 +292,22 @@ export default function Header() {
           <div className="container">
             <div className="page-header__flex">
               <div className="logo-two">
-                <Link className="wrap-logo" to="/" id="i-3-i-2-bitrix-main-include-header-logo-mmL5iToNSYT7">
-                  <img src={logoTwo} alt="АО «Мособлэнерго»" title="АО «Мособлэнерго»" />
+                <Link
+                  className="wrap-logo"
+                  to="/"
+                  id="i-3-i-2-bitrix-main-include-header-logo-mmL5iToNSYT7"
+                >
+                  <img
+                    src={logoTwo}
+                    alt="АО «Мособлэнерго»"
+                    title="АО «Мособлэнерго»"
+                  />
                 </Link>{" "}
               </div>
-              <nav className="navigation" id="i-5-i-4-bitrix-menu-top-XEVOpkwAkIZ0">
+              <nav
+                className="navigation"
+                id="i-5-i-4-bitrix-menu-top-XEVOpkwAkIZ0"
+              >
                 <ul className="navigation__list">
                   {mainMenu &&
                     mainMenu.map((item, index) => (
@@ -173,12 +320,22 @@ export default function Header() {
                             <ul className="nav-menu">
                               {item.submenu.map((item, index) => (
                                 <li className="nav-menu__item" key={index}>
-                                  <Link className="nav-menu__link" to={item.link}>
+                                  <Link
+                                    className="nav-menu__link"
+                                    to={item.link}
+                                  >
                                     {" "}
-                                    <span className="nav-menu__text">{item.title}</span>
+                                    <span className="nav-menu__text">
+                                      {item.title}
+                                    </span>
                                     <div className="nav-menu__wrap-arrow">
                                       <svg className="nav-menu__arrow">
-                                        <path d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path
+                                          d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5"
+                                          strokeWidth="2"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
                                       </svg>
                                     </div>
                                   </Link>{" "}
@@ -224,13 +381,27 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <div className={openSearchLine ? "search-line search-line--open" : "search-line"}>
+            <div
+              className={
+                openSearchLine ? "search-line search-line--open" : "search-line"
+              }
+            >
               <span className="search-line__text">поиск по сайту </span>
-              <form className="search-line__form" action="https://mosoblenergo.ru/search/">
+              <form
+                className="search-line__form"
+                action="https://mosoblenergo.ru/search/"
+              >
                 <div className="search-line__flex">
-                  <input type="text" name="q" size="15" maxLength="50" required="" placeholder="введите ключевое слово" />
+                  <input
+                    type="text"
+                    name="q"
+                    size="15"
+                    maxLength="50"
+                    required=""
+                    placeholder="введите ключевое слово"
+                  />
                   <button type="submit">
-                    <img src={searchIcon2} />
+                    <img src={searchIcon2} alt="текст"/>
                     <span>Найти</span>
                   </button>
                 </div>
@@ -269,22 +440,56 @@ export default function Header() {
           <div className="container">
             <div className="mob-menu-up__flex">
               <div className="mob-menu-up__left">
-                <a className="wrap-logo" href="https://mosoblenergo.ru/" id="i-7-i-6-bitrix-main-include-header-logo-bHcqHw2DBgtH">
-                  <img className="logo" src={logo} alt="АО «Мособлэнерго»" title="АО «Мособлэнерго»" />
+                <a
+                  className="wrap-logo"
+                  href="https://mosoblenergo.ru/"
+                  id="i-7-i-6-bitrix-main-include-header-logo-bHcqHw2DBgtH"
+                >
+                  <img
+                    className="logo"
+                    src={logo}
+                    alt="АО «Мособлэнерго»"
+                    title="АО «Мособлэнерго»"
+                  />
                 </a>{" "}
-                <div className="mob-menu-up__block" id="i-9-i-8-bitrix-news-list-line-contacts-mobile-iJBuqawNy1tM">
+                <div
+                  className="mob-menu-up__block"
+                  id="i-9-i-8-bitrix-news-list-line-contacts-mobile-iJBuqawNy1tM"
+                >
                   <div className="mob-menu-up__wrap">
-                    <span className="mob-menu-up__text">Горячая линия «Мособлэнерго»</span>
+                    <span className="mob-menu-up__text">
+                      Горячая линия «Мособлэнерго»
+                    </span>
                     <div className="mob-menu-up__row">
                       <div className="circle-hint">
-                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <circle cx="12" cy="12" r="12"></circle>
-                          <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                          <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                          <path
+                            d="M12 6V14"
+                            stroke="white"
+                            fill="none"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          ></path>
+                          <path
+                            d="M12 16.1094V18.3315"
+                            stroke="white"
+                            fill="none"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          ></path>
                         </svg>
                         <div className="circle-hint__hint">
                           <div className="circle-hint__wrap-text">
-                            <span>По вопросам аварийных отключений и качеству электроэнергии</span>
+                            <span>
+                              По вопросам аварийных отключений и качеству
+                              электроэнергии
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -294,17 +499,39 @@ export default function Header() {
                     </div>
                   </div>
                   <div className="mob-menu-up__wrap">
-                    <span className="mob-menu-up__text">Технологическое присоединение</span>
+                    <span className="mob-menu-up__text">
+                      Технологическое присоединение
+                    </span>
                     <div className="mob-menu-up__row">
                       <div className="circle-hint">
-                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           <circle cx="12" cy="12" r="12"></circle>
-                          <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                          <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                          <path
+                            d="M12 6V14"
+                            stroke="white"
+                            fill="none"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          ></path>
+                          <path
+                            d="M12 16.1094V18.3315"
+                            stroke="white"
+                            fill="none"
+                            strokeWidth="2"
+                            strokeMiterlimit="10"
+                          ></path>
                         </svg>
                         <div className="circle-hint__hint">
                           <div className="circle-hint__wrap-text">
-                            <span>Консультации по вопросам присоединения к электросети</span>
+                            <span>
+                              Консультации по вопросам присоединения к
+                              электросети
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -326,7 +553,10 @@ export default function Header() {
             </div>
           </div>
         </div>
-        <div className="mob-menu-middle" id="i-9-i-8-bitrix-menu-mob-menu-middle-g8taYvoNj68S">
+        <div
+          className="mob-menu-middle"
+          id="i-9-i-8-bitrix-menu-mob-menu-middle-g8taYvoNj68S"
+        >
           <div className="container">
             <div className="mob-menu-middle__wrapper-scroll">
               <div className="mob-menu-middle__container">
@@ -339,9 +569,18 @@ export default function Header() {
                             className="mob-menu-middle__item"
                             onClick={(event) => {
                               if (item.submenu.length > 1) {
-                                event.currentTarget.classList.toggle("open-accordion");
-                                event.currentTarget.getElementsByClassName("mob-menu-middle__row")[0].classList.toggle("active");
-                                const drop = event.currentTarget.querySelector(".mob-menu-drop");
+                                event.currentTarget.classList.toggle(
+                                  "open-accordion"
+                                );
+                                event.currentTarget
+                                  .getElementsByClassName(
+                                    "mob-menu-middle__row"
+                                  )[0]
+                                  .classList.toggle("active");
+                                const drop =
+                                  event.currentTarget.querySelector(
+                                    ".mob-menu-drop"
+                                  );
                                 if (drop.style.maxHeight == "") {
                                   drop.style.maxHeight = `${drop.scrollHeight}px`;
                                 } else {
@@ -358,12 +597,22 @@ export default function Header() {
                             }}
                             key={index}
                           >
-                            <div className="mob-menu-middle__row" style={{ cursor: "pointer" }}>
+                            <div
+                              className="mob-menu-middle__row"
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="mob-menu-middle__flex">
-                                <span className="mob-menu-middle__caption">{item.mainTitle}</span>{" "}
+                                <span className="mob-menu-middle__caption">
+                                  {item.mainTitle}
+                                </span>{" "}
                                 <div className="mob-menu-middle__wrap-arrow">
                                   <svg className="mob-menu-middle__arrow">
-                                    <path d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path
+                                      d="M34.7143 9L39 5M39 5L34.7143 0.999999M39 5L1 5"
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
                                   </svg>
                                 </div>
                               </div>
@@ -374,10 +623,18 @@ export default function Header() {
                                   <div className="mob-menu-drop__block">
                                     <ul className="mob-menu-drop__list">
                                       {item.submenu.map((item, index) => (
-                                        <li className="mob-menu-drop__item" key={index}>
-                                          <Link className="mob-menu-drop__link" to={item.link}>
+                                        <li
+                                          className="mob-menu-drop__item"
+                                          key={index}
+                                        >
+                                          <Link
+                                            className="mob-menu-drop__link"
+                                            to={item.link}
+                                          >
                                             {" "}
-                                            <span className="mob-menu-drop__text">{item.title}</span>
+                                            <span className="mob-menu-drop__text">
+                                              {item.title}
+                                            </span>
                                             <div className="mob-menu-drop__line"></div>
                                           </Link>{" "}
                                         </li>
@@ -399,20 +656,45 @@ export default function Header() {
           </div>
         </div>
         <div className="mob-menu-down">
-          <div className="mob-menu-down__up" id="i-17-i-16-bitrix-news-list-line-contacts-mobile-down-d42sdqzZxdic">
+          <div
+            className="mob-menu-down__up"
+            id="i-17-i-16-bitrix-news-list-line-contacts-mobile-down-d42sdqzZxdic"
+          >
             <div className="container">
               <div className="mob-menu-down__wrap-text">
-                <span className="mob-menu-down__text-info">Горячая линия «Мособлэнерго»</span>
+                <span className="mob-menu-down__text-info">
+                  Горячая линия «Мособлэнерго»
+                </span>
                 <div className="mob-menu-down__row">
                   <div className="circle-hint">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <circle cx="12" cy="12" r="12"></circle>
-                      <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                      <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                      <path
+                        d="M12 6V14"
+                        stroke="white"
+                        fill="none"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
+                      <path
+                        d="M12 16.1094V18.3315"
+                        stroke="white"
+                        fill="none"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
                     </svg>
                     <div className="circle-hint__hint">
                       <div className="circle-hint__wrap-text">
-                        <span>По вопросам аварийных отключений и качеству электроэнергии</span>
+                        <span>
+                          По вопросам аварийных отключений и качеству
+                          электроэнергии
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -422,17 +704,38 @@ export default function Header() {
                 </div>
               </div>
               <div className="mob-menu-down__wrap-text">
-                <span className="mob-menu-down__text-info">Технологическое присоединение</span>
+                <span className="mob-menu-down__text-info">
+                  Технологическое присоединение
+                </span>
                 <div className="mob-menu-down__row">
                   <div className="circle-hint">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <circle cx="12" cy="12" r="12"></circle>
-                      <path d="M12 6V14" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
-                      <path d="M12 16.1094V18.3315" stroke="white" fill="none" strokeWidth="2" strokeMiterlimit="10"></path>
+                      <path
+                        d="M12 6V14"
+                        stroke="white"
+                        fill="none"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
+                      <path
+                        d="M12 16.1094V18.3315"
+                        stroke="white"
+                        fill="none"
+                        strokeWidth="2"
+                        strokeMiterlimit="10"
+                      ></path>
                     </svg>
                     <div className="circle-hint__hint">
                       <div className="circle-hint__wrap-text">
-                        <span>Консультации по вопросам присоединения к электросети</span>
+                        <span>
+                          Консультации по вопросам присоединения к электросети
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -448,35 +751,64 @@ export default function Header() {
               <div className="mob-menu-down__wrapper">
                 <a className="mob-menu-down__wrap" href="https://moetp.ru/">
                   <div className="mob-menu-down__wrap-icon">
-                    <svg className="mob-menu-down__icon" viewBox="0 0 16 24" height="24" width="16" fill="none">
+                    <svg
+                      className="mob-menu-down__icon"
+                      viewBox="0 0 16 24"
+                      height="24"
+                      width="16"
+                      fill="none"
+                    >
                       <use href="/local/templates/vg/assets/img/consumer.svg#consumer"></use>
                     </svg>
                   </div>
-                  <span className="mob-menu-down__text">Перейти на портал потребителя</span>
+                  <span className="mob-menu-down__text">
+                    Перейти на портал потребителя
+                  </span>
                 </a>
                 <Link className="mob-menu-down__wrap" to="/plannedOutages">
                   {" "}
                   <div className="mob-menu-down__wrap-icon">
-                    <svg className="mob-menu-down__icon" viewBox="0 0 24 21" height="21" width="24" fill="none">
+                    <svg
+                      className="mob-menu-down__icon"
+                      viewBox="0 0 24 21"
+                      height="21"
+                      width="24"
+                      fill="none"
+                    >
                       <use href="/local/templates/vg/assets/img/warning-icon.svg#warning-icon"></use>
                     </svg>
                   </div>
-                  <span className="mob-menu-down__text">Узнать об отключениях</span>
+                  <span className="mob-menu-down__text">
+                    Узнать об отключениях
+                  </span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="first-screen" id="i-13-i-12-bitrix-news-list-main-slider-CpmJaVVMQLIA">
+      <section
+        className="first-screen"
+        id="i-13-i-12-bitrix-news-list-main-slider-CpmJaVVMQLIA"
+      >
         <div className="first-screen__slider swiper-container">
           <div className="first-screen__wrapper swiper-wrapper">
             {hreff === "/" ? (
               <div className="first-screen__slide swiper-slide">
-                <div className="first-screen__wrap" style={{ backgroundImage: `url(${img629d5332fa7791fcb59127d93f320c66})` }}>
+                <div
+                  className="first-screen__wrap"
+                  style={{
+                    backgroundImage: `url(${img629d5332fa7791fcb59127d93f320c66})`,
+                  }}
+                >
                   <div className="container">
                     <div className="first-screen__block">
-                      <img className="first-screen__img" src={firstScreenLogo} alt="logo" style={{marginTop:"50px"}} />
+                      <img
+                        className="first-screen__img"
+                        src={firstScreenLogo}
+                        alt="logo"
+                        style={{ marginTop: "50px" }}
+                      />
                       <br />
                       {/* <div className="creditRating">
                         <img className="creditRating__img" src={creditRating} alt="logo" />
@@ -495,16 +827,45 @@ export default function Header() {
                       </div> */}
                       <div className="creditRating">
                         <div className="creditRating__desc">
-                          <div style={{ margin: "0 auto", fontSize: "25px", padding: "10px 40px",lineHeight:"1.5" }}>
-                            <h2 style={{ color: "red", marginBottom: "10px", textAlign: "center" }}>Внимание!</h2>
-                            <p style={{ fontWeight: 700, marginBottom: "10px" }}>Уважаемые клиенты!</p>
-                            <p style={{ marginBottom: "10px" }}>
-                              Обращаем ваше внимание! Участились случаи, когда <b style={{color:'red'}}>мошенники</b> под видом и именем сетевой компании «Мособлэнерго» направляют смс с просьбой осуществить обратный звонок!
+                          <div
+                            style={{
+                              margin: "0 auto",
+                              fontSize: "25px",
+                              padding: "10px 40px",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            <h2
+                              style={{
+                                color: "red",
+                                marginBottom: "10px",
+                                textAlign: "center",
+                              }}
+                            >
+                              Внимание!
+                            </h2>
+                            <p
+                              style={{ fontWeight: 700, marginBottom: "10px" }}
+                            >
+                              Уважаемые клиенты!
                             </p>
                             <p style={{ marginBottom: "10px" }}>
-                              <b>Не сообщайте</b> свои личные данные! <b>Не сообщайте</b> данные о ваших заключенных договорах! <b>Не переходите</b> по ссылкам, они могут быть вредоносными!
+                              Обращаем ваше внимание! Участились случаи, когда{" "}
+                              <b style={{ color: "red" }}>мошенники</b> под
+                              видом и именем сетевой компании «Мособлэнерго»
+                              направляют смс с просьбой осуществить обратный
+                              звонок!
                             </p>
-                            <p style={{ marginBottom: "10px" }}>Актуальные номера телефонов Акционерного Общества «Мособлэнерго» размещены на официальном сайте.</p>
+                            <p style={{ marginBottom: "10px" }}>
+                              <b>Не сообщайте</b> свои личные данные!{" "}
+                              <b>Не сообщайте</b> данные о ваших заключенных
+                              договорах! <b>Не переходите</b> по ссылкам, они
+                              могут быть вредоносными!
+                            </p>
+                            <p style={{ marginBottom: "10px" }}>
+                              Актуальные номера телефонов Акционерного Общества
+                              «Мособлэнерго» размещены на официальном сайте.
+                            </p>
                           </div>
                         </div>
                       </div>

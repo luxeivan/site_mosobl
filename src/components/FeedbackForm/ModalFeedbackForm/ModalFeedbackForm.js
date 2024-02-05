@@ -585,8 +585,8 @@ export default function Modal({ onClose }) {
                     «Потребителям» по ссылке:
                     <a
                       href=" https://mosoblenergo.ru/additiona/Services"
-                      target="_blank"
                       rel="noopener noreferrer"
+                      target="_blank"
                     >
                       https://mosoblenergo.ru/additiona/Services
                     </a>

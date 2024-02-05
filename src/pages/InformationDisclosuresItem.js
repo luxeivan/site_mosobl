@@ -23,11 +23,15 @@ const type = {
 
 export default function InformationDisclosuresItem() {
   const params = useParams();
-  const [informationDisclosureItem, setinformationDisclosureItem] = useState({});
+  const [informationDisclosureItem, setinformationDisclosureItem] = useState(
+    {}
+  );
   const [copy, setCopy] = useState({});
 
   useEffect(() => {
-    fetch(`${addressServer}/api/information-disclosures/${params.id}?populate[0]=groupInfo&populate[1]=groupInfo.list_files&populate[2]=groupInfo.list_files.file`)
+    fetch(
+      `${addressServer}/api/information-disclosures/${params.id}?populate[0]=groupInfo&populate[1]=groupInfo.list_files&populate[2]=groupInfo.list_files.file`
+    )
       .then((response) => {
         return response.json();
       })
@@ -46,7 +50,11 @@ export default function InformationDisclosuresItem() {
     //console.log(copyObj);
     if (copyObj.attributes) {
       copyObj.attributes.groupInfo.forEach((element) => {
-        element.list_files.data = element.list_files.data.filter((item) => item.attributes.name.toLowerCase().includes(event.target.value.toLowerCase()));
+        element.list_files.data = element.list_files.data.filter((item) =>
+          item.attributes.name
+            .toLowerCase()
+            .includes(event.target.value.toLowerCase())
+        );
       });
       //copyObj.attributes.groupInfo = copyObj.attributes.groupInfo.filter((item) => item.title.includes(event.target.value));
       setinformationDisclosureItem(copyObj);
@@ -58,14 +66,31 @@ export default function InformationDisclosuresItem() {
     document.querySelector(".informationDisclosures_search").click();
   };
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage image={imgf4f40bee4b8a3fb6f95707a4da41d873} title={informationDisclosureItem.attributes && informationDisclosureItem.attributes.title} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <TopImage
+        image={imgf4f40bee4b8a3fb6f95707a4da41d873}
+        title={
+          informationDisclosureItem.attributes &&
+          informationDisclosureItem.attributes.title
+        }
+      />
       <div className="page-grid__content" id="content">
         <div>
           <Link to="/informationDisclosures" className="button__back">
             Назад
           </Link>
-          <input type="text" className="informationDisclosures_search" placeholder="Поиск на текущей странице" onChange={handlerSearch} onClick={handlerSearch} />
+          <input
+            type="text"
+            className="informationDisclosures_search"
+            placeholder="Поиск на текущей странице"
+            onChange={handlerSearch}
+            onClick={handlerSearch}
+          />
           <button className="button__clear" onClick={handlerClear}>
             Очистить
           </button>
@@ -75,68 +100,123 @@ export default function InformationDisclosuresItem() {
           {informationDisclosureItem &&
             informationDisclosureItem.attributes &&
             informationDisclosureItem.attributes.groupInfo &&
-            informationDisclosureItem.attributes.groupInfo.map((item, index) => {
-              if (item.list_files.data.length < 1) {
-                return false;
-              } else {
-                return (
-                  <li className="page-grid__content" id="content" key={index}>
-                    <div className="row-docs-age">
-                      <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
-                      <ul>
-                        {item.list_files.data                          
-                          .sort((a, b) => {
-                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) == -1) {
-                              return -1;
-                            }
-                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) == -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1) {
-                              return 1;
-                            }
-                            //a.match(/20[0-9]{3} /gm)[0]
-                            //a.attributes.name.search(/20[0-9]{3} /gm)[0]
-                            return b.id - a.id;
-                          })
-                          .sort((a, b) => {
-                            if (a.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1 && b.attributes.name.search(/[\s.]20[0-9]{2}/gm) != -1) {
-                              return b.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1) - a.attributes.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1);
-                            }
-                          })
-                          .map(item => {
-                            let searchDate = 0
-                            if (item.attributes.name.search(/[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm) != -1) {
-                              let arr = item.attributes.name.match(/[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm)
-                              let str = arr[arr.length - 1].split('.')
-                              let reredate = new Date(str[2], str[1] - 1, str[0])
-                              searchDate = reredate.getTime()
-                              console.log(reredate.getTime())
-                            }
-                            return { ...item, searchDate }
-                          })
-                          .sort((a, b) => {
-                            console.log()
-                            return b.searchDate - a.searchDate
-                          })
-                          .map((item, index) => (
-                            <li key={index} className="page-grid__content__li">
-                              <a className="doc-line" href={`${addressServer}${item.attributes.file.data.attributes.url}`} download="" target="_blank">
-                                <div className="doc-line__wrap-icon">
-                                  <img src={type[item.attributes.type]} alt={`icon ${item.attributes.type}`} />
-                                </div>
-                                <div className="doc-line__wrap-text">
-                                  <span className="doc-line__name">{item.attributes.name}</span>
-                                  <span className="doc-line__file-info">
-                                    {item.attributes.type} {Math.round(item.attributes.file.data.attributes.size)}kb
-                                  </span>
-                                </div>
-                              </a>
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
-                  </li>
-                );
+            informationDisclosureItem.attributes.groupInfo.map(
+              (item, index) => {
+                if (item.list_files.data.length < 1) {
+                  return false;
+                } else {
+                  return (
+                    <li className="page-grid__content" id="content" key={index}>
+                      <div className="row-docs-age">
+                        <h3 className="row-docs-age__caption line-bottom">
+                          {item.title}
+                        </h3>
+                        <ul>
+                          {item.list_files.data
+                            .sort((a, b) => {
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                  -1
+                              ) {
+                                return -1;
+                              }
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1
+                              ) {
+                                return 1;
+                              }
+                              //a.match(/20[0-9]{3} /gm)[0]
+                              //a.attributes.name.search(/20[0-9]{3} /gm)[0]
+                              return b.id - a.id;
+                            })
+                            .sort((a, b) => {
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1
+                              ) {
+                                return (
+                                  b.attributes.name
+                                    .match(/[\s.]20[0-9]{2}/gm)[0]
+                                    .slice(1) -
+                                  a.attributes.name
+                                    .match(/[\s.]20[0-9]{2}/gm)[0]
+                                    .slice(1)
+                                );
+                              }
+                            })
+                            .map((item) => {
+                              let searchDate = 0;
+                              if (
+                                item.attributes.name.search(
+                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                                ) != -1
+                              ) {
+                                let arr = item.attributes.name.match(
+                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                                );
+                                let str = arr[arr.length - 1].split(".");
+                                let reredate = new Date(
+                                  str[2],
+                                  str[1] - 1,
+                                  str[0]
+                                );
+                                searchDate = reredate.getTime();
+                                console.log(reredate.getTime());
+                              }
+                              return { ...item, searchDate };
+                            })
+                            .sort((a, b) => {
+                              console.log();
+                              return b.searchDate - a.searchDate;
+                            })
+                            .map((item, index) => (
+                              <li
+                                key={index}
+                                className="page-grid__content__li"
+                              >
+                                <a
+                                  className="doc-line"
+                                  href={`${addressServer}${item.attributes.file.data.attributes.url}`}
+                                  download=""
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                >
+                                  <div className="doc-line__wrap-icon">
+                                    <img
+                                      src={type[item.attributes.type]}
+                                      alt={`icon ${item.attributes.type}`}
+                                    />
+                                  </div>
+                                  <div className="doc-line__wrap-text">
+                                    <span className="doc-line__name">
+                                      {item.attributes.name}
+                                    </span>
+                                    <span className="doc-line__file-info">
+                                      {item.attributes.type}{" "}
+                                      {Math.round(
+                                        item.attributes.file.data.attributes
+                                          .size
+                                      )}
+                                      kb
+                                    </span>
+                                  </div>
+                                </a>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    </li>
+                  );
+                }
               }
-            })}
+            )}
         </ul>
       </div>
     </motion.div>
