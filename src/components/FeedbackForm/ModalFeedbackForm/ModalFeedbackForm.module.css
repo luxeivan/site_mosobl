@@ -96,7 +96,7 @@ button {
   }
 
   .photoInstruction {
-    font-size: 14px; /* Уменьшаем размер шрифта для мобильных устройств */
-    padding: 0 10px; /* Уменьшаем боковые отступы на маленьких экранах */
+    font-size: 14px; 
+    padding: 0 10px;
   }
 }

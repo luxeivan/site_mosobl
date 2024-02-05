@@ -23,7 +23,7 @@ const ModalWindow = ({ title, content, onClose }) => {
           Скопируйте текст данного письма в свой почтовый сервис и направьте на
           адрес mail@mosoblenergo.ru
         </p>
-        <button onClick={copyToClipboard}>Копировать</button>
+        <button onClick={copyToClipboard}>Копировать текст письма</button>
         <button onClick={onClose}>Закрыть</button>
       </div>
     </div>

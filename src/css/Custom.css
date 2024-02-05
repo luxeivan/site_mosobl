@@ -189,7 +189,6 @@ button.wrap-link {
   margin-left: 16px;
 }
 
-/*# sourceMappingURL=custom.css.map */
 .contact-information__email {
   font-family: "Oswald", sans-serif;
   font-weight: 700;
@@ -543,7 +542,7 @@ button.wrap-link {
 
 .open-map {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin: 5px;
 }
 

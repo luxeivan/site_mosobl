@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DelayInput } from 'react-delay-input';
-import { addressServer, chargingAddressServer } from "../../config";
-import xlsxPic from "../../img/xlsx.svg";
+import { chargingAddressServer } from "../../config";
+// import xlsxPic from "../../img/xlsx.svg";
 import { utils, writeFileXLSX } from 'xlsx'
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -14,7 +14,7 @@ export default function Territory() {
   const [loading, setLoading] = useState(false)
   const [inputCity, setInputCity] = useState()
   const [inputStreet, setInputStreet] = useState()
-  const [listFilials, setListFilials] = useState([])
+  // const [listFilials, setListFilials] = useState([])
   const [listCity, setListCity] = useState([])
   const [listStreet, setListStreet] = useState([])
   const [selectCity, setSelectCity] = useState()
