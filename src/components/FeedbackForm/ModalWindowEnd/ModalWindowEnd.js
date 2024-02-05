@@ -2,23 +2,33 @@ import React from "react";
 import style from "./ModalWindowEnd.module.css";
 
 const ModalWindow = ({ title, content, onClose }) => {
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(`Тема: ${title}\n\n${content}`)
+      .then(() => {
+        alert("Текст скопирован!");
+      })
+      .catch((err) => {
+        console.error("Ошибка при копировании текста: ", err);
+      });
+  };
+
   return (
     <div className={style.modalOverlay}>
       <div className={style.modal}>
-        <textarea
-          className={style.modalContent}
-          value={`Тема: ${title}\n\n${content}`}
-          readOnly
-        />
+        <h3>{title}</h3>
+        <pre className={style.modalContent}>{`Тема: ${title}\n\n${content}`}</pre>
         <hr />
         <p>
           Скопируйте текст данного письма в свой почтовый сервис и направьте на
           адрес mail@mosoblenergo.ru
         </p>
+        <button onClick={copyToClipboard}>Копировать</button>
         <button onClick={onClose}>Закрыть</button>
       </div>
     </div>
   );
 };
+
 
 export default ModalWindow;
