@@ -181,7 +181,7 @@ export default function Modal({ onClose }) {
 
   return (
     <>
-      <div className={style.modal__feedback__background} onClick={handleCloseOnClickOutside}>
+      <dialog className={style.modal__feedback__background} onClick={handleCloseOnClickOutside}>
         <div className={style.modal__feedback__content} onClick={e => e.stopPropagation()}>
           <form onSubmit={handleSubmit}>
             <select
@@ -723,7 +723,7 @@ export default function Modal({ onClose }) {
           <div className={style.closeButton} onClick={onClose}>&times;</div>
 
         </div>
-      </div>
+      </dialog>
 
       {isPreviewModalOpen && (
         <ModalWindow
