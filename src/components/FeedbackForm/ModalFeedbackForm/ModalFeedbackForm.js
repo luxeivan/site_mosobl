@@ -49,6 +49,13 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
+  const handleCloseOnClickOutside = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+  
+
   const generateEmailBody = (issue, subIssue, details) => {
     const commonDetails =
       `ФИО заявителя:\n${details.fullName}\n\n` +
@@ -174,8 +181,8 @@ export default function Modal({ onClose }) {
 
   return (
     <>
-      <div className={style.modal__feedback__background}>
-        <div className={style.modal__feedback__content}>
+      <div className={style.modal__feedback__background} onClick={handleCloseOnClickOutside}>
+        <div className={style.modal__feedback__content} onClick={e => e.stopPropagation()}>
           <form onSubmit={handleSubmit}>
             <select
               className={style.feedback__select}
@@ -710,9 +717,11 @@ export default function Modal({ onClose }) {
               Отправить
             </button>
           </form>
-          <button onClick={onClose} className={style.feedback__button}>
+          {/* <button onClick={onClose} className={style.feedback__button}>
             Закрыть
-          </button>
+          </button> */}
+          <div className={style.closeButton} onClick={onClose}>&times;</div>
+
         </div>
       </div>
 
