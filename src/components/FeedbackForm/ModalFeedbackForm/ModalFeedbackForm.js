@@ -72,11 +72,13 @@ export default function Modal({ onClose }) {
       case "carElectricChargingStations":
         let chargingStationDetails =
           commonDetails +
+          `Выбранная подтема: ${subIssueText(subIssue)}\n\n` + // Добавляем эту строку
           `адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС:\n${details.chargingStationAddress}\n\n`;
         if (subIssue === "malfunction") {
           chargingStationDetails += `номер ЭЗС:\n${details.chargingStationId}\n\n`;
         }
         return chargingStationDetails;
+
       case "electricitymeteringdevices":
         return (
           commonDetails +
@@ -122,6 +124,10 @@ export default function Modal({ onClose }) {
         return "Обрыв проводов";
       case "pillarCondition":
         return "Состояние опор";
+      case "malfunction":
+        return "Неисправность ЭЗС"; 
+      case "installation":
+        return "Установка ЭЗС";
       default:
         return "Не указано";
     }
@@ -489,6 +495,10 @@ export default function Modal({ onClose }) {
                     value={lineCharacteristics}
                     onChange={(e) => setLineCharacteristics(e.target.value)}
                   />
+                  <p className={style.photoReminder}>
+                    Если у Вас есть фото неисправностей линий электропередач,
+                    пожалуйста, приложите их при отправке письма.
+                  </p>
                 </>
               )}
 
