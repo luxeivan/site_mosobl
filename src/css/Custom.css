@@ -480,7 +480,7 @@ button.wrap-link {
 }
 
 .react-date-picker__calendar {
-  z-index: 999 !important;
+  z-index: 997 !important;
 }
 
 .disconnect {

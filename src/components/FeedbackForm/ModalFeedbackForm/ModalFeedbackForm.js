@@ -90,8 +90,8 @@ export default function Modal({ onClose }) {
           `адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома):\n${details.address}\n\n` +
           `дата и время инцидента:\n${details.incidentDate}\n\n` +
           `причина обращения:\n${details.inquiryReason}\n\n` +
-          `фотоматериалы:\n${details.photoMaterials}\n\n` +
-          `характеристика линии (магистральная линия/вводной провод в дом):\n${details.lineCharacteristics}\n\n`
+          // `фотоматериалы:\n${details.photoMaterials}\n\n` +
+          `характеристика линии (магистральная линия/вводной провод в дом):\n${details.lineCharacteristics}\n\n`;
         return malfunctionDetails;
       case "transferoftheelectricgrid":
         return (
@@ -168,10 +168,14 @@ export default function Modal({ onClose }) {
 
   return (
     <>
-      <div className={style.modalBackground}>
-        <div className={style.modalContent}>
+      <div className={style.modal__feedback__background}>
+        <div className={style.modal__feedback__content}>
           <form onSubmit={handleSubmit}>
-            <select onChange={handleIssueChange} defaultValue="">
+            <select
+              className={style.feedback__select}
+              onChange={handleIssueChange}
+              defaultValue=""
+            >
               <option value="" disabled>
                 Выберите вопрос
               </option>
@@ -199,7 +203,11 @@ export default function Modal({ onClose }) {
             </select>
 
             {selectedIssue === "carElectricChargingStations" && (
-              <select onChange={handleSubIssueChange} defaultValue="">
+              <select
+                className={style.feedback__select}
+                onChange={handleSubIssueChange}
+                defaultValue=""
+              >
                 <option value="" disabled>
                   Выберите подтему
                 </option>
@@ -209,7 +217,11 @@ export default function Modal({ onClose }) {
             )}
 
             {selectedIssue === "malfunctionofpowerlines" && (
-              <select onChange={handleSubIssueChange} defaultValue="">
+              <select
+                className={style.feedback__select}
+                onChange={handleSubIssueChange}
+                defaultValue=""
+              >
                 <option value="" disabled>
                   Выберите подтему
                 </option>
@@ -223,6 +235,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "powerOutage" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -230,6 +243,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -237,6 +251,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -244,6 +259,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="address"
                   placeholder="адрес места инцидента"
@@ -251,6 +267,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setAddress(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="datetime-local"
                   name="incidentDate"
                   placeholder="дата и время инцидента"
@@ -263,6 +280,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "powerQuality" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -270,6 +288,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -277,6 +296,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -284,6 +304,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="deviceLocationAddress"
                   placeholder="адрес нахождения энергопринимающих устройств"
@@ -291,12 +312,14 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setDeviceLocationAddress(e.target.value)}
                 />
                 <textarea
+                  className={style.textarea__feedback}
                   name="inquiryReason"
                   placeholder="причина обращения"
                   value={inquiryReason}
                   onChange={(e) => setInquiryReason(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="claimDateRange"
                   placeholder="дата/период времени претензии"
@@ -310,6 +333,7 @@ export default function Modal({ onClose }) {
               selectedSubIssue && (
                 <>
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="fullName"
                     placeholder="ФИО заявителя"
@@ -317,6 +341,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setFullName(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="email"
                     name="email"
                     placeholder="адрес электронной почты для обратной связи"
@@ -324,6 +349,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="tel"
                     name="phone"
                     placeholder="телефон для обратной связи"
@@ -331,6 +357,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="chargingStationAddress"
                     placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
@@ -339,6 +366,7 @@ export default function Modal({ onClose }) {
                   />
                   {selectedSubIssue === "malfunction" && (
                     <input
+                      className={style.input__feedback}
                       type="text"
                       name="chargingStationId"
                       placeholder="номер ЭЗС"
@@ -352,6 +380,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "electricitymeteringdevices" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -359,6 +388,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -366,6 +396,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -373,6 +404,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="objectLocationAddress"
                   placeholder="адрес нахождения объекта"
@@ -380,6 +412,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setObjectLocationAddress(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="accountNumber"
                   placeholder="номер лицевого счета (при наличии)"
@@ -393,6 +426,7 @@ export default function Modal({ onClose }) {
               selectedSubIssue && (
                 <>
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="fullName"
                     placeholder="ФИО заявителя"
@@ -400,6 +434,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setFullName(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="email"
                     name="email"
                     placeholder="адрес электронной почты для обратной связи"
@@ -407,6 +442,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="tel"
                     name="phone"
                     placeholder="телефон для обратной связи"
@@ -414,6 +450,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="address"
                     placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
@@ -421,6 +458,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="datetime-local"
                     name="incidentDate"
                     placeholder="дата и время инцидента"
@@ -428,20 +466,23 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setIncidentDate(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="inquiryReason"
                     placeholder="причина обращения"
                     value={inquiryReason}
                     onChange={(e) => setInquiryReason(e.target.value)}
                   />
-                  <input
+                  {/* <input
+                    className={style.input__feedback}
                     type="text"
                     name="photoMaterials"
                     placeholder="фотоматериалы"
                     value={photoMaterials}
                     onChange={(e) => setPhotoMaterials(e.target.value)}
-                  />
+                  /> */}
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="lineCharacteristics"
                     placeholder="характеристика линии (магистральная линия/вводной провод в дом)"
@@ -454,6 +495,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "transferoftheelectricgrid" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -461,6 +503,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -468,6 +511,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -475,6 +519,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="objectName"
                   placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
@@ -482,6 +527,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setObjectName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   placeholder="адрес нахождения объекта"
                   name="address"
@@ -489,6 +535,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setAddress(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="technicalSpecs"
                   placeholder="технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность)"
@@ -501,6 +548,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "connectionelectricnetworks" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -508,6 +556,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -515,6 +564,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -522,6 +572,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="applicationOrContractNumber"
                   placeholder="номер заявки/договора (при наличии)"
@@ -536,6 +587,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "additionalservices" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -543,6 +595,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -550,6 +603,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -557,6 +611,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="inquiryReason"
                   placeholder="причина обращения"
@@ -569,6 +624,7 @@ export default function Modal({ onClose }) {
                   оказания услуг Вы можете ознакомиться в разделе «Потребителям»
                   по ссылке:
                   <a
+                    className={style.a__feedback}
                     href=" https://mosoblenergo.ru/additiona/Services"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -579,7 +635,10 @@ export default function Modal({ onClose }) {
                   дополнительную услугу к письму. Если у Вас остались вопросы
                   свяжитесь с нами по тел.: 8 (495) 780-39-62 доб. 3327, доб.
                   1096, или по e-mail:
-                  <a href="mailto:uslugi@mosoblenergo.ru">
+                  <a
+                    className={style.a__feedback}
+                    href="mailto:uslugi@mosoblenergo.ru"
+                  >
                     uslugi@mosoblenergo.ru
                   </a>
                   .
@@ -590,6 +649,7 @@ export default function Modal({ onClose }) {
             {selectedIssue === "other" && (
               <>
                 <input
+                  className={style.input__feedback}
                   type="text"
                   name="fullName"
                   placeholder="ФИО заявителя"
@@ -597,6 +657,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setFullName(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="email"
                   name="email"
                   placeholder="адрес электронной почты для обратной связи"
@@ -604,6 +665,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                  className={style.input__feedback}
                   type="tel"
                   name="phone"
                   placeholder="телефон для обратной связи"
@@ -613,29 +675,32 @@ export default function Modal({ onClose }) {
               </>
             )}
 
-            <label class="checkboxContainer">
-              <input type="checkbox" required />
-              <span class="checkboxText">
+            <label className={style.checkboxContainer__feedback}>
+              <input
+                className={style.input__feedback}
+                type="checkbox"
+                required
+              />
+              <span className={style.checkboxText__feedback}>
                 Отправляя письмо, Вы даете согласие на обработку персональных
                 данных, а также несете ответственность за полноту и
                 достоверность предоставленной информации.
               </span>
             </label>
 
-            <p className={style.disclaimer}>
+            <p className={style.disclaimer__feedback}>
               * При регистрации заявитель должен подтвердить свое согласие на
               обработку персональных данных.
             </p>
-            <p className={style.disclaimer}>
+            <p className={style.disclaimer__feedback}>
               * Федеральный закон Nº59-ФЗ от 02.05.2006 о порядке рассмотрения
               обращений граждан Российской Федерации.
             </p>
-
-            <button style={{marginTop:'5px'}} className="btn__send" type="submit">
+            <button type="submit" className={style.feedback__button}>
               Отправить
             </button>
           </form>
-          <button style={{marginTop:'15px'}} className="btn__close" onClick={onClose}>
+          <button onClick={onClose} className={style.feedback__button}>
             Закрыть
           </button>
         </div>

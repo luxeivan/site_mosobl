@@ -1,4 +1,4 @@
-.modalBackground {
+.modal__feedback__background {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,26 +11,23 @@
   z-index: 1000;
 }
 
-.modalContent {
+.modal__feedback__content {
   padding: 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: "LatoWeb", sans-serif;
-  width: 90%; 
-  max-width: 500px; 
-  overflow-y: auto; 
-  margin: 20px; 
+  width: 90%;
+  max-width: 500px;
+  overflow-y: auto;
+  margin: 20px;
   position: relative;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="datetime-local"],
-textarea,
-select {
-  width: calc(100% - 20px); 
+.textarea__feedback,
+.input__feedback{
+  width: calc(100% - 20px);
+  max-height: 80px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -38,50 +35,84 @@ select {
   font-family: "LatoWeb", sans-serif;
 }
 
-textarea {
+.textarea__feedback {
   height: 150px;
 }
 
-select {
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+
+.feedback__select {
+  width: calc(100% - 20px);
+  padding: 12px 15px; 
+  margin-bottom: 15px;
+  border: 2px solid #ccc; 
+  border-radius: 8px; 
+  font-family: "LatoWeb", sans-serif;
+  cursor: pointer; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff; 
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
   appearance: none;
 }
 
-button {
-  width: auto;
+.feedback__select:hover {
+  border-color: #1d5deb; 
+  background-color: #f0f0f0;
+}
+
+.feedback__button {
+  display: block;
+  width: 100%;
   background: #0d4cd3;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 15px;
+  margin-top: 10px;
   cursor: pointer;
   border-radius: 8px;
   font-family: "LatoWebBold", sans-serif;
   font-size: 16px;
-  display: block; 
-  margin: 10px auto 0;
 }
 
+.checkboxContainer__feedback {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.input__feedback[type="checkbox"] {
+  margin-right: 10px;
+  align-self: start;
+  width: 20px;
+  height: 20px;
+}
+
+.checkboxText__feedback {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  max-width: 90%;
+}
 
 @media (max-width: 768px) {
-  .modalContent {
-    margin: 10px; 
+  .modal__feedback__content {
+    margin: 10px;
     max-width: 90%;
     padding: 10px;
     max-height: 600px;
   }
 
-  .disclaimer,
-  .checkboxText {
+  .disclaimer__feedback,
+  .checkboxText__feedback {
     font-size: 12px;
   }
 
-  .checkboxContainer {
+  .checkboxContainer__feedback {
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
+/* className={style.feedback__button} */
