@@ -7,21 +7,36 @@ import img40991becd6853fa47483520f60d82b38 from "../../img/40991becd6853fa474835
 
 export default function SaleOfItems() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage image={img40991becd6853fa47483520f60d82b38} title={"Реализация товарно-материальных ценностей"} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <TopImage
+        image={img40991becd6853fa47483520f60d82b38}
+        title={"Реализация товарно-материальных ценностей"}
+      />
       <div className="page-grid__content" id="content">
-      <div className="row-docs-age">
-          <a className="doc-line" href={`${addressServer}/uploads/1668d5e383449e6cfd286375cf07e9a6_d4a2bbdb07.pdf?updated_at=2022-11-14T12:03:06.386Z`} download="" target="_blank">
+        <div className="row-docs-age">
+          <a
+            className="doc-line"
+            href={`${addressServer}/uploads/1668d5e383449e6cfd286375cf07e9a6_d4a2bbdb07.pdf?updated_at=2022-11-14T12:03:06.386Z`}
+            download=""
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <div className="doc-line__wrap-icon">
               <img src={pdf} alt="icon xlsx" />
             </div>
             <div className="doc-line__wrap-text">
-              <span className="doc-line__name">Реализация товарно-материальных ценностей</span>
+              <span className="doc-line__name">
+                Реализация товарно-материальных ценностей
+              </span>
               <span className="doc-line__file-info">pdf, 111КБ</span>
             </div>
           </a>
         </div>
-        
       </div>
     </motion.div>
   );

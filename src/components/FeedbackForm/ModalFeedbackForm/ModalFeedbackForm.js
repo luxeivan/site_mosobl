@@ -19,7 +19,7 @@ export default function Modal({ onClose }) {
   const [chargingStationId, setChargingStationId] = useState("");
   const [objectLocationAddress, setObjectLocationAddress] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
-  const [photoMaterials, setPhotoMaterials] = useState("");
+  // const [photoMaterials, setPhotoMaterials] = useState("");
   const [lineCharacteristics, setLineCharacteristics] = useState("");
   const [objectName, setObjectName] = useState("");
   const [technicalSpecs, setTechnicalSpecs] = useState("");
@@ -156,7 +156,7 @@ export default function Modal({ onClose }) {
       objectLocationAddress,
       accountNumber,
       lineCharacteristics,
-      photoMaterials,
+      // photoMaterials,
       objectName,
       technicalSpecs,
       applicationOrContractNumber,
@@ -222,7 +222,7 @@ export default function Modal({ onClose }) {
                 defaultValue=""
               >
                 <option value="" disabled>
-                  Выберите подтему
+                  Выберите вопрос
                 </option>
                 <option value="malfunction">Неисправность ЭЗС</option>
                 <option value="installation">Установка ЭЗС</option>
@@ -238,13 +238,18 @@ export default function Modal({ onClose }) {
                 <option value="" disabled>
                   Выберите подтему
                 </option>
-                <option value="zoneMalfunction">Охранные зоны</option>
-                <option value="pruning">Опиловка</option>
-                <option value="wireBreak">Обрыв проводов</option>
-                <option value="pillarCondition">Состояние опор</option>
+                <option value="transferoftheelectricgrid">
+                  Передача электросетевого хозяйства на баланс электросетевой
+                  организации
+                </option>
+                <option value="connectionelectricnetworks">
+                  Технологическое присоединение к электрическим сетям
+                </option>
+                <option value="additionalservices">
+                  Дополнительные услуги
+                </option>
+                <option value="other">Прочее</option>
               </select>
-            )}
-
             {selectedIssue === "powerOutage" && (
               <>
                 <input
@@ -342,8 +347,8 @@ export default function Modal({ onClose }) {
               </>
             )}
 
-            {selectedIssue === "carElectricChargingStations" &&
-              selectedSubIssue && (
+
+              {selectedIssue === "powerOutage" && (
                 <>
                   <input
                     className={style.input__feedback}
@@ -372,24 +377,152 @@ export default function Modal({ onClose }) {
                   <input
                     className={style.input__feedback}
                     type="text"
-                    name="chargingStationAddress"
-                    placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
-                    value={chargingStationAddress}
-                    onChange={(e) => setChargingStationAddress(e.target.value)}
+                    name="address"
+                    placeholder="адрес места инцидента"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
-                  {selectedSubIssue === "malfunction" && (
-                    <input
-                      className={style.input__feedback}
-                      type="text"
-                      name="chargingStationId"
-                      placeholder="номер ЭЗС"
-                      value={chargingStationId}
-                      onChange={(e) => setChargingStationId(e.target.value)}
-                    />
-                  )}
+                  <input
+                    type="datetime-local"
+                    name="incidentDate"
+                    placeholder="дата и время инцидента"
+                    value={incidentDate}
+                    onChange={(e) => setIncidentDate(e.target.value)}
+                  />
                 </>
               )}
 
+              {selectedIssue === "powerQuality" && (
+                <>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="ФИО заявителя"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="адрес электронной почты для обратной связи"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="телефон для обратной связи"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    name="deviceLocationAddress"
+                    placeholder="адрес нахождения энергопринимающих устройств"
+                    value={deviceLocationAddress}
+                    onChange={(e) => setDeviceLocationAddress(e.target.value)}
+                  />
+                  <textarea
+                    name="inquiryReason"
+                    placeholder="причина обращения"
+                    value={inquiryReason}
+                    onChange={(e) => setInquiryReason(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    name="claimDateRange"
+                    placeholder="дата/период времени претензии"
+                    value={claimDateRange}
+                    onChange={(e) => setClaimDateRange(e.target.value)}
+                  />
+                </>
+              )}
+
+              {selectedIssue === "carElectricChargingStations" &&
+                selectedSubIssue && (
+                  <>
+                    <input
+                      className={style.input__feedback}
+                      type="text"
+                      name="fullName"
+                      placeholder="ФИО заявителя"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="адрес электронной почты для обратной связи"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="телефон для обратной связи"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      name="chargingStationAddress"
+                      placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
+                      value={chargingStationAddress}
+                      onChange={(e) =>
+                        setChargingStationAddress(e.target.value)
+                      }
+                    />
+                    {selectedSubIssue === "malfunction" && (
+                      <input
+                        type="text"
+                        name="chargingStationId"
+                        placeholder="номер ЭЗС"
+                        value={chargingStationId}
+                        onChange={(e) => setChargingStationId(e.target.value)}
+                      />
+                    )}
+                  </>
+                )}
+
+              {selectedIssue === "electricitymeteringdevices" && (
+                <>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="ФИО заявителя"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="адрес электронной почты для обратной связи"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="телефон для обратной связи"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    name="objectLocationAddress"
+                    placeholder="адрес нахождения объекта"
+                    value={objectLocationAddress}
+                    onChange={(e) => setObjectLocationAddress(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    name="accountNumber"
+                    placeholder="номер лицевого счета (при наличии)"
+                    value={accountNumber}
+                    onChange={(e) => setAccountNumber(e.target.value)}
+                  />
+                </>
+              )}
             {selectedIssue === "electricitymeteringdevices" && (
               <>
                 <input
@@ -434,9 +567,7 @@ export default function Modal({ onClose }) {
                 />
               </>
             )}
-
-            {selectedIssue === "malfunctionofpowerlines" &&
-              selectedSubIssue && (
+              {selectedIssue === "transferoftheelectricgrid" && (
                 <>
                   <input
                     className={style.input__feedback}
@@ -465,8 +596,15 @@ export default function Modal({ onClose }) {
                   <input
                     className={style.input__feedback}
                     type="text"
+                    name="objectName"
+                    placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
+                    value={objectName}
+                    onChange={(e) => setObjectName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="адрес нахождения объекта"
                     name="address"
-                    placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -508,7 +646,6 @@ export default function Modal({ onClose }) {
                   </p>
                 </>
               )}
-
             {selectedIssue === "transferoftheelectricgrid" && (
               <>
                 <input
@@ -721,6 +858,7 @@ export default function Modal({ onClose }) {
             Закрыть
           </button> */}
           <div className={style.closeButton} onClick={onClose}>&times;</div>
+
 
         </div>
       </dialog>

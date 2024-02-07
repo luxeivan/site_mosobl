@@ -20,7 +20,7 @@ const iconImageSize = [130 / 4, 221 / 4];
 
 export default function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
-  const [listStation, setListStation] = useState([]);
+  const [setListStation] = useState([]);
   const [listAllStation, setAllListStation] = useState([]);
   const [listAllStationWithStatus, setAllListStationWithStatus] = useState([]);
   const [allStationForListCity, setAllStationForListCity] = useState([]);
@@ -31,27 +31,35 @@ export default function ElectricChargingStations() {
     power22: true,
     unavailable: true,
   });
-  function getStation(page = 1) {
-    axios
-      .get(`${chargingAddressServer}/api/gorodskoj-okrugs?populate=*&pagination[page]=${page}&pagination[pageSize]=100`)
-      .then((res) => {
-        setListStation((prev) => prev.concat(res.data.data));
-        setCopy((prev) => prev.concat(res.data.data));
-        //console.log(res.data)
-        if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
-          getStation(res.data.meta.pagination.page + 1);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // function getStation(page = 1) {
+  //   axios
+  //     .get(
+  //       `${chargingAddressServer}/api/gorodskoj-okrugs?populate=*&pagination[page]=${page}&pagination[pageSize]=100`
+  //     )
+  //     .then((res) => {
+  //       setListStation((prev) => prev.concat(res.data.data));
+  //       setCopy((prev) => prev.concat(res.data.data));
+  //       //console.log(res.data)
+  //       if (
+  //         res.data.meta.pagination.pageCount !== res.data.meta.pagination.page
+  //       ) {
+  //         getStation(res.data.meta.pagination.page + 1);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
   async function getAllStation(page = 1) {
     await axios
-      .get(`${chargingAddressServer}/api/ezses?populate=*&pagination[page]=${page}&pagination[pageSize]=100`)
+      .get(
+        `${chargingAddressServer}/api/ezses?populate=*&pagination[page]=${page}&pagination[pageSize]=100`
+      )
       .then(async (res) => {
         await setAllListStation((prev) => prev.concat(res.data.data));
-        if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
+        if (
+          res.data.meta.pagination.pageCount !== res.data.meta.pagination.page
+        ) {
           await getAllStation(res.data.meta.pagination.page + 1);
         } else {
         }
@@ -95,13 +103,20 @@ export default function ElectricChargingStations() {
       //console.log(res.data)
       const statusArray = listAllStation.map((station) => {
         if (station.attributes.idStation) {
-          const result = res.data.find((plugmeStation) => station.attributes.idStation === plugmeStation.label);
+          const result = res.data.find(
+            (plugmeStation) =>
+              station.attributes.idStation === plugmeStation.label
+          );
           //console.log(station.attributes.idStation)
           if (result) {
             if (!result.connected) {
               return { ...station, statecode: "not available" };
             }
-            return { ...station, statecode: result.statecode, statelabel: result.statelabel };
+            return {
+              ...station,
+              statecode: result.statecode,
+              statelabel: result.statelabel,
+            };
           } else {
             return { ...station, statecode: "available" };
           }
@@ -152,7 +167,11 @@ export default function ElectricChargingStations() {
   const handlerSearch = (event) => {
     let copyObj = JSON.parse(JSON.stringify(copy));
     if (copyObj) {
-      copyObj = copyObj.filter((element, index) => element.attributes.city.toLowerCase().includes(event.target.value.toLowerCase()));
+      copyObj = copyObj.filter((element, index) =>
+        element.attributes.city
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      );
       setListStation(copyObj);
     }
   };
@@ -205,8 +224,10 @@ export default function ElectricChargingStations() {
       <div className="qr-plugme-comp">
         <div className="qr-plugme-comp__text-area">
           <div className="qr-plugme-comp__title-area">
-            <img src={plugme} />
-            <h3 style={{ textTransform: "inherit" }}>PlugMe - зарядные станции</h3>
+            <img src={plugme} alt="текст" />
+            <h3 style={{ textTransform: "inherit" }}>
+              PlugMe - зарядные станции
+            </h3>
           </div>
           <p>Мобильное приложение для управления ЭЗС АО «Мособлэнерго»</p>
 
@@ -219,13 +240,25 @@ export default function ElectricChargingStations() {
         </div>
         <div className="qr-plugme-comp__qr-area">
           <div className="qr-plugme-comp__qr">
-            <a type="button" className="qr-plugme-comp__link" href="https://play.google.com/store/apps/details?id=com.plugme" target="_blank">
+            <a
+              type="button"
+              className="qr-plugme-comp__link"
+              href="https://play.google.com/store/apps/details?id=com.plugme"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <img src={Playmarket} alt="Playmarket" />
             </a>
             <img src={qrPlaymarket} alt="qr" className="qr-plugme-comp__img" />
           </div>
           <div className="qr-plugme-comp__qr">
-            <a type="button" className="qr-plugme-comp__link" href="https://apps.apple.com/ru/app/plugme-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D1%8B%D0%B5-%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D0%B8/id1541521419" target="_blank">
+            <a
+              type="button"
+              className="qr-plugme-comp__link"
+              href="https://apps.apple.com/ru/app/plugme-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D1%8B%D0%B5-%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D0%B8/id1541521419"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <img src={Appstore} alt="Appstore" />
             </a>
             <img src={qrAppstore} alt="qr" className="qr-plugme-comp__img" />
@@ -236,26 +269,82 @@ export default function ElectricChargingStations() {
       {listAllStationWithStatus.length > 0 ? (
         <>
           <h3 style={{ marginBottom: "5px" }}>Отображать на карте:</h3>
-          <div style={{ display: "flex", marginBottom: "-15px", flexWrap: "wrap" }}>
-            <div className="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-              <input className="form-check-input" type="checkbox" onChange={changePower3_5} checked={filter.power3_5} id="power3_5" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
-              <label className="form-check-label" htmlFor="power3_5" style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{ display: "flex", marginBottom: "-15px", flexWrap: "wrap" }}
+          >
+            <div
+              className="form-check"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "20px",
+              }}
+            >
+              <input
+                className="form-check-input"
+                type="checkbox"
+                onChange={changePower3_5}
+                checked={filter.power3_5}
+                id="power3_5"
+                style={{ width: "20px", height: "20px", marginRight: "10px" }}
+              />
+              <label
+                className="form-check-label"
+                htmlFor="power3_5"
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <h4 style={{ marginBottom: "0" }}>- 3,5 кВт: </h4>
-                <img style={{ width: `25px` }} src={chargingIco} />
+                <img style={{ width: `25px` }} src={chargingIco} alt="текст"/>
               </label>
             </div>
-            <div className="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-              <input className="form-check-input" type="checkbox" onChange={changePower22} checked={filter.power22} id="power22" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
-              <label className="form-check-label" htmlFor="power22" style={{ display: "flex", alignItems: "center" }}>
+            <div
+              className="form-check"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "20px",
+              }}
+            >
+              <input
+                className="form-check-input"
+                type="checkbox"
+                onChange={changePower22}
+                checked={filter.power22}
+                id="power22"
+                style={{ width: "20px", height: "20px", marginRight: "10px" }}
+              />
+              <label
+                className="form-check-label"
+                htmlFor="power22"
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <h4 style={{ marginBottom: "0" }}>- 22 кВт: </h4>
-                <img style={{ width: `25px` }} src={chargingIco22} />
+                <img style={{ width: `25px` }} src={chargingIco22} alt="текст"/>
               </label>
             </div>
-            <div className="form-check" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
-              <input className="form-check-input" type="checkbox" onChange={changeUnavailable} checked={filter.unavailable} id="unavailable" style={{ width: "20px", height: "20px", marginRight: "10px" }} />
-              <label className="form-check-label" htmlFor="unavailable" style={{ display: "flex", alignItems: "center" }}>
+            <div
+              className="form-check"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "20px",
+              }}
+            >
+              <input
+                className="form-check-input"
+                type="checkbox"
+                onChange={changeUnavailable}
+                checked={filter.unavailable}
+                id="unavailable"
+                style={{ width: "20px", height: "20px", marginRight: "10px" }}
+              />
+              <label
+                className="form-check-label"
+                htmlFor="unavailable"
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <h4 style={{ marginBottom: "0" }}>- временно недоступна: </h4>
-                <img style={{ width: `25px` }} src={chargingIco_dis} />
+                <img style={{ width: `25px` }} src={chargingIco_dis} alt="текст"/>
               </label>
             </div>
           </div>
@@ -272,10 +361,14 @@ export default function ElectricChargingStations() {
               <ZoomControl />
               {listAllStationWithStatus
                 .filter((item) => {
-                  if (item.statecode != "available" && !filter.unavailable) return false;
-                  if (item.attributes.disabled && !filter.unavailable) return false;
-                  if (item.attributes.power == 22 && filter.power22) return true;
-                  if (item.attributes.power == 3.5 && filter.power3_5) return true;
+                  if (item.statecode != "available" && !filter.unavailable)
+                    return false;
+                  if (item.attributes.disabled && !filter.unavailable)
+                    return false;
+                  if (item.attributes.power == 22 && filter.power22)
+                    return true;
+                  if (item.attributes.power == 3.5 && filter.power3_5)
+                    return true;
                   return false;
                 })
                 .map((item, index) => {
@@ -288,19 +381,53 @@ export default function ElectricChargingStations() {
                       key={index}
                       geometry={{
                         type: "Point",
-                        coordinates: [item.attributes.latitude, item.attributes.longitude],
+                        coordinates: [
+                          item.attributes.latitude,
+                          item.attributes.longitude,
+                        ],
                       }}
                       properties={{
                         balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${item.attributes.address}<br>
-                                                            <b>Мощность:</b> ${item.attributes.power} кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${item.attributes.connector_type}<br>
-                                                            <b>Режим зарядки:</b> ${item.attributes.charging_mode}<br>
-                                                            <b>Способ монтажа:</b> ${item.attributes.method_of_installation}<br>
-                                                            <b>Мобильное приложение:</b> ${item.attributes.mobile_applications}<br>
-                                                            <b>Тех. поддержка:</b> ${item.attributes.support_phone_number}<br>
-                                                            <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
-                                                            ${item.attributes.disabled || item.statecode != "available" ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
+                                                            <b>Адрес:</b> ${
+                                                              item.attributes
+                                                                .address
+                                                            }<br>
+                                                            <b>Мощность:</b> ${
+                                                              item.attributes
+                                                                .power
+                                                            } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${
+                                                              item.attributes
+                                                                .connector_type
+                                                            }<br>
+                                                            <b>Режим зарядки:</b> ${
+                                                              item.attributes
+                                                                .charging_mode
+                                                            }<br>
+                                                            <b>Способ монтажа:</b> ${
+                                                              item.attributes
+                                                                .method_of_installation
+                                                            }<br>
+                                                            <b>Мобильное приложение:</b> ${
+                                                              item.attributes
+                                                                .mobile_applications
+                                                            }<br>
+                                                            <b>Тех. поддержка:</b> ${
+                                                              item.attributes
+                                                                .support_phone_number
+                                                            }<br>
+                                                            <b>Режим работы:</b> ${
+                                                              item.attributes
+                                                                .operating_mode
+                                                            }<br>
+                                                            ${
+                                                              item.attributes
+                                                                .disabled ||
+                                                              item.statecode !=
+                                                                "available"
+                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                                                                : ""
+                                                            }
                                                             </div>`,
                         //iconContent: "X",
                         //hintContent: "Ну давай уже тащи",
@@ -312,7 +439,15 @@ export default function ElectricChargingStations() {
                         iconLayout: "default#image",
                         // Своё изображение иконки метки.
                         iconImageHref:
-                          item.attributes.power == 22 ? (item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco22) : item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco,
+                          item.attributes.power == 22
+                            ? item.attributes.disabled ||
+                              item.statecode != "available"
+                              ? chargingIco_dis
+                              : chargingIco22
+                            : item.attributes.disabled ||
+                              item.statecode != "available"
+                            ? chargingIco_dis
+                            : chargingIco,
                         // Размеры метки.
                         iconImageSize,
                         // Смещение левого верхнего угла иконки относительно
@@ -334,7 +469,13 @@ export default function ElectricChargingStations() {
       ) : (
         false
       )}
-      <input type="text" className="informationDisclosures_search" placeholder="Поиск по городу" onChange={handlerSearch} onClick={handlerSearch} />
+      <input
+        type="text"
+        className="informationDisclosures_search"
+        placeholder="Поиск по городу"
+        onChange={handlerSearch}
+        onClick={handlerSearch}
+      />
       <button className="button__clear" onClick={handlerClear}>
         Очистить
       </button>
@@ -348,9 +489,13 @@ export default function ElectricChargingStations() {
               className="accordion-row__up"
               onClick={(event) => {
                 document.querySelectorAll(".accordion-row");
-                event.currentTarget.closest(".accordion-row").classList.toggle("open-accordion");
+                event.currentTarget
+                  .closest(".accordion-row")
+                  .classList.toggle("open-accordion");
                 event.currentTarget.classList.toggle("active");
-                const drop = event.currentTarget.closest(".accordion-row").querySelector(".accordion-row__drop-down");
+                const drop = event.currentTarget
+                  .closest(".accordion-row")
+                  .querySelector(".accordion-row__drop-down");
                 if (drop.style.maxHeight == "") {
                   drop.style.maxHeight = `${drop.scrollHeight + 1200}px`;
                 } else {
@@ -383,15 +528,46 @@ export default function ElectricChargingStations() {
                         <tr key={index}>
                           <td>{item.attributes.address}</td>
                           <td>
-                            {item.attributes.latitude} {item.attributes.longitude}
+                            {item.attributes.latitude}{" "}
+                            {item.attributes.longitude}
                           </td>
-                          <td style={item.attributes.power == 22 ? { backgroundColor: "rgba(0,0,255,1)", color: "#fff", textAlign: "center" } : { backgroundColor: "rgba(0,255,0,1)", color: "#000", textAlign: "center" }}>{item.attributes.power}</td>
+                          <td
+                            style={
+                              item.attributes.power == 22
+                                ? {
+                                    backgroundColor: "rgba(0,0,255,1)",
+                                    color: "#fff",
+                                    textAlign: "center",
+                                  }
+                                : {
+                                    backgroundColor: "rgba(0,255,0,1)",
+                                    color: "#000",
+                                    textAlign: "center",
+                                  }
+                            }
+                          >
+                            {item.attributes.power}
+                          </td>
                           <td>{item.attributes.connector_type}</td>
                           <td>{item.attributes.charging_mode}</td>
                           <td>{item.attributes.method_of_installation}</td>
                           <td>{item.attributes.number_of_connectors}</td>
-                          <td style={item.attributes.disabled || item.statecode != "available" ? { backgroundColor: "rgba(255,0,0,1)", color: "#fff", textAlign: "center"  } : {textAlign: "center" }}>
-                            {item.attributes.disabled || item.statecode != "available" ? "Временно недоступна" : "Доступна"}
+                          <td
+                            style={
+                              item.attributes.disabled ||
+                              item.statecode != "available"
+                                ? {
+                                    backgroundColor: "rgba(255,0,0,1)",
+                                    color: "#fff",
+                                    textAlign: "center",
+                                  }
+                                : { textAlign: "center" }
+                            }
+                          >
+                            {item.attributes.disabled ||
+                            item.statecode != "available"
+                              ? "Временно недоступна"
+                              : "Доступна"}
                           </td>
                         </tr>
                       ))}
@@ -410,7 +586,9 @@ export default function ElectricChargingStations() {
                       }
                     }}
                   >
-                    {currentOpenRow === index ? "Скрыть карту" : "Показать на карте"}
+                    {currentOpenRow === index
+                      ? "Скрыть карту"
+                      : "Показать на карте"}
                   </button>
                 </div>
                 {currentOpenRow === index && (
@@ -418,12 +596,18 @@ export default function ElectricChargingStations() {
                     <YMaps>
                       <Map
                         state={{
-                          center: [item.ezs[0].attributes.latitude, item.ezs[0].attributes.longitude],
+                          center: [
+                            item.ezs[0].attributes.latitude,
+                            item.ezs[0].attributes.longitude,
+                          ],
                           zoom: 11,
                           behaviors: ["disable('scrollZoom')", "drag"],
                         }}
                         className="yandex-map"
-                        modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+                        modules={[
+                          "geoObject.addon.balloon",
+                          "geoObject.addon.hint",
+                        ]}
                       >
                         <ZoomControl />
                         {item.ezs.map((item, index) => {
@@ -432,18 +616,49 @@ export default function ElectricChargingStations() {
                               key={index}
                               geometry={{
                                 type: "Point",
-                                coordinates: [item.attributes.latitude, item.attributes.longitude],
+                                coordinates: [
+                                  item.attributes.latitude,
+                                  item.attributes.longitude,
+                                ],
                               }}
                               properties={{
                                 balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${item.attributes.address}<br>
-                                                            <b>Мощность:</b> ${item.attributes.power} кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${item.attributes.connector_type}<br>
-                                                            <b>Режим зарядки:</b> ${item.attributes.charging_mode}<br>
-                                                            <b>Мобильное приложение:</b> ${item.attributes.mobile_applications}<br>
-                                                            <b>Тех. поддержка:</b> ${item.attributes.support_phone_number}<br>
-                                                            <b>Режим работы:</b> ${item.attributes.operating_mode}<br>
-                                                            ${item.attributes.disabled || item.statecode != "available" ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>" : ""}
+                                                            <b>Адрес:</b> ${
+                                                              item.attributes
+                                                                .address
+                                                            }<br>
+                                                            <b>Мощность:</b> ${
+                                                              item.attributes
+                                                                .power
+                                                            } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${
+                                                              item.attributes
+                                                                .connector_type
+                                                            }<br>
+                                                            <b>Режим зарядки:</b> ${
+                                                              item.attributes
+                                                                .charging_mode
+                                                            }<br>
+                                                            <b>Мобильное приложение:</b> ${
+                                                              item.attributes
+                                                                .mobile_applications
+                                                            }<br>
+                                                            <b>Тех. поддержка:</b> ${
+                                                              item.attributes
+                                                                .support_phone_number
+                                                            }<br>
+                                                            <b>Режим работы:</b> ${
+                                                              item.attributes
+                                                                .operating_mode
+                                                            }<br>
+                                                            ${
+                                                              item.attributes
+                                                                .disabled ||
+                                                              item.statecode !=
+                                                                "available"
+                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                                                                : ""
+                                                            }
                                                             </div>`,
                                 //iconContent: "X",
                                 //hintContent: "Ну давай уже тащи",
@@ -454,7 +669,16 @@ export default function ElectricChargingStations() {
                               options={{
                                 iconLayout: "default#image",
                                 // Своё изображение иконки метки.
-                                iconImageHref: item.attributes.power == 22 ? (item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco22) : item.attributes.disabled || item.statecode != "available" ? chargingIco_dis : chargingIco,
+                                iconImageHref:
+                                  item.attributes.power == 22
+                                    ? item.attributes.disabled ||
+                                      item.statecode != "available"
+                                      ? chargingIco_dis
+                                      : chargingIco22
+                                    : item.attributes.disabled ||
+                                      item.statecode != "available"
+                                    ? chargingIco_dis
+                                    : chargingIco,
                                 // Размеры метки.
                                 iconImageSize,
                                 // Смещение левого верхнего угла иконки относительно
@@ -479,7 +703,12 @@ export default function ElectricChargingStations() {
           </div>
         );
       })}
-      <button className="planned-notification__link" onClick={getXlsxFile} disabled={loadingAllStation} style={{ display: "block", width: "300px", margin: "30px auto" }}>
+      <button
+        className="planned-notification__link"
+        onClick={getXlsxFile}
+        disabled={loadingAllStation}
+        style={{ display: "block", width: "300px", margin: "30px auto" }}
+      >
         {!loadingAllStation ? "Скачать полный список ЭЗС" : "Загрузка..."}
       </button>
     </>

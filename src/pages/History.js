@@ -14,13 +14,24 @@ const mission = [
 
 export default function History() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage image={img368a30788385c0bb5f5fef6f72128109} title={"История компании"} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <TopImage
+        image={img368a30788385c0bb5f5fef6f72128109}
+        title={"История компании"}
+      />
       <div className="page-grid__content" id="content">
         <div className="text-area">
           <p>
-            "Энергия Подмосковья!" — именно под таким девизом сегодня работает АО «Мособлэнерго». Компания была создана на основании постановления Правительства Московской области от 19.07.2005 года № 456/26 «Об участии Московской области в создании
-            открытого акционерного общества «Московская областная энергосетевая компания».
+            "Энергия Подмосковья!" — именно под таким девизом сегодня работает
+            АО «Мособлэнерго». Компания была создана на основании постановления
+            Правительства Московской области от 19.07.2005 года № 456/26 «Об
+            участии Московской области в создании открытого акционерного
+            общества «Московская областная энергосетевая компания».
           </p>
           <p className="text-md">Миссия АО «Мособлэнерго»:</p>
           <ul>
@@ -36,7 +47,7 @@ export default function History() {
         </div>
         <br />{" "}
         <div className="row-docs-age">
-          {/* <a className="doc-line" href={`${addressServer}/uploads/1802a5ad2a3baee81867584923b11e76_compressed_ef73450427.pdf?updated_at=2022-10-28T09:11:34.677Z`} download="" target="_blank">
+          {/* <a className="doc-line" href={`${addressServer}/uploads/1802a5ad2a3baee81867584923b11e76_compressed_ef73450427.pdf?updated_at=2022-10-28T09:11:34.677Z`} download="" rel="noopener noreferrer" target="_blank" >
           <div className="doc-line__wrap-icon">
             <img src={pdf} alt="icon pdf" />
           </div>

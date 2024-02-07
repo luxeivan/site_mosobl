@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useEffect, useState } from "react";
 
 import { addressServer } from "../../config";
 import pdf from "../../img/pdf.svg";
@@ -13,11 +13,11 @@ const type = {
   docx,
   rar,
   xls,
-  rtf
+  rtf,
 };
 
 export default function SPMain() {
-    const [pasports, setPasports] = useState([]);
+  const [pasports, setPasports] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -37,27 +37,36 @@ export default function SPMain() {
   }, []);
   return (
     <div className="page-grid__content">
-        <h3 className="row-docs-age__caption line-bottom">Паспорта услуг</h3>
-    <ul>
-      {pasports &&
-        pasports.attributes &&
-        pasports.attributes.files.data
-          .map((item, index) => (
+      <h3 className="row-docs-age__caption line-bottom">Паспорта услуг</h3>
+      <ul>
+        {pasports &&
+          pasports.attributes &&
+          pasports.attributes.files.data.map((item, index) => (
             <li key={index} className="page-grid__content__li">
-              <a className="doc-line" href={`${addressServer}${item.attributes.url}`} download="" target="_blank">
+              <a
+                className="doc-line"
+                href={`${addressServer}${item.attributes.url}`}
+                download=""
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <div className="doc-line__wrap-icon">
-                  <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
+                  <img
+                    src={type[item.attributes.ext.slice(1)]}
+                    alt={`icon ${item.attributes.ext.slice(1)}`}
+                  />
                 </div>
                 <div className="doc-line__wrap-text">
                   <span className="doc-line__name">{item.attributes.name}</span>
                   <span className="doc-line__file-info">
-                    {item.attributes.ext.slice(1)} {Math.round(item.attributes.size)}kb
+                    {item.attributes.ext.slice(1)}{" "}
+                    {Math.round(item.attributes.size)}kb
                   </span>
                 </div>
               </a>
             </li>
           ))}
-    </ul>
-  </div>
-  )
+      </ul>
+    </div>
+  );
 }

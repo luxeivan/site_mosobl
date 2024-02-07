@@ -16,7 +16,7 @@ const type = {
   docx,
   rar,
   xls,
-  rtf
+  rtf,
 };
 
 export default function RegulatoryLegalActs() {
@@ -40,27 +40,50 @@ export default function RegulatoryLegalActs() {
   }, []);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-      <TopImage image={img0ee8b84173f27d6237b20317168e863e} title={"Нормативные правовые акты"} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <TopImage
+        image={img0ee8b84173f27d6237b20317168e863e}
+        title={"Нормативные правовые акты"}
+      />
       <div className="page-grid__content">
         <ul>
           {acts &&
             acts.attributes &&
             acts.attributes.files.data
               .sort((a, b) => {
-                return parseInt(a.attributes.name, 10) - parseInt(b.attributes.name, 10);
+                return (
+                  parseInt(a.attributes.name, 10) -
+                  parseInt(b.attributes.name, 10)
+                );
               })
-              
+
               .map((item, index) => (
                 <li key={index} className="page-grid__content__li">
-                  <a className="doc-line" href={`${addressServer}${item.attributes.url}`} download="" target="_blank">
+                  <a
+                    className="doc-line"
+                    href={`${addressServer}${item.attributes.url}`}
+                    download=""
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <div className="doc-line__wrap-icon">
-                      <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
+                      <img
+                        src={type[item.attributes.ext.slice(1)]}
+                        alt={`icon ${item.attributes.ext.slice(1)}`}
+                      />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">{item.attributes.name}</span>
+                      <span className="doc-line__name">
+                        {item.attributes.name}
+                      </span>
                       <span className="doc-line__file-info">
-                        {item.attributes.ext.slice(1)} {Math.round(item.attributes.size)}kb
+                        {item.attributes.ext.slice(1)}{" "}
+                        {Math.round(item.attributes.size)}kb
                       </span>
                     </div>
                   </a>

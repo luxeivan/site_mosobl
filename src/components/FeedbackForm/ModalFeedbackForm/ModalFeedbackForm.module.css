@@ -80,7 +80,6 @@
   font-family: "LatoWebBold", sans-serif;
   font-size: 16px;
 }
-
 .checkboxContainer__feedback {
   display: flex;
   align-items: flex-start;
@@ -128,6 +127,11 @@
   .checkboxContainer__feedback {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .photoInstruction {
+    font-size: 14px; 
+    padding: 0 10px;
   }
 }
 
