@@ -19,7 +19,7 @@ export default function Modal({ onClose }) {
   const [chargingStationId, setChargingStationId] = useState("");
   const [objectLocationAddress, setObjectLocationAddress] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
-  // const [photoMaterials, setPhotoMaterials] = useState("");
+  const [photoMaterials, setPhotoMaterials] = useState("");
   const [lineCharacteristics, setLineCharacteristics] = useState("");
   const [objectName, setObjectName] = useState("");
   const [technicalSpecs, setTechnicalSpecs] = useState("");
@@ -156,7 +156,7 @@ export default function Modal({ onClose }) {
       objectLocationAddress,
       accountNumber,
       lineCharacteristics,
-      // photoMaterials,
+      photoMaterials,
       objectName,
       technicalSpecs,
       applicationOrContractNumber,
@@ -222,7 +222,7 @@ export default function Modal({ onClose }) {
                 defaultValue=""
               >
                 <option value="" disabled>
-                  Выберите вопрос
+                  Выберите подтему
                 </option>
                 <option value="malfunction">Неисправность ЭЗС</option>
                 <option value="installation">Установка ЭЗС</option>
@@ -238,26 +238,13 @@ export default function Modal({ onClose }) {
                 <option value="" disabled>
                   Выберите подтему
                 </option>
-                <option value="electricitymeteringdevices">
-                  Приборы учета электроэнергии (в т. ч. в
-                  садоводческих/огороднических некоммерческих товариществах)
-                </option>
-                <option value="malfunctionofpowerlines">
-                  Неисправности линий электропередач
-                </option>
-                <option value="transferoftheelectricgrid">
-                  Передача электросетевого хозяйства на баланс электросетевой
-                  организации
-                </option>
-                <option value="connectionelectricnetworks">
-                  Технологическое присоединение к электрическим сетям
-                </option>
-                <option value="additionalservices">
-                  Дополнительные услуги
-                </option>
-                <option value="other">Прочее</option>
+                <option value="zoneMalfunction">Охранные зоны</option>
+                <option value="pruning">Опиловка</option>
+                <option value="wireBreak">Обрыв проводов</option>
+                <option value="pillarCondition">Состояние опор</option>
               </select>
             )}
+
             {selectedIssue === "powerOutage" && (
               <>
                 <input
@@ -448,7 +435,8 @@ export default function Modal({ onClose }) {
               </>
             )}
 
-              {selectedIssue === "powerOutage" && (
+            {selectedIssue === "malfunctionofpowerlines" &&
+              selectedSubIssue && (
                 <>
                   <input
                     className={style.input__feedback}
@@ -478,7 +466,7 @@ export default function Modal({ onClose }) {
                     className={style.input__feedback}
                     type="text"
                     name="address"
-                    placeholder="адрес места инцидента"
+                    placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -490,41 +478,9 @@ export default function Modal({ onClose }) {
                     value={incidentDate}
                     onChange={(e) => setIncidentDate(e.target.value)}
                   />
-                </>
-              )}
-
-              {selectedIssue === "powerQuality" && (
-                <>
                   <input
                     className={style.input__feedback}
                     type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="deviceLocationAddress"
-                    placeholder="адрес нахождения энергопринимающих устройств"
-                    value={deviceLocationAddress}
-                    onChange={(e) => setDeviceLocationAddress(e.target.value)}
-                  />
-                  <textarea
                     name="inquiryReason"
                     placeholder="причина обращения"
                     value={inquiryReason}
