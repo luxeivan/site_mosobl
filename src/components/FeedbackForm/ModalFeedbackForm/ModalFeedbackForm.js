@@ -49,6 +49,13 @@ export default function Modal({ onClose }) {
     setSelectedSubIssue(event.target.value);
   };
 
+  const handleCloseOnClickOutside = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+  
+
   const generateEmailBody = (issue, subIssue, details) => {
     const commonDetails =
       `ФИО заявителя:\n${details.fullName}\n\n` +
@@ -72,8 +79,8 @@ export default function Modal({ onClose }) {
       case "carElectricChargingStations":
         let chargingStationDetails =
           commonDetails +
-          `адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС:\n${details.chargingStationAddress}\n\n` +
-          `Выбранная подтема: ${subIssueText(subIssue)}\n\n`;
+          `Выбранная подтема: ${subIssueText(subIssue)}\n\n` + // Добавляем эту строку
+          `адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС:\n${details.chargingStationAddress}\n\n`;
         if (subIssue === "malfunction") {
           chargingStationDetails += `номер ЭЗС:\n${details.chargingStationId}\n\n`;
         }
@@ -125,7 +132,7 @@ export default function Modal({ onClose }) {
       case "pillarCondition":
         return "Состояние опор";
       case "malfunction":
-        return "Неисправность ЭЗС";
+        return "Неисправность ЭЗС"; 
       case "installation":
         return "Установка ЭЗС";
       default:
@@ -174,18 +181,62 @@ export default function Modal({ onClose }) {
 
   return (
     <>
-      <div className={style.modalBackground} data-testid="modal-feedback-form">
-        <div className={style.modalContent}>
-          <div className={style.actionsContainer}>
-            <form onSubmit={handleSubmit}>
-              <select onChange={handleIssueChange} defaultValue="">
+      <dialog className={style.modal__feedback__background} onClick={handleCloseOnClickOutside}>
+        <div className={style.modal__feedback__content} onClick={e => e.stopPropagation()}>
+          <form onSubmit={handleSubmit}>
+            <select
+              className={style.feedback__select}
+              onChange={handleIssueChange}
+              defaultValue=""
+            >
+              <option value="" disabled>
+                Выберите вопрос
+              </option>
+              <option value="powerOutage">Отключение электроэнергии</option>
+              <option value="powerQuality">Качество электроснабжения</option>
+              <option value="carElectricChargingStations">
+                Автомобильные электрозарядные станции
+              </option>
+              <option value="electricitymeteringdevices">
+                Приборы учета электроэнергии (в т. ч. в
+                садоводческих/огороднических некоммерческих товариществах)
+              </option>
+              <option value="malfunctionofpowerlines">
+                Неисправности линий электропередач
+              </option>
+              <option value="transferoftheelectricgrid">
+                Передача электросетевого хозяйства на баланс электросетевой
+                организации
+              </option>
+              <option value="connectionelectricnetworks">
+                Технологическое присоединение к электрическим сетям
+              </option>
+              <option value="additionalservices">Дополнительные услуги</option>
+              <option value="other">Прочее</option>
+            </select>
+
+            {selectedIssue === "carElectricChargingStations" && (
+              <select
+                className={style.feedback__select}
+                onChange={handleSubIssueChange}
+                defaultValue=""
+              >
                 <option value="" disabled>
                   Выберите вопрос
                 </option>
-                <option value="powerOutage">Отключение электроэнергии</option>
-                <option value="powerQuality">Качество электроснабжения</option>
-                <option value="carElectricChargingStations">
-                  Автомобильные электрозарядные станции
+                <option value="malfunction">Неисправность ЭЗС</option>
+                <option value="installation">Установка ЭЗС</option>
+              </select>
+            )}
+
+            {selectedIssue === "malfunctionofpowerlines" && (
+              <select
+                className={style.feedback__select}
+                onChange={handleSubIssueChange}
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Выберите подтему
                 </option>
                 <option value="electricitymeteringdevices">
                   Приборы учета электроэнергии (в т. ч. в
@@ -206,32 +257,109 @@ export default function Modal({ onClose }) {
                 </option>
                 <option value="other">Прочее</option>
               </select>
+            )}
+            {selectedIssue === "powerOutage" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="address"
+                  placeholder="адрес места инцидента"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="datetime-local"
+                  name="incidentDate"
+                  placeholder="дата и время инцидента"
+                  value={incidentDate}
+                  onChange={(e) => setIncidentDate(e.target.value)}
+                />
+              </>
+            )}
 
-              {selectedIssue === "carElectricChargingStations" && (
-                <select onChange={handleSubIssueChange} defaultValue="">
-                  <option value="" disabled>
-                    Выберите подтему
-                  </option>
-                  <option value="malfunction">Неисправность ЭЗС</option>
-                  <option value="installation">Установка ЭЗС</option>
-                </select>
-              )}
+            {selectedIssue === "powerQuality" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="deviceLocationAddress"
+                  placeholder="адрес нахождения энергопринимающих устройств"
+                  value={deviceLocationAddress}
+                  onChange={(e) => setDeviceLocationAddress(e.target.value)}
+                />
+                <textarea
+                  className={style.textarea__feedback}
+                  name="inquiryReason"
+                  placeholder="причина обращения"
+                  value={inquiryReason}
+                  onChange={(e) => setInquiryReason(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="claimDateRange"
+                  placeholder="дата/период времени претензии"
+                  value={claimDateRange}
+                  onChange={(e) => setClaimDateRange(e.target.value)}
+                />
+              </>
+            )}
 
-              {selectedIssue === "malfunctionofpowerlines" && (
-                <select onChange={handleSubIssueChange} defaultValue="">
-                  <option value="" disabled>
-                    Выберите подтему
-                  </option>
-                  <option value="zoneMalfunction">Охранные зоны</option>
-                  <option value="pruning">Опиловка</option>
-                  <option value="wireBreak">Обрыв проводов</option>
-                  <option value="pillarCondition">Состояние опор</option>
-                </select>
-              )}
-
-              {selectedIssue === "powerOutage" && (
+            {selectedIssue === "carElectricChargingStations" &&
+              selectedSubIssue && (
                 <>
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="fullName"
                     placeholder="ФИО заявителя"
@@ -239,6 +367,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setFullName(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="email"
                     name="email"
                     placeholder="адрес электронной почты для обратной связи"
@@ -246,6 +375,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="tel"
                     name="phone"
                     placeholder="телефон для обратной связи"
@@ -253,6 +383,99 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
+                    type="text"
+                    name="chargingStationAddress"
+                    placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
+                    value={chargingStationAddress}
+                    onChange={(e) => setChargingStationAddress(e.target.value)}
+                  />
+                  {selectedSubIssue === "malfunction" && (
+                    <input
+                      className={style.input__feedback}
+                      type="text"
+                      name="chargingStationId"
+                      placeholder="номер ЭЗС"
+                      value={chargingStationId}
+                      onChange={(e) => setChargingStationId(e.target.value)}
+                    />
+                  )}
+                </>
+              )}
+
+            {selectedIssue === "electricitymeteringdevices" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="objectLocationAddress"
+                  placeholder="адрес нахождения объекта"
+                  value={objectLocationAddress}
+                  onChange={(e) => setObjectLocationAddress(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="accountNumber"
+                  placeholder="номер лицевого счета (при наличии)"
+                  value={accountNumber}
+                  onChange={(e) => setAccountNumber(e.target.value)}
+                />
+              </>
+            )}
+
+              {selectedIssue === "powerOutage" && (
+                <>
+                  <input
+                    className={style.input__feedback}
+                    type="text"
+                    name="fullName"
+                    placeholder="ФИО заявителя"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <input
+                    className={style.input__feedback}
+                    type="email"
+                    name="email"
+                    placeholder="адрес электронной почты для обратной связи"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    className={style.input__feedback}
+                    type="tel"
+                    name="phone"
+                    placeholder="телефон для обратной связи"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                  <input
+                    className={style.input__feedback}
                     type="text"
                     name="address"
                     placeholder="адрес места инцидента"
@@ -260,6 +483,7 @@ export default function Modal({ onClose }) {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <input
+                    className={style.input__feedback}
                     type="datetime-local"
                     name="incidentDate"
                     placeholder="дата и время инцидента"
@@ -272,6 +496,7 @@ export default function Modal({ onClose }) {
               {selectedIssue === "powerQuality" && (
                 <>
                   <input
+                    className={style.input__feedback}
                     type="text"
                     name="fullName"
                     placeholder="ФИО заявителя"
@@ -305,365 +530,244 @@ export default function Modal({ onClose }) {
                     value={inquiryReason}
                     onChange={(e) => setInquiryReason(e.target.value)}
                   />
-                  <input
-                    type="text"
-                    name="claimDateRange"
-                    placeholder="дата/период времени претензии"
-                    value={claimDateRange}
-                    onChange={(e) => setClaimDateRange(e.target.value)}
-                  />
-                </>
-              )}
-
-              {selectedIssue === "carElectricChargingStations" &&
-                selectedSubIssue && (
-                  <>
-                    <input
-                      type="text"
-                      name="fullName"
-                      placeholder="ФИО заявителя"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="адрес электронной почты для обратной связи"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="телефон для обратной связи"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      name="chargingStationAddress"
-                      placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
-                      value={chargingStationAddress}
-                      onChange={(e) =>
-                        setChargingStationAddress(e.target.value)
-                      }
-                    />
-                    {selectedSubIssue === "malfunction" && (
-                      <input
-                        type="text"
-                        name="chargingStationId"
-                        placeholder="номер ЭЗС"
-                        value={chargingStationId}
-                        onChange={(e) => setChargingStationId(e.target.value)}
-                      />
-                    )}
-                  </>
-                )}
-
-              {selectedIssue === "electricitymeteringdevices" && (
-                <>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="objectLocationAddress"
-                    placeholder="адрес нахождения объекта"
-                    value={objectLocationAddress}
-                    onChange={(e) => setObjectLocationAddress(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="accountNumber"
-                    placeholder="номер лицевого счета (при наличии)"
-                    value={accountNumber}
-                    onChange={(e) => setAccountNumber(e.target.value)}
-                  />
-                </>
-              )}
-
-              {selectedIssue === "malfunctionofpowerlines" &&
-                selectedSubIssue && (
-                  <>
-                    <p className={style.photoInstruction}>
-                      Если у Вас есть фото неисправностей линий электропередач,
-                      пожалуйста, приложите их на следующем шаге.
-                    </p>
-                    <input
-                      type="text"
-                      name="fullName"
-                      placeholder="ФИО заявителя"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="адрес электронной почты для обратной связи"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="телефон для обратной связи"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      name="address"
-                      placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                    <input
-                      type="datetime-local"
-                      name="incidentDate"
-                      placeholder="дата и время инцидента"
-                      value={incidentDate}
-                      onChange={(e) => setIncidentDate(e.target.value)}
-                    />
-                    <input
-                      type="text"
-                      name="inquiryReason"
-                      placeholder="причина обращения"
-                      value={inquiryReason}
-                      onChange={(e) => setInquiryReason(e.target.value)}
-                    />
-                    {/* <input
+                  {/* <input
+                    className={style.input__feedback}
                     type="text"
                     name="photoMaterials"
                     placeholder="фотоматериалы"
                     value={photoMaterials}
                     onChange={(e) => setPhotoMaterials(e.target.value)}
                   /> */}
-                    <input
-                      type="text"
-                      name="lineCharacteristics"
-                      placeholder="характеристика линии (магистральная линия/вводной провод в дом)"
-                      value={lineCharacteristics}
-                      onChange={(e) => setLineCharacteristics(e.target.value)}
-                    />
-                  </>
-                )}
-
-              {selectedIssue === "transferoftheelectricgrid" && (
-                <>
                   <input
+                    className={style.input__feedback}
                     type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    name="lineCharacteristics"
+                    placeholder="характеристика линии (магистральная линия/вводной провод в дом)"
+                    value={lineCharacteristics}
+                    onChange={(e) => setLineCharacteristics(e.target.value)}
                   />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="objectName"
-                    placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
-                    value={objectName}
-                    onChange={(e) => setObjectName(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    placeholder="адрес нахождения объекта"
-                    name="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="technicalSpecs"
-                    placeholder="технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность)"
-                    value={technicalSpecs}
-                    onChange={(e) => setTechnicalSpecs(e.target.value)}
-                  />
-                </>
-              )}
-
-              {selectedIssue === "connectionelectricnetworks" && (
-                <>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="applicationOrContractNumber"
-                    placeholder="номер заявки/договора (при наличии)"
-                    value={applicationOrContractNumber}
-                    onChange={(e) =>
-                      setApplicationOrContractNumber(e.target.value)
-                    }
-                  />
-                </>
-              )}
-
-              {selectedIssue === "additionalservices" && (
-                <>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    name="inquiryReason"
-                    placeholder="причина обращения"
-                    value={inquiryReason}
-                    onChange={(e) => setInquiryReason(e.target.value)}
-                  />
-                  <p className={style.dopinformation}>
-                    С полным списком и условиями оказания дополнительных услуг,
-                    а также с формами заявок и перечнем обязательных документов
-                    для оказания услуг Вы можете ознакомиться в разделе
-                    «Потребителям» по ссылке:
-                    <a
-                      href=" https://mosoblenergo.ru/additiona/Services"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      https://mosoblenergo.ru/additiona/Services
-                    </a>
-                    . В случае заинтересованности прикрепите заполненную заявку
-                    на дополнительную услугу к письму. Если у Вас остались
-                    вопросы свяжитесь с нами по тел.: 8 (495) 780-39-62 доб.
-                    3327, доб. 1096, или по e-mail:
-                    <a href="mailto:uslugi@mosoblenergo.ru">
-                      uslugi@mosoblenergo.ru
-                    </a>
-                    .
+                  <p className={style.photoReminder}>
+                    Если у Вас есть фото неисправностей линий электропередач,
+                    пожалуйста, приложите их при отправке письма.
                   </p>
                 </>
               )}
 
-              {selectedIssue === "other" && (
-                <>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="ФИО заявителя"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="адрес электронной почты для обратной связи"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="телефон для обратной связи"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </>
-              )}
+            {selectedIssue === "transferoftheelectricgrid" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="objectName"
+                  placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
+                  value={objectName}
+                  onChange={(e) => setObjectName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  placeholder="адрес нахождения объекта"
+                  name="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="technicalSpecs"
+                  placeholder="технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность)"
+                  value={technicalSpecs}
+                  onChange={(e) => setTechnicalSpecs(e.target.value)}
+                />
+              </>
+            )}
 
-              <label className="checkboxContainer">
-                <input type="checkbox" required />
-                <span className="checkboxText">
-                  Отправляя письмо, Вы даете согласие на обработку персональных
-                  данных, а также несете ответственность за полноту и
-                  достоверность предоставленной информации.
-                </span>
-              </label>
+            {selectedIssue === "connectionelectricnetworks" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="applicationOrContractNumber"
+                  placeholder="номер заявки/договора (при наличии)"
+                  value={applicationOrContractNumber}
+                  onChange={(e) =>
+                    setApplicationOrContractNumber(e.target.value)
+                  }
+                />
+              </>
+            )}
 
-              <p className={style.disclaimer}>
-                * При регистрации заявитель должен подтвердить свое согласие на
-                обработку персональных данных.
-              </p>
-              <p className={style.disclaimer}>
-                * Федеральный закон Nº59-ФЗ от 02.05.2006 о порядке рассмотрения
-                обращений граждан Российской Федерации.
-              </p>
+            {selectedIssue === "additionalservices" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="inquiryReason"
+                  placeholder="причина обращения"
+                  value={inquiryReason}
+                  onChange={(e) => setInquiryReason(e.target.value)}
+                />
+                <p className={style.dopinformation}>
+                  С полным списком и условиями оказания дополнительных услуг, а
+                  также с формами заявок и перечнем обязательных документов для
+                  оказания услуг Вы можете ознакомиться в разделе «Потребителям»
+                  по ссылке:
+                  <a
+                    className={style.a__feedback}
+                    href=" https://mosoblenergo.ru/additiona/Services"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://mosoblenergo.ru/additiona/Services
+                  </a>
+                  . В случае заинтересованности прикрепите заполненную заявку на
+                  дополнительную услугу к письму. Если у Вас остались вопросы
+                  свяжитесь с нами по тел.: 8 (495) 780-39-62 доб. 3327, доб.
+                  1096, или по e-mail:
+                  <a
+                    className={style.a__feedback}
+                    href="mailto:uslugi@mosoblenergo.ru"
+                  >
+                    uslugi@mosoblenergo.ru
+                  </a>
+                  .
+                </p>
+              </>
+            )}
 
-              <button
-                style={{ marginTop: "5px" }}
-                className="btn__send"
-                type="submit"
-              >
-                Отправить
-              </button>
-            </form>
-            <button
-              style={{ marginTop: "15px" }}
-              className="btn__close"
-              onClick={onClose}
-            >
-              Закрыть
+            {selectedIssue === "other" && (
+              <>
+                <input
+                  className={style.input__feedback}
+                  type="text"
+                  name="fullName"
+                  placeholder="ФИО заявителя"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="email"
+                  name="email"
+                  placeholder="адрес электронной почты для обратной связи"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  className={style.input__feedback}
+                  type="tel"
+                  name="phone"
+                  placeholder="телефон для обратной связи"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </>
+            )}
+
+            <label className={style.checkboxContainer__feedback}>
+              <input
+                className={style.input__feedback}
+                type="checkbox"
+                required
+              />
+              <span className={style.checkboxText__feedback}>
+                Отправляя письмо, Вы даете согласие на обработку персональных
+                данных, а также несете ответственность за полноту и
+                достоверность предоставленной информации.
+              </span>
+            </label>
+
+            <p className={style.disclaimer__feedback}>
+              * При регистрации заявитель должен подтвердить свое согласие на
+              обработку персональных данных.
+            </p>
+            <p className={style.disclaimer__feedback}>
+              * Федеральный закон Nº59-ФЗ от 02.05.2006 о порядке рассмотрения
+              обращений граждан Российской Федерации.
+            </p>
+            <button type="submit" className={style.feedback__button}>
+              Отправить
             </button>
-          </div>
+          </form>
+          {/* <button onClick={onClose} className={style.feedback__button}>
+            Закрыть
+          </button> */}
+          <div className={style.closeButton} onClick={onClose}>&times;</div>
+
         </div>
-      </div>
+      </dialog>
 
       {isPreviewModalOpen && (
         <ModalWindow

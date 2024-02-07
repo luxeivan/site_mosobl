@@ -23,4 +23,10 @@
   .btn__feedback__open__form:active {
     background: #2a63ad;
   }
+
+  .no-scroll {
+    overflow: hidden;
+    height: 100%;
+  }
+  
   

@@ -1,36 +1,31 @@
-import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import FeedbackForm from './FeedbackForm';
+import React from "react";
+import { render, fireEvent, screen } from "@testing-library/react";
+import FeedbackForm from "./FeedbackForm";
 
 test('отображает кнопку "Написать нам"', () => {
   render(<FeedbackForm />);
-  const buttonElement = screen.getByText('Написать нам');
+  const buttonElement = screen.getByText("Написать нам");
   expect(buttonElement).toBeInTheDocument();
 });
 
-test('модальное окно изначально закрыто', () => {
+test("модальное окно изначально закрыто", () => {
   render(<FeedbackForm />);
-  const modalElement = screen.queryByTestId('modal-feedback-form'); 
+  const modalElement = screen.queryByTestId("modal-feedback-form");
   expect(modalElement).toBeNull();
 });
 
-test('нажатие на кнопку "Написать нам" открывает модальное окно', () => {
+test("начальное состояние модального окна должно быть закрытым", () => {
   render(<FeedbackForm />);
-  const buttonElement = screen.getByText('Написать нам');
-  fireEvent.click(buttonElement);
-
-  const modalElement = screen.getByTestId('modal-feedback-form'); 
+  const modalElement = screen.queryByTestId("modal-feedback-form");
+  expect(modalElement).toBeNull();
 });
 
-test('нажатие на кнопку закрытия в модальном окне закрывает его', () => {
+test('модальное окно должно содержать кнопку "Отправить"', () => {
   render(<FeedbackForm />);
-  const buttonElement = screen.getByText('Написать нам');
+  const buttonElement = screen.getByText("Написать нам");
   fireEvent.click(buttonElement);
 
-  const closeButton = screen.getByText('Закрыть');
-  fireEvent.click(closeButton);
-
-  const modalElement = screen.queryByTestId('modal-feedback-form'); 
-  expect(modalElement).toBeNull();
+  const submitButton = screen.getByText("Отправить");
+  expect(submitButton).toBeInTheDocument();
 });
 

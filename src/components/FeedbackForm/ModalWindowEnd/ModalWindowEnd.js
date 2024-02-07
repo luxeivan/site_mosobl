@@ -14,21 +14,21 @@ const ModalWindow = ({ title, content, onClose }) => {
   };
 
   return (
-    <div className={style.modalOverlay}>
-      <div className={style.modal}>
+    <div className={style['modal-window__overlay']}>
+      <div className={style['modal-window']}>
         <h3>{title}</h3>
-        <pre className={style.modalContent}>{`Тема: ${title}\n\n${content}`}</pre>
+        <pre className={style['modal-window__content']}>{`Тема: ${title}\n\n${content}`}</pre>
         <hr />
         <p>
           Скопируйте текст данного письма в свой почтовый сервис и направьте на
           адрес mail@mosoblenergo.ru
         </p>
-        <button onClick={copyToClipboard}>Копировать текст письма</button>
-        <button onClick={onClose}>Закрыть</button>
+        <button onClick={copyToClipboard} className={style['modal-window__button']}>Копировать текст письма</button>
+        <button onClick={onClose} className={style['modal-window__button']}>Закрыть</button>
       </div>
     </div>
   );
 };
 
-
 export default ModalWindow;
+
