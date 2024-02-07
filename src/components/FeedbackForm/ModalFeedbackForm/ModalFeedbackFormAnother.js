@@ -20,6 +20,8 @@ export default function ModalFeedbackFormAnother({ onClose }) {
       }
       //console.log(item.name, ' | ',item.value)
     })
+    setPreviewContent(bodyText)
+    setIsPreviewModalOpen(true)
     console.log(bodyText);
   };
   const handleIssueChange = (event) => {
