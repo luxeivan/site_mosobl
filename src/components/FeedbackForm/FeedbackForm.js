@@ -8,11 +8,13 @@ export default function FeedbackForm() {
   const handleOpenModal = () => {
     setIsModalOpen(true);
     document.body.style.position = "fixed";
+    document.body.style.width = "100%";
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     document.body.style.position = null;
+    document.body.style.width = null;
   };
 
   return (
