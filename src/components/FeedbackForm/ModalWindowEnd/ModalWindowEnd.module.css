@@ -41,6 +41,22 @@
   font-family: "LatoWebBold", sans-serif;
   font-size: 16px;
 }
+.modal-window__button:hover {
+  background: #0252ff;
+}
+.modal-window__button:disabled {
+  background: gray ;
+  cursor: default;
+}
+.modal-window__button_close{
+  background: none;
+  border:1px solid #0d4cd3;
+  color: #0d4cd3;
+}
+.modal-window__button_close:hover {
+  opacity: inherit;
+  background:#eee;
+}
 
 @media (max-width: 768px) {
   .modal-window {

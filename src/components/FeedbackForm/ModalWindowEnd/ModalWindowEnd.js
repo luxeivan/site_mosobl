@@ -24,7 +24,7 @@ const ModalWindow = ({ title, content, onClose }) => {
           адрес mail@mosoblenergo.ru
         </p>
         <button onClick={copyToClipboard} className={style['modal-window__button']}>Копировать текст письма</button>
-        <button onClick={onClose} className={style['modal-window__button']}>Закрыть</button>
+        <button onClick={onClose} className={`${style['modal-window__button']} ${style['modal-window__button_close']}`}>Закрыть</button>
       </div>
     </div>
   );
