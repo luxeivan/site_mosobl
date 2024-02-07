@@ -12,7 +12,7 @@ export default function FeedbackForm() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    document.body.style.position = "absolute";
+    document.body.style.position = null;
   };
 
   return (
