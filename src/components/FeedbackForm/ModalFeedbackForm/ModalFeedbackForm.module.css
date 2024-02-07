@@ -80,6 +80,22 @@
   font-family: "LatoWebBold", sans-serif;
   font-size: 16px;
 }
+.feedback__button:hover {
+  background: #0252ff;
+}
+.feedback__button:disabled {
+  background: gray ;
+  cursor: default;
+}
+.feedback__button_close{
+  background: none;
+  border:1px solid #0d4cd3;
+  color: #0d4cd3;
+}
+.feedback__button_close:hover {
+  opacity: inherit;
+  background:#eee;
+}
 
 .checkboxContainer__feedback {
   display: flex;
@@ -110,6 +126,10 @@
   font-size: 24px;
   cursor: pointer;
   color: #333;
+}
+.dopinformation{
+  line-height: 1.5;
+  text-indent: 1rem;
 }
 
 @media (max-width: 768px) {

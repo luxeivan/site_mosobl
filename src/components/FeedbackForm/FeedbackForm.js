@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./FeedbackForm.module.css";
-import Modal from "./ModalFeedbackForm/ModalFeedbackForm";
+import Modal from "./ModalFeedbackForm/ModalFeedbackFormAnother";
 
 export default function FeedbackForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
