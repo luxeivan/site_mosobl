@@ -28,3 +28,4 @@ test('модальное окно должно содержать кнопку "
   const submitButton = screen.getByText("Отправить");
   expect(submitButton).toBeInTheDocument();
 });
+

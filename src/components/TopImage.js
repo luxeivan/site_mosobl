@@ -24,3 +24,4 @@ export default function TopImage({ image, title }) {
     return(<div className="dummy"></div>)
   }
 }
+
