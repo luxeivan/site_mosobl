@@ -54,7 +54,6 @@ export default function Modal({ onClose }) {
       onClose();
     }
   };
-  
 
   const generateEmailBody = (issue, subIssue, details) => {
     const commonDetails =
@@ -132,7 +131,7 @@ export default function Modal({ onClose }) {
       case "pillarCondition":
         return "Состояние опор";
       case "malfunction":
-        return "Неисправность ЭЗС"; 
+        return "Неисправность ЭЗС";
       case "installation":
         return "Установка ЭЗС";
       default:
@@ -181,13 +180,20 @@ export default function Modal({ onClose }) {
 
   return (
     <>
-      <dialog className={style.modal__feedback__background} onClick={handleCloseOnClickOutside}>
-        <div className={style.modal__feedback__content} onClick={e => e.stopPropagation()}>
+      <dialog
+        className={style.modal__feedback__background}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div
+          className={style.modal__feedback__content}
+          onClick={(e) => e.stopPropagation()}
+        >
           <form onSubmit={handleSubmit}>
             <select
               className={style.feedback__select}
               onChange={handleIssueChange}
               defaultValue=""
+              required
             >
               <option value="" disabled>
                 Выберите вопрос
@@ -220,6 +226,7 @@ export default function Modal({ onClose }) {
                 className={style.feedback__select}
                 onChange={handleSubIssueChange}
                 defaultValue=""
+                required
               >
                 <option value="" disabled>
                   Выберите подтему
@@ -234,6 +241,7 @@ export default function Modal({ onClose }) {
                 className={style.feedback__select}
                 onChange={handleSubIssueChange}
                 defaultValue=""
+                required
               >
                 <option value="" disabled>
                   Выберите подтему
@@ -254,6 +262,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -262,6 +271,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -270,6 +280,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -278,6 +289,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес места инцидента"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -286,6 +298,7 @@ export default function Modal({ onClose }) {
                   placeholder="дата и время инцидента"
                   value={incidentDate}
                   onChange={(e) => setIncidentDate(e.target.value)}
+                  required
                 />
               </>
             )}
@@ -299,6 +312,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -307,6 +321,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -315,6 +330,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -323,6 +339,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес нахождения энергопринимающих устройств"
                   value={deviceLocationAddress}
                   onChange={(e) => setDeviceLocationAddress(e.target.value)}
+                  required
                 />
                 <textarea
                   className={style.textarea__feedback}
@@ -330,6 +347,7 @@ export default function Modal({ onClose }) {
                   placeholder="причина обращения"
                   value={inquiryReason}
                   onChange={(e) => setInquiryReason(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -338,6 +356,7 @@ export default function Modal({ onClose }) {
                   placeholder="дата/период времени претензии"
                   value={claimDateRange}
                   onChange={(e) => setClaimDateRange(e.target.value)}
+                  required
                 />
               </>
             )}
@@ -352,6 +371,7 @@ export default function Modal({ onClose }) {
                     placeholder="ФИО заявителя"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -360,6 +380,7 @@ export default function Modal({ onClose }) {
                     placeholder="адрес электронной почты для обратной связи"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -368,6 +389,7 @@ export default function Modal({ onClose }) {
                     placeholder="телефон для обратной связи"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -376,6 +398,7 @@ export default function Modal({ onClose }) {
                     placeholder="адрес нахождения ЭЗС / адрес предполагаемой установки ЭЗС"
                     value={chargingStationAddress}
                     onChange={(e) => setChargingStationAddress(e.target.value)}
+                    required
                   />
                   {selectedSubIssue === "malfunction" && (
                     <input
@@ -385,6 +408,7 @@ export default function Modal({ onClose }) {
                       placeholder="номер ЭЗС"
                       value={chargingStationId}
                       onChange={(e) => setChargingStationId(e.target.value)}
+                      required
                     />
                   )}
                 </>
@@ -399,6 +423,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -407,6 +432,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -415,6 +441,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -423,6 +450,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес нахождения объекта"
                   value={objectLocationAddress}
                   onChange={(e) => setObjectLocationAddress(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -431,6 +459,7 @@ export default function Modal({ onClose }) {
                   placeholder="номер лицевого счета (при наличии)"
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
+                  required
                 />
               </>
             )}
@@ -445,6 +474,7 @@ export default function Modal({ onClose }) {
                     placeholder="ФИО заявителя"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -453,6 +483,7 @@ export default function Modal({ onClose }) {
                     placeholder="адрес электронной почты для обратной связи"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -461,6 +492,7 @@ export default function Modal({ onClose }) {
                     placeholder="телефон для обратной связи"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -469,6 +501,7 @@ export default function Modal({ onClose }) {
                     placeholder="адрес места инцидента/ адрес нахождения объекта (г.о., населенный пункт, улица, номер дома)"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -477,6 +510,7 @@ export default function Modal({ onClose }) {
                     placeholder="дата и время инцидента"
                     value={incidentDate}
                     onChange={(e) => setIncidentDate(e.target.value)}
+                    required
                   />
                   <input
                     className={style.input__feedback}
@@ -485,6 +519,7 @@ export default function Modal({ onClose }) {
                     placeholder="причина обращения"
                     value={inquiryReason}
                     onChange={(e) => setInquiryReason(e.target.value)}
+                    required
                   />
                   {/* <input
                     className={style.input__feedback}
@@ -501,6 +536,7 @@ export default function Modal({ onClose }) {
                     placeholder="характеристика линии (магистральная линия/вводной провод в дом)"
                     value={lineCharacteristics}
                     onChange={(e) => setLineCharacteristics(e.target.value)}
+                    required
                   />
                   <p className={style.photoReminder}>
                     Если у Вас есть фото неисправностей линий электропередач,
@@ -518,6 +554,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -526,6 +563,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -534,6 +572,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -542,6 +581,7 @@ export default function Modal({ onClose }) {
                   placeholder="наименование объекта (ТП, линии электропередачи и ид.)"
                   value={objectName}
                   onChange={(e) => setObjectName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -550,6 +590,7 @@ export default function Modal({ onClose }) {
                   name="address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -558,6 +599,7 @@ export default function Modal({ onClose }) {
                   placeholder="технические характеристики (класс напряжения, протяженность ВЛ/КЛ, трансформаторная мощность)"
                   value={technicalSpecs}
                   onChange={(e) => setTechnicalSpecs(e.target.value)}
+                  required
                 />
               </>
             )}
@@ -571,6 +613,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -579,6 +622,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -587,6 +631,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -597,6 +642,7 @@ export default function Modal({ onClose }) {
                   onChange={(e) =>
                     setApplicationOrContractNumber(e.target.value)
                   }
+                  required
                 />
               </>
             )}
@@ -610,6 +656,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -618,6 +665,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -626,6 +674,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -634,6 +683,7 @@ export default function Modal({ onClose }) {
                   placeholder="причина обращения"
                   value={inquiryReason}
                   onChange={(e) => setInquiryReason(e.target.value)}
+                  required
                 />
                 <p className={style.dopinformation}>
                   С полным списком и условиями оказания дополнительных услуг, а
@@ -672,6 +722,7 @@ export default function Modal({ onClose }) {
                   placeholder="ФИО заявителя"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -680,6 +731,7 @@ export default function Modal({ onClose }) {
                   placeholder="адрес электронной почты для обратной связи"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <input
                   className={style.input__feedback}
@@ -688,6 +740,7 @@ export default function Modal({ onClose }) {
                   placeholder="телефон для обратной связи"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
                 />
               </>
             )}
@@ -717,11 +770,10 @@ export default function Modal({ onClose }) {
               Отправить
             </button>
           </form>
-          {/* <button onClick={onClose} className={style.feedback__button}>
+          <button onClick={onClose} className={style.feedback__close__button}>
             Закрыть
-          </button> */}
-          <div className={style.closeButton} onClick={onClose}>&times;</div>
-
+          </button>
+          {/* <div className={style.closeButton} onClick={onClose}>&times;</div> */}
         </div>
       </dialog>
 
