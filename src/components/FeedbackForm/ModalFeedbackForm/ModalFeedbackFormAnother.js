@@ -16,13 +16,18 @@ export default function ModalFeedbackFormAnother({ onClose }) {
     let bodyText = ""
     Array.from(event.target).forEach(item => {
       if (item.name) {
-        bodyText = bodyText + `${item.name}: ${item.value}\r\n`
+        bodyText = bodyText + `${item.name}: ${item.value}\r\n\r\n`
       }
       //console.log(item.name, ' | ',item.value)
     })
     setPreviewContent(bodyText)
     setIsPreviewModalOpen(true)
-    console.log(bodyText);
+    //console.log(bodyText);
+    const subject = encodeURIComponent(
+      themes.find((item) => item.id == selectTheme).name || "Обращение в службу поддержки"
+    );
+    const encodedBody = encodeURIComponent(bodyText);
+    window.location.href = `mailto:mail@mosoblenergo.ru?subject=${subject}&body=${encodedBody}`;
   };
   const handleIssueChange = (event) => {
     setSelectTheme(event.target.value);
