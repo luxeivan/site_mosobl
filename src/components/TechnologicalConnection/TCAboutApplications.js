@@ -25,6 +25,21 @@ export default function TCAboutApplications() {
         </a>*/}
         <a
           className="doc-line"
+          href={`${addressServer}/uploads/Otchet_na_sajt_yanvar_2024_fa0aebfce4.pdf?updated_at=2024-02-08T10:38:37.546Z`}
+          download=""
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <div className="doc-line__wrap-icon">
+            <img src={pdf} alt="icon pdf" />
+          </div>
+          <div className="doc-line__wrap-text">
+            <span className="doc-line__name">2024, январь</span>
+            <span className="doc-line__file-info">pdf, 206 кб</span>
+          </div>
+        </a>
+        <a
+          className="doc-line"
           href={`${addressServer}/uploads/Otchet_na_sajt_2023_god_00f2a36c85.pdf?updated_at=2024-01-17T09:55:22.982Z`}
           download=""
           rel="noopener noreferrer"
