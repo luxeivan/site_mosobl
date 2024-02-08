@@ -25,8 +25,6 @@
   position: relative;
 }
 
-
-
 .textarea__feedback,
 .input__feedback {
   width: 100%;
@@ -42,7 +40,7 @@
   margin-bottom: 1rem; 
 }
 
-.desc-tex{
+.desc-text {
   font-size: 0.8rem; 
   color: #6c757d; 
   margin-top: -15px; 
