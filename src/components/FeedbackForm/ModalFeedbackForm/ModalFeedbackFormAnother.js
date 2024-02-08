@@ -16,7 +16,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
     let bodyText = "";
     Array.from(event.target).forEach((item) => {
       if (item.name) {
-        bodyText = bodyText + `${item.name}: ${item.value}\r\n\r\n`;
+        bodyText = bodyText + `${item.name}: ${item.value}\r\n`;
       }
       //console.log(item.name, ' | ',item.value)
     });
