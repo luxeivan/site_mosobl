@@ -20,7 +20,7 @@ const iconImageSize = [130 / 4, 221 / 4];
 
 export default function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
-  const [setListStation] = useState([]);
+  const [listStation, setListStation] = useState([]);
   const [listAllStation, setAllListStation] = useState([]);
   const [listAllStationWithStatus, setAllListStationWithStatus] = useState([]);
   const [allStationForListCity, setAllStationForListCity] = useState([]);
@@ -57,6 +57,7 @@ export default function ElectricChargingStations() {
       )
       .then(async (res) => {
         await setAllListStation((prev) => prev.concat(res.data.data));
+        
         if (
           res.data.meta.pagination.pageCount !== res.data.meta.pagination.page
         ) {
@@ -162,17 +163,18 @@ export default function ElectricChargingStations() {
     }
     //console.log(newarr);
     setAllStationForListCity(newarr);
+    setCopy(newarr);
   }, [listAllStationWithStatus]);
 
   const handlerSearch = (event) => {
     let copyObj = JSON.parse(JSON.stringify(copy));
     if (copyObj) {
       copyObj = copyObj.filter((element, index) =>
-        element.attributes.city
+        element.city
           .toLowerCase()
           .includes(event.target.value.toLowerCase())
       );
-      setListStation(copyObj);
+      setAllStationForListCity(copyObj);
     }
   };
 
