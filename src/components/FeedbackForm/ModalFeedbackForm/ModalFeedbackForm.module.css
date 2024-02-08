@@ -26,7 +26,7 @@
 }
 
 .textarea__feedback,
-.input__feedback{
+.input__feedback {
   width: 100%;
   max-height: 80px;
   padding: 10px;
@@ -34,6 +34,24 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: "LatoWeb", sans-serif;
+}
+
+.input-wrapper {
+  margin-bottom: 1rem; 
+}
+
+.desc-text {
+  font-size: 0.8rem; 
+  color: #6c757d; 
+  margin-top: 0.25rem; 
+  margin-left: 8px;
+  display: block; 
+}
+
+.required::after {
+  content: "*"; 
+  color: red; 
+  margin-left: 0.25rem;
 }
 
 .textarea__feedback {
@@ -49,21 +67,21 @@
 
 .feedback__select {
   width: 100%;
-  padding: 12px 15px; 
+  padding: 12px 15px;
   margin-bottom: 15px;
-  border: 2px solid #ccc; 
-  border-radius: 8px; 
+  border: 2px solid #ccc;
+  border-radius: 8px;
   font-family: "LatoWeb", sans-serif;
-  cursor: pointer; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  background-color: #fff; 
-  -webkit-appearance: none; 
-  -moz-appearance: none; 
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 
 .feedback__select:hover {
-  border-color: #1d5deb; 
+  border-color: #1d5deb;
   background-color: #f0f0f0;
 }
 
@@ -84,17 +102,17 @@
   background: #0252ff;
 }
 .feedback__button:disabled {
-  background: gray ;
+  background: gray;
   cursor: default;
 }
-.feedback__button_close{
+.feedback__button_close {
   background: none;
-  border:1px solid #0d4cd3;
+  border: 1px solid #0d4cd3;
   color: #0d4cd3;
 }
 .feedback__button_close:hover {
   opacity: inherit;
-  background:#eee;
+  background: #eee;
 }
 
 .feedback__close__button {
@@ -102,7 +120,7 @@
   width: 100%;
   background: #f5f5f5;
   color: #333;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   padding: 15px;
   margin-top: 10px;
   cursor: pointer;
@@ -115,7 +133,6 @@
 .feedback__close__button:hover {
   background: #e0e0e0;
 }
-
 
 .checkboxContainer__feedback {
   display: flex;
@@ -147,14 +164,14 @@
   cursor: pointer;
   color: #333;
 }
-.dopinformation{
+.dopinformation {
   line-height: 1.5;
   text-indent: 1rem;
 }
 
 @media (max-width: 768px) {
   .modal__feedback__content {
-    margin: 10px;
+    margin: 9px;
     max-width: 90%;
     padding: 10px;
     max-height: 80vh;
@@ -162,7 +179,7 @@
 
   .disclaimer__feedback,
   .checkboxText__feedback {
-    font-size: 12px;
+    font-size:11px;
   }
 
   .checkboxContainer__feedback {
@@ -171,8 +188,7 @@
   }
 
   .photoInstruction {
-    font-size: 14px; 
+    font-size: 13px;
     padding: 0 10px;
   }
 }
-

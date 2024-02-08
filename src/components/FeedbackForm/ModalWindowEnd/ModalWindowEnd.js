@@ -21,7 +21,7 @@ const ModalWindow = ({ title, content, onClose }) => {
         <hr />
         <p>
           Скопируйте текст данного письма в свой почтовый сервис и направьте на
-          адрес mail@mosoblenergo.ru
+          адрес <strong>mail@mosoblenergo.ru</strong>
         </p>
         <button onClick={copyToClipboard} className={style['modal-window__button']}>Копировать текст письма</button>
         <button onClick={onClose} className={`${style['modal-window__button']} ${style['modal-window__button_close']}`}>Закрыть</button>

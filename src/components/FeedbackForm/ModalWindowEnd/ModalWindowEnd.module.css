@@ -58,6 +58,11 @@
   background:#eee;
 }
 
+.modal-window p strong {
+  font-weight: bold; 
+}
+
+
 @media (max-width: 768px) {
   .modal-window {
     padding: 15px; 
