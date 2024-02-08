@@ -25,6 +25,8 @@
   position: relative;
 }
 
+
+
 .textarea__feedback,
 .input__feedback {
   width: 100%;
@@ -40,12 +42,16 @@
   margin-bottom: 1rem; 
 }
 
-.desc-text {
+.desc-tex{
   font-size: 0.8rem; 
   color: #6c757d; 
   margin-top: -15px; 
   margin-left: 8px;
   display: block; 
+}
+
+.input__description{
+  color: #6c757d; 
 }
 
 .required::after {
@@ -168,6 +174,23 @@
   line-height: 1.5;
   text-indent: 1rem;
 }
+
+.datetime__container {
+  display: flex;
+  gap: 8px;
+}
+
+.input__description {
+  font-size: 0.8em;
+  color: #666;
+}
+
+
+.input__date,
+.input__time {
+  flex-basis: 50%;
+}
+
 
 @media (max-width: 768px) {
   .modal__feedback__content {

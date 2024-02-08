@@ -47,7 +47,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
               defaultValue=""
             >
               <option value="" disabled>
-                Выберите вопрос
+                Выберите тему
               </option>
               {/* --------------------------- */}
               {themes.map((item) => (
