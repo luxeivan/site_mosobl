@@ -17,7 +17,7 @@ import Cookies from "js-cookie";
 import { utils, writeFileXLSX } from "xlsx";
 
 const iconImageSize = [130 / 4, 221 / 4];
-const temp = []
+let tempArray = []
 
 export default React.memo(function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
@@ -58,13 +58,14 @@ export default React.memo(function ElectricChargingStations() {
       )
       .then(async (res) => {
         //await setAllListStation((prev) => prev.concat(res.data.data));
-        temp.concat(res.data.data)
-        console.log('1: ',temp);
+        console.log('0: ',res.data.data);
+        tempArray.concat(res.data.data)
+        console.log('1: ',tempArray);
         if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
           await getAllStation(res.data.meta.pagination.page + 1);
         } else {
-          console.log('2: ',temp);
-          setAllListStation(temp)
+          console.log('2: ',tempArray);
+          setAllListStation(tempArray)
         }
       })
       .catch((err) => {
