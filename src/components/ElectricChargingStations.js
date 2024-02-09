@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
@@ -18,7 +18,7 @@ import { utils, writeFileXLSX } from "xlsx";
 
 const iconImageSize = [130 / 4, 221 / 4];
 
-export default function ElectricChargingStations() {
+export default React.memo(function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
   const [listStation, setListStation] = useState([]);
   const [listAllStation, setAllListStation] = useState([]);
@@ -57,7 +57,7 @@ export default function ElectricChargingStations() {
       )
       .then(async (res) => {
         await setAllListStation((prev) => prev.concat(res.data.data));
-        
+
         if (
           res.data.meta.pagination.pageCount !== res.data.meta.pagination.page
         ) {
@@ -161,27 +161,47 @@ export default function ElectricChargingStations() {
         newarr.push({ city: key, ezs: temp[key] });
       }
     }
-    //console.log(newarr);
     setAllStationForListCity(newarr);
     setCopy(newarr);
   }, [listAllStationWithStatus]);
 
-  const handlerSearch = (event) => {
-    let copyObj = JSON.parse(JSON.stringify(copy));
-    if (copyObj) {
-      copyObj = copyObj.filter((element, index) =>
-        element.city
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase())
-      );
-      setAllStationForListCity(copyObj);
-    }
-  };
+  const handlerSearch = useCallback(
+    (event) => {
+      let copyObj = JSON.parse(JSON.stringify(copy));
+      if (copyObj) {
+        copyObj = copyObj.filter((element, index) =>
+          element.city.toLowerCase().includes(event.target.value.toLowerCase())
+        );
+        setAllStationForListCity(copyObj);
+      }
+    },
+    [copy]
+  );
 
-  const handlerClear = (event) => {
-    document.querySelector(".informationDisclosures_search").value = "";
-    document.querySelector(".informationDisclosures_search").click();
-  };
+  const handlerClear = useCallback((event) => {
+    const searchInput = document.querySelector(
+      ".informationDisclosures_search"
+    );
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.click();
+    }
+  }, []);
+
+  // const handlerSearch = (event) => {
+  //   let copyObj = JSON.parse(JSON.stringify(copy));
+  //   if (copyObj) {
+  //     copyObj = copyObj.filter((element, index) =>
+  //       element.city.toLowerCase().includes(event.target.value.toLowerCase())
+  //     );
+  //     setAllStationForListCity(copyObj);
+  //   }
+  // };
+
+  // const handlerClear = (event) => {
+  //   document.querySelector(".informationDisclosures_search").value = "";
+  //   document.querySelector(".informationDisclosures_search").click();
+  // };
 
   const getXlsxFile = () => {
     setLoadingAllStation(true);
@@ -296,7 +316,7 @@ export default function ElectricChargingStations() {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <h4 style={{ marginBottom: "0" }}>- 3,5 кВт: </h4>
-                <img style={{ width: `25px` }} src={chargingIco} alt="текст"/>
+                <img style={{ width: `25px` }} src={chargingIco} alt="текст" />
               </label>
             </div>
             <div
@@ -321,7 +341,11 @@ export default function ElectricChargingStations() {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <h4 style={{ marginBottom: "0" }}>- 22 кВт: </h4>
-                <img style={{ width: `25px` }} src={chargingIco22} alt="текст"/>
+                <img
+                  style={{ width: `25px` }}
+                  src={chargingIco22}
+                  alt="текст"
+                />
               </label>
             </div>
             <div
@@ -346,7 +370,11 @@ export default function ElectricChargingStations() {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <h4 style={{ marginBottom: "0" }}>- временно недоступна: </h4>
-                <img style={{ width: `25px` }} src={chargingIco_dis} alt="текст"/>
+                <img
+                  style={{ width: `25px` }}
+                  src={chargingIco_dis}
+                  alt="текст"
+                />
               </label>
             </div>
           </div>
@@ -715,4 +743,4 @@ export default function ElectricChargingStations() {
       </button>
     </>
   );
-}
+});

@@ -130,11 +130,11 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                   </span>
                   <a
                     className={style.a__feedback}
-                    href=" https://mosoblenergo.ru/additiona/Services"
+                    href=" https://mosoblenergo.ru/additionalServices"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    https://mosoblenergo.ru/additiona/Services
+                   https://mosoblenergo.ru/additionalServices
                   </a>
                 </p>
                 <p className={style.dopinformation}>

@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
 import { addressServer } from "../../config";
 import imge52d6b93112691c58929068e092b99f2 from "../../img/e52d6b93112691c58929068e092b99f2.jpg";
 import docx from "../../img/docx.svg";
-import img1 from "../../img/charging/1.jpg";
-import img2 from "../../img/charging/2.jpg";
-import img3 from "../../img/charging/3.jpg";
-import img4 from "../../img/charging/4.jpg";
-import img5 from "../../img/charging/5.jpg";
-import img6 from "../../img/charging/6.jpg";
-import img7 from "../../img/charging/7.jpg";
-import img8 from "../../img/charging/8.jpg";
+// import img1 from "../../img/charging/1.jpg";
+// import img2 from "../../img/charging/2.jpg";
+// import img3 from "../../img/charging/3.jpg";
+// import img4 from "../../img/charging/4.jpg";
+// import img5 from "../../img/charging/5.jpg";
+// import img6 from "../../img/charging/6.jpg";
+// import img7 from "../../img/charging/7.jpg";
+// import img8 from "../../img/charging/8.jpg";
 import ElectricChargingStations from "../../components/ElectricChargingStations";
 
-export default function ChargingStations() {
+export default React.memo(function ChargingStations() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -232,4 +232,4 @@ export default function ChargingStations() {
       </div>
     </motion.div>
   );
-}
+});
