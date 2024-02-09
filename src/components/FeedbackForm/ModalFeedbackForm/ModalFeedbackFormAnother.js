@@ -13,7 +13,10 @@ export default function ModalFeedbackFormAnother({ onClose }) {
   const [selectTheme, setSelectTheme] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
-    let bodyText = "";
+    // let bodyText = "";
+    const consentText =
+      "Здравствуйте.\r\n\r\nОтправляя письмо, Я даю согласие на обработку персональных данных, а также несу ответственность за полноту и достоверность предоставленной информации.\r\n\r\n";
+    let bodyText = consentText;
     Array.from(event.target).forEach((item) => {
       if (item.name) {
         bodyText = bodyText + `${item.name}: ${item.value}\r\n`;
@@ -157,9 +160,9 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                 required
               />
               <span className={style.checkboxText__feedback}>
-                Отправляя письмо, Вы даете согласие на обработку персональных
-                данных, а также несете ответственность за полноту и
-                достоверность предоставленной информации.
+                Отправляя письмо, Я даю согласие на обработку персональных
+                данных, а также несу ответственность за полноту и достоверность
+                предоставленной информации.
               </span>
             </label>
             <button
