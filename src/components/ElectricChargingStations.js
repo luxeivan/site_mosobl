@@ -59,10 +59,11 @@ export default React.memo(function ElectricChargingStations() {
       .then(async (res) => {
         //await setAllListStation((prev) => prev.concat(res.data.data));
         temp.concat(res.data.data)
-
+        console.log('1: ',temp);
         if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
           await getAllStation(res.data.meta.pagination.page + 1);
         } else {
+          console.log('2: ',temp);
           setAllListStation(temp)
         }
       })
