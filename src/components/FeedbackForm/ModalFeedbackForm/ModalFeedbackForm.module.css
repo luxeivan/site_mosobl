@@ -89,6 +89,11 @@
   background-color: #f0f0f0;
 }
 
+.a__feedback__up{
+  background: none;
+  color: #0d4cd3;
+}
+
 .feedback__button {
   display: block;
   width: 100%;

@@ -70,25 +70,49 @@ export default React.memo(function ElectricChargingStations() {
       });
   }
   //--------PLUGME API START--------------
+  // const getPlugmeToken = async () => {
+  //   const res = await axios.post(
+  //     "https://plugme.ru/oauth2/token",
+  //     {
+  //       client_id: process.env.REACT_APP_PLUGME_CLIENT_ID,
+  //       client_secret: process.env.REACT_APP_PLUGME_CLIENT_SECRET,
+  //       grant_type: "client_credentials",
+  //       scope: "plugme",
+  //     },
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //       },
+  //     }
+  //   );
+  //   //console.log(res.data.access_token)
+  //   Cookies.set("plugmetoken", res.data.access_token, { expires: 1 });
+  //   getChargePoint();
+  // };
+
   const getPlugmeToken = async () => {
-    const res = await axios.post(
-      "https://plugme.ru/oauth2/token",
-      {
-        client_id: process.env.REACT_APP_PLUGME_CLIENT_ID,
-        client_secret: process.env.REACT_APP_PLUGME_CLIENT_SECRET,
-        grant_type: "client_credentials",
-        scope: "plugme",
-      },
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+    try {
+      const res = await axios.post(
+        "https://plugme.ru/oauth2/token",
+        {
+          client_id: process.env.REACT_APP_PLUGME_CLIENT_ID,
+          client_secret: process.env.REACT_APP_PLUGME_CLIENT_SECRET,
+          grant_type: "client_credentials",
+          scope: "plugme",
         },
-      }
-    );
-    //console.log(res.data.access_token)
-    Cookies.set("plugmetoken", res.data.access_token, { expires: 1 });
-    getChargePoint();
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      Cookies.set("plugmetoken", res.data.access_token, { expires: 1 });
+      getChargePoint();
+    } catch (error) {
+      console.error("Ошибка при получении токена PlugMe: ", error);
+    }
   };
+
   const getChargePoint = async () => {
     //console.log(Cookies.get('plugmetoken'))
     try {

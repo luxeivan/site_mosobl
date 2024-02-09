@@ -129,12 +129,12 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                     «Потребителям» по ссылке:{" "}
                   </span>
                   <a
-                    className={style.a__feedback}
+                    className={style.a__feedback__up}
                     href=" https://mosoblenergo.ru/additionalServices"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                   https://mosoblenergo.ru/additionalServices
+                    <u><b className={style.a__feedback__up}> https://mosoblenergo.ru/additionalServices</b></u>
                   </a>
                 </p>
                 <p className={style.dopinformation}>
