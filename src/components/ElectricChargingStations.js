@@ -164,11 +164,12 @@ export default React.memo(function ElectricChargingStations() {
     //getStation();
   }, []);
   useEffect(() => {
-    if (listAllStation.length === 0) return false
-    if (Cookies.get("plugmetoken")) {
-      getChargePoint();
-    } else {
-      getPlugmeToken();
+    if (listAllStation.length > 0) {
+      if (Cookies.get("plugmetoken")) {
+        getChargePoint();
+      } else {
+        getPlugmeToken();
+      }
     }
     //console.log(listAllStation)
   }, [listAllStation]);
