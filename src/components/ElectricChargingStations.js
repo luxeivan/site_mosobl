@@ -164,6 +164,7 @@ export default React.memo(function ElectricChargingStations() {
     //getStation();
   }, []);
   useEffect(() => {
+    if (listAllStation.length === 0) return false
     if (Cookies.get("plugmetoken")) {
       getChargePoint();
     } else {
@@ -314,6 +315,8 @@ export default React.memo(function ElectricChargingStations() {
           </div>
         </div>
       </div>
+
+
 
       {listAllStationWithStatus.length > 0 ? (
         <>
@@ -515,9 +518,13 @@ export default React.memo(function ElectricChargingStations() {
           </YMaps>
         </>
       ) : (
-        false
+        <>
+          <div className="loader-area">
+            <span class="loader"></span>
+          </div>
+        </>
       )}
-      {allStationForListCity.length > 0 &&
+      {copy.length > 0 &&
         <>
           <input
             type="text"
