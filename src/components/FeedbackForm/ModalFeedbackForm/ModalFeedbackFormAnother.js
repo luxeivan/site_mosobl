@@ -168,7 +168,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                 required
               />
               <span className={style.checkboxText__feedback}>
-                Отправляя письмо, Я даю согласие на обработку персональных
+                Отправляя письмо, я даю согласие на обработку персональных
                 данных, а также несу ответственность за полноту и достоверность
                 предоставленной информации.
               </span>
