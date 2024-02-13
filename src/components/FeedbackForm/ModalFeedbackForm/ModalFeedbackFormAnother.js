@@ -15,7 +15,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
     event.preventDefault();
     // let bodyText = "";
     const consentText =
-      "Здравствуйте.\r\n\r\nОтправляя письмо, Я даю согласие на обработку персональных данных, а также несу ответственность за полноту и достоверность предоставленной информации.\r\n\r\n";
+      "Здравствуйте!\r\n\r\nОтправляя письмо, я даю согласие на обработку персональных данных, а также несу ответственность за полноту и достоверность предоставленной информации.\r\n\r\n";
     let bodyText = consentText;
     Array.from(event.target).forEach((item) => {
       if (item.name) {
@@ -94,6 +94,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                         key={index}
                         name={item.name}
                         desc={item.desc}
+                        required={true}
                       />
                     );
                   if (item.type == "select")
@@ -103,6 +104,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                         name={item.name}
                         desc={item.desc}
                         listOptions={item.listOptions}
+                        required={item.required}
                       />
                     );
                 })}
@@ -110,7 +112,8 @@ export default function ModalFeedbackFormAnother({ onClose }) {
             {selectTheme !== false && (
               <TextAreaInput
                 name={"Комментарий"}
-                desc={"(описание проблемы)"}
+                desc={""}
+                required={![0, 1, 2, 5].includes(Number(selectTheme))}
               />
             )}
             {selectTheme !== false && selectTheme == 4 && (
@@ -134,7 +137,12 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <u><b className={style.a__feedback__up}> https://mosoblenergo.ru/additionalServices</b></u>
+                    <u>
+                      <b className={style.a__feedback__up}>
+                        {" "}
+                        https://mosoblenergo.ru/additionalServices
+                      </b>
+                    </u>
                   </a>
                 </p>
                 <p className={style.dopinformation}>
