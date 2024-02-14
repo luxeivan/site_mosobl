@@ -194,6 +194,10 @@
   flex-basis: 50%;
 }
 
+.dopinformation__six__form{
+  text-align: justify;
+}
+
 
 @media (max-width: 768px) {
   .modal__feedback__content {

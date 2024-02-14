@@ -122,6 +122,23 @@ export default function ModalFeedbackFormAnother({ onClose }) {
                 пожалуйста, приложите их при отправке письма.
               </p>
             )}
+            {selectTheme !== false && selectTheme == 5 && (
+              <>
+                <p className={style.dopinformation__six__form}>
+                  <span>
+                    С полным списком предоставляемых документов Вы можете
+                    ознакомиться на сайте АО «Мособлэнерго» в разделе
+                    «Консолидация электросетевого имущества» по ссылке:{" "}
+                  </span>
+                  <a
+                    className={style.a__feedback__up}
+                    href="https://mosoblenergo.ru/consolidationOfElectric"
+                  >
+                    https://mosoblenergo.ru/consolidationOfElectric
+                  </a>
+                </p>
+              </>
+            )}
             {selectTheme !== false && selectTheme == 7 && (
               <>
                 <p className={style.dopinformation}>

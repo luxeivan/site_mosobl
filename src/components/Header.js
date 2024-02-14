@@ -825,7 +825,7 @@ export default function Header() {
                           </div>
                         </div>
                       </div> */}
-                      <div className="creditRating">
+                      {/* <div className="creditRating">
                         <div className="creditRating__desc">
                           <div
                             style={{
@@ -868,7 +868,7 @@ export default function Header() {
                             </p>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
