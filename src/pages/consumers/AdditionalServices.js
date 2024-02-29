@@ -5292,7 +5292,7 @@ export default function AdditionalServices() {
                   </a>
                   <a
                     className="doc-line"
-                    href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_23_11_23_6ba6b0e3e3.pdf?updated_at=2023-11-27T07:08:14.249Z`}
+                    href={`${addressServer}/uploads/Reestr_zayavok_fevral_2024_791e450573.pdf?updated_at=2024-02-29T09:05:15.741Z`}
                     download=""
                     rel="noopener noreferrer"
                     target="_blank"
@@ -5303,9 +5303,9 @@ export default function AdditionalServices() {
                     <div className="doc-line__wrap-text">
                       <span className="doc-line__name">
                         Реестр заявлений о предоставлении доступа к
-                        инфраструктуре за 2023 год
+                        инфраструктуре
                       </span>
-                      <span className="doc-line__file-info">pdf, 291 кб</span>
+                      <span className="doc-line__file-info">pdf, 297 кб</span>
                     </div>
                   </a>
                   <a
