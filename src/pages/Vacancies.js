@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import vacan_img from "../img/d21248be80705e7a80efdf5efde73cc5.jpg";
 import QR_vacansies from "../img/QR_vacansies.jpg";
+import qr_rabota_ru from "../img/qr_rabota_ru.svg";
 
 export default function Vacancies() {
   return (
@@ -38,16 +39,17 @@ export default function Vacancies() {
               <div className="vacancies__button-area">
                 {" "}
                 <a
-                  href="https://hh.ru/employer/221874"
+                  // href="https://hh.ru/employer/221874"
+                  href="https://www.rabota.ru/company/1745869/"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="open-map__button"
                 >
-                  Перейти на HH
+                  Перейти на Работа.ру
                 </a>
               </div>
             </div>
-            <img className="vacancies__img" src={QR_vacansies} />
+            <img className="vacancies__img" src={qr_rabota_ru} />
           </div>
           <div className="vacancies-main__item main-info">
             <h2 className="vacancies-main__title branch-post__caption">
