@@ -34,7 +34,7 @@ export default function Vacancies() {
           <div className="vacancies vacancies-main__item">
             <div className="vacancies__text-area">
               <h3>
-                Актуальные вакансии можно посмотреть на платформе HeadHunter{" "}
+                Актуальные вакансии можно посмотреть на платформе Работа.ру{" "}
               </h3>
               <div className="vacancies__button-area">
                 {" "}
