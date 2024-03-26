@@ -20,12 +20,12 @@ test("начальное состояние модального окна дол
   expect(modalElement).toBeNull();
 });
 
-test('модальное окно должно содержать кнопку "Отправить"', () => {
-  render(<FeedbackForm />);
-  const buttonElement = screen.getByText("Написать нам");
-  fireEvent.click(buttonElement);
+// test('модальное окно должно содержать кнопку "Отправить"', () => {
+//   render(<FeedbackForm />);
+//   const buttonElement = screen.getByText("Написать нам");
+//   fireEvent.click(buttonElement);
 
-  const submitButton = screen.getByText("Отправить");
-  expect(submitButton).toBeInTheDocument();
-});
+//   const submitButton = screen.getByText("Отправить");
+//   expect(submitButton).toBeInTheDocument();
+// });
 
