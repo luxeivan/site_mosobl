@@ -5292,7 +5292,7 @@ export default function AdditionalServices() {
                   </a>
                   <a
                     className="doc-line"
-                    href={`${addressServer}/uploads/Reestr_zayavok_fevral_2024_791e450573.pdf?updated_at=2024-02-29T09:05:15.741Z`}
+                    href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_11_04_24_d153f7aa05.pdf?updated_at=2024-04-14T06:55:46.184Z`}
                     download=""
                     rel="noopener noreferrer"
                     target="_blank"
