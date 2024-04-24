@@ -151,31 +151,30 @@ export default function InformationDisclosuresItem() {
                                 );
                               }
                             })
-                            .map((item) => {
-                              let searchDate = 0;
-                              if (
-                                item.attributes.name.search(
-                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
-                                ) != -1
-                              ) {
-                                let arr = item.attributes.name.match(
-                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
-                                );
-                                let str = arr[arr.length - 1].split(".");
-                                let reredate = new Date(
-                                  str[2],
-                                  str[1] - 1,
-                                  str[0]
-                                );
-                                searchDate = reredate.getTime();
-                                console.log(reredate.getTime());
-                              }
-                              return { ...item, searchDate };
-                            })
-                            .sort((a, b) => {
-                              console.log();
-                              return b.searchDate - a.searchDate;
-                            })
+                            // .map((item) => {
+                            //   let searchDate = 0;
+                            //   if (
+                            //     item.attributes.name.search(
+                            //       /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                            //     ) != -1
+                            //   ) {
+                            //     let arr = item.attributes.name.match(
+                            //       /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                            //     );
+                            //     let str = arr[arr.length - 1].split(".");
+                            //     let reredate = new Date(
+                            //       str[2],
+                            //       str[1] - 1,
+                            //       str[0]
+                            //     );
+                            //     searchDate = reredate.getTime();
+                            //     console.log(reredate.getTime());
+                            //   }
+                            //   return { ...item, searchDate };
+                            // })
+                            // .sort((a, b) => {
+                            //   return b.searchDate - a.searchDate;
+                            // })
                             .map((item, index) => (
                               <li
                                 key={index}
