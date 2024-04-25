@@ -186,33 +186,15 @@ export default React.memo(function ChargingStations() {
           <h3 className="charging__title">
             ФОТОГРАФИИ ОТДЕЛЬНОСТОЯЩИХ ЭЗС 22 КВТ
           </h3>
-          <b>
-            <b>
-              <br />
-            </b>
-            <p style={{ textAlign: "center" }}>
-              <b>
-                <img
-                  style={{ display: "inline", maxWidth: "100%" }}
-                  alt="Фотографии отдельностоящих ЭЗС 22 кВт.jpg"
-                  src={`${addressServer}/uploads/85efa49946a258785d2db9365a2f0805_ac74800947.jpg?updated_at=2022-11-14T11:45:15.345Z`}
-                />
-                <br />
-              </b>
-            </p>
-          </b>{" "}
-          <br />
-          <b>
-            {" "}
-            <b>
-              {" "}
-              <br />
-            </b>
-          </b>
+          <p style={{ textAlign: "center" }}>
+            <img
+              style={{ display: "inline", maxWidth: "100%" }}
+              alt="Фотографии отдельностоящих ЭЗС 22 кВт.jpg"
+              src={`${addressServer}/uploads/85efa49946a258785d2db9365a2f0805_ac74800947.jpg?updated_at=2022-11-14T11:45:15.345Z`}
+            />
+          </p>
         </div>
-        <br />
-        <br />{" "}
-        <div className="row-docs-age">
+        {/* <div className="row-docs-age">
           <a
             className="doc-line"
             href={`${addressServer}/uploads/919923874bb18cac550bea753d1095fc_8f6a99680c.docx?updated_at=2022-11-14T11:45:14.274Z`}
@@ -228,7 +210,7 @@ export default React.memo(function ChargingStations() {
               <span className="doc-line__file-info">docx, 16 кб</span>
             </div>
           </a>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
