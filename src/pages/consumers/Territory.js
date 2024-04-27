@@ -39,10 +39,13 @@ export default function Territory() {
     }
   }, [inputCity]);
   useEffect(() => {
-    if (inputStreet != "") {
+    if (inputStreet !== "") {
       setListStreet(
-        listCity.filter((item) =>
-          item.street.toLowerCase().includes(inputStreet.toLowerCase())
+        listCity.filter((item) => {
+          if (item.street) {          
+            item.street?.toLowerCase().includes(inputStreet?.toLowerCase())
+          }
+        }
         )
       );
     } else {
@@ -339,14 +342,14 @@ export default function Territory() {
                     </li>
                     {listCity.find((item) => item.street == selectStreet)
                       .note && (
-                      <li className="description__item">
-                        <strong>Примечание: </strong>
-                        {
-                          listCity.find((item) => item.street == selectStreet)
-                            .note
-                        }
-                      </li>
-                    )}
+                        <li className="description__item">
+                          <strong>Примечание: </strong>
+                          {
+                            listCity.find((item) => item.street == selectStreet)
+                              .note
+                          }
+                        </li>
+                      )}
                   </ul>
                 </>
               )}
