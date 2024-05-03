@@ -21,6 +21,21 @@ export default function Filial() {
         setFilial({});
       });
   }, []);
+  const handlerRowUp = (event) => {
+    document.querySelectorAll(".accordion-row");
+    event.currentTarget
+      .closest(".accordion-row")
+      .classList.toggle("open-accordion");
+    event.currentTarget.classList.toggle("active");
+    const drop = event.currentTarget
+      .closest(".accordion-row")
+      .querySelector(".accordion-row__drop-down");
+    if (drop.style.maxHeight == "") {
+      drop.style.maxHeight = `${drop.scrollHeight + 1200}px`;
+    } else {
+      drop.style.maxHeight = "";
+    }
+  };
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage title={"Информация о компании"} />
@@ -77,22 +92,13 @@ export default function Filial() {
 
               {filial.attributes &&
                 filial.attributes.proizvodstvennye_otdeleniyas.data.map((item) => (
-                  <div className="accordion-row" onClick={event => {
-                    event.currentTarget.classList.toggle('open-accordion')
-                    event.currentTarget.querySelector('.accordion-row__up').classList.toggle('active')
-                    const drop = event.currentTarget.querySelector('.accordion-row__drop-down')
-                    if (drop.style.maxHeight == '') {
-                      drop.style.maxHeight = `${drop.scrollHeight}px`
-                    } else {
-                      drop.style.maxHeight = ''
-                    }
-                  }}>
-                    <div className="accordion-row__up">
+                  <div className="accordion-row">
+                    <div className="accordion-row__up" onClick={handlerRowUp}>
                       <span className="accordion-row__text">{item.attributes.name}</span>
                       <div className="accordion-row__wrap-arrow">
-                        <svg className="accordion-row__arrow">
-                          <use href="/local/templates/vg/assets/img/arrow-nav.svg#arrow-nav"></use>
-                        </svg>
+                          {/* <svg className="accordion-row__arrow">
+                            <use href="/local/templates/vg/assets/img/arrow-nav.svg#arrow-nav"></use>
+                          </svg> */}
                       </div>
                     </div>
                     <div className="accordion-row__drop-down">
