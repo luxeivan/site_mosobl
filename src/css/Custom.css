@@ -672,6 +672,7 @@ th {
 
 .creditRating__text {
   margin: 10px;
+  line-height: 1.5;
 }
 
 .creditRating__link-area {

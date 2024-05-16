@@ -42,9 +42,8 @@ export default function Header() {
   return (
     <header>
       <section
-        className={`page-header vg-modal-fixed ${scroll}  ${
-          openSearchLine ? "hide-line" : ""
-        }`}
+        className={`page-header vg-modal-fixed ${scroll}  ${openSearchLine ? "hide-line" : ""
+          }`}
         id="myHeader"
       >
         <div className="container">
@@ -401,7 +400,7 @@ export default function Header() {
                     placeholder="введите ключевое слово"
                   />
                   <button type="submit">
-                    <img src={searchIcon2} alt="текст"/>
+                    <img src={searchIcon2} alt="текст" />
                     <span>Найти</span>
                   </button>
                 </div>
@@ -810,21 +809,21 @@ export default function Header() {
                         style={{ marginTop: "50px" }}
                       />
                       <br />
-                      {/* <div className="creditRating">
-                        <img className="creditRating__img" src={creditRating} alt="logo" />
+{/* ------------------------------------------------------ */}
+                      <div className="creditRating">
+                        {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
                         <div className="creditRating__desc">
-                          <h3 className="creditRating__title">АО «Мособлэнерго» присвоен кредитный рейтинг АА+ «Стабильный»</h3>
+                          <h3 className="creditRating__title">Аварийные отключения</h3>
                           <p className="creditRating__text">
-                            Одно из крупнейших рейтинговых агентств АКРА присвоило АО «Мособлэнерго» кредитный рейтинг АА+(RU) «Стабильный». Рейтинг отражает сильную рыночную позицию компании в Подмосковье, хороший операционный профиль, высокую
-                            рентабельность бизнеса, низкий уровень долговой нагрузки и хороший уровень ликвидности.
+                          АО «Мособлэнерго» предлагает воспользоваться сервисом информирования населения о перерывах энергоснабжения. Получить информацию отключениях можно перейдя по кнопке вверху сайта «Узнать об отключениях» или по кнопке ниже.
                           </p>
                           <div className="creditRating__link-area">
-                            <Link className="creditRating__link block-btn" to="/creditRating">
-                              Подробнее
+                            <Link className="creditRating__link block-btn" to="/plannedOutages">
+                              Узнать об отключениях
                             </Link>
                           </div>
                         </div>
-                      </div> */}
+                      </div>
                       {/* <div className="creditRating">
                         <div className="creditRating__desc">
                           <div
