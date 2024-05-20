@@ -28,7 +28,7 @@ export default function PlannedOutages() {
       />
       <div className="page-grid__content" id="content">
         <div className="text-area creditRating" style={{ margin: "0 auto", padding: "10px", flexDirection: "column", maxWidth: "100%", marginBottom: "40px" }}>
-          <h2 style={{ marginBottom: "20px",color:"red" }}>Аварийные отключения</h2>
+          <h2 style={{ marginBottom: "20px", color: "red" }}>Аварийные отключения</h2>
           {disconnects.length < 1 && <h3>На данный момент отключений нет</h3>}
           {disconnects.length > 0 &&
             <div className="wrap-table" style={{ maxWidth: "100%" }}>
@@ -41,7 +41,19 @@ export default function PlannedOutages() {
                     <th style={{ textAlign: "center", padding: "10px" }}>Дата и время <br />отключения</th>
                     <th style={{ textAlign: "center", padding: "10px" }}>Прогнозируемое <br />время включения <br />в течение (часов)</th>
                   </tr>
-                  {disconnects.map((item, index) =>
+                  {disconnects.sort((a, b) => {
+                     const nameA = a.attributes.go.toUpperCase(); // ignore upper and lowercase
+                     const nameB = b.attributes.go.toUpperCase(); // ignore upper and lowercase
+                     if (nameA < nameB) {
+                       return -1;
+                     }
+                     if (nameA > nameB) {
+                       return 1;
+                     }
+                   
+                     // names must be equal
+                     return 0;
+                  }).map((item, index) =>
                     <tr key={index}>
                       <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
                       <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
