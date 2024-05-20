@@ -7,7 +7,7 @@ import img1327b1c06a19e1362c9d6bc894981c97 from "../../img/1327b1c06a19e1362c9d6
 import telegramQR from "../../img/planned/YQR.svg";
 import alarm from "../../img/planned/alarm_alert_bell.svg";
 import axios from "axios";
-import './PlannedOutages.css'; 
+import './PlannedOutages.css';
 
 
 export default function PlannedOutages() {
@@ -37,92 +37,73 @@ export default function PlannedOutages() {
           {disconnects.length > 0 &&
             <div className="table-container">
               <table style={{ maxWidth: "200%" }}>
-  <thead>
-    <tr>
-      <th style={{ 
-        textAlign: "center", 
-        padding: "10px", 
-        backgroundColor: "#f2f2f2", 
-        fontWeight: "bold", 
-        fontSize: "1rem",
-        verticalAlign: "middle" /* Добавляем это свойство */
-      }}>
-        Городской<br /> округ
-      </th>
-      <th style={{ 
-        textAlign: "center", 
-        padding: "10px", 
-        backgroundColor: "#f2f2f2", 
-        fontWeight: "bold", 
-        fontSize: "1rem",
-        verticalAlign: "middle" /* Добавляем это свойство */
-      }}>
-        Улицы
-      </th>
-      <th style={{ 
-        textAlign: "center", 
-        padding: "10px", 
-        backgroundColor: "#f2f2f2", 
-        fontWeight: "bold", 
-        fontSize: "1rem",
-        verticalAlign: "middle" /* Добавляем это свойство */
-      }}>
-        Дата и время <br />отключения
-      </th>
-      <th style={{ 
-        textAlign: "center", 
-        padding: "10px", 
-        backgroundColor: "#f2f2f2", 
-        fontWeight: "bold", 
-        fontSize: "1rem",
-        verticalAlign: "middle" /* Добавляем это свойство */
-      }}>
-        Прогнозируемое <br />время включения <br />в течение (часов)
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {disconnects.map((item, index) =>
-      <tr key={index}>
-        <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
-        <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
-        <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
-        <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.durationSolution}</td>
-      </tr>
-    )}
-  </tbody>
-</table>
-
-              {/* <table>
                 <thead>
                   <tr>
-                    <th data-label="Городской округ">Городской округ</th>
-                    <th data-label="Улицы">Улицы</th>
-                    <th data-label="Дата и время отключения">Дата и время отключения</th>
-                    <th data-label="Прогнозируемое время включения (часов)">Прогнозируемое время включения (часов)</th>
+                    <th style={{
+                      textAlign: "center",
+                      padding: "10px",
+                      backgroundColor: "#f2f2f2",
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                      verticalAlign: "middle" /* Добавляем это свойство */
+                    }}>
+                      Городской<br /> округ
+                    </th>
+                    <th style={{
+                      textAlign: "center",
+                      padding: "10px",
+                      backgroundColor: "#f2f2f2",
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                      verticalAlign: "middle" /* Добавляем это свойство */
+                    }}>
+                      Улицы
+                    </th>
+                    <th style={{
+                      textAlign: "center",
+                      padding: "10px",
+                      backgroundColor: "#f2f2f2",
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                      verticalAlign: "middle" /* Добавляем это свойство */
+                    }}>
+                      Дата и время <br />отключения
+                    </th>
+                    <th style={{
+                      textAlign: "center",
+                      padding: "10px",
+                      backgroundColor: "#f2f2f2",
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                      verticalAlign: "middle" /* Добавляем это свойство */
+                    }}>
+                      Прогнозируемое <br />время включения <br />в течение (часов)
+                    </th>
                   </tr>
+                </thead>
+                <tbody>
                   {disconnects.sort((a, b) => {
-                     const nameA = a.attributes.go.toUpperCase(); // ignore upper and lowercase
-                     const nameB = b.attributes.go.toUpperCase(); // ignore upper and lowercase
-                     if (nameA < nameB) {
-                       return -1;
-                     }
-                     if (nameA > nameB) {
-                       return 1;
-                     }
-                   
-                     // names must be equal
-                     return 0;
+                    const nameA = a.attributes.go.toUpperCase(); // ignore upper and lowercase
+                    const nameB = b.attributes.go.toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                      return -1;
+                    }
+                    if (nameA > nameB) {
+                      return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
                   }).map((item, index) =>
                     <tr key={index}>
-                      <td data-label="Городской округ">{item.attributes.go}</td>
-                      <td data-label="Улицы">{item.attributes.addressDisconnected}</td>
-                      <td data-label="Дата и время отключения">{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
-                      <td data-label="Прогнозируемое время включения (часов)">{item.attributes.durationSolution}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.durationSolution}</td>
                     </tr>
                   )}
                 </tbody>
-              </table> */}
+              </table>
             </div>
           }
         </div>
@@ -178,7 +159,7 @@ export default function PlannedOutages() {
               </div>
             </div>
           </div>
-          <Disconnect/>
+          <Disconnect />
           <div className="text-area">
             <p>
               Актуальную информацию о плановых отключениях можно получить в
