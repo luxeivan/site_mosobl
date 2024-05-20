@@ -1,0 +1,67 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 100rem;
+  vertical-align: middle;
+}
+
+th,
+td {
+  min-width: 150px; /* Минимальная ширина для ячеек */
+}
+
+@media (max-width: 768px) {
+  th, td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  th {
+    text-align: left;
+    background-color: #f9f9f9;
+  }
+
+  td {
+    text-align: right;
+    border-left: 4px solid #ddd;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  th::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
