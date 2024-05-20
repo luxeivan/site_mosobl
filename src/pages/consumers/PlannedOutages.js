@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import Disconnect from "../../components/Disconnect/Disconnect";
 import TopImage from "../../components/TopImage";
-import {DateTime} from 'luxon'
+import { DateTime } from 'luxon'
 import img1327b1c06a19e1362c9d6bc894981c97 from "../../img/1327b1c06a19e1362c9d6bc894981c97.jpg";
 import telegramQR from "../../img/planned/YQR.svg";
 import alarm from "../../img/planned/alarm_alert_bell.svg";
@@ -27,32 +27,35 @@ export default function PlannedOutages() {
         title={"Плановые отключения"}
       />
       <div className="page-grid__content" id="content">
-        <div className="text-area creditRating" style={{ margin: "0 auto", padding: "10px",flexDirection:"column",maxWidth:"100%",marginBottom:"40px" }}>
-          <h2 style={{marginBottom:"20px"}}>Аварийные отключения</h2>
-          <div className="wrap-table" style={{maxWidth:"100%"}}>
-            <table style={{maxWidth:"200%"}}>
+        <div className="text-area creditRating" style={{ margin: "0 auto", padding: "10px", flexDirection: "column", maxWidth: "100%", marginBottom: "40px" }}>
+          <h2 style={{ marginBottom: "20px",color:"red" }}>Аварийные отключения</h2>
+          {disconnects.length < 1 && <h3>На данный момент отключений нет</h3>}
+          {disconnects.length > 0 &&
+            <div className="wrap-table" style={{ maxWidth: "100%" }}>
+              <table style={{ maxWidth: "200%" }}>
 
-              <tbody>
-                <tr>
-                  <th style={{ textAlign: "center",padding:"10px" }}>Городской<br/> округ</th>
-                  <th style={{ textAlign: "center",padding:"10px" }}>Отключенные <br/>улицы</th>
-                  <th style={{ textAlign: "center",padding:"10px" }}>Время <br/>отключения</th>
-                  <th style={{ textAlign: "center",padding:"10px" }}>Планируемая <br/>длительность устранения <br/>(часов)</th>
-                </tr>
-                {disconnects.map((item,index) =>
-                  <tr key={index}>
-                    <td style={{textAlign:"center",padding:"10px"}}>{item.attributes.go}</td>
-                    <td style={{textAlign:"center",padding:"10px"}}>{item.attributes.addressDisconnected}</td>
-                    <td style={{textAlign:"center",padding:"10px"}}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
-                    <td style={{textAlign:"center",padding:"10px"}}>{item.attributes.durationSolution}</td>
+                <tbody>
+                  <tr>
+                    <th style={{ textAlign: "center", padding: "10px" }}>Городской<br /> округ</th>
+                    <th style={{ textAlign: "center", padding: "10px" }}>Улицы</th>
+                    <th style={{ textAlign: "center", padding: "10px" }}>Дата и время <br />отключения</th>
+                    <th style={{ textAlign: "center", padding: "10px" }}>Прогнозируемое <br />время включения <br />в течение (часов)</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+                  {disconnects.map((item, index) =>
+                    <tr key={index}>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.durationSolution}</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          }
         </div>
         <div className="subscription-block">
-        <h2 style={{marginBottom:"20px",textAlign:"center"}}>Плановые отключения</h2>
+          <h2 style={{ marginBottom: "20px", textAlign: "center" }}>Плановые отключения</h2>
           <div className="planned-notification">
             <div className="planned-notification__area planned-notification__area_col">
               <div className="planned-notification__title-area">
