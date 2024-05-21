@@ -74,7 +74,7 @@ export const mainMenu = [
         link: "/regulatoryLegalActs",
       },
       {
-        title: "Плановые работы",
+        title: "Плановые и аварийные отключения",
         link: "/plannedOutages",
       },
       {
