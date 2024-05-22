@@ -19,7 +19,7 @@ export default function PlannedOutages() {
       .then(res => setDisconnects(res.data.data))
       .catch(err => console.log(err));
 
-    axios.get('http://77.105.172.131/api/countSubscriber')
+    axios.get('https://subscribers.mosoblenergo.ru/api/countSubscriber')
       .then(res => setCountSubscriber(res.data.count))
       .catch(err => console.log(err));
   }, []);
