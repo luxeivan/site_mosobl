@@ -12,10 +12,15 @@ import './PlannedOutages.css';
 
 export default function PlannedOutages() {
   const [disconnects, setDisconnects] = useState([]);
+  const [countSubscriber, setCountSubscriber] = useState(null);
 
   useEffect(() => {
     axios.get('https://nopowersupply.mosoblenergo.ru/station/api/avarijnye-otklyucheniyas')
       .then(res => setDisconnects(res.data.data))
+      .catch(err => console.log(err));
+
+    axios.get('http://77.105.172.131/api/countSubscriber')
+      .then(res => setCountSubscriber(res.data.count))
       .catch(err => console.log(err));
   }, []);
 
@@ -138,6 +143,9 @@ export default function PlannedOutages() {
                     Telegram-бот
                   </a>{" "}
                 </p>
+                {countSubscriber &&
+                  <p>На данный момент подписчиков: <span style={{ fontWeight: 600 }}>{countSubscriber}</span></p>
+                }
                 <p style={{ fontWeight: 600 }}>Подписывайтесь!</p>
               </div>
             </div>
