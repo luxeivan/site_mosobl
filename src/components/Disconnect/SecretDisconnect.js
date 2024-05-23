@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import axios from "axios";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
+import styles from './SecretDisconnect.module.css'
 
 export default function SecretDisconnect() {
   const [disconnects, setDisconnects] = useState([]);
@@ -64,8 +65,8 @@ export default function SecretDisconnect() {
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
-          query +
-          "&pagination[pageSize]=100000"
+        query +
+        "&pagination[pageSize]=100000"
       )
       .then((response) => {
         const groupedData = response.data.data.reduce((acc, item) => {
@@ -77,7 +78,7 @@ export default function SecretDisconnect() {
             .join(", ");
           const comment = item.attributes.comment || "Без комментария";
           const begin = DateTime.fromISO(item.attributes.begin).toFormat(
-            "dd.MM.yyyy (HH:mm)"
+            "dd.MM.yyyy (HH:mm"
           );
           const end = DateTime.fromISO(item.attributes.end).toFormat("HH:mm");
           const formattedDisconnect = `${begin}-${end}) г. о. ${city}, ${streets}.${comment}`;
@@ -101,6 +102,8 @@ export default function SecretDisconnect() {
       });
   }, [query]);
 
+  const prefix = "«Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:"
+  const sufix = "По вопросам отключений и качества электроснабжения обращаться на «Горячую линию» АО «Мособлэнерго» по телефону 8(495) 99-500-99."
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -116,15 +119,18 @@ export default function SecretDisconnect() {
           Object.entries(disconnects).map(([city, disconnects]) => (
             <div key={city} style={{ marginBottom: "20px", borderBottom: "1px solid #ddd", paddingBottom: "10px" }}>
               <h2>{`В городском округе ${city} ${DateTime.fromJSDate(currentDate).toFormat('d MMMM', { locale: 'ru' })} возможны плановые отключения электроэнергии`}</h2>
-              <p>
-                «Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:
-              </p>
+              <p>{prefix}</p>
               {disconnects.map((disconnect, index) => (
-                <p key={index}>{disconnect}</p>
+                <p key={index}>{disconnect} </p>
               ))}
-              <p>
-                По вопросам отключений и качества электроснабжения обращаться на «Горячую линию» АО «Мособлэнерго» по телефону 8(495) 99-500-99.
-              </p>
+              <p>{sufix}</p>
+              <button className={styles.button} onClick={() => {
+                let text = `В городском округе ${city} ${DateTime.fromJSDate(currentDate).toFormat('d MMMM', { locale: 'ru' })} возможны плановые отключения электроэнергии\r\n`
+                text = text + prefix + '\r\n'
+                disconnects.forEach(item => { text = text + item + '\r\n' })
+                text = text + sufix
+                navigator.clipboard.writeText(text)
+              }}>Копировать в буфер</button>
             </div>
           ))
         )}
