@@ -10,13 +10,8 @@ export default function Disconnect() {
   const [listDisconnect, setListDisconnect] = useState();
   const [currentOpenRow, setCurrentOpenRow] = useState();
 
-  //   http://localhost:1337/api/otklyuchenies?
-  //   populate[uzel_podklyucheniya][populate][0]=uliczas
-  //   &populate[uzel_podklyucheniya][populate][1]=gorod
-  //   &filters[$and][0][begin][$gte]=2022-12-01T08:00:00.000Z&filters[$and][1][end][$lte]=2022-12-02T00:00:00.000Z
   const query = qs.stringify(
     {
-      // fields: ['title', 'slug'],
       populate: {
         uzel_podklyucheniya: { populate: { uliczas: true, gorod: true } },
       },
@@ -28,14 +23,14 @@ export default function Disconnect() {
                 begin: {
                   $gte: DateTime.fromMillis(
                     parseInt(currentDate.getTime())
-                  ).startOf("day").ts, //больше
+                  ).startOf("day").ts,
                 },
               },
               {
                 begin: {
                   $lte: DateTime.fromMillis(
                     parseInt(currentDate.getTime())
-                  ).endOf("day").ts, //меньше
+                  ).endOf("day").ts,
                 },
               },
             ],
@@ -46,14 +41,14 @@ export default function Disconnect() {
                 end: {
                   $gte: DateTime.fromMillis(
                     parseInt(currentDate.getTime())
-                  ).startOf("day").ts, //больше
+                  ).startOf("day").ts,
                 },
               },
               {
                 end: {
                   $lte: DateTime.fromMillis(
                     parseInt(currentDate.getTime())
-                  ).endOf("day").ts, //меньше
+                  ).endOf("day").ts,
                 },
               },
             ],
@@ -62,11 +57,10 @@ export default function Disconnect() {
       },
     },
     {
-      encodeValuesOnly: true, // prettify URL
+      encodeValuesOnly: true,
     }
   );
   useEffect(() => {
-    //console.log(query);
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
@@ -74,7 +68,6 @@ export default function Disconnect() {
           "&pagination[pageSize]=100000"
       )
       .then((responce) => {
-        //console.log(responce.data.data);
         const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
           const value =
             obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data
@@ -84,21 +77,17 @@ export default function Disconnect() {
           );
           return objectsByKeyValue;
         }, {});
-        // const groupArr = responce.data.data.group(item=>item.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name)
+
         setListDisconnect(newarray);
-        //console.log(newarray);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [currentDate]);
-  useEffect(() => {
-    //console.log(currentOpenRow);
-  }, [currentOpenRow]);
-  // console.log(listDisconnect);
+  useEffect(() => {}, [currentOpenRow]);
+
   const addGO = (name) => {
     if (name.match(/г\s/gm)) {
-      // console.log(name);
       return name.match(/г\s/gm).length > 1 ||
         name.match(/деревня\s/gm) ||
         name.match(/рп\s/gm) ||
@@ -135,7 +124,6 @@ export default function Disconnect() {
           {listDisconnect &&
             Object.keys(listDisconnect).length !== 0 &&
             Object.entries(listDisconnect).map((item, index) => {
-              // console.log(item)
               return (
                 <Placemark
                   onClick={(event) => {
@@ -150,9 +138,6 @@ export default function Disconnect() {
                       left: 0,
                       behavior: "smooth",
                     });
-                    //window.location.assign(`${window.location.href.split('#')[0]}#City-${index}`);
-                    //window.moveBy(0, -40);
-                    // console.log(item.attributes.address)
                   }}
                   key={index}
                   geometry={{
@@ -165,31 +150,11 @@ export default function Disconnect() {
                     ],
                   }}
                   properties={{
-                    // balloonContent: `<div className="ballon-down">
-                    //                           <p style="color: #000; margin-bottom: 5px">Производственная программа ${item[0]}</p>
-                    //                           <a href="${item.attributes.file.data[0].attributes.url}" rel="noopener noreferrer" target="_blank" >Посмотреть</a>
-                    //                           </div>`,
-                    //iconContent: "X",
-                    //hintContent: "Ну давай уже тащи",
-                    //balloonContent: 'А эта — новогодняя',
                     iconContent: `${addGO(item[0])}`,
                     hintContent: `${addGO(item[0])}`,
                   }}
                   options={{
-                    //iconLayout: 'default#image',
-                    // Своё изображение иконки метки.
-                    //iconImageHref:
-                    // Размеры метки.
-                    //iconImageSize,
-                    // Смещение левого верхнего угла иконки относительно
-                    // её "ножки" (точки привязки).
-                    //iconImageOffset: [-5, -38],
                     preset: "islands#redStretchyIcon",
-                    // preset: "islands#icon",
-                    // preset: "islands#greenDotIconWithCaption",
-                    //iconLayout: "islands#orangeStretchyIcon",
-                    //iconColor: "red",
-                    //iconImageHref: noPlug,
                   }}
                 />
               );
@@ -201,8 +166,6 @@ export default function Disconnect() {
         {listDisconnect && Object.keys(listDisconnect).length !== 0 && (
           <ul className="disconnect__list">
             {Object.entries(listDisconnect).map((item, index) => {
-              //console.log(item);
-
               return (
                 <div key={index} className="accordion-row">
                   <div
@@ -245,7 +208,6 @@ export default function Disconnect() {
                             const end = DateTime.fromISO(
                               item.attributes.end
                             ).toLocal().c;
-                            // console.log(item);
                             return (
                               <li
                                 key={index}
@@ -318,7 +280,6 @@ export default function Disconnect() {
                             const end = DateTime.fromISO(
                               item.attributes.end
                             ).toLocal().c;
-                            // console.log(item);
                             return (
                               <li
                                 key={index}
@@ -431,22 +392,12 @@ export default function Disconnect() {
                                           ],
                                         }}
                                         properties={{
-                                          //       balloonContent: `<div className="ballon-down">${item.attributes.fias.value}<br>
-                                          //     Подробнее
-                                          // </div>`,
                                           iconContent: "X",
-                                          //hintContent: "Ну давай уже тащи",
                                           hintContent:
                                             item.attributes.fias.value,
                                         }}
                                         options={{
                                           preset: "islands#redDotIcon",
-                                          // preset: "islands#icon",
-                                          // preset: "islands#greenDotIconWithCaption",
-                                          // iconLayout: "default#image",
-                                          // iconColor: "red",
-
-                                          //iconImageHref: noPlug,
                                         }}
                                       />
                                     );

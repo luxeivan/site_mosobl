@@ -43,6 +43,7 @@ import Vacancies from "./pages/Vacancies";
 import Plugme from "./pages/Plugme";
 import SpecialProjects from "./pages/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";
+import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
 
 function App() {
   useEffect(() => {
@@ -113,6 +114,7 @@ function App() {
 
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
+          <Route path="/secret" element={<SecretDisconnect />} />
 
           <Route path="/*" element={<Page404 />} />
         </Routes>
