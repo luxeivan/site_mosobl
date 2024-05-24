@@ -7,7 +7,9 @@ export default function GosuslugiBanner() {
   // if(location.pathname === '/secret')
   //   return false
   return (
-    <div id="js-show-iframe-wrapper" style={{display:location.pathname === '/secret'?"none":"block"}}>
+    <div id="js-show-iframe-wrapper" 
+    style={{display:location.pathname === '/secret'?"none":"block"    }}
+    >
       <div className="pos-banner-fluid bf-2">
         <div className="bf-2__decor">
           <div className="bf-2__logo-wrap">
