@@ -10,9 +10,9 @@ import styles from "./SecretDisconnect.module.css";
 
 export default function SecretDisconnect() {
   const [disconnects, setDisconnects] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(DateTime.now().plus({ days: 1 }).toISO());
-
-
+  const [selectedDate, setSelectedDate] = useState(
+    DateTime.now().plus({ days: 1 }).toISO()
+  );
 
   useEffect(() => {
     const query = qs.stringify(
@@ -57,12 +57,12 @@ export default function SecretDisconnect() {
         encodeValuesOnly: true,
       }
     );
-    console.log(query)
+    console.log(query);
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
-        query +
-        "&pagination[pageSize]=100000"
+          query +
+          "&pagination[pageSize]=100000"
       )
       .then((response) => {
         const groupedData = response.data.data.reduce((acc, item) => {
@@ -73,7 +73,10 @@ export default function SecretDisconnect() {
             );
           let streets =
             item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data
-              .map((street) => street.attributes.name + ` ` + street.attributes.comment)
+              .map(
+                (street) =>
+                  street.attributes.name + ` ` + street.attributes.comment
+              )
               .join(", ");
 
           // Удаляем все упоминания "ул. г Истра" и "г Истра"
@@ -134,13 +137,13 @@ export default function SecretDisconnect() {
             showIcon
             selected={selectedDate}
             onChange={(date) => {
-              console.log(date)
-              setSelectedDate(date)
+              console.log(date);
+              setSelectedDate(date);
             }}
             dateFormat="dd.MM.yyyy"
-          // className={styles.datepicker}
-          //  locale="ru"
-          //  style={{zIndex:"1000"}}
+            // className={styles.datepicker}
+            //  locale="ru"
+            //  style={{zIndex:"1000"}}
           />
         </div>
         {Object.keys(disconnects).length === 0 ? (
@@ -155,17 +158,16 @@ export default function SecretDisconnect() {
                 paddingBottom: "10px",
               }}
             >
-              <h2>{`В городском округе ${city} ${DateTime.fromJSDate(selectedDate).toFormat(
-                "d MMMM",
-                {
-                  locale: "ru",
-                }
-              )} возможны плановые отключения электроэнергии`}</h2>
+              <h2>{`В городском округе ${city} ${DateTime.fromJSDate(
+                selectedDate
+              ).toFormat("d MMMM", {
+                locale: "ru",
+              })} возможны плановые отключения электроэнергии`}</h2>
               <p>{prefix}</p>
               {disconnects.map((disconnect, index) => (
                 <p
                   key={index}
-                // style={disconnect.addedAt > lastCheck ? highlightStyle : {}}
+                  // style={disconnect.addedAt > lastCheck ? highlightStyle : {}}
                 >
                   {disconnect.text}
                 </p>
