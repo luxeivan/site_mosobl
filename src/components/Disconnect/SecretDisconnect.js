@@ -4,17 +4,20 @@ import { DateTime } from "luxon";
 import axios from "axios";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./SecretDisconnect.module.css";
+import { ru } from 'date-fns/locale/ru';
+registerLocale('ru', ru)
 
 export default function SecretDisconnect() {
   const [disconnects, setDisconnects] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(DateTime.now().plus({ days: 1 }).toISO());
+  const [selectedDate, setSelectedDate] = useState(DateTime.now().plus({ days: 1 }).toJSDate());
 
 
 
   useEffect(() => {
+    console.log(selectedDate)
     const query = qs.stringify(
       {
         populate: {
@@ -133,14 +136,9 @@ export default function SecretDisconnect() {
           <DatePicker
             showIcon
             selected={selectedDate}
-            onChange={(date) => {
-              console.log(date)
-              setSelectedDate(date)
-            }}
+            onChange={(date) => setSelectedDate(date)}
             dateFormat="dd.MM.yyyy"
-          // className={styles.datepicker}
-          //  locale="ru"
-          //  style={{zIndex:"1000"}}
+            locale="ru"
           />
         </div>
         {Object.keys(disconnects).length === 0 ? (

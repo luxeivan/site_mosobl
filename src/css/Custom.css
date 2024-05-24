@@ -510,6 +510,9 @@ button.wrap-link {
 .react-date-picker__calendar {
   z-index: 997 !important;
 }
+.react-datepicker-wrapper{
+  border: 1px solid gray !important; 
+}
 
 .disconnect {
   margin-bottom: 50px;
