@@ -1,6 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router";
 
 export default function GosuslugiBanner() {
+  const location = useLocation()
+  console.log(location)
+  if(location.pathname === '/secret')
+    return false
   return (
     <div id="js-show-iframe-wrapper">
       <div className="pos-banner-fluid bf-2">

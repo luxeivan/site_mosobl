@@ -128,12 +128,14 @@ export default function SecretDisconnect() {
       <TopImage title={""} />
       <div style={{ whiteSpace: "pre-wrap", padding: "20px" }}>
         <div style={{ marginBottom: "20px" }}>
-          <label>Выберите дату: </label>
+        <span style={{ fontWeight: 700 }}>Дата отключений: </span>
           <DatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             dateFormat="dd.MM.yyyy"
             className={styles.datepicker}
+            locale="ru"
+            //  style={{zIndex:"1000"}}
           />
         </div>
         {Object.keys(disconnects).length === 0 ? (
