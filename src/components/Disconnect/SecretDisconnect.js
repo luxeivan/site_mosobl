@@ -86,8 +86,6 @@ export default function SecretDisconnect() {
           if (!acc[city]) {
             acc[city] = [];
           }
-
-          // Check for duplicate streets and avoid adding them
           if (!acc[city].some(disconnect => disconnect.includes(streets))) {
             acc[city].push(formattedDisconnect);
           }
