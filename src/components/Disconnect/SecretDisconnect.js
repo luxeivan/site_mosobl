@@ -4,12 +4,13 @@ import { DateTime } from "luxon";
 import axios from "axios";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
-import styles from './SecretDisconnect.module.css';
+import styles from "./SecretDisconnect.module.css";
 
 export default function SecretDisconnect() {
   const [disconnects, setDisconnects] = useState([]);
+  console.log("disconnects!!!!!!!!!", disconnects);
   const [lastCheck, setLastCheck] = useState(Date.now()); // Время последнего посещения страницы
-  const currentDate = new Date();
+  const currentDate = DateTime.now().plus({days: 1})
 
   const query = qs.stringify(
     {
@@ -23,14 +24,14 @@ export default function SecretDisconnect() {
               {
                 begin: {
                   $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
+                    parseInt(currentDate)
                   ).startOf("day").ts,
                 },
               },
               {
                 begin: {
                   $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
+                    parseInt(currentDate)
                   ).endOf("day").ts,
                 },
               },
@@ -41,14 +42,14 @@ export default function SecretDisconnect() {
               {
                 end: {
                   $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
+                    parseInt(currentDate)
                   ).startOf("day").ts,
                 },
               },
               {
                 end: {
                   $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
+                    parseInt(currentDate)
                   ).endOf("day").ts,
                 },
               },
@@ -66,19 +67,27 @@ export default function SecretDisconnect() {
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
-        query +
-        "&pagination[pageSize]=100000"
+          query +
+          "&pagination[pageSize]=100000"
       )
       .then((response) => {
         const groupedData = response.data.data.reduce((acc, item) => {
-          const city = item.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name.replace(/^г\s/, '');
-          let streets = item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data
-            .map((street) => street.attributes.name)
-            .join(", ");
+          const city =
+            item.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name.replace(
+              /^г\s/,
+              ""
+            );
+          let streets =
+            item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data
+              .map((street) => street.attributes.name)
+              .join(", ");
 
           // Удаляем все упоминания "ул. г Истра" и "г Истра"
-          const cityPattern = new RegExp(`(ул\\.\\s*г\\s*${city},\\s*)|(г\\s*${city},\\s*)|(ул\\.\\s*г\\s*${city})|(г\\s*${city})`, 'gi');
-          streets = streets.replace(cityPattern, '').trim();
+          const cityPattern = new RegExp(
+            `(ул\\.\\s*г\\s*${city},\\s*)|(г\\s*${city},\\s*)|(ул\\.\\s*г\\s*${city})|(г\\s*${city})`,
+            "gi"
+          );
+          streets = streets.replace(cityPattern, "").trim();
 
           console.log("Сформированные улицы: ", streets); // Логируем очищенные улицы
 
@@ -89,13 +98,15 @@ export default function SecretDisconnect() {
           const end = DateTime.fromISO(item.attributes.end).toFormat("HH:mm");
           const formattedDisconnect = {
             text: `${begin}-${end}) г. о. ${city}, ${streets}.${comment}`,
-            addedAt: DateTime.fromISO(item.attributes.updatedAt).toMillis() // Записываем время последнего обновления записи
+            addedAt: DateTime.fromISO(item.attributes.updatedAt).toMillis(), // Записываем время последнего обновления записи
           };
 
           if (!acc[city]) {
             acc[city] = [];
           }
-          if (!acc[city].some(disconnect => disconnect.text.includes(streets))) {
+          if (
+            !acc[city].some((disconnect) => disconnect.text.includes(streets))
+          ) {
             acc[city].push(formattedDisconnect);
           }
 
@@ -109,9 +120,11 @@ export default function SecretDisconnect() {
       });
   }, [query]);
 
-  const prefix = "«Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:";
-  const sufix = "По вопросам отключений и качества электроснабжения обращаться на «Горячую линию» АО «Мособлэнерго» по телефону 8(495) 99-500-99.";
-  
+  const prefix =
+    "«Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:";
+  const sufix =
+    "По вопросам отключений и качества электроснабжения обращаться на «Горячую линию» АО «Мособлэнерго» по телефону 8(495) 99-500-99.";
+
   const highlightStyle = { backgroundColor: "red" }; // Стиль для выделения новых записей
 
   return (
@@ -127,21 +140,48 @@ export default function SecretDisconnect() {
           <p>Нет запланированных отключений на сегодня.</p>
         ) : (
           Object.entries(disconnects).map(([city, disconnects]) => (
-            <div key={city} style={{ marginBottom: "20px", borderBottom: "1px solid #ddd", paddingBottom: "10px" }}>
-              <h2>{`В городском округе ${city} ${DateTime.fromJSDate(currentDate).toFormat('d MMMM', { locale: 'ru' })} возможны плановые отключения электроэнергии`}</h2>
+            <div
+              key={city}
+              style={{
+                marginBottom: "20px",
+                borderBottom: "1px solid #ddd",
+                paddingBottom: "10px",
+              }}
+            >
+              <h2>{`В городском округе ${city} ${DateTime.fromJSDate(
+                currentDate
+              ).toFormat("d MMMM", {
+                locale: "ru",
+              })} возможны плановые отключения электроэнергии`}</h2>
               <p>{prefix}</p>
               {disconnects.map((disconnect, index) => (
-                <p key={index} style={disconnect.addedAt > lastCheck ? highlightStyle : {}}>{disconnect.text}</p>
+                <p
+                  key={index}
+                  style={disconnect.addedAt > lastCheck ? highlightStyle : {}}
+                >
+                  {disconnect.text}
+                </p>
                 // Если запись добавлена после последнего захода, выделяем её
               ))}
               <p>{sufix}</p>
-              <button className={styles.button} onClick={() => {
-                let text = `В городском округе ${city} ${DateTime.fromJSDate(currentDate).toFormat('d MMMM', { locale: 'ru' })} возможны плановые отключения электроэнергии\r\n`;
-                text = text + prefix + '\r\n';
-                disconnects.forEach(item => { text = text + item.text + '\r\n' });
-                text = text + sufix;
-                navigator.clipboard.writeText(text);
-              }}>Копировать в буфер</button>
+              <button
+                className={styles.button}
+                onClick={() => {
+                  let text = `В городском округе ${city} ${DateTime.fromJSDate(
+                    currentDate
+                  ).toFormat("d MMMM", {
+                    locale: "ru",
+                  })} возможны плановые отключения электроэнергии\r\n`;
+                  text = text + prefix + "\r\n";
+                  disconnects.forEach((item) => {
+                    text = text + item.text + "\r\n";
+                  });
+                  text = text + sufix;
+                  navigator.clipboard.writeText(text);
+                }}
+              >
+                Копировать в буфер
+              </button>
             </div>
           ))
         )}
@@ -149,7 +189,6 @@ export default function SecretDisconnect() {
     </motion.div>
   );
 }
-
 
 // import React, { useEffect, useState } from "react";
 // import qs from "qs";
@@ -260,7 +299,7 @@ export default function SecretDisconnect() {
 
 //   const prefix = "«Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:";
 //   const sufix = "По вопросам отключений и качества электроснабжения обращаться на «Горячую линию» АО «Мособлэнерго» по телефону 8(495) 99-500-99.";
-  
+
 //   const highlightStyle = { backgroundColor: "red" }; // Стиль для выделения новых записей
 
 //   return (
