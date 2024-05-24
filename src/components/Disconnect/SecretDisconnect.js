@@ -10,58 +10,59 @@ import styles from "./SecretDisconnect.module.css";
 
 export default function SecretDisconnect() {
   const [disconnects, setDisconnects] = useState([]);
-  const [lastCheck, setLastCheck] = useState(Date.now()); // Время последнего посещения страницы
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(DateTime.now().plus({ days: 1 }).toISO());
 
-  const query = qs.stringify(
-    {
-      populate: {
-        uzel_podklyucheniya: { populate: { uliczas: true, gorod: true } },
-      },
-      filters: {
-        $or: [
-          {
-            $and: [
-              {
-                begin: {
-                  $gte: DateTime.fromJSDate(selectedDate).startOf("day").ts,
-                },
-              },
-              {
-                begin: {
-                  $lte: DateTime.fromJSDate(selectedDate).endOf("day").ts,
-                },
-              },
-            ],
-          },
-          {
-            $and: [
-              {
-                end: {
-                  $gte: DateTime.fromJSDate(selectedDate).startOf("day").ts,
-                },
-              },
-              {
-                end: {
-                  $lte: DateTime.fromJSDate(selectedDate).endOf("day").ts,
-                },
-              },
-            ],
-          },
-        ],
-      },
-    },
-    {
-      encodeValuesOnly: true,
-    }
-  );
+
 
   useEffect(() => {
+    const query = qs.stringify(
+      {
+        populate: {
+          uzel_podklyucheniya: { populate: { uliczas: true, gorod: true } },
+        },
+        filters: {
+          $or: [
+            {
+              $and: [
+                {
+                  begin: {
+                    $gte: DateTime.fromJSDate(selectedDate).startOf("day").ts,
+                  },
+                },
+                {
+                  begin: {
+                    $lte: DateTime.fromJSDate(selectedDate).endOf("day").ts,
+                  },
+                },
+              ],
+            },
+            {
+              $and: [
+                {
+                  end: {
+                    $gte: DateTime.fromJSDate(selectedDate).startOf("day").ts,
+                  },
+                },
+                {
+                  end: {
+                    $lte: DateTime.fromJSDate(selectedDate).endOf("day").ts,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        encodeValuesOnly: true,
+      }
+    );
+    console.log(query)
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
-          query +
-          "&pagination[pageSize]=100000"
+        query +
+        "&pagination[pageSize]=100000"
       )
       .then((response) => {
         const groupedData = response.data.data.reduce((acc, item) => {
@@ -72,7 +73,7 @@ export default function SecretDisconnect() {
             );
           let streets =
             item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data
-              .map((street) => street.attributes.name + ` `+ street.attributes.comment)
+              .map((street) => street.attributes.name + ` ` + street.attributes.comment)
               .join(", ");
 
           // Удаляем все упоминания "ул. г Истра" и "г Истра"
@@ -109,7 +110,7 @@ export default function SecretDisconnect() {
       .catch((err) => {
         console.log(err);
       });
-  }, [query, selectedDate]);
+  }, [selectedDate]);
 
   const prefix =
     "«Мособлэнерго» информирует о возможных плановых отключениях электроэнергии. На энергообъектах, обслуживаемых компанией, будут проводиться технические работы для повышения надежности электроснабжения потребителей. Для обеспечения безопасного выполнения работ отключение электричества планируется:";
@@ -128,14 +129,18 @@ export default function SecretDisconnect() {
       <TopImage title={""} />
       <div style={{ whiteSpace: "pre-wrap", padding: "20px" }}>
         <div style={{ marginBottom: "20px" }}>
-        <span style={{ fontWeight: 700 }}>Дата отключений: </span>
+          <span style={{ fontWeight: 700 }}>Дата отключений: </span>
           <DatePicker
+            showIcon
             selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
+            onChange={(date) => {
+              console.log(date)
+              setSelectedDate(date)
+            }}
             dateFormat="dd.MM.yyyy"
-            className={styles.datepicker}
-            locale="ru"
-            //  style={{zIndex:"1000"}}
+          // className={styles.datepicker}
+          //  locale="ru"
+          //  style={{zIndex:"1000"}}
           />
         </div>
         {Object.keys(disconnects).length === 0 ? (
@@ -160,7 +165,7 @@ export default function SecretDisconnect() {
               {disconnects.map((disconnect, index) => (
                 <p
                   key={index}
-                  style={disconnect.addedAt > lastCheck ? highlightStyle : {}}
+                // style={disconnect.addedAt > lastCheck ? highlightStyle : {}}
                 >
                   {disconnect.text}
                 </p>
