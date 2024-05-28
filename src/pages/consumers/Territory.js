@@ -38,13 +38,16 @@ export default function Territory() {
       setListCity([]);
     }
   }, [inputCity]);
+
   useEffect(() => {
     if (inputStreet !== "") {
       setListStreet(
         listCity.filter((item) => {
+          console.log(inputStreet)
           if (item.street) {          
-            item.street?.toLowerCase().includes(inputStreet?.toLowerCase())
+            return item.street?.toLowerCase().includes(inputStreet?.toLowerCase())
           }
+          return false
         }
         )
       );
@@ -52,6 +55,7 @@ export default function Territory() {
       setListStreet(listCity);
     }
   }, [inputStreet]);
+
   const getFilialLink = (filial) => {
     if (filial == "Домодедовский") {
       return (
