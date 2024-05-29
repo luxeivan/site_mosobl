@@ -6,6 +6,8 @@ import QR_vacansies from "../img/QR_vacansies.jpg";
 import qr_rabota_ru from "../img/qr_rabota_ru.svg";
 
 export default function Vacancies() {
+  console.log("Test");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
