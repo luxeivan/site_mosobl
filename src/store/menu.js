@@ -20,8 +20,8 @@ export const mainMenu = [
         link: "/mainDirection",
       },
       {
-        title:"Раскрытие информации",
-        link:"/informationDisclosures"
+        title: "Раскрытие информации",
+        link: "/informationDisclosures",
       },
       {
         title: "Вакансии",
@@ -98,7 +98,7 @@ export const mainMenu = [
         link: "/attentionFraud",
       },
       {
-        title: 'Производственные программы на 2024 год',
+        title: "Производственные программы на 2024 год",
         link: "/productionPrograms",
       },
     ],
@@ -125,6 +125,11 @@ export const mainMenu = [
         link: "/specialProjects",
       },
     ],
+  },
+  {
+    mainTitle: "Вакансии",
+    link: "/job",
+    submenu: [],
   },
   {
     mainTitle: "Контакты",
