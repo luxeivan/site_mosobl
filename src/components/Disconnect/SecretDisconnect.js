@@ -15,7 +15,7 @@ export default function SecretDisconnect() {
   const [selectedDate, setSelectedDate] = useState(DateTime.now().plus({ days: 1 }).toJSDate());
 
   useEffect(() => {
-    console.log(selectedDate);
+    //console.log(selectedDate);
     const query = qs.stringify(
       {
         populate: {
@@ -58,7 +58,7 @@ export default function SecretDisconnect() {
         encodeValuesOnly: true,
       }
     );
-    console.log(query);
+    //console.log(query);
     axios
       .get(
         "https://nopowersupply.mosoblenergo.ru/back/api/otklyuchenies?" +
@@ -66,7 +66,7 @@ export default function SecretDisconnect() {
           "&pagination[pageSize]=100000"
       )
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         const groupedData = response.data.data.reduce((acc, item) => {
           const city =
             item.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name.replace(
