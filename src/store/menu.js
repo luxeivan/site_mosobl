@@ -126,11 +126,11 @@ export const mainMenu = [
       },
     ],
   },
-  {
-    mainTitle: "Вакансии",
-    link: "/job",
-    submenu: [],
-  },
+  // {
+  //   mainTitle: "Вакансии",
+  //   link: "/job",
+  //   submenu: [],
+  // },
   {
     mainTitle: "Контакты",
     link: "",
