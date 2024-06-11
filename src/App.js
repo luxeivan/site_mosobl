@@ -44,7 +44,6 @@ import Plugme from "./pages/Plugme";
 import SpecialProjects from "./pages/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";
 import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
-import VacancyDetail from "./pages/Vacancy/VacancyDetail";
 import Job from "./pages/Vacancy/Job";
 
 function App() {
@@ -74,7 +73,7 @@ function App() {
           <Route path="/goals" element={<Goals />} />
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
-          {/* <Route path="/job" element={<Job />} /> */}
+          <Route path="/job" element={<Job />} />
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/vacancies" element={<Vacancies />} />
@@ -118,8 +117,6 @@ function App() {
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
-          <Route path="/vacancies/:id" element={<VacancyDetail />} />
-
           <Route path="/*" element={<Page404 />} />
         </Routes>
         <GosuslugiBanner />
