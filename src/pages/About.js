@@ -75,7 +75,7 @@ export default function About() {
         <div className="row-docs-age">
           <a
             className="doc-line"
-            href={`${addressServer}/uploads/1802a5ad2a3baee81867584923b11e76_compressed_ef73450427.pdf?updated_at=2022-10-28T09:11:34.677Z`}
+            href={`${addressServer}/uploads/politika_f5e5f82c29.pdf?updated_at=2024-06-14T18:45:03.258Z`}
             download=""
             rel="noopener noreferrer"
             target="_blank"
