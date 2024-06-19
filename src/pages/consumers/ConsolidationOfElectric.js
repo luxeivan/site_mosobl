@@ -249,7 +249,7 @@ export default function ConsolidationOfElectric() {
                         <div className="positions-post__wrap-text">
                           <span></span>
                         </div>
-                        <span className="positions-post__tel">+7 (495) 780-39-62 доб. 1132 </span>
+                        <span className="positions-post__tel">+7 (495) 780-39-62 доб. 2092 </span>
                       </div>
                     </div>
                     <div className="positions-post">

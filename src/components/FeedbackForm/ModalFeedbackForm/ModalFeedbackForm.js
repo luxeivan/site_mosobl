@@ -188,6 +188,7 @@ export default function Modal({ onClose }) {
           className={style.modal__feedback__content}
           onClick={(e) => e.stopPropagation()}
         >
+          
           <form onSubmit={handleSubmit}>
             <select
               className={style.feedback__select}

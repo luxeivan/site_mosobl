@@ -42,7 +42,9 @@ export default function ModalFeedbackFormAnother({ onClose }) {
         <div
           className={style.modal__feedback__content}
           onClick={(e) => e.stopPropagation()}
+          style={{zIndex:10000}}
         >
+          <h3>Сформировать текст обращения для почтового сервиса:</h3> 
           <form onSubmit={handleSubmit}>
             <select
               className={style.feedback__select}
@@ -50,7 +52,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
               defaultValue=""
             >
               <option value="" disabled>
-                Выберите тему
+                Выберите тему обращения
               </option>
               {/* --------------------------- */}
               {themes.map((item) => (

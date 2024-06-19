@@ -26,7 +26,7 @@ export default function Territory() {
       axios
         .get(chargingAddressServer + `/api/allFilials?locality=${inputCity}`)
         .then((response) => {
-          //console.log(response)
+          // console.log(response.data)
           setListCity(response.data);
           setLoading(false);
         })
@@ -43,8 +43,8 @@ export default function Territory() {
     if (inputStreet !== "") {
       setListStreet(
         listCity.filter((item) => {
-          console.log(inputStreet)
-          if (item.street) {          
+          // console.log(inputStreet)
+          if (item.street) {
             return item.street?.toLowerCase().includes(inputStreet?.toLowerCase())
           }
           return false
@@ -156,6 +156,9 @@ export default function Territory() {
       });
   };
   // useEffect(() => {
+  //   // console.log(selectCity)
+  // }, [selectCity])
+  // useEffect(() => {
   //   console.log(selectCity)
   // }, [selectCity])
   // useEffect(() => {
@@ -212,27 +215,34 @@ export default function Territory() {
                               (Emp) => Emp.locality === value.locality
                             ) === index
                         )
-                        .map((item, index) => (
-                          <li
-                            key={index}
-                            data-locality={item.locality}
-                            className="search-city__city-item"
-                            onClick={(event) => {
-                              setInputCity(
-                                event.currentTarget.dataset.locality
-                              );
-                              setSelectCity(
-                                event.currentTarget.dataset.locality
-                              );
-                              setListStreet(listCity);
-                            }}
-                          >
-                            {item.locality}{" "}
-                            <span className="search-city__city-district">
-                              ({item.cityDistrict})
-                            </span>
-                          </li>
-                        ))}
+                        .map((item, index) => {
+                          // console.log(item)
+                          return (
+                            <li
+                              key={index}
+                              data-locality={item.locality}
+                              data-citydistrict={item.cityDistrict}
+                              className="search-city__city-item"
+                              onClick={(event) => {
+                                setInputCity(
+                                  event.currentTarget.dataset.locality
+                                );
+                                setSelectCity({
+                                  locality: event.currentTarget.dataset.locality,
+                                  cityDistrict: event.currentTarget.dataset.citydistrict
+                                }
+                                );
+                                setListStreet(listCity);
+                              }}
+                            >
+                              {item.locality}{" "}
+                              <span className="search-city__city-district">
+                                ({item.cityDistrict})
+                              </span>
+                            </li>
+                          )
+                        }
+                        )}
                     </ul>
                   </div>
                 )}
@@ -264,19 +274,24 @@ export default function Territory() {
                         <ul>
                           {listStreet &&
                             listStreet
-                              .filter((item) => item.locality == selectCity)
+                              .filter((item) => item.locality == selectCity.locality && item.cityDistrict == selectCity.cityDistrict)
                               .map((item, index) => {
+                                // console.log(item)
                                 return (
                                   <li
                                     key={index}
                                     data-street={item.street}
+                                    data-citydistrict={item.cityDistrict}
                                     className="search-city__city-item"
                                     onClick={(event) => {
                                       setInputStreet(
                                         event.target.dataset.street
                                       );
-                                      setSelectStreet(
-                                        event.target.dataset.street
+                                      setSelectStreet({
+                                        street: item.street,
+                                        cityDistrict: item.cityDistrict,
+                                        id: item.id
+                                      }
                                       );
                                     }}
                                   >
@@ -322,34 +337,32 @@ export default function Territory() {
                     <li className="description__item">
                       <strong>Номера домов: </strong>
                       {
-                        listCity.find((item) => item.street == selectStreet)
-                          .houseNumbers
+                        listCity.find((item) => {
+                          // console.log(item)
+                          return(item.id == selectStreet.id)
+                        }).houseNumbers
                       }
                     </li>
                     {/* <li className="description__item"><strong>Обслуживающий филиал: </strong>{listCity.find(item => item.street == selectStreet).addressingApplications}</li> */}
                     {/* <li className="description__item"><strong>Производственное отделение: </strong>{listCity.find(item => item.street == selectStreet).po}</li> */}
                     <li className="description__item">
                       <strong>Филиал: </strong>
-                      {getFilialLink(
-                        listCity.find((item) => item.street == selectStreet)
-                          .filial
-                      )}
+                      {getFilialLink(listCity.find((item) => item.id == selectStreet.id).filial)}
                       ,{" "}
-                      {listCity.find((item) => item.street == selectStreet).po}
+                      {listCity.find((item) => item.id == selectStreet.id).po}
                     </li>
                     <li className="description__item">
                       <strong>Городской округ: </strong>
                       {
-                        listCity.find((item) => item.street == selectStreet)
-                          .cityDistrict
+                        listCity.find((item) => item.id == selectStreet.id)?.cityDistrict
                       }
                     </li>
-                    {listCity.find((item) => item.street == selectStreet)
+                    {listCity.find((item) => item.id == selectStreet.id)
                       .note && (
                         <li className="description__item">
                           <strong>Примечание: </strong>
                           {
-                            listCity.find((item) => item.street == selectStreet)
+                            listCity.find((item) => item.id == selectStreet.id)
                               .note
                           }
                         </li>

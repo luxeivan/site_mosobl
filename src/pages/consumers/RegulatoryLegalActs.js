@@ -72,19 +72,11 @@ export default function RegulatoryLegalActs() {
                     target="_blank"
                   >
                     <div className="doc-line__wrap-icon">
-                      <img
-                        src={type[item.attributes.ext.slice(1)]}
-                        alt={`icon ${item.attributes.ext.slice(1)}`}
-                      />
+                      <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">
-                        {item.attributes.name}
-                      </span>
-                      <span className="doc-line__file-info">
-                        {item.attributes.ext.slice(1)}{" "}
-                        {Math.round(item.attributes.size)}kb
-                      </span>
+                      <span className="doc-line__name">{item.attributes.name}</span>
+                      <span className="doc-line__file-info">{Number(item.attributes.size) > 1000 ? `${(item.attributes.size / 1000).toFixed(2)} МБ`:`${Math.round(item.attributes.size)} КБ`}</span>
                     </div>
                   </a>
                 </li>
