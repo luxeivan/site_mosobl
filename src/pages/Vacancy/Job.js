@@ -40,9 +40,10 @@ const Job = () => {
       transition={{ duration: 0.5 }}
     >
       <TopImage image={vacan_img} title={"Вакансии"} />
-      <div>
+      {/* Ниже горе фильтр */}
+      {/* <div>
         <VacanciesList />
-      </div>
+      </div> */}
       <div className={styles.container}>
         <div className={styles.header}>
           <button
