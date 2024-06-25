@@ -1,5 +1,4 @@
-
-
+//Старые вакансии, которые были внизу страницы
 import React from "react";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";

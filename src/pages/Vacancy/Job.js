@@ -1,3 +1,4 @@
+//Новые вакансии, которые переехали наверх
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -8,6 +9,7 @@ import lockationImage from "../../img/Stas3.jpg";
 import styles from "./Job.module.css";
 import JobApplicationForm from "./JobApplicationForm";
 import PreviewModal from "./PreviewModal";
+import VacanciesList from "./VacanciesList";
 
 const Job = () => {
   const [activeTab, setActiveTab] = useState("company");
@@ -38,6 +40,9 @@ const Job = () => {
       transition={{ duration: 0.5 }}
     >
       <TopImage image={vacan_img} title={"Вакансии"} />
+      <div>
+        <VacanciesList />
+      </div>
       <div className={styles.container}>
         <div className={styles.header}>
           <button

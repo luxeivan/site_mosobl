@@ -1,3 +1,4 @@
+//Модалка с формой для отклика в новых вакансиях
 import React from "react";
 import { Modal, Button } from "antd";
 import styles from "./Job.module.css";
