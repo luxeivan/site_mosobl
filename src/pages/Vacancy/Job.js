@@ -118,17 +118,11 @@ const Job = () => {
                 <div>
                   <ul className={styles.list}>
                     <li className={styles.listItem}>
-                      {/* Твое здоровье - наша забота! Предлагаем добровольное
-                      медицинское страхование, включая стоматологическое
-                      обеспечение. */}
                       Твое здоровье - наша забота! Предлагаем добровольное
                       медицинское страхование, включая стоматологическое
                       обеспечение.
                     </li>
                     <li className={styles.listItem}>
-                      {/* Чтобы развиваться и расти вместе, даем возможности для
-                      повышения квалификации, прохождения переподготовки, а
-                      также для обучения по целевому договору в НИУ МЭИ. */}
                       Чтобы развиваться и расти вместе, даем возможности для
                       повышения квалификации, прохождения переподготовки, а
                       также для обучения по целевому договору в НИУ МЭИ,
@@ -136,15 +130,10 @@ const Job = () => {
                       и ФГБОУ ВО ВГУИТ.
                     </li>
                     <li className={styles.listItem}>
-                      {/* Участие в корпоративных спортивных мероприятиях – наше
-                      традиционное упражнение. */}
                       Участие в корпоративных спортивных мероприятиях – наша
                       традиция.
                     </li>
                     <li className={styles.listItem}>
-                      {/* Годовой бонус, ежегодная выплата к отпуску и
-                      дополнительные выплаты по коллективному договору для
-                      поддержки важных моментов в жизни. */}
                       Годовой бонус, ежегодная выплата к отпуску и
                       дополнительные выплаты по коллективному договору для
                       поддержки важных моментов в жизни.
@@ -185,169 +174,3 @@ const Job = () => {
 };
 
 export default Job;
-
-// import React, { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import TopImage from "../../components/TopImage";
-// import vacan_img from "../../img/d21248be80705e7a80efdf5efde73cc5.jpg";
-// import companyImage from "../../img/Stas1.jpg";
-// import compenceImage from "../../img/Stas2.jpg";
-// import lockationImage from "../../img/Stas3.jpg";
-// import styles from "./Job.module.css";
-
-// const Job = () => {
-//   const [activeTab, setActiveTab] = useState("company");
-
-//   const handleTabClick = (tab) => {
-//     setActiveTab(tab);
-//   };
-
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0 }}
-//       animate={{ opacity: 1 }}
-//       exit={{ opacity: 0 }}
-//       transition={{ duration: 0.5 }}
-//     >
-//       <TopImage image={vacan_img} title={"Вакансии"} />
-//       <div className={styles.container}>
-//         <div className={styles.header}>
-//           <button
-//             className={
-//               activeTab === "company"
-//                 ? `${styles.button} ${styles.activeButton}`
-//                 : styles.button
-//             }
-//             onClick={() => handleTabClick("company")}
-//           >
-//             Ждем вас в нашей команде!
-//           </button>
-//           <button
-//             className={
-//               activeTab === "compensation"
-//                 ? `${styles.button} ${styles.activeButton}`
-//                 : styles.button
-//             }
-//             onClick={() => handleTabClick("compensation")}
-//           >
-//             Почему стоит работать у нас?
-//           </button>
-//           <button
-//             className={
-//               activeTab === "workplace"
-//                 ? `${styles.button} ${styles.activeButton}`
-//                 : styles.button
-//             }
-//             onClick={() => handleTabClick("workplace")}
-//           >
-//             Как к нам попасть?
-//           </button>
-//         </div>
-//         <div className={styles.content}>
-//           <AnimatePresence exitBeforeEnter>
-//             {activeTab === "company" && (
-//               <motion.div
-//                 key="company"
-//                 initial={{ opacity: 0, x: -50 }}
-//                 animate={{ opacity: 1, x: 0 }}
-//                 exit={{ opacity: 0, x: 50 }}
-//                 transition={{ duration: 0.3 }}
-//                 className={styles.panel}
-//               >
-//                 <img
-//                   className={styles.image}
-//                   src={companyImage}
-//                   alt="Компания"
-//                 />
-//                 <div>
-//                   <p className={styles.text}>
-//                     Мы собираем как энергетическую команду – электромонтеров,
-//                     диспетчеров сетей и инженеров, так и профессионалов своего
-//                     дела в иных областях, поэтому будем рады соискателям из
-//                     разных сфер. В обслуживании Общества 54 городских округа,
-//                     поэтому мы всегда сможем предложить трудоустройство рядом с
-//                     домом. И, независимо от рабочего места, везде вас будет
-//                     ожидать дружелюбная атмосфера и поддержка коллег, ведь
-//                     энергетика – как большая семья.
-//                   </p>
-//                 </div>
-//               </motion.div>
-//             )}
-//             {activeTab === "compensation" && (
-//               <motion.div
-//                 key="compensation"
-//                 initial={{ opacity: 0, x: -50 }}
-//                 animate={{ opacity: 1, x: 0 }}
-//                 exit={{ opacity: 0, x: 50 }}
-//                 transition={{ duration: 0.3 }}
-//                 className={styles.panel}
-//               >
-//                 <img
-//                   className={styles.image}
-//                   src={compenceImage}
-//                   alt="Компенсации и бонусы"
-//                 />
-//                 <div>
-//                   <ul className={styles.list}>
-//                     <li className={styles.listItem}>
-//                       Твое здоровье - наша забота! Предлагаем добровольное
-//                       медицинское страхование, включая стоматологическое
-//                       обеспечение.
-//                     </li>
-//                     <li className={styles.listItem}>
-//                       Чтобы развиваться и расти вместе, даем возможности для
-//                       повышения квалификации, прохождения переподготовки, а также
-//                       для обучения по целевому договору в НИУ МЭИ.
-//                     </li>
-//                     <li className={styles.listItem}>
-//                       Участие в корпоративных спортивных мероприятиях – наше
-//                       традиционное упражнение.
-//                     </li>
-//                     <li className={styles.listItem}>
-//                       Годовой бонус, ежегодная выплата к отпуску и дополнительные
-//                       выплаты по коллективному договору для поддержки важных
-//                       моментов в жизни.
-//                     </li>
-//                   </ul>
-//                 </div>
-//               </motion.div>
-//             )}
-//             {activeTab === "workplace" && (
-//               <motion.div
-//                 key="workplace"
-//                 initial={{ opacity: 0, x: -50 }}
-//                 animate={{ opacity: 1, x: 0 }}
-//                 exit={{ opacity: 0, x: 50 }}
-//                 transition={{ duration: 0.3 }}
-//                 className={styles.panel}
-//               >
-//                 <img
-//                   className={styles.image}
-//                   src={lockationImage}
-//                   alt="Место работы"
-//                 />
-//                 <div>
-//                   <p className={styles.text}>
-//                     Мы собираем энергетическую команду по всей Московской
-//                     области: обслуживаем 54 городских округа.
-//                   </p>
-//                   <p className={styles.text}>
-//                     Независимо от рабочего места, везде вас будет ожидать
-//                     дружелюбная атмосфера и поддержка коллег, ведь энергетика –
-//                     как большая семья.
-//                   </p>
-//                   <p className={styles.text}>
-//                     Присоединяйтесь к нашей команде, вместе мы создаем энергию
-//                     Подмосковья!
-//                   </p>
-//                 </div>
-//               </motion.div>
-//             )}
-//           </AnimatePresence>
-//         </div>
-//       </div>
-//     </motion.div>
-//   );
-// };
-
-// export default Job;
