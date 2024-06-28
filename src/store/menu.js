@@ -128,7 +128,8 @@ export const mainMenu = [
   },
   {
     mainTitle: "Вакансии",
-    link: "/job",
+    // link: "/job",
+    link: "/vacancies",
     submenu: [],
   },
   {
