@@ -1,29 +1,36 @@
 //Модалка с формой для отклика в новых вакансиях
-import React from "react";
-import { Modal, Button } from "antd";
-import styles from "./Job.module.css";
+// import React from "react";
+// import { Modal, Button } from "antd";
+// import styles from "./Job.module.css";
 
-const PreviewModal = ({ title, content, onClose }) => {
+// const PreviewModal = ({ title, content, onClose }) => {
+//   return (
+//     <Modal
+//       visible={true}
+//       title={title}
+//       onCancel={onClose}
+//       footer={[
+//         <Button
+//           key="copy"
+//           onClick={() => navigator.clipboard.writeText(content)}
+//         >
+//           Копировать текст письма
+//         </Button>,
+//         <Button key="close" onClick={onClose}>
+//           Закрыть
+//         </Button>,
+//       ]}
+//     >
+//       <pre className={styles.previewContent}>{content}</pre>
+//     </Modal>
+//   );
+// };
+
+// export default PreviewModal;
+import React from 'react'
+
+export default function PreviewModal() {
   return (
-    <Modal
-      visible={true}
-      title={title}
-      onCancel={onClose}
-      footer={[
-        <Button
-          key="copy"
-          onClick={() => navigator.clipboard.writeText(content)}
-        >
-          Копировать текст письма
-        </Button>,
-        <Button key="close" onClick={onClose}>
-          Закрыть
-        </Button>,
-      ]}
-    >
-      <pre className={styles.previewContent}>{content}</pre>
-    </Modal>
-  );
-};
-
-export default PreviewModal;
+    <div>PreviewModal</div>
+  )
+}
