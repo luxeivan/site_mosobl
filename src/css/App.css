@@ -6254,6 +6254,11 @@ button {
   padding-top: 47px;
 }
 
+.contact-information__down {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 1500px) {
   .branches__grid-sm {
     grid-template-columns: 1fr;

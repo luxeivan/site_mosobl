@@ -23,7 +23,7 @@ export default function FeedbackForm() {
         className={style.btn__feedback__open__form}
         onClick={handleOpenModal}
       >
-        mail@mosoblenergo.ru
+        Напишите нам
       </button>
       {isModalOpen && <Modal onClose={handleCloseModal} />}
     </div>

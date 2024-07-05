@@ -34,7 +34,9 @@ export default function Contact() {
       <div className="page-grid__content" id="content">
         <div className="inner-post__middle">
           <div className="contact-information">
+            {/* Номера и эл.почты */}
             <div className="contact-information__grid-text">
+              {/* Горячая линия */}
               <div className="contact-information__up">
                 <img
                   className="contact-information__icon"
@@ -48,6 +50,8 @@ export default function Contact() {
                   8 (495) 99-500-99
                 </a>
               </div>
+
+              {/* Справки по письмам */}
               <div className="contact-information__up">
                 <img
                   className="contact-information__icon"
@@ -61,7 +65,8 @@ export default function Contact() {
                   8 (495) 780-39-61
                 </a>
               </div>
-              {/* МЕНЯЮ ТУТЬ */}
+
+              {/* Эл.адрес */}
               <div className="contact-information__up">
                 <img
                   className="contact-information__icon"
@@ -71,13 +76,15 @@ export default function Contact() {
                 <span className="contact-information__text">
                   Электронный адрес:
                 </span>
-                <div className="wrapper__btn">
-                  <FeedbackForm />
-                </div>
-                {/* <a className="contact-information__email" href="mailto:mail@mosoblenergo.ru">
-                mail@mosoblenergo.ru
-              </a> */}
+                <a
+                  className="contact-information__email"
+                  href="mailto:uslugi@mosoblenergo.ru"
+                >
+                  mail@mosoblenergo.ru
+                </a>
               </div>
+
+              {/* Доп.услуги */}
               <div className="contact-information__up">
                 <img
                   className="contact-information__icon"
@@ -95,6 +102,8 @@ export default function Contact() {
                 </a>
               </div>
             </div>
+
+            {/* Адреса */}
             <div className="contact-information__grid-text">
               <div className="contacts-row">
                 <div className="contacts-row__wrap-icon">
@@ -123,6 +132,13 @@ export default function Contact() {
                     Центр «RigaLand», строение 6, подъезд 4.
                   </span>
                 </div>
+              </div>
+            </div>
+
+            {/* Напишите нам */}
+            <div className="contact-information__down">
+              <div className="wrapper__btn">
+                <FeedbackForm />
               </div>
             </div>
           </div>
