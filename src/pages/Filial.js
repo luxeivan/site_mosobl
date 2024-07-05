@@ -11,11 +11,14 @@ export default function Filial() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`${addressServer}/api/filialies/${params.id}?populate[0]=proizvodstvennye_otdeleniyas&populate[1]=kontakties&populate[2]=proizvodstvennye_otdeleniyas.kontakties`)
+    fetch(`${addressServer}/api/filialies/${params.id}?populate[0]=proizvodstvennye_otdeleniyas&populate[1]=kontakties&populate[2]=proizvodstvennye_otdeleniyas.kontakties&populate[3]=work_schedule&populate[4]=proizvodstvennye_otdeleniyas.work_schedule`)
       .then((response) => {
         return response.json();
       })
-      .then((data) => setFilial(data.data))
+      .then((data) => {
+        setFilial(data.data)
+        console.log(data.data)
+      })
       .catch((err) => {
         console.log(err);
         setFilial({});
@@ -57,7 +60,12 @@ export default function Filial() {
               </div>{" "}
               <h1 className="inner-post__title inner-post__margin">{filial.attributes && filial.attributes.name}</h1>
               <span className="inner-post__date inner-post__margin">{filial.attributes && filial.attributes.address} </span>
-              {filial.attributes && filial.attributes.name && filial.attributes.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px",marginLeft:"20px" }}><b style={{fontWeight: "700"}}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{fontWeight: "700"}}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{fontWeight: "700"}}>+7 (495) 785-00-00</b>.   <br/>Приносим извинения за доставленные неудобства!</p> : false}
+              <div style={{ display: "flex", flexDirection: "column",marginLeft:20,marginTop:10 }}>
+
+                {filial.attributes && filial.attributes.work_schedule.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
+              </div>
+
+              {filial.attributes && filial.attributes.name && filial.attributes.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px", marginLeft: "20px" }}><b style={{ fontWeight: "700" }}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{ fontWeight: "700" }}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{ fontWeight: "700" }}>+7 (495) 785-00-00</b>.   <br />Приносим извинения за доставленные неудобства!</p> : false}
             </div>
             <div className="inner-post__middle">
               <div className="branches">
@@ -96,7 +104,7 @@ export default function Filial() {
                     <div className="accordion-row__up" onClick={handlerRowUp}>
                       <span className="accordion-row__text">{item.attributes.name}</span>
                       <div className="accordion-row__wrap-arrow">
-                          {/* <svg className="accordion-row__arrow">
+                        {/* <svg className="accordion-row__arrow">
                             <use href="/local/templates/vg/assets/img/arrow-nav.svg#arrow-nav"></use>
                           </svg> */}
                       </div>
@@ -104,9 +112,14 @@ export default function Filial() {
                     <div className="accordion-row__drop-down">
                       <div className="accordion-row__wrapper">
                         <div className="text-area">
-                          <p>
+                          <p style={{marginBottom:10}}>
                             Адрес: <em>{item.attributes.address}</em>
                           </p>
+                          <div>
+                            {item.attributes.work_schedule?.map((item,index)=>
+                            <p style={{marginBottom:0}} key={index}>{item.days} - <em>{item.times}</em></p>
+                            )}
+                          </div>
                         </div>
                         <div className="accordion-row__grid">
                           {item.attributes.kontakties.data.map((item) => (

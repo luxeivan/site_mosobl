@@ -32,6 +32,7 @@ export default function Filials() {
       .then((data) => {
         setIsLoading(false);
         setFilials(data.data);
+        console.log(data.data)
       })
       .catch((err) => {
         console.log(err);
