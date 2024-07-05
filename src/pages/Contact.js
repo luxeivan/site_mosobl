@@ -74,7 +74,7 @@ export default function Contact() {
                   alt="icon"
                 />
                 <span className="contact-information__text">
-                  Электронный адрес:
+                  По общим вопросам
                 </span>
                 <a
                   className="contact-information__email"
