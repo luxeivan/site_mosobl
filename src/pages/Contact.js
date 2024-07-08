@@ -78,7 +78,7 @@ export default function Contact() {
                 </span>
                 <a
                   className="contact-information__email"
-                  href="mailto:uslugi@mosoblenergo.ru"
+                  href="mailto:mail@mosoblenergo.ru"
                 >
                   mail@mosoblenergo.ru
                 </a>
