@@ -26,7 +26,7 @@ export default function Territory() {
       axios
         .get(chargingAddressServer + `/api/allFilials?locality=${inputCity}`)
         .then((response) => {
-          // console.log(response.data)
+          console.log(response.data)
           setListCity(response.data);
           setLoading(false);
         })
@@ -212,7 +212,7 @@ export default function Territory() {
                         .filter(
                           (value, index, self) =>
                             self.findIndex(
-                              (Emp) => Emp.locality === value.locality
+                              (Emp) => Emp.locality === value.locality && Emp.cityDistrict === value.cityDistrict
                             ) === index
                         )
                         .map((item, index) => {
@@ -339,7 +339,7 @@ export default function Territory() {
                       {
                         listCity.find((item) => {
                           // console.log(item)
-                          return(item.id == selectStreet.id)
+                          return (item.id == selectStreet.id)
                         }).houseNumbers
                       }
                     </li>
