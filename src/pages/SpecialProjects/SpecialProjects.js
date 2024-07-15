@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
+import "./SpecialProjects.css";
 
 const { Meta } = Card;
 
@@ -62,11 +63,22 @@ export default function SpecialProjects() {
             <Col key={event.id} span={8}>
               <Card
                 hoverable
-                cover={<img alt={event.title} src={event.image} />}
+                className="card-grid"
+                cover={
+                  <div className="card-cover">
+                    <img alt={event.title} src={event.image} />
+                  </div>
+                }
                 onClick={() => navigate(event.link)}
               >
-                <Meta title={event.title} description={event.date} />
-                <p>{event.shortDescription}</p>
+                <div className="card-content">
+                  <Meta
+                    className="card-meta"
+                    title={event.title}
+                    description={event.date}
+                  />
+                  <p className="card-description">{event.shortDescription}</p>
+                </div>
               </Card>
             </Col>
           ))}
@@ -76,55 +88,53 @@ export default function SpecialProjects() {
   );
 }
 
-// import React from "react";
+// import React, { useEffect, useState } from "react";
 // import { motion } from "framer-motion";
-// import { Card, Col, Row } from "antd";
+// import { Card, Col, Row, Spin } from "antd";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
 // import TopImage from "../../components/TopImage";
 // import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
-// import exampleImage from "../../img/RG.jpeg";
-// import exampleImageTwo from "../../img/RG2.jpeg";
 
 // const { Meta } = Card;
 
-// // import { useEffect, useState } from "react";
-// // import axios from "axios";
-// // const addressServer = process.env.REACT_APP_BACKEND_SERVER;
-
-// // const [events, setEvents] = useState([]);
-
-// // useEffect(() => {
-// //   const fetchEvents = async () => {
-// //     try {
-// //       const response = await axios.get(${addressServer}/events);
-// //       setEvents(response.data);
-// //     } catch (error) {
-// //       console.error("Ошибка при загрузке данных:", error);
-// //     }
-// //   };
-// //   fetchEvents();
-// // }, []);
-
-// // Моковые данные
-// const events = [
-//   {
-//     id: 1,
-//     title: "Событие 1",
-//     date: "2024-07-15",
-//     description: "Описание события 1",
-//     image: exampleImage,
-//     link: "https://example.com/event1",
-//   },
-//   {
-//     id: 2,
-//     title: "Событие 2",
-//     date: "2024-08-10",
-//     description: "Описание события 2",
-//     image: exampleImageTwo,
-//     link: "https://example.com/event2",
-//   },
-// ];
+// const addressServer =
+//   process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
 
 // export default function SpecialProjects() {
+//   const [events, setEvents] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchEvents = async () => {
+//       try {
+//         const response = await axios.get(
+//           `${addressServer}/api/speczialnye-proekties?populate=*`
+//         );
+//         const eventData = response.data.data.map((event) => ({
+//           id: event.id,
+//           title: event.attributes.title,
+//           date: new Date(event.attributes.createdAt).toLocaleDateString(),
+//           shortDescription: event.attributes.shortDescription,
+//           description: event.attributes.description,
+//           image: `${addressServer}${event.attributes.mainPhoto.data.attributes.url}`,
+//           link: `/specialProjects/${event.id}`,
+//         }));
+//         setEvents(eventData);
+//       } catch (error) {
+//         console.error("Ошибка при загрузке данных:", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchEvents();
+//   }, []);
+
+//   if (loading) {
+//     return <Spin size="large" style={{ display: "block", margin: "0 auto" }} />;
+//   }
+
 //   return (
 //     <motion.div
 //       initial={{ opacity: 0 }}
@@ -143,10 +153,10 @@ export default function SpecialProjects() {
 //               <Card
 //                 hoverable
 //                 cover={<img alt={event.title} src={event.image} />}
-//                 onClick={() => window.open(event.link, "_blank")}
+//                 onClick={() => navigate(event.link)}
 //               >
 //                 <Meta title={event.title} description={event.date} />
-//                 <p>{event.description}</p>
+//                 <p>{event.shortDescription}</p>
 //               </Card>
 //             </Col>
 //           ))}
