@@ -41,10 +41,12 @@ import CreditRating from "./pages/СreditRating";
 import ProductionPrograms from "./pages/consumers/ProductionPrograms";
 import Vacancies from "./pages/Vacancy/Vacancies";
 import Plugme from "./pages/Plugme";
-import SpecialProjects from "./pages/SpecialProjects";
+import SpecialProjects from "./pages/SpecialProjects/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";
 import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
 import Job from "./pages/Vacancy/Job";
+import EventDetails from "./pages/SpecialProjects/EventDetails";
+
 
 function App() {
   useEffect(() => {
@@ -81,6 +83,7 @@ function App() {
           <Route path="/gardeners" element={<Gardeners />} />
           <Route path="/contactForMedia" element={<ContactForMedia />} />
           <Route path="/specialProjects" element={<SpecialProjects />} />
+          <Route path="/specialProjects/:id" element={<EventDetails />} />
           <Route path="/news" element={<News />} />
           <Route path="/consumers" element={<Consumers />} />
 
