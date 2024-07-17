@@ -9,8 +9,9 @@ import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
+import styles from './EventDetails.module.css'
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 const addressServer =
   process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
 
@@ -21,8 +22,8 @@ export default function EventDetails() {
   const [index, setIndex] = useState(-1);
 
   // Параметры для настройки отображения фото
-  const layout = "rows"; // Возможные значения: "rows", "columns", "masonry"
-  const spacing = 10; // Расстояние между фото в пикселях
+  const layout = "columns"; // Возможные значения: "rows", "columns", "masonry"
+  const spacing = 20; // Расстояние между фото в пикселях
   const padding = 10; // Внутренний отступ фото в пикселях
   const width = 100; // Ширина фото в процентах от доступного пространства
 
@@ -35,10 +36,11 @@ export default function EventDetails() {
         const eventData = {
           id: response.data.data.id,
           title: response.data.data.attributes.title,
-          date: new Date(
-            response.data.data.attributes.createdAt
-          ).toLocaleDateString(),
+          date: response.data.data.attributes.dateEvent ? new Date(
+            response.data.data.attributes.dateEvent
+          ).toLocaleDateString() : false,
           description: response.data.data.attributes.description,
+          mainPhoto: `${addressServer}${response.data.data.attributes.mainPhoto.data.attributes.url}`,
           images: response.data.data.attributes.photos.data.map((photo) => ({
             src: `${addressServer}${photo.attributes.url}`,
             width: photo.attributes.width,
@@ -67,29 +69,47 @@ export default function EventDetails() {
       transition={{ duration: 0.5 }}
     >
       <TopImage
-        image={img5d1dda82e3641ae19df5a51619ffb49c}
-        title={"Специальные проекты"}
+        image={event.mainPhoto}
+        title={event.title}
       />
-      <Card style={{ margin: "20px" }}>
-        <Row gutter={[16, 16]}>
+      <div className="container" style={{ padding: 20 }}>
+
+        <Row gutter={[32, 32]}>
+          <Col span={24}>
+            {/* <Title level={1}>{event.title}</Title> */}
+            {event.date &&
+              <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
+            }
+            <MarkDownText>{event.description}</MarkDownText>
+
+          </Col>
           <Col span={24}>
             <PhotoAlbum
               layout={layout}
               photos={event.images}
               spacing={spacing}
+              columns={event.images > 10 ? 4 : 3}
               padding={padding}
+
               width={`${width}%`}
               onClick={({ index }) => setIndex(index)}
+              renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
+                <div
+                  // href={photo.href}
+                  className={styles.photo}
+                  style={wrapperStyle}
+                // target="_blank"
+                // rel="noreferrer noopener"
+                // style={{border:"1px solid black"}}
+                >
+                  {renderDefaultPhoto({ wrapped: true })}
+                </div>
+              )}
             />
           </Col>
-          <Col span={24}>
-            <Title level={2}>{event.date}</Title>
-            <Paragraph>
-              <MarkDownText>{event.description}</MarkDownText>
-            </Paragraph>
-          </Col>
         </Row>
-      </Card>
+      </div>
+
       <Lightbox
         open={index >= 0}
         index={index}

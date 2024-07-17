@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Card, Col, Row, Spin } from "antd";
+import { Card, Col, Flex, Row, Spin, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
@@ -24,7 +24,7 @@ export default function SpecialProjects() {
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.attributes.title,
-          date: new Date(event.attributes.createdAt).toLocaleDateString(),
+          date: event.attributes.dateEvent ? new Date(event.attributes.dateEvent).toLocaleDateString() : false,
           shortDescription: event.attributes.shortDescription,
           description: event.attributes.description,
           image: `${addressServer}${event.attributes.mainPhoto.data.attributes.url}`,
@@ -55,10 +55,13 @@ export default function SpecialProjects() {
         image={img5d1dda82e3641ae19df5a51619ffb49c}
         title={"Специальные проекты"}
       />
-      <div className={styles.content} id="content">
-        <Row gutter={[16, 16]}>
-          {events.map((event) => (
-            <Col key={event.id} xs={24} sm={12} md={8}>
+      <div className="container">
+
+      {/* <div className={styles.content} id="content"> */}
+       <Flex className={styles.content} gap={20}>
+
+          {events.sort((a, b) => new Date(b.date) - new Date(a.date)).map((event) => (
+            
               <Card
                 hoverable
                 className={styles.card}
@@ -68,16 +71,18 @@ export default function SpecialProjects() {
                   </div>
                 }
                 onClick={() => navigate(event.link)}
-              >
+                >
                 <div className={styles.cardContent}>
-                  <MarkDownText>{`# ${event.title}`}</MarkDownText>
-                  <MarkDownText>{`**${event.date}**`}</MarkDownText>
-                  <MarkDownText>{event.shortDescription}</MarkDownText>
+                  <Typography.Title level={2}>{event.title}</Typography.Title>
+                  <Typography.Paragraph type="secondary">{event.date ? event.date : " "}</Typography.Paragraph>
+                  <Typography.Paragraph>{event.shortDescription}</Typography.Paragraph>
                 </div>
               </Card>
-            </Col>
+            
           ))}
-        </Row>
+          </Flex>
+        
+      {/* </div> */}
       </div>
     </motion.div>
   );
