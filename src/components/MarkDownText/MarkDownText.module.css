@@ -23,8 +23,10 @@
   border-right: none;
 }
 .para {
-  /* text-indent: 20px; */
+  text-indent: 20px;
   font-size: 18px; /* Увеличиваем размер шрифта */
+  line-height: 27px;
+  margin-bottom: 20px;
 }
 
 h1,
