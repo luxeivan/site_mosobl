@@ -8,7 +8,8 @@ import MarkDownText from "../../components/MarkDownText/MarkDownText";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from "./SpecialProjects.module.css";
 
-const addressServer = process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
+const addressServer =
+  process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
 
 export default function SpecialProjects() {
   const [events, setEvents] = useState([]);
@@ -25,7 +26,9 @@ export default function SpecialProjects() {
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.attributes.title,
-          date: event.attributes.dateEvent ? new Date(event.attributes.dateEvent).toLocaleDateString() : false,
+          date: event.attributes.dateEvent
+            ? new Date(event.attributes.dateEvent).toLocaleDateString()
+            : false,
           shortDescription: event.attributes.shortDescription,
           description: event.attributes.description,
           image: `${addressServer}${event.attributes.mainPhoto.data.attributes.url}`,
@@ -72,24 +75,25 @@ export default function SpecialProjects() {
                   </div>
                 }
                 onClick={() => navigate(event.link)}
-                >
+              >
                 <div className={styles.cardContent}>
                   <Typography.Title level={2}>{event.title}</Typography.Title>
-                  <Typography.Paragraph type="secondary">{event.date ? event.date : " "}</Typography.Paragraph>
-                  <Typography.Paragraph>{event.shortDescription}</Typography.Paragraph>
+                  <Typography.Paragraph type="secondary">
+                    {event.date ? event.date : " "}
+                  </Typography.Paragraph>
+                  <Typography.Paragraph>
+                    {event.shortDescription}
+                  </Typography.Paragraph>
                 </div>
               </Card>
-            
-          ))}
-          </Flex>
-        
-      {/* </div> */}
+            ))}
+        </Flex>
+
+        {/* </div> */}
       </div>
     </motion.div>
   );
 }
-
-
 
 //Старое
 // import React, { useEffect, useState } from "react";

@@ -9,8 +9,7 @@ import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
-import styles from './EventDetails.module.css'
-import Markdown from "markdown-to-jsx";
+import styles from "./EventDetails.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 const addressServer =
@@ -38,9 +37,11 @@ export default function EventDetails() {
         const eventData = {
           id: response.data.data.id,
           title: response.data.data.attributes.title,
-          date: response.data.data.attributes.dateEvent ? new Date(
-            response.data.data.attributes.dateEvent
-          ).toLocaleDateString() : false,
+          date: response.data.data.attributes.dateEvent
+            ? new Date(
+                response.data.data.attributes.dateEvent
+              ).toLocaleDateString()
+            : false,
           description: response.data.data.attributes.description,
           mainPhoto: `${addressServer}${response.data.data.attributes.mainPhoto.data.attributes.url}`,
           images: response.data.data.attributes.photos.data.map((photo) => ({
@@ -70,10 +71,7 @@ export default function EventDetails() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <TopImage
-        image={event.mainPhoto}
-        title={event.title}
-      />
+      <TopImage image={event.mainPhoto} title={event.title} />
       <div className="container" style={{ padding: 20 }}>
 
 
