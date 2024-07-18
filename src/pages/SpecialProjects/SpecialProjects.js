@@ -26,6 +26,7 @@ export default function SpecialProjects() {
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.attributes.title,
+          sort: event.attributes.sort,
           date: event.attributes.dateEvent
             ? new Date(event.attributes.dateEvent).toLocaleDateString()
             : false,
