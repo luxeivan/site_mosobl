@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { Spin, Card, Typography, Row, Col } from "antd";
+import { Spin, Card, Typography, Row, Col, Flex } from "antd";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
 import MarkDownText from "../../components/MarkDownText/MarkDownText";
@@ -74,40 +74,45 @@ export default function EventDetails() {
       />
       <div className="container" style={{ padding: 20 }}>
 
-        <Row gutter={[32, 32]}>
-          <Col span={24}>
-            {/* <Title level={1}>{event.title}</Title> */}
+
+        <Flex wrap gap={20}>
+
+          {/* <Title level={1}>{event.title}</Title> */}
+          <div style={{flex:1,minWidth:500}}>
+
             {event.date &&
               <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
             }
             <MarkDownText>{event.description}</MarkDownText>
+          </div>
+          <div style={{flex:1,minWidth:500}}>
 
-          </Col>
-          <Col span={24}>
-            <PhotoAlbum
-              layout={layout}
-              photos={event.images}
-              spacing={spacing}
-              columns={event.images > 10 ? 4 : 3}
-              padding={padding}
 
-              width={`${width}%`}
-              onClick={({ index }) => setIndex(index)}
-              renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
-                <div
-                  // href={photo.href}
-                  className={styles.photo}
-                  style={wrapperStyle}
-                // target="_blank"
-                // rel="noreferrer noopener"
-                // style={{border:"1px solid black"}}
-                >
-                  {renderDefaultPhoto({ wrapped: true })}
-                </div>
-              )}
+          <PhotoAlbum
+            layout={layout}
+            photos={event.images}
+            spacing={spacing}
+            columns={event.images > 10 ? 4 : 3}
+            padding={padding}
+
+            width={`${width}%`}
+            onClick={({ index }) => setIndex(index)}
+            renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
+              <div
+                // href={photo.href}
+                className={styles.photo}
+                style={wrapperStyle}
+              // target="_blank"
+              // rel="noreferrer noopener"
+              // style={{border:"1px solid black"}}
+              >
+                {renderDefaultPhoto({ wrapped: true })}
+              </div>
+            )}
             />
-          </Col>
-        </Row>
+            </div>
+        </Flex>
+
       </div>
 
       <Lightbox
