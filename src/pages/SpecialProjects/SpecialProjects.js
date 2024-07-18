@@ -58,9 +58,9 @@ export default function SpecialProjects() {
       <div className="container">
 
       {/* <div className={styles.content} id="content"> */}
-       <Flex className={styles.content} gap={20}>
+       <Flex className={styles.content} gap={20} align="stretch">
 
-          {events.sort((a, b) => new Date(b.date) - new Date(a.date)).map((event) => (
+          {events.sort((a, b) => b.date?new Date(b.date) - new Date(a.date):-1).map((event) => (
             
               <Card
                 hoverable
