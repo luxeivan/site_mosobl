@@ -33,6 +33,7 @@ export default function EventDetails() {
         const response = await axios.get(
           `${addressServer}/api/speczialnye-proekties/${id}?populate=*`
         );
+        console.log(response.data)
         const eventData = {
           id: response.data.data.id,
           title: response.data.data.attributes.title,
@@ -74,7 +75,10 @@ export default function EventDetails() {
       <div className="container" style={{ padding: 20 }}>
 
 
-        <Flex wrap gap={20}>
+        <Flex wrap gap={20} 
+        // vertical 
+        // style={{maxWidth:1200,margin:"0 auto"}}
+        >
 
           {/* <Title level={1}>{event.title}</Title> */}
           <div style={{flex:1,minWidth:500}}>
@@ -82,6 +86,7 @@ export default function EventDetails() {
             {event.date &&
               <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
             }
+            {/* <Markdown>{event.description}</Markdown> */}
             <MarkDownText>{event.description}</MarkDownText>
           </div>
           <div style={{flex:1,minWidth:500}}>
