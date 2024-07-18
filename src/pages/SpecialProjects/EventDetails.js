@@ -39,8 +39,8 @@ export default function EventDetails() {
           title: response.data.data.attributes.title,
           date: response.data.data.attributes.dateEvent
             ? new Date(
-                response.data.data.attributes.dateEvent
-              ).toLocaleDateString()
+              response.data.data.attributes.dateEvent
+            ).toLocaleDateString()
             : false,
           description: response.data.data.attributes.description,
           mainPhoto: `${addressServer}${response.data.data.attributes.mainPhoto.data.attributes.url}`,
@@ -75,13 +75,13 @@ export default function EventDetails() {
       <div className="container" style={{ padding: 20 }}>
 
 
-        <Flex wrap gap={20} 
+        <Flex wrap gap={20}
         // vertical 
         // style={{maxWidth:1200,margin:"0 auto"}}
         >
 
           {/* <Title level={1}>{event.title}</Title> */}
-          <div style={{flex:1,minWidth:500}}>
+          <div className={styles.flexElem}>
 
             {event.date &&
               <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
@@ -89,32 +89,32 @@ export default function EventDetails() {
             {/* <Markdown>{event.description}</Markdown> */}
             <MarkDownText>{event.description}</MarkDownText>
           </div>
-          <div style={{flex:1,minWidth:500}}>
+          <div className={styles.flexElem}>
 
 
-          <PhotoAlbum
-            layout={layout}
-            photos={event.images}
-            spacing={spacing}
-            columns={event.images > 10 ? 4 : 3}
-            padding={padding}
+            <PhotoAlbum
+              layout={layout}
+              photos={event.images}
+              spacing={spacing}
+              columns={document.documentElement.scrollWidth > 1000 ? 3 : 2}
+              padding={padding}
 
-            width={`${width}%`}
-            onClick={({ index }) => setIndex(index)}
-            renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
-              <div
-                // href={photo.href}
-                className={styles.photo}
-                style={wrapperStyle}
-              // target="_blank"
-              // rel="noreferrer noopener"
-              // style={{border:"1px solid black"}}
-              >
-                {renderDefaultPhoto({ wrapped: true })}
-              </div>
-            )}
+              width={`${width}%`}
+              onClick={({ index }) => setIndex(index)}
+              renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
+                <div
+                  // href={photo.href}
+                  className={styles.photo}
+                  style={wrapperStyle}
+                // target="_blank"
+                // rel="noreferrer noopener"
+                // style={{border:"1px solid black"}}
+                >
+                  {renderDefaultPhoto({ wrapped: true })}
+                </div>
+              )}
             />
-            </div>
+          </div>
         </Flex>
 
       </div>
