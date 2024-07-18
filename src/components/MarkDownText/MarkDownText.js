@@ -10,19 +10,20 @@ export default function MarkDownText({ children }) {
   return (
     <Markdown
       options={{
+        forceBlock: true,
         overrides: {
           p: {
             props: {
               className: styles.para,
             },
           },
-          h1: {
-            component: Typography.Title,
-            props: {
-              className: styles.heading,
-              level: 1,
-            },
-          },
+          // h1: {
+          //   component: Typography.Title,
+          //   props: {
+          //     className: styles.heading,
+          //     level: 1,
+          //   },
+          // },
           h2: {
             component: Typography.Title,
             props: {
@@ -55,7 +56,7 @@ export default function MarkDownText({ children }) {
             component: Typography.Title,
             props: {
               className: styles.heading,
-              level: 6,
+              level: 5,
             },
           },
           strong: {

@@ -10,6 +10,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from './EventDetails.module.css'
+import Markdown from "markdown-to-jsx";
 
 const { Title, Paragraph, Text } = Typography;
 const addressServer =
@@ -33,6 +34,7 @@ export default function EventDetails() {
         const response = await axios.get(
           `${addressServer}/api/speczialnye-proekties/${id}?populate=*`
         );
+        console.log(response.data)
         const eventData = {
           id: response.data.data.id,
           title: response.data.data.attributes.title,
@@ -75,7 +77,10 @@ export default function EventDetails() {
       <div className="container" style={{ padding: 20 }}>
 
 
-        <Flex wrap gap={20}>
+        <Flex wrap gap={20} 
+        // vertical 
+        // style={{maxWidth:1200,margin:"0 auto"}}
+        >
 
           {/* <Title level={1}>{event.title}</Title> */}
           <div style={{flex:1,minWidth:500}}>
@@ -83,6 +88,7 @@ export default function EventDetails() {
             {event.date &&
               <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
             }
+            {/* <Markdown>{event.description}</Markdown> */}
             <MarkDownText>{event.description}</MarkDownText>
           </div>
           <div style={{flex:1,minWidth:500}}>

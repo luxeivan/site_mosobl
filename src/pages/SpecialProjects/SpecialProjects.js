@@ -21,6 +21,7 @@ export default function SpecialProjects() {
         const response = await axios.get(
           `${addressServer}/api/speczialnye-proekties?populate=*`
         );
+        console.log(response.data)
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.attributes.title,
@@ -58,9 +59,9 @@ export default function SpecialProjects() {
       <div className="container">
 
       {/* <div className={styles.content} id="content"> */}
-       <Flex className={styles.content} gap={20} align="stretch">
+       <Flex className={styles.content} gap={20} align="stretch" wrap>
 
-          {events.sort((a, b) => b.date?new Date(b.date) - new Date(a.date):-1).map((event) => (
+          {events.sort((a, b) => a.sort - b.sort).map((event) => (
             
               <Card
                 hoverable
