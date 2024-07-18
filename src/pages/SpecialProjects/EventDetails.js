@@ -9,7 +9,7 @@ import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
-import styles from './EventDetails.module.css'
+import styles from "./EventDetails.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 const addressServer =
@@ -36,9 +36,11 @@ export default function EventDetails() {
         const eventData = {
           id: response.data.data.id,
           title: response.data.data.attributes.title,
-          date: response.data.data.attributes.dateEvent ? new Date(
-            response.data.data.attributes.dateEvent
-          ).toLocaleDateString() : false,
+          date: response.data.data.attributes.dateEvent
+            ? new Date(
+                response.data.data.attributes.dateEvent
+              ).toLocaleDateString()
+            : false,
           description: response.data.data.attributes.description,
           mainPhoto: `${addressServer}${response.data.data.attributes.mainPhoto.data.attributes.url}`,
           images: response.data.data.attributes.photos.data.map((photo) => ({
@@ -68,20 +70,15 @@ export default function EventDetails() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <TopImage
-        image={event.mainPhoto}
-        title={event.title}
-      />
+      <TopImage image={event.mainPhoto} title={event.title} />
       <div className="container" style={{ padding: 20 }}>
-
         <Row gutter={[32, 32]}>
           <Col span={24}>
             {/* <Title level={1}>{event.title}</Title> */}
-            {event.date &&
+            {event.date && (
               <Paragraph type="secondary">Дата события: {event.date}</Paragraph>
-            }
+            )}
             <MarkDownText>{event.description}</MarkDownText>
-
           </Col>
           <Col span={24}>
             <PhotoAlbum
@@ -90,7 +87,6 @@ export default function EventDetails() {
               spacing={spacing}
               columns={event.images > 10 ? 4 : 3}
               padding={padding}
-
               width={`${width}%`}
               onClick={({ index }) => setIndex(index)}
               renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
@@ -98,9 +94,9 @@ export default function EventDetails() {
                   // href={photo.href}
                   className={styles.photo}
                   style={wrapperStyle}
-                // target="_blank"
-                // rel="noreferrer noopener"
-                // style={{border:"1px solid black"}}
+                  // target="_blank"
+                  // rel="noreferrer noopener"
+                  // style={{border:"1px solid black"}}
                 >
                   {renderDefaultPhoto({ wrapped: true })}
                 </div>
