@@ -7,6 +7,7 @@ import TopImage from "../../components/TopImage";
 import MarkDownText from "../../components/MarkDownText/MarkDownText";
 import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
+import { Fullscreen, Download, Zoom, Slideshow, Counter } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/styles.css";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from "./EventDetails.module.css";
@@ -124,6 +125,8 @@ export default function EventDetails() {
         index={index}
         close={() => setIndex(-1)}
         slides={event.images}
+        fullscreen={true}
+        plugins={[Fullscreen,Download,Zoom,Slideshow,Counter]}
       />
     </motion.div>
   );
