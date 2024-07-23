@@ -1,0 +1,71 @@
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+.table th {
+  font-weight: bold;
+  padding: 5px;
+  color: rgba(0, 0, 0, 0.88);
+  background: #efefef;
+  border: 1px solid #dddddd;
+}
+.table td {
+  border: 1px solid #dddddd;
+  padding: 5px;
+}
+.table tr td:first-child,
+.table tr th:first-child {
+  border-left: none;
+}
+.table tr td:last-child,
+.table tr th:last-child {
+  border-right: none;
+}
+.para {
+  text-indent: 20px;
+  font-size: 18px; /* Увеличиваем размер шрифта */
+  line-height: 27px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* font-size: 24px; 
+  margin-top: 20px;
+  margin-bottom: 10px; */
+}
+ul{
+  line-height: 27px;
+  margin-bottom: 20px;
+}
+li{
+  font-size: 18px; /* Увеличиваем размер шрифта */
+}
+.heading{
+  color: aqua;
+}
+
+strong {
+  font-size: 18px; /* Увеличиваем размер шрифта для жирного текста */
+}
+
+.tableDescription tr td:last-child,
+.tableDescription tr th:last-child {
+  width: 120px;
+}
+.tableDescription tr td:nth-last-child(2),
+.tableDescription tr th:nth-last-child(2) {
+  width: 120px;
+}
+@media (max-width: 500px) {
+  .tableDescription tr td:nth-last-child(2),
+  .tableDescription tr th:nth-last-child(2) {
+    width: inherit;
+  }
+}

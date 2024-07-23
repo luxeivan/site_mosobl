@@ -5292,7 +5292,7 @@ export default function AdditionalServices() {
                   </a>
                   <a
                     className="doc-line"
-                    href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_11_04_24_d153f7aa05.pdf?updated_at=2024-04-14T06:55:46.184Z`}
+                    href={`${addressServer}/uploads/Reestr_zayavok_dlya_sajta_19_07_24_619f2af2df.pdf?updated_at=2024-07-19T10:18:52.020Z`}
                     download=""
                     rel="noopener noreferrer"
                     target="_blank"
@@ -5305,7 +5305,7 @@ export default function AdditionalServices() {
                         Реестр заявлений о предоставлении доступа к
                         инфраструктуре
                       </span>
-                      <span className="doc-line__file-info">pdf, 297 кб</span>
+                      <span className="doc-line__file-info">pdf, 339 кб</span>
                     </div>
                   </a>
                   <a
