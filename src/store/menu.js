@@ -39,10 +39,10 @@ export const mainMenu = [
       //   title: "Отзывы",
       //   link: "/reviews",
       // },
-      {
-        title: "Вниманию объединений садоводов",
-        link: "/gardeners",
-      },
+      // {
+      //   title: "Вниманию объединений садоводов",
+      //   link: "/gardeners",
+      // },
     ],
   },
   {
@@ -80,6 +80,10 @@ export const mainMenu = [
       {
         title: "Консолидация электросетевого имущества",
         link: "/consolidationOfElectric",
+      },
+      {
+        title: "Вниманию объединений садоводов",
+        link: "/gardeners",
       },
       {
         title: "Зарядные станции для электромобилей",
