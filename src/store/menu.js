@@ -35,6 +35,10 @@ export const mainMenu = [
         title: "Сертификаты",
         link: "/certs",
       },
+      {
+        title: "Информация по облигациям",
+        link: "/informationOnBonds",
+      },
       // {
       //   title: "Отзывы",
       //   link: "/reviews",
