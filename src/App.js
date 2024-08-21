@@ -46,6 +46,7 @@ import GosuslugiBanner from "./components/GosuslugiBanner";
 import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
 import Job from "./pages/Vacancy/Job";
 import EventDetails from "./pages/SpecialProjects/EventDetails";
+import InformationOnBonds from "./pages/InformationOnBonds";
 
 
 function App() {
@@ -78,7 +79,8 @@ function App() {
           <Route path="/job" element={<Job />} />
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
-          <Route path="/vacancies" element={<Vacancies />} />
+          <Route path="/certs" element={<Certs />} />
+          <Route path="/informationOnBonds" element={<InformationOnBonds />} />
           {/* <Route path='/reviews' element={<Reviews/>} /> */}
           <Route path="/gardeners" element={<Gardeners />} />
           <Route path="/contactForMedia" element={<ContactForMedia />} />
