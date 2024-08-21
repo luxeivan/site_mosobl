@@ -21,6 +21,7 @@ export default function InformationOnBonds() {
             <div className="page-grid__content" id="content">
                 <div className="text-area border-bottom" style={{ margin: "0 auto", maxWidth: 1600 }}>
                     <h2>АО «Мособлэнерго» успешно дебютировало на рынке облигаций</h2>
+                    <p>20 августа 2024 г.</p>
                     <p>АО «Мособлэнерго» успешно разместило дебютный выпуск облигаций серии
                         001Р-01 объемом 3,5 млрд рублей с купоном, привязанным к значению
                         Ключевой ставки Банка России. Срок обращения составит 5 лет, по выпуску
