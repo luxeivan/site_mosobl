@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { chargingAddressServer } from "../config";
 import chargingIco from "../img/Chargingico.png";
 import chargingIco22 from "../img/Chargingico22.png";

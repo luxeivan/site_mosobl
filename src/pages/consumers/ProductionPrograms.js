@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 // import checkIcon from "../img/check-icon.svg";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { addressServer } from "../config";
 import man from "../img/man.svg";
 import { motion } from 'framer-motion'
