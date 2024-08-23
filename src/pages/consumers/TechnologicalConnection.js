@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
 import imge5f6eb838fb5010a51a4e76952abf3f5 from "../../img/e5f6eb838fb5010a51a4e76952abf3f5.jpg";
 
@@ -20,6 +19,7 @@ import TCAboutApplications from "../../components/TechnologicalConnection/TCAbou
 import TCInformationAboutPersons from "../../components/TechnologicalConnection/TCInformationAboutPersons";
 import TCRates from "../../components/TechnologicalConnection/TCRates";
 import TCProcedureCarrying from "../../components/TechnologicalConnection/TCProcedureCarrying";
+// eslint-disable-next-line unused-imports/no-unused-vars
 const type = {
   pdf,
   doc,

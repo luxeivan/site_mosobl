@@ -1,7 +1,6 @@
 import React from "react";
 
 import telImg from '../img/contacts-icon2.svg'
-import emailImg from '../img/contacts-icon4.svg'
 import mapImg from '../img/contacts-icon1.svg'
 import {motion} from 'framer-motion'
 import img78f4762845b4378f1947a2fa7912e72d from "../img/78f4762845b4378f1947a2fa7912e72d.jpg";

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Card, Col, Flex, Row, Spin, Typography } from "antd";
+import { Card, Flex, Spin, Typography } from "antd";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
-import MarkDownText from "../../components/MarkDownText/MarkDownText";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from "./SpecialProjects.module.css";
 

@@ -1,7 +1,4 @@
 import React from "react";
-import pdf from "../img/pdf.svg";
-import jpg from "../img/jpg.svg";
-import { addressServer } from "../config";
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import img4c2c362e8d8fa557788c556795d32fae from "../img/photo_5343684875758200971_y.jpg";

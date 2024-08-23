@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import vacan_img from "../../img/d21248be80705e7a80efdf5efde73cc5.jpg";
-import QR_vacansies from "../../img/QR_vacansies.jpg";
 import qr_rabota_ru from "../../img/qr_rabota_ru.svg";
 
 export default function Vacancies() {

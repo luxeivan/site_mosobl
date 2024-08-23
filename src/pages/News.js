@@ -1,12 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import checkIcon from "../img/check-icon.svg";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
-import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
 import TopImage from "../components/TopImage";
 import telegramQR from "../img/planned/YQR.svg";
 import alarm from "../img/planned/alarm_alert_bell.svg";
-import { Link } from "react-router-dom";
 
 const actual = [
   "https://t.me/mosoblenergo",
@@ -80,6 +77,7 @@ export default function News() {
         <div className="planned-notification">
           <div className="planned-notification__area planned-notification__area_col">
             <div className="planned-notification__title-area">
+              {/* eslint-disable-next-line jsx-a11y/alt-text */}
               <img src={alarm} className="planned-notification__picture" />
               <h3 className="planned-notification__title">
                 Уведомления о возможных плановых отключениях в Telegram по
@@ -119,7 +117,7 @@ export default function News() {
                 type="button"
                 className="planned-notification__link"
                 href="https://t.me/Mosoblenergo24_bot"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 Перейти в Telegram
               </a>

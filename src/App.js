@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./css/Normalize.css";
 import "./css/App.css";
 import "./css/Custom.css";
@@ -39,7 +38,6 @@ import AttentionFraud from "./pages/consumers/AttentionFraud";
 import { useEffect } from "react";
 import CreditRating from "./pages/СreditRating";
 import ProductionPrograms from "./pages/consumers/ProductionPrograms";
-import Vacancies from "./pages/Vacancy/Vacancies";
 import Plugme from "./pages/Plugme";
 import SpecialProjects from "./pages/SpecialProjects/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { chargingAddressServer } from "../config";
 import chargingIco from "../img/Chargingico.png";
 import chargingIco22 from "../img/Chargingico22.png";
@@ -21,7 +21,7 @@ let tempArray = []
 
 export default React.memo(function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
-  const [listStation, setListStation] = useState([]);
+  // const [listStation, setListStation] = useState([]);
   const [listAllStation, setAllListStation] = useState([]);
   const [listAllStationWithStatus, setAllListStationWithStatus] = useState([]);
   const [allStationForListCity, setAllStationForListCity] = useState([]);

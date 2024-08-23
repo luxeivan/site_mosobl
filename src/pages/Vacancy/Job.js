@@ -9,7 +9,6 @@ import lockationImage from "../../img/Stas3.jpg";
 import styles from "./Job.module.css";
 import JobApplicationForm from "./JobApplicationForm";
 import PreviewModal from "./PreviewModal";
-import VacanciesList from "./VacanciesList";
 
 const Job = () => {
   const [activeTab, setActiveTab] = useState("company");
