@@ -19,7 +19,7 @@ const type = {
 
 export default function MDReservedPower() {
   const [files, setFiles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

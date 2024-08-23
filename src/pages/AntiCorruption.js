@@ -1,6 +1,5 @@
 import React from "react";
 import { addressServer } from "../config";
-import checkIcon from "../img/check-icon.svg";
 import pdf from "../img/pdf.svg";
 import { motion } from "framer-motion";
 import img645bacfd778f59d52bde903ed23400dd from "../img/645bacfd778f59d52bde903ed23400dd.jpg";

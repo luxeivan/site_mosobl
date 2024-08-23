@@ -6,7 +6,7 @@ export const mosoblSlice = createSlice({
     listMosobl: false,
   },
   reducers: {
-    sendIsOkFalse: (state, action) => {
+    sendIsOkFalse: (state) => {
       state.listMosobl = false;
     },
   },

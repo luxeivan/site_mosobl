@@ -1,6 +1,5 @@
 import React from "react";
 import { addressServer } from "../config";
-import checkIcon from "../img/check-icon.svg";
 import pdf from "../img/pdf.svg";
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";

@@ -1,6 +1,4 @@
 import React from "react";
-import checkIcon from "../img/check-icon.svg";
-import pdf from "../img/pdf.svg";
 import { motion } from "framer-motion";
 import img368a30788385c0bb5f5fef6f72128109 from "../img/368a30788385c0bb5f5fef6f72128109.jpg";
 import TopImage from "../components/TopImage";

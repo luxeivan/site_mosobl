@@ -33,7 +33,7 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scroll]);
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);

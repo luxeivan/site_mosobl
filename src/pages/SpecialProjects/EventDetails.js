@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { Spin, Card, Typography, Row, Col, Flex } from "antd";
+import { Spin, Typography, Flex } from "antd";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
 import MarkDownText from "../../components/MarkDownText/MarkDownText";
@@ -9,10 +9,9 @@ import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import { Fullscreen, Download, Zoom, Slideshow, Counter } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/styles.css";
-import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from "./EventDetails.module.css";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph } = Typography;
 const addressServer =
   process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
 

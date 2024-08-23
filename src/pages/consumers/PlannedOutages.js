@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Disconnect from "../../components/Disconnect/Disconnect";
 import TopImage from "../../components/TopImage";
 import { DateTime } from "luxon";
-import img1327b1c06a19e1362c9d6bc894981c97 from "../../img/1327b1c06a19e1362c9d6bc894981c97.jpg";
 import telegramQR from "../../img/planned/YQR.svg";
 import alarm from "../../img/planned/alarm_alert_bell.svg";
 import axios from "axios";
@@ -173,7 +172,7 @@ export default function PlannedOutages() {
                   type="button"
                   className="planned-notification__link"
                   href="https://t.me/Mosoblenergo24_bot"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   Перейти в Telegram
                 </a>

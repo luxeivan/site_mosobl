@@ -4,7 +4,6 @@ import React from "react";
 import TopImage from "../../components/TopImage";
 import { addressServer } from "../../config";
 import imge52d6b93112691c58929068e092b99f2 from "../../img/e52d6b93112691c58929068e092b99f2.jpg";
-import docx from "../../img/docx.svg";
 // import img1 from "../../img/charging/1.jpg";
 // import img2 from "../../img/charging/2.jpg";
 // import img3 from "../../img/charging/3.jpg";

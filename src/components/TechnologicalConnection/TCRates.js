@@ -10,7 +10,7 @@ const type = {
 
 export default function TCRates() {
   const [documents, setDocuments] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
 import imgce9f86d084ddc1e80da3b2479c9625a2 from "../../img/ce9f86d084ddc1e80da3b2479c9625a2.jpg";
 import woman from "../../img/woman.svg";

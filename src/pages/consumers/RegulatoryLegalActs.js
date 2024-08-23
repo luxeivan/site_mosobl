@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { addressServer } from "../../config";
-import { Link } from "react-router-dom";
 import TopImage from "../../components/TopImage";
 import pdf from "../../img/pdf.svg";
 import doc from "../../img/doc.svg";
@@ -21,7 +20,7 @@ const type = {
 
 export default function RegulatoryLegalActs() {
   const [acts, setActs] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

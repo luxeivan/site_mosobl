@@ -3,7 +3,6 @@ import React from 'react'
 import {motion} from 'framer-motion'
 import TopImage from "../components/TopImage";
 import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
-import { addressServer } from "../config";
 // import { Link } from 'react-router-dom';
 const goalsTasks = [
     "Повышение надежности и качества электроснабжения Подмосковья;",

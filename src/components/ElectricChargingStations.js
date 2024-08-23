@@ -21,7 +21,7 @@ let tempArray = []
 
 export default React.memo(function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
-  const [listStation, setListStation] = useState([]);
+  // const [listStation, setListStation] = useState([]);
   const [listAllStation, setAllListStation] = useState([]);
   const [listAllStationWithStatus, setAllListStationWithStatus] = useState([]);
   const [allStationForListCity, setAllStationForListCity] = useState([]);

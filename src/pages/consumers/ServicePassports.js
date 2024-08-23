@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import TopImage from "../../components/TopImage";
 import img7705c92ee469adb3142aa609f3e9e15a from "../../img/7705c92ee469adb3142aa609f3e9e15a.jpg";
 import SPMain from "../../components/ServicePassports/SPMain";

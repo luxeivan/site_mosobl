@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { addressServer } from "../config";
+import React from "react";
 import telImg from "../img/contacts-icon2.svg";
 import emailImg from "../img/contacts-icon4.svg";
 import mapImg from "../img/contacts-icon1.svg";

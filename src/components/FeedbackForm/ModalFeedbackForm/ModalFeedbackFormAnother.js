@@ -78,6 +78,7 @@ export default function ModalFeedbackFormAnother({ onClose }) {
             {selectTheme !== false &&
               themes
                 .find((item) => item.id == selectTheme)
+                // eslint-disable-next-line array-callback-return
                 .fields.map((item, index) => {
                   if (item.type == "text")
                     return (
