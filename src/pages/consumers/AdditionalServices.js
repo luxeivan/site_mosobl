@@ -7,8 +7,8 @@ import TopImage from "../../components/TopImage";
 import img4c2c362e8d8fa557788c556795d32fae from "../../img/4c2c362e8d8fa557788c556795d32fae.jpg";
 
 export default function AdditionalServices() {
-  const [setServices] = useState([]);
-  const [setIsLoading] = useState(false);
+  const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
