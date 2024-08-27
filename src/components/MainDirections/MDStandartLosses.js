@@ -19,7 +19,7 @@ const type = {
 
 export default function MDStandartLosses() {
   const [files, setFiles] = useState([]);
-  const [setIsLoading] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

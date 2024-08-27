@@ -20,7 +20,7 @@ const type = {
 
 export default function RegulatoryLegalActs() {
   const [acts, setActs] = useState([]);
-  const [setIsLoading] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

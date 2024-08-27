@@ -17,7 +17,7 @@ const type = {
 
 export default function TCStandartForms() {
   const [forms, setForms] = useState([]);
-  const [setIsLoading] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);

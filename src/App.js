@@ -74,7 +74,7 @@ function App() {
           <Route path="/goals" element={<Goals />} />
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
-          <Route path="/job" element={<Job />} />
+          <Route path="/vacancies" element={<Job />} />
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/certs" element={<Certs />} />

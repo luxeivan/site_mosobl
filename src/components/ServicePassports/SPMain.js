@@ -18,7 +18,7 @@ const type = {
 
 export default function SPMain() {
   const [pasports, setPasports] = useState([]);
-  const [setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
