@@ -3866,7 +3866,7 @@ export default function AdditionalServices() {
                           <nobr>3-фазного</nobr> трансформаторного включения
                         </td>
                         <td>1 шт.</td>
-                        <td>2 550,00</td>
+                        <td>5 000,00</td>
                       </tr>
 
                       <tr>
