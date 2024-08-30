@@ -3,6 +3,8 @@ import qs from "qs";
 import { DateTime } from "luxon";
 import axios from "axios";
 import DatePicker from "react-date-picker";
+import 'react-date-picker/dist/DatePicker.css';
+
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Disconnect() {
