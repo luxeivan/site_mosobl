@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import qs from "qs";
 import { DateTime } from "luxon";
 import axios from "axios";
-import DatePicker from "react-date-picker";
-import 'react-date-picker/dist/DatePicker.css';
-
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { ru } from "date-fns/locale/ru";
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
+
+registerLocale("ru", ru);
 
 export default function Disconnect() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -23,16 +25,12 @@ export default function Disconnect() {
             $and: [
               {
                 begin: {
-                  $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).startOf("day").ts,
+                  $gte: DateTime.fromJSDate(currentDate).startOf("day").ts,
                 },
               },
               {
                 begin: {
-                  $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).endOf("day").ts,
+                  $lte: DateTime.fromJSDate(currentDate).endOf("day").ts,
                 },
               },
             ],
@@ -41,16 +39,12 @@ export default function Disconnect() {
             $and: [
               {
                 end: {
-                  $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).startOf("day").ts,
+                  $gte: DateTime.fromJSDate(currentDate).startOf("day").ts,
                 },
               },
               {
                 end: {
-                  $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).endOf("day").ts,
+                  $lte: DateTime.fromJSDate(currentDate).endOf("day").ts,
                 },
               },
             ],
@@ -62,6 +56,7 @@ export default function Disconnect() {
       encodeValuesOnly: true,
     }
   );
+
   useEffect(() => {
     axios
       .get(
@@ -69,8 +64,8 @@ export default function Disconnect() {
           query +
           "&pagination[pageSize]=100000"
       )
-      .then((responce) => {
-        const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
+      .then((response) => {
+        const newarray = response.data.data.reduce((objectsByKeyValue, obj) => {
           const value =
             obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data
               .attributes.name;
@@ -86,7 +81,6 @@ export default function Disconnect() {
         console.log(err);
       });
   }, [currentDate]);
-  useEffect(() => {}, [currentOpenRow]);
 
   const addGO = (name) => {
     if (name.match(/г\s/gm)) {
@@ -102,14 +96,17 @@ export default function Disconnect() {
       return name;
     }
   };
+
   return (
     <div className="disconnect">
       <span style={{ fontWeight: 700 }}>Дата отключений: </span>
       <DatePicker
-        onChange={setCurrentDate}
-        value={currentDate}
-        showLeadingZeros={true}
-        clearIcon={null}
+        selected={currentDate}
+        onChange={(date) => setCurrentDate(date)}
+        dateFormat="dd.MM.yyyy"
+        locale="ru"
+        showPopperArrow={false}
+        style={{ zIndex: 10 }} // Z-Index для избежания наплытия
       />
 
       <YMaps>
@@ -121,6 +118,7 @@ export default function Disconnect() {
           }}
           className="yandex-map"
           modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+          style={{ width: "100%", height: "400px", position: "relative" }}
         >
           <ZoomControl />
           {listDisconnect &&
