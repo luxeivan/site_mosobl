@@ -30,12 +30,13 @@ export default function TCNormativeDocuments() {
       .catch(error => {
         console.log(error)
       })
-  }, [])
+    }, [])
+    console.log(docs)
   return (
     <div className="page-grid__content">
       <div className="row-docs-age">
         {docs.length > 0 &&
-          docs.map((item, index) =>
+          docs.sort((a, b) => Number(a.attributes.caption) - Number(b.attributes.caption)).map((item, index) =>
             <a
               className="doc-line"
               href={`${addressServer}${item.attributes.url}`}
@@ -51,10 +52,10 @@ export default function TCNormativeDocuments() {
               </div>
               <div className="doc-line__wrap-text">
                 <span className="doc-line__name">{item.attributes.name}</span>
-                <span className="doc-line__file-info">{Number(item.attributes.size) > 1000 ? `${(item.attributes.size / 1000).toFixed(2)} МБ`:`${Math.round(item.attributes.size)} КБ`}</span>
+                <span className="doc-line__file-info">{Number(item.attributes.size) > 1000 ? `${(item.attributes.size / 1000).toFixed(2)} МБ` : `${Math.round(item.attributes.size)} КБ`}</span>
               </div>
             </a>
-          )}        
+          )}
       </div>
     </div>
   );

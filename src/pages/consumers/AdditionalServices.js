@@ -3846,7 +3846,7 @@ export default function AdditionalServices() {
                           <nobr>1-фазного</nobr>
                         </td>
                         <td>1 шт.</td>
-                        <td>1 750,00</td>
+                        <td>5 000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -3856,7 +3856,7 @@ export default function AdditionalServices() {
                           <nobr>3-фазного</nobr> прямого включения
                         </td>
                         <td>1 шт.</td>
-                        <td>2 100,00</td>
+                        <td>5 000,00</td>
                       </tr>
                       <tr>
                         <td>
@@ -3866,7 +3866,7 @@ export default function AdditionalServices() {
                           <nobr>3-фазного</nobr> трансформаторного включения
                         </td>
                         <td>1 шт.</td>
-                        <td>2 550,00</td>
+                        <td>5 000,00</td>
                       </tr>
 
                       <tr>
@@ -6095,6 +6095,9 @@ export default function AdditionalServices() {
             <a href="mailto:uslugi@mosoblenergo.ru">
               <b>uslugi@mosoblenergo.ru</b>
             </a>
+          </p>
+          <p>
+          *Представленная в разделе информация носит справочный характер и приведена с целью информирования Заявителей о наличии, перечне и условиях оказания коммерческих услуг. Информация не является офертой, так как не имеет характера окончательного предложения в связи с индивидуальными особенностями каждого заказа и необходимостью согласования окончательных условий получения услуги Заявителем.
           </p>
         </div>
         <br />
