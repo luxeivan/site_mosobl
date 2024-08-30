@@ -42,9 +42,10 @@ import Plugme from "./pages/Plugme";
 import SpecialProjects from "./pages/SpecialProjects/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";
 import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
-import Job from "./pages/Vacancy/Job";
+// import Job from "./pages/Vacancy/Job";
 import EventDetails from "./pages/SpecialProjects/EventDetails";
 import InformationOnBonds from "./pages/InformationOnBonds";
+import Vacancies from "./pages/Vacancy/Vacancies";
 
 
 function App() {
@@ -74,9 +75,8 @@ function App() {
           <Route path="/goals" element={<Goals />} />
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
-          <Route path="/vacancies" element={<Job />} />
+          <Route path="/vacancies" element={<Vacancies />} />
           <Route path="/antiCorruption" element={<AntiCorruption />} />
-          <Route path="/certs" element={<Certs />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/informationOnBonds" element={<InformationOnBonds />} />
           {/* <Route path='/reviews' element={<Reviews/>} /> */}
