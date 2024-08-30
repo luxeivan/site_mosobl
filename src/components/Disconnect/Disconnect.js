@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import qs from "qs";
 import { DateTime } from "luxon";
+import dayjs from "dayjs";
 import axios from "axios";
-import DatePicker from "react-date-picker";
+import {DatePicker,ConfigProvider} from 'antd'
+import locale from "antd/es/locale/ru_RU";
+// import DatePicker from "react-date-picker";
 import 'react-date-picker/dist/DatePicker.css';
 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Disconnect() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(dayjs());
   const [listDisconnect, setListDisconnect] = useState();
   const [currentOpenRow, setCurrentOpenRow] = useState();
 
@@ -23,16 +26,12 @@ export default function Disconnect() {
             $and: [
               {
                 begin: {
-                  $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).startOf("day").ts,
+                  $gte: dayjs(currentDate).startOf("day").valueOf(),
                 },
               },
               {
                 begin: {
-                  $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).endOf("day").ts,
+                  $lte: dayjs(currentDate).endOf("day").valueOf(),
                 },
               },
             ],
@@ -41,16 +40,12 @@ export default function Disconnect() {
             $and: [
               {
                 end: {
-                  $gte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).startOf("day").ts,
+                  $gte: dayjs(currentDate).startOf("day").valueOf(),
                 },
               },
               {
                 end: {
-                  $lte: DateTime.fromMillis(
-                    parseInt(currentDate.getTime())
-                  ).endOf("day").ts,
+                  $lte: dayjs(currentDate).endOf("day").valueOf(),
                 },
               },
             ],
@@ -102,15 +97,25 @@ export default function Disconnect() {
       return name;
     }
   };
+  // console.log(DateTime.now())
   return (
     <div className="disconnect">
       <span style={{ fontWeight: 700 }}>Дата отключений: </span>
+      <ConfigProvider locale={locale}>
+
       <DatePicker
-        onChange={setCurrentDate}
-        value={currentDate}
-        showLeadingZeros={true}
-        clearIcon={null}
-      />
+         onChange={(value, mode)=>{
+          console.log(value,mode)
+          setCurrentDate(value)
+        }}
+         defaultValue={currentDate}
+        // value={currentDate}
+        // showLeadingZeros={true}
+        // clearIcon={null}
+        allowClear={false}
+        format={"DD.MM.YYYY"}
+        />
+        </ConfigProvider>
 
       <YMaps>
         <Map
