@@ -5,7 +5,8 @@ import { Spin, Typography, Flex } from "antd";
 import axios from "axios";
 import TopImage from "../../components/TopImage";
 import MarkDownText from "../../components/MarkDownText/MarkDownText";
-import PhotoAlbum from "react-photo-album";
+import { ColumnsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/columns.css";
 import Lightbox from "yet-another-react-lightbox";
 import { Fullscreen, Download, Zoom, Slideshow, Counter } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/styles.css";
@@ -92,27 +93,27 @@ export default function EventDetails() {
           <div className={styles.flexElem}>
 
 
-            <PhotoAlbum
-              layout={layout}
+            <ColumnsPhotoAlbum
+              // layout={layout}
               photos={event.images}
-              spacing={spacing}
+              // spacing={spacing}
               columns={document.documentElement.scrollWidth > 1000 ? 3 : 2}
-              padding={padding}
+              // padding={padding}
 
-              width={`${width}%`}
+              // width={`${width}%`}
               onClick={({ index }) => setIndex(index)}
-              renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
-                <div
-                  // href={photo.href}
-                  className={styles.photo}
-                  style={wrapperStyle}
-                // target="_blank"
-                // rel="noreferrer noopener"
-                // style={{border:"1px solid black"}}
-                >
-                  {renderDefaultPhoto({ wrapped: true })}
-                </div>
-              )}
+            // renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
+            //   <div
+            //     // href={photo.href}
+            //     className={styles.photo}
+            //     style={wrapperStyle}
+            //   // target="_blank"
+            //   // rel="noreferrer noopener"
+            //   // style={{border:"1px solid black"}}
+            //   >
+            //     {renderDefaultPhoto({ wrapped: true })}
+            //   </div>
+            // )}
             />
           </div>
         </Flex>
@@ -125,7 +126,7 @@ export default function EventDetails() {
         close={() => setIndex(-1)}
         slides={event.images}
         fullscreen={true}
-        plugins={[Fullscreen,Download,Zoom,Slideshow,Counter]}
+        plugins={[Fullscreen, Download, Zoom, Slideshow, Counter]}
       />
     </motion.div>
   );
