@@ -10,6 +10,9 @@ import 'react-date-picker/dist/DatePicker.css';
 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
+// eslint-disable-next-line no-undef
+registerLocale("ru", ru);
+
 export default function Disconnect() {
   const [currentDate, setCurrentDate] = useState(dayjs());
   const [listDisconnect, setListDisconnect] = useState();
@@ -57,6 +60,7 @@ export default function Disconnect() {
       encodeValuesOnly: true,
     }
   );
+
   useEffect(() => {
     axios
       .get(
@@ -64,8 +68,8 @@ export default function Disconnect() {
           query +
           "&pagination[pageSize]=100000"
       )
-      .then((responce) => {
-        const newarray = responce.data.data.reduce((objectsByKeyValue, obj) => {
+      .then((response) => {
+        const newarray = response.data.data.reduce((objectsByKeyValue, obj) => {
           const value =
             obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data
               .attributes.name;
@@ -81,7 +85,6 @@ export default function Disconnect() {
         console.log(err);
       });
   }, [currentDate]);
-  useEffect(() => {}, [currentOpenRow]);
 
   const addGO = (name) => {
     if (name.match(/г\s/gm)) {
@@ -126,6 +129,7 @@ export default function Disconnect() {
           }}
           className="yandex-map"
           modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+          style={{ width: "100%", height: "400px", position: "relative" }}
         >
           <ZoomControl />
           {listDisconnect &&
