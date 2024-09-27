@@ -10,9 +10,6 @@ import 'react-date-picker/dist/DatePicker.css';
 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
-// eslint-disable-next-line no-undef
-registerLocale("ru", ru);
-
 export default function Disconnect() {
   const [currentDate, setCurrentDate] = useState(dayjs());
   const [listDisconnect, setListDisconnect] = useState();
