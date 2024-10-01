@@ -23,7 +23,7 @@ import ContactForMedia from "./pages/ContactForMedia";
 import News from "./pages/News";
 import Consumers from "./pages/Consumers";
 import Territory from "./pages/consumers/Territory";
-import AdditionalServices from "./pages/consumers/AdditionalServices";
+import AdditionalServices from "./pages/consumers/AdditionalServices/AdditionalServices";
 import ServicePassports from "./pages/consumers/ServicePassports";
 import Page404 from "./pages/Page404";
 import TechnologicalConnection from "./pages/consumers/TechnologicalConnection";
