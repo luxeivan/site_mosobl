@@ -6097,7 +6097,13 @@ export default function AdditionalServices() {
             </a>
           </p>
           <p>
-          *Представленная в разделе информация носит справочный характер и приведена с целью информирования Заявителей о наличии, перечне и условиях оказания коммерческих услуг. Информация не является офертой, так как не имеет характера окончательного предложения в связи с индивидуальными особенностями каждого заказа и необходимостью согласования окончательных условий получения услуги Заявителем.
+            *Представленная в разделе информация носит справочный характер и
+            приведена с целью информирования Заявителей о наличии, перечне и
+            условиях оказания коммерческих услуг. Информация не является
+            офертой, так как не имеет характера окончательного предложения в
+            связи с индивидуальными особенностями каждого заказа и
+            необходимостью согласования окончательных условий получения услуги
+            Заявителем.
           </p>
         </div>
         <br />
@@ -6105,7 +6111,7 @@ export default function AdditionalServices() {
         <div className="row-docs-age">
           <a
             className="doc-line"
-            href={`${addressServer}/uploads/Prejskurant_dlya_skachivaniya_0f9659072a.pdf?updated_at=2023-11-27T07:15:17.564Z`}
+            href={`${addressServer}/uploads/Prejskurant_dlya_skachivaniya_1_ae57c908db.pdf?updated_at=2024-09-27T10:07:11.107Z`}
             download=""
             rel="noopener noreferrer"
             target="_blank"
@@ -6115,7 +6121,7 @@ export default function AdditionalServices() {
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">
-                Скачать прейскурант дополнительных услуг
+                Скачать прейскурант коммерческих услуг
               </span>
               <span className="doc-line__file-info">pdf, 3 мб</span>
             </div>
