@@ -77,8 +77,6 @@ export default function EventDetails() {
 
 
         <Flex wrap gap={20}
-        // vertical 
-        // style={{maxWidth:1200,margin:"0 auto"}}
         >
 
           {/* <Title level={1}>{event.title}</Title> */}
