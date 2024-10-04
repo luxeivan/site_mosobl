@@ -187,7 +187,11 @@ export default function AdditionalServices() {
                   </li>
                 </ul>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <tbody>
                       <tr>
                         <th style={{ textAlign: "center" }}>Код</th>
@@ -384,7 +388,7 @@ export default function AdditionalServices() {
                         <td>12&nbsp;000,00</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -506,7 +510,11 @@ export default function AdditionalServices() {
                   </li>
                 </ul>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -562,7 +570,7 @@ export default function AdditionalServices() {
                         <td>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -669,7 +677,11 @@ export default function AdditionalServices() {
                   клиенту.
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -1014,7 +1026,7 @@ export default function AdditionalServices() {
                         <td>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -1128,7 +1140,11 @@ export default function AdditionalServices() {
                 </p>
 
                 <p className="wrap-table"></p>
-                <table align="center">
+                <p>
+                  Актуальный прайслист Вы можете скачать по ссылке внизу
+                  страницы.
+                </p>
+                {/* <table align="center">
                   <colgroup>
                     <col /> <col /> <col /> <col />
                   </colgroup>
@@ -2135,7 +2151,7 @@ export default function AdditionalServices() {
                       <td style={{ textAlign: "center" }}>индивидуально</td>
                     </tr>
                   </tbody>
-                </table>
+                </table> */}
               </div>
             </div>
           </div>
@@ -2256,7 +2272,11 @@ export default function AdditionalServices() {
                   </li>
                 </ul>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -2463,7 +2483,7 @@ export default function AdditionalServices() {
                         <td>99,29</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -2531,7 +2551,11 @@ export default function AdditionalServices() {
                   </b>
                 </p>
                 <div className="wrap-table">
-                  <table align="center">
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table align="center">
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -3026,7 +3050,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -3137,7 +3161,11 @@ export default function AdditionalServices() {
                   генератора, который необходим, Вам помогут наши специалисты.
                 </p>
                 <div className="wrap-table">
-                  <table align="center">
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table align="center">
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -3436,7 +3464,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>50 125,00</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -3560,7 +3588,11 @@ export default function AdditionalServices() {
                   потребления электроэнергии.
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -3650,7 +3682,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -3723,7 +3755,11 @@ export default function AdditionalServices() {
                   </strong>
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -3980,7 +4016,7 @@ export default function AdditionalServices() {
                         <td>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -4066,7 +4102,11 @@ export default function AdditionalServices() {
                   вышедших из строя сегментов и устройств.
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -4368,7 +4408,7 @@ export default function AdditionalServices() {
                         <td>от 4200</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -4481,7 +4521,11 @@ export default function AdditionalServices() {
                   </strong>
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -4699,7 +4743,7 @@ export default function AdditionalServices() {
                         <td style={{ textAlign: "center" }}>индивидуально</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -4831,7 +4875,11 @@ export default function AdditionalServices() {
                   </li>
                 </ul>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col /> <col />
                     </colgroup>
@@ -5189,7 +5237,7 @@ export default function AdditionalServices() {
                         <td>3 000,00</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </div>
             </div>
@@ -5362,7 +5410,11 @@ export default function AdditionalServices() {
                         </a>
                       </div>
                       <div className="wrap-table">
-                        <table align="center">
+                        <p>
+                          Актуальный прайслист Вы можете скачать по ссылке внизу
+                          страницы.
+                        </p>
+                        {/* <table align="center">
                           <colgroup>
                             <col /> <col /> <col /> <col />
                           </colgroup>
@@ -5405,7 +5457,7 @@ export default function AdditionalServices() {
                               <td style={{ textAlign: "center" }}>99,29</td>
                             </tr>
                           </tbody>
-                        </table>
+                        </table> */}
                         <p>
                           * Дифференциация тарифа в зависимости от количества
                           объектов инфраструктуры или их частей, к которым
@@ -5456,7 +5508,11 @@ export default function AdditionalServices() {
                         </a>
                       </div>
                       <div className="wrap-table">
-                        <table align="center">
+                        <p>
+                          Актуальный прайслист Вы можете скачать по ссылке внизу
+                          страницы.
+                        </p>
+                        {/* <table align="center">
                           <tbody>
                             <tr>
                               <th style={{ textAlign: "center" }}>Код</th>
@@ -5481,7 +5537,7 @@ export default function AdditionalServices() {
                               <td style={{ textAlign: "center" }}>19 000,00</td>
                             </tr>
                           </tbody>
-                        </table>
+                        </table> */}
                       </div>
                     </div>
                   </div>
@@ -5521,23 +5577,15 @@ export default function AdditionalServices() {
                         </li>
                       </ul>
                       <div className="wrap-table">
-                        <table align="center">
+                        <p>
+                          Актуальный прайслист Вы можете скачать по ссылке внизу
+                          страницы.
+                        </p>
+                        {/* <table align="center">
                           <colgroup>
                             <col /> <col /> <col /> <col />
                           </colgroup>
                           <tbody>
-                            {/* <tr>
-                              <td style={{ textAlign: "center" }}>13-06</td>
-                              <td style={{ textAlign: "center" }}>Рассмотрение и согласование проектной и рабочей документации по размещению ВОЛС и оборудования</td>
-                              <td style={{ textAlign: "center" }}>ТУ</td>
-                              <td style={{ textAlign: "center" }}>8 400,00</td>
-                            </tr>
-                            <tr>
-                              <td style={{ textAlign: "center" }}>13-07</td>
-                              <td style={{ textAlign: "center" }}>Организация доступа к объектам электросетевого хозяйства для производства работ по монтажу ВОЛС и оборудования</td>
-                              <td style={{ textAlign: "center" }}>шт.</td>
-                              <td style={{ textAlign: "center" }}>9 200,00</td>
-                            </tr> */}
                             <tr>
                               <td style={{ textAlign: "center" }}>13-08</td>
                               <td style={{ textAlign: "center" }}>
@@ -5573,7 +5621,7 @@ export default function AdditionalServices() {
                               <td style={{ textAlign: "center" }}>14 300,00</td>
                             </tr>
                           </tbody>
-                        </table>
+                        </table> */}
                       </div>
                     </div>
                   </div>
@@ -5712,7 +5760,11 @@ export default function AdditionalServices() {
                   рыночную стоимость.
                 </p>
                 <div className="wrap-table">
-                  <table align="center">
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table align="center">
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -5802,7 +5854,7 @@ export default function AdditionalServices() {
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
                 <p>
                   {" "}
@@ -5950,7 +6002,11 @@ export default function AdditionalServices() {
                   </b>
                 </p>
                 <div className="wrap-table">
-                  <table>
+                  <p>
+                    Актуальный прайслист Вы можете скачать по ссылке внизу
+                    страницы.
+                  </p>
+                  {/* <table>
                     <colgroup>
                       <col /> <col /> <col /> <col />
                     </colgroup>
@@ -6074,7 +6130,7 @@ export default function AdditionalServices() {
                         <td>1,09</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
                 <p>
                   * Определенный по таблице процент норматива расхода

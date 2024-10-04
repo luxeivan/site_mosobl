@@ -40,14 +40,14 @@ h6 {
   margin-top: 20px;
   margin-bottom: 10px; */
 }
-ul{
+ul {
   line-height: 27px;
   margin-bottom: 20px;
 }
-li{
+li {
   font-size: 18px; /* Увеличиваем размер шрифта */
 }
-.heading{
+.heading {
   color: aqua;
 }
 
@@ -63,6 +63,16 @@ strong {
 .tableDescription tr th:nth-last-child(2) {
   width: 120px;
 }
+
+.link {
+  font-size: 18px;
+  color: #1677ff;
+}
+
+.link:hover{
+  color: #e37021;
+}
+
 @media (max-width: 500px) {
   .tableDescription tr td:nth-last-child(2),
   .tableDescription tr th:nth-last-child(2) {

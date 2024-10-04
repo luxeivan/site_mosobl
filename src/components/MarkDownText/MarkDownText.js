@@ -52,6 +52,11 @@ export default function MarkDownText({ children }) {
               level: 5,
             },
           },
+          a: {
+            props: {
+              className: styles.link,
+            },
+          },
           h6: {
             component: Typography.Title,
             props: {
