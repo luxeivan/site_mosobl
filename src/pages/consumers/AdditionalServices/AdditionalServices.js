@@ -106,103 +106,33 @@ const AdditionalServices = () => {
     // Сортируем данные по полю 'sort'
     filteredData.sort((a, b) => a.attributes.sort - b.attributes.sort);
 
-    // Формируем данные для таблицы с учетом `rowSpan`
-    const dataSource = [];
-    const dataLength = filteredData.length;
-    let i = 0;
+    // Формируем dataSource, используя данные из Strapi
+    const dataSource = filteredData.map((item, index) => {
+      const { attributes } = item;
 
-    while (i < dataLength) {
-      const currentItem = filteredData[i];
-      const current = currentItem.attributes;
-
-      if (current.isSubSection) {
-        // Добавляем подраздел в dataSource
-        dataSource.push({
-          key: `subsection-${i}`,
+      if (attributes.isSubSection) {
+        // Если это подраздел
+        return {
+          key: `subsection-${index}`,
           isSubSectionHeader: true,
-          subSectionName: current.subSectionName,
-        });
-        i++;
-        continue;
-      }
-
-      // Начинаем группировку данных для объединения ячеек в "Код" и "Наименование услуги"
-      let rowSpanCode = 1;
-      let rowSpanName = 1;
-
-      const currentCode = current.code;
-      const currentName = current.name;
-
-      let j = i + 1;
-
-      while (j < dataLength) {
-        const nextItem = filteredData[j];
-        const next = nextItem.attributes;
-
-        if (next.isSubSection) {
-          break; // Прерываем, если встретили подраздел
-        }
-
-        if (next.code === currentCode && next.name === currentName) {
-          rowSpanCode++;
-          rowSpanName++;
-          j++;
-        } else {
-          break;
-        }
-      }
-
-      // Теперь внутри группы вычисляем rowSpan для столбца "Цена"
-      let k = i;
-      while (k < j) {
-        const priceGroupStartIndex = k;
-        const currentPrice = filteredData[k].attributes.price;
-
-        let rowSpanPrice = 1;
-        k++;
-
-        while (k < j && filteredData[k].attributes.price === currentPrice) {
-          rowSpanPrice++;
-          k++;
-        }
-
-        // Добавляем первую запись в группе цен
-        dataSource.push({
-          key: priceGroupStartIndex,
-          code: filteredData[priceGroupStartIndex].attributes.code,
-          name: filteredData[priceGroupStartIndex].attributes.name,
-          unit: filteredData[priceGroupStartIndex].attributes.unit,
-          price: filteredData[priceGroupStartIndex].attributes.price,
+          subSectionName: attributes.subSectionName,
+        };
+      } else {
+        // Если это обычная запись
+        return {
+          key: index,
+          code: attributes.code,
+          name: attributes.name,
+          unit: attributes.unit,
+          price: attributes.price,
           isSubSectionHeader: false,
-          rowSpanCode: priceGroupStartIndex === i ? rowSpanCode : 0,
-          rowSpanName: priceGroupStartIndex === i ? rowSpanName : 0,
-          rowSpanUnit: 1,
-          rowSpanPrice: rowSpanPrice,
-        });
-
-        // Добавляем остальные записи в группе цен с rowSpanPrice = 0
-        for (
-          let m = priceGroupStartIndex + 1;
-          m < priceGroupStartIndex + rowSpanPrice;
-          m++
-        ) {
-          dataSource.push({
-            key: m,
-            code: filteredData[m].attributes.code,
-            name: filteredData[m].attributes.name,
-            unit: filteredData[m].attributes.unit,
-            price: filteredData[m].attributes.price,
-            isSubSectionHeader: false,
-            rowSpanCode: 0,
-            rowSpanName: 0,
-            rowSpanUnit: 1,
-            rowSpanPrice: 0,
-          });
-        }
+          rowSpanCode: attributes.rowSpanCode || 1,
+          rowSpanName: attributes.rowSpanName || 1,
+          rowSpanUnit: attributes.rowSpanUnit || 1,
+          rowSpanPrice: attributes.rowSpanPrice || 1,
+        };
       }
-
-      i = j; // Переходим к следующей группе
-    }
+    });
 
     // Формируем колонки для таблицы
     const columns = [
@@ -275,7 +205,9 @@ const AdditionalServices = () => {
               colSpan: 0,
             };
           }
-          return {}; // Не устанавливаем rowSpan
+          return {
+            rowSpan: record.rowSpanUnit,
+          };
         },
       },
       {
@@ -336,7 +268,6 @@ const AdditionalServices = () => {
         <span className="accordion-row__text">{section.title}</span>
       </div>
     ),
-
     children: (
       <>
         {/* Контактная информация */}
@@ -431,6 +362,440 @@ const AdditionalServices = () => {
 };
 
 export default AdditionalServices;
+
+// import React, { useEffect, useState } from "react";
+// import { Typography, Collapse, Table } from "antd";
+// import axios from "axios";
+// import pdfIcon from "../../../img/pdf.svg";
+// import docxIcon from "../../../img/docx.svg";
+// import { addressServer } from "../../../config";
+// import { motion } from "framer-motion";
+// import TopImage from "../../../components/TopImage";
+// import imgTop from "../../../img/4c2c362e8d8fa557788c556795d32fae.jpg";
+// import styles from "./AdditionalServices.module.css";
+// import MarkDownText from "../../../components/MarkDownText/MarkDownText";
+
+// const { Paragraph } = Typography;
+
+// const getIconByExtension = (ext) => {
+//   const extension = ext.replace(".", "").toLowerCase();
+//   switch (extension) {
+//     case "pdf":
+//       return <img src={pdfIcon} alt="PDF" className={styles.icon} />;
+//     case "doc":
+//     case "docx":
+//       return <img src={docxIcon} alt="DOCX" className={styles.icon} />;
+//     default:
+//       return null;
+//   }
+// };
+
+// const AdditionalServices = () => {
+//   const [services, setServices] = useState([]);
+//   const [priceData, setPriceData] = useState([]);
+//   const [description, setDescription] = useState("");
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [priceFileData, setPriceFileData] = useState(null);
+
+//   // Функция для получения всех данных цен
+//   const fetchAllPriceData = async () => {
+//     let page = 1;
+//     const pageSize = 100; // Максимальное значение pageSize в Strapi по умолчанию
+//     let totalPages = 1;
+//     let allData = [];
+
+//     try {
+//       do {
+//         const response = await axios.get(
+//           `https://www.mosoblenergo.ru/back/api/prajs-dop-uslugs?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+//         );
+//         const data = response.data.data;
+//         allData = allData.concat(data);
+
+//         // Обновляем общее количество страниц на основе ответа
+//         const pagination = response.data.meta.pagination;
+//         totalPages = pagination.pageCount;
+//         page++;
+//       } while (page <= totalPages);
+
+//       return allData;
+//     } catch (error) {
+//       console.error("Ошибка при получении данных цен:", error);
+//       throw error;
+//     }
+//   };
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         // Запрос к первому API
+//         const response1 = await axios.get(
+//           "https://www.mosoblenergo.ru/back/api/dopolnitelnye-uslugi?populate[0]=section&populate[1]=section.documents&populate[2]=price&populate[3]=section.sectionName"
+//         );
+//         const data1 = response1.data.data.attributes;
+//         const servicesData = data1.section;
+//         const descriptionData = data1.description;
+//         const priceFileData = data1.price?.data?.attributes || null;
+
+//         // Получаем все данные цен
+//         const allPriceData = await fetchAllPriceData();
+
+//         setServices(servicesData);
+//         setPriceData(allPriceData);
+//         setDescription(descriptionData);
+//         setPriceFileData(priceFileData);
+//         setIsLoading(false);
+//       } catch (error) {
+//         console.error("Ошибка при получении данных:", error);
+//         setIsLoading(false);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const renderContent = (content) => {
+//     return <MarkDownText>{content}</MarkDownText>;
+//   };
+
+//   const renderPriceTable = (sectionName) => {
+//     // Фильтруем данные по названию секции
+//     const filteredData = priceData.filter(
+//       (item) => item.attributes.sectionName?.name === sectionName
+//     );
+
+//     if (filteredData.length === 0) {
+//       return null;
+//     }
+
+//     // Сортируем данные по полю 'sort'
+//     filteredData.sort((a, b) => a.attributes.sort - b.attributes.sort);
+
+//     // Формируем данные для таблицы с учетом `rowSpan`
+//     const dataSource = [];
+//     const dataLength = filteredData.length;
+//     let i = 0;
+
+//     while (i < dataLength) {
+//       const currentItem = filteredData[i];
+//       const current = currentItem.attributes;
+
+//       if (current.isSubSection) {
+//         // Добавляем подраздел в dataSource
+//         dataSource.push({
+//           key: `subsection-${i}`,
+//           isSubSectionHeader: true,
+//           subSectionName: current.subSectionName,
+//         });
+//         i++;
+//         continue;
+//       }
+
+//       // Начинаем группировку данных для объединения ячеек в "Код" и "Наименование услуги"
+//       let rowSpanCode = 1;
+//       let rowSpanName = 1;
+
+//       const currentCode = current.code;
+//       const currentName = current.name;
+
+//       let j = i + 1;
+
+//       while (j < dataLength) {
+//         const nextItem = filteredData[j];
+//         const next = nextItem.attributes;
+
+//         if (next.isSubSection) {
+//           break; // Прерываем, если встретили подраздел
+//         }
+
+//         if (next.code === currentCode && next.name === currentName) {
+//           rowSpanCode++;
+//           rowSpanName++;
+//           j++;
+//         } else {
+//           break;
+//         }
+//       }
+
+//       // Теперь внутри группы вычисляем rowSpan для столбца "Цена"
+//       let k = i;
+//       while (k < j) {
+//         const priceGroupStartIndex = k;
+//         const currentPrice = filteredData[k].attributes.price;
+
+//         let rowSpanPrice = 1;
+//         k++;
+
+//         while (k < j && filteredData[k].attributes.price === currentPrice) {
+//           rowSpanPrice++;
+//           k++;
+//         }
+
+//         // Добавляем первую запись в группе цен
+//         dataSource.push({
+//           key: priceGroupStartIndex,
+//           code: filteredData[priceGroupStartIndex].attributes.code,
+//           name: filteredData[priceGroupStartIndex].attributes.name,
+//           unit: filteredData[priceGroupStartIndex].attributes.unit,
+//           price: filteredData[priceGroupStartIndex].attributes.price,
+//           isSubSectionHeader: false,
+//           rowSpanCode: priceGroupStartIndex === i ? rowSpanCode : 0,
+//           rowSpanName: priceGroupStartIndex === i ? rowSpanName : 0,
+//           rowSpanUnit: 1,
+//           rowSpanPrice: rowSpanPrice,
+//         });
+
+//         // Добавляем остальные записи в группе цен с rowSpanPrice = 0
+//         for (
+//           let m = priceGroupStartIndex + 1;
+//           m < priceGroupStartIndex + rowSpanPrice;
+//           m++
+//         ) {
+//           dataSource.push({
+//             key: m,
+//             code: filteredData[m].attributes.code,
+//             name: filteredData[m].attributes.name,
+//             unit: filteredData[m].attributes.unit,
+//             price: filteredData[m].attributes.price,
+//             isSubSectionHeader: false,
+//             rowSpanCode: 0,
+//             rowSpanName: 0,
+//             rowSpanUnit: 1,
+//             rowSpanPrice: 0,
+//           });
+//         }
+//       }
+
+//       i = j; // Переходим к следующей группе
+//     }
+
+//     // Формируем колонки для таблицы
+//     const columns = [
+//       {
+//         title: "Код",
+//         dataIndex: "code",
+//         key: "code",
+//         render: (text, record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               children: <strong>{record.subSectionName}</strong>,
+//               props: {
+//                 colSpan: 4,
+//               },
+//             };
+//           }
+//           return text;
+//         },
+//         onCell: (record) => {
+//           if (record.isSubSectionHeader) {
+//             return {};
+//           }
+//           return {
+//             rowSpan: record.rowSpanCode,
+//           };
+//         },
+//       },
+//       {
+//         title: "Наименование услуги",
+//         dataIndex: "name",
+//         key: "name",
+//         render: (text, record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               props: {
+//                 colSpan: 0,
+//               },
+//             };
+//           }
+//           return text;
+//         },
+//         onCell: (record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               colSpan: 0,
+//             };
+//           }
+//           return {
+//             rowSpan: record.rowSpanName,
+//           };
+//         },
+//       },
+//       {
+//         title: "Ед. измерения",
+//         dataIndex: "unit",
+//         key: "unit",
+//         render: (text, record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               props: {
+//                 colSpan: 0,
+//               },
+//             };
+//           }
+//           return text;
+//         },
+//         onCell: (record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               colSpan: 0,
+//             };
+//           }
+//           return {}; // Не устанавливаем rowSpan
+//         },
+//       },
+//       {
+//         title: "Цена, руб. с НДС",
+//         dataIndex: "price",
+//         key: "price",
+//         render: (text, record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               props: {
+//                 colSpan: 0,
+//               },
+//             };
+//           }
+//           return text;
+//         },
+//         onCell: (record) => {
+//           if (record.isSubSectionHeader) {
+//             return {
+//               colSpan: 0,
+//             };
+//           }
+//           return {
+//             rowSpan: record.rowSpanPrice,
+//           };
+//         },
+//       },
+//     ];
+
+//     return (
+//       <div className={styles["wrap-table"]}>
+//         <Table
+//           columns={columns}
+//           dataSource={dataSource}
+//           pagination={false}
+//           rowClassName={(record) =>
+//             record.isSubSectionHeader ? styles.subSectionRow : ""
+//           }
+//           bordered
+//           tableLayout="fixed"
+//         />
+//       </div>
+//     );
+//   };
+
+//   if (isLoading) {
+//     return (
+//       <div className="page-grid__content" id="content">
+//         <p>Загрузка...</p>
+//       </div>
+//     );
+//   }
+
+//   const items = services.map((section, index) => ({
+//     key: index.toString(),
+//     label: (
+//       <div className="accordion-row__up">
+//         <span className="accordion-row__text">{section.title}</span>
+//       </div>
+//     ),
+
+//     children: (
+//       <>
+//         {/* Контактная информация */}
+//         <Paragraph>
+//           По вопросам оказания дополнительных услуг свяжитесь с нами: тел.:{" "}
+//           <a href="tel:+74957803962">
+//             <b>8 (495) 780-39-62</b>
+//           </a>{" "}
+//           доб. 3327, доб. 1096; e-mail:{" "}
+//           <a href="mailto:uslugi@mosoblenergo.ru">
+//             <b>uslugi@mosoblenergo.ru</b>
+//           </a>
+//         </Paragraph>
+
+//         {/* Документы */}
+//         {section.documents?.data && (
+//           <ul className={styles.list}>
+//             {section.documents.data.map((doc, idx) => (
+//               <li key={idx}>
+//                 <a
+//                   href={`${addressServer}${doc.attributes.url}`}
+//                   className={styles.documentLink}
+//                 >
+//                   {getIconByExtension(doc.attributes.ext)}
+//                   {doc.attributes.name}
+//                 </a>
+//               </li>
+//             ))}
+//           </ul>
+//         )}
+
+//         {/* Контент секции */}
+//         {section.content && renderContent(section.content)}
+
+//         {/* Таблица прайсов */}
+//         {renderPriceTable(section.sectionName.name)}
+//       </>
+//     ),
+//   }));
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0 }}
+//       animate={{ opacity: 1 }}
+//       exit={{ opacity: 0 }}
+//       transition={{ duration: 0.5 }}
+//     >
+//       <TopImage image={imgTop} title={"Дополнительные услуги"} />
+//       <div className="page-grid__content" id="content">
+//         <Collapse
+//           accordion
+//           className={styles.accordion}
+//           items={items}
+//           expandIcon={() => null}
+//         />
+
+//         {/* Отображение завершающего абзаца */}
+//         {description && (
+//           <div className={styles.description}>
+//             <MarkDownText>{description}</MarkDownText>
+//           </div>
+//         )}
+
+//         {/* Ссылка на скачивание прейскуранта */}
+//         {priceFileData && (
+//           <div className="row-docs-age">
+//             <a
+//               className="doc-line"
+//               href={`${addressServer}${priceFileData.url}`}
+//               download
+//               rel="noopener noreferrer"
+//               target="_blank"
+//             >
+//               <div className="doc-line__wrap-icon">
+//                 {getIconByExtension(priceFileData.ext)}
+//               </div>
+//               <div className="doc-line__wrap-text">
+//                 <span className="doc-line__name">
+//                   {priceFileData.name || "Скачать файл"}
+//                 </span>
+//                 <span className="doc-line__file-info">
+//                   {priceFileData.ext.replace(".", "")},{" "}
+//                   {Math.round(priceFileData.size / 1024)} КБ
+//                 </span>
+//               </div>
+//             </a>
+//           </div>
+//         )}
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// export default AdditionalServices;
 
 // import React, { useEffect, useState } from "react";
 // import { Typography, Collapse, Table } from "antd";
