@@ -71,7 +71,8 @@ export default function MarkDownText({ children }) {
           },
           table: {
             props: {
-              className: `${styles.tableDescription} ${styles.table}`,
+              // className: `${styles.tableDescription} ${styles.table}`,
+              className: styles.table,
             },
           },
         },
