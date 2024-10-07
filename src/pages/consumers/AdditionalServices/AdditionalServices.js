@@ -126,10 +126,10 @@ const AdditionalServices = () => {
           unit: attributes.unit,
           price: attributes.price,
           isSubSectionHeader: false,
-          rowSpanCode: attributes.rowSpanCode || 1,
-          rowSpanName: attributes.rowSpanName || 1,
-          rowSpanUnit: attributes.rowSpanUnit || 1,
-          rowSpanPrice: attributes.rowSpanPrice || 1,
+          rowSpanCode: attributes.rowSpanCode !== null ? attributes.rowSpanCode : 1,
+          rowSpanName: attributes.rowSpanName !== null ?attributes.rowSpanName : 1,
+          rowSpanUnit: attributes.rowSpanUnit !== null ?attributes.rowSpanUnit : 1,
+          rowSpanPrice: attributes.rowSpanPrice !== null ? attributes.rowSpanPrice : 1,
         };
       }
     });
@@ -152,9 +152,9 @@ const AdditionalServices = () => {
           return text;
         },
         onCell: (record) => {
-          if (record.isSubSectionHeader) {
-            return {};
-          }
+          // if (record.isSubSectionHeader) {
+          //   return {};
+          // }
           return {
             rowSpan: record.rowSpanCode,
           };
@@ -164,24 +164,25 @@ const AdditionalServices = () => {
         title: "Наименование услуги",
         dataIndex: "name",
         key: "name",
-        render: (text, record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              props: {
-                colSpan: 0,
-              },
-            };
-          }
-          return text;
-        },
+        // render: (text, record) => {
+        //   if (record.isSubSectionHeader) {
+        //     return {
+        //       props: {
+        //         colSpan: 0,
+        //       },
+        //     };
+        //   }
+        //   return text;
+        // },
         onCell: (record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              colSpan: 0,
-            };
-          }
+          // if (record.isSubSectionHeader) {
+          //   return {
+          //     colSpan: 0,
+          //   };
+          // }
           return {
             rowSpan: record.rowSpanName,
+            colSpan: record.isSubSectionHeader ? 0 : false,
           };
         },
       },
@@ -189,24 +190,25 @@ const AdditionalServices = () => {
         title: "Ед. измерения",
         dataIndex: "unit",
         key: "unit",
-        render: (text, record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              props: {
-                colSpan: 0,
-              },
-            };
-          }
-          return text;
-        },
+        // render: (text, record) => {
+        //   if (record.isSubSectionHeader) {
+        //     return {
+        //       props: {
+        //         colSpan: 0,
+        //       },
+        //     };
+        //   }
+        //   return text;
+        // },
         onCell: (record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              colSpan: 0,
-            };
-          }
+          // if (record.isSubSectionHeader) {
+          //   return {
+          //     colSpan: 0,
+          //   };
+          // }
           return {
             rowSpan: record.rowSpanUnit,
+            colSpan: record.isSubSectionHeader ? 0 : false,
           };
         },
       },
@@ -214,24 +216,27 @@ const AdditionalServices = () => {
         title: "Цена, руб. с НДС",
         dataIndex: "price",
         key: "price",
-        render: (text, record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              props: {
-                colSpan: 0,
-              },
-            };
-          }
-          return text;
-        },
+        // render: (text, record) => {
+        //   if (record.isSubSectionHeader) {
+        //     return {
+        //       props: {
+        //         colSpan: 0,
+        //       },
+        //     };
+        //   }
+        //   return text;
+        // },
         onCell: (record) => {
-          if (record.isSubSectionHeader) {
-            return {
-              colSpan: 0,
-            };
-          }
+          console.log('record.rowSpanPrice',record.rowSpanPrice);
+          
+          // if (record.isSubSectionHeader) {
+          //   return {
+          //     colSpan: 0,
+          //   };
+          // }
           return {
             rowSpan: record.rowSpanPrice,
+            colSpan: record.isSubSectionHeader ? 0 : false,
           };
         },
       },
