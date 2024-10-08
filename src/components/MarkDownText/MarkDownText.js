@@ -17,13 +17,6 @@ export default function MarkDownText({ children }) {
               className: styles.para,
             },
           },
-          // h1: {
-          //   component: Typography.Title,
-          //   props: {
-          //     className: styles.heading,
-          //     level: 1,
-          //   },
-          // },
           h2: {
             component: Typography.Title,
             props: {
@@ -71,8 +64,19 @@ export default function MarkDownText({ children }) {
           },
           table: {
             props: {
-              // className: `${styles.tableDescription} ${styles.table}`,
+            
               className: styles.table,
+            },
+          },
+          
+          ul: {
+            props: {
+              className: styles.ul,
+            },
+          },
+          li: {
+            props: {
+              className: styles.li,
             },
           },
         },
