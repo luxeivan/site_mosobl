@@ -10,7 +10,9 @@ export default function MarkDownText({ children }) {
   return (
     <Markdown
       options={{
-        forceBlock: true,
+        // forceBlock: true,
+        // forceInline: true,
+        // forceWrapper:true,
         overrides: {
           p: {
             props: {
