@@ -18,7 +18,7 @@ img {
   animation-iteration-count: infinite;
 }
 
-.loader-area{
+.loader-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,16 +35,17 @@ img {
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
 
-  @keyframes rotation {
-  0% {
-      transform: rotate(0deg);
-  }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  } 
+}
 
 
 @keyframes rotate {
@@ -227,7 +228,7 @@ button.wrap-link {
   color: #0061aa;
 }
 
-.contact-information > .contact-information__grid-text:first-child {
+.contact-information>.contact-information__grid-text:first-child {
   margin-bottom: 0;
 }
 
@@ -510,8 +511,9 @@ button.wrap-link {
 .react-date-picker__calendar {
   z-index: 997 !important;
 }
-.react-datepicker-wrapper{
-  border: 1px solid gray !important; 
+
+.react-datepicker-wrapper {
+  border: 1px solid gray !important;
 }
 
 .disconnect {
@@ -642,6 +644,10 @@ th {
   max-width: 800px;
 }
 
+.creditRatingFlex {
+  max-width: 1600px;
+}
+
 .creditRating {
   display: flex;
   flex-wrap: wrap;
@@ -651,7 +657,7 @@ th {
   margin: 0 auto;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.8);
-  max-width: 800px;
+  max-width: 48%;
   z-index: 10;
 }
 
@@ -1193,6 +1199,7 @@ th {
   background-color: #0061aa;
   color: #fff;
 }
+
 .planned-notification__link:disabled {
   background-color: #eee;
   cursor: default;

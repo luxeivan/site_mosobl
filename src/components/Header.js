@@ -13,6 +13,7 @@ import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8
 import img629d5332fa7791fcb59127d93f320c66 from "../img/629d5332fa7791fcb59127d93f320c66.jpg";
 // import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 import { Link } from "react-router-dom";
+import { Flex } from "antd";
 
 export default function Header() {
   const [scroll, setScroll] = useState();
@@ -809,21 +810,38 @@ export default function Header() {
                         style={{ marginTop: "50px" }}
                       />
                       <br />
-{/* ------------------------------------------------------ */}
-                      <div className="creditRating">
-                        {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
-                        <div className="creditRating__desc">
-                          <h3 className="creditRating__title">Аварийные отключения</h3>
-                          <p className="creditRating__text">
-                          АО «Мособлэнерго» предлагает воспользоваться сервисом информирования населения о перерывах электроснабжения – плановых работах и технологических нарушениях в сетях. Получить информацию об отключениях можно, перейдя по кнопке в верхнем правом углу сайта «Узнать об отключениях» или по кнопке ниже.
-                          </p>
-                          <div className="creditRating__link-area">
-                            <Link className="creditRating__link block-btn" to="/plannedOutages">
-                              Узнать об отключениях
-                            </Link>
+                      {/* ------------------------------------------------------ */}
+                      <Flex wrap={"wrap"} className="creditRatingFlex" gap={20}>
+                        <div className="creditRating">
+                          {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
+                          <div className="creditRating__desc">
+                            <h3 className="creditRating__title">Внеплановые отключения</h3>
+                            <p className="creditRating__text">
+                              АО «Мособлэнерго» предлагает воспользоваться сервисом информирования населения о перерывах электроснабжения – плановых работах и технологических нарушениях в сетях(внеплановых отключениях). Получить информацию об отключениях можно, перейдя по кнопке в верхнем правом углу сайта «Узнать об отключениях» или по кнопке ниже.
+                            </p>
+                            <div className="creditRating__link-area">
+                              <Link className="creditRating__link block-btn" to="/plannedOutages">
+                                Узнать об отключениях
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                        <div className="creditRating">
+                          {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
+                          <div className="creditRating__desc">
+                            <h3 className="creditRating__title" style={{color:"red", textAlign:"center"}}>ВНИМАНИЕ МОШЕННИКИ!!!</h3>
+                            <p className="creditRating__text">
+                              Работники АО «Мособлэнерго» и наши представители НИКОГДА не запрашивают персональные данные (номера паспорта, СНИЛС и т.д.) по телефону.
+                            </p>
+                            <p className="creditRating__text">
+                              Передача персональных данных возможна только в личном кабинете или в офисе при подаче заявок.
+                            </p>
+                            <p className="creditRating__text">
+                              Берегите себя и своих близких!
+                            </p>
+                          </div>
+                        </div>
+                      </Flex>
                       {/* <div className="creditRating">
                         <div className="creditRating__desc">
                           <div
