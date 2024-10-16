@@ -16,7 +16,7 @@ import Goals from "./pages/Goals";
 import MainDirections from "./pages/MainDirections";
 import Recuisites from "./pages/Recuisites";
 import AntiCorruption from "./pages/AntiCorruption";
-import Certs from "./pages/Certs";
+import Certs from "./pages/Certs/Certs";
 // import Reviews from './pages/Reviews';
 import Gardeners from "./pages/Gardeners";
 import ContactForMedia from "./pages/ContactForMedia";
