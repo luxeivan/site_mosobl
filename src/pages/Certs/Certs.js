@@ -38,7 +38,7 @@ export default function Certs() {
               <span class="doc-line__file-info">jpg, 75кб</span>
             </div>
           </a>
-          <a
+          {/* <a
             class="doc-line"
             href={`${addressServer}/uploads/0086_C0_6dfcd1b059.pdf?updated_at=2023-11-28T04:56:59.610Z`}
             download=""
@@ -54,7 +54,7 @@ export default function Certs() {
               </span>
               <span class="doc-line__file-info">pdf, 1мб</span>
             </div>
-          </a>
+          </a> */}
           {/* СРОЧНО ЗАКИНУЛ СЮДА СЕРТИК, НО НАДО БЫ СДЕЛАТЬ БАЗУ В strapi */}
           <a
             className="doc-line"
@@ -68,7 +68,7 @@ export default function Certs() {
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">
-                Сертификат ГОСТ Р ИСО 9001-2015
+                Сертификат соответствия ГОСТ Р ИСО 9001-2015
               </span>
               <span className="doc-line__file-info">pdf, 1мб</span>
             </div>
