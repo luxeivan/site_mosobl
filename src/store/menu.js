@@ -23,10 +23,6 @@ export const mainMenu = [
         title: "Раскрытие информации",
         link: "/informationDisclosures",
       },
-      // {
-      //   title: "Вакансии",
-      //   link: "vacancies",
-      // },
       {
         title: "Антикоррупционная деятельность",
         link: "/antiCorruption",
@@ -39,14 +35,6 @@ export const mainMenu = [
         title: "Информация по облигациям",
         link: "/informationOnBonds",
       },
-      // {
-      //   title: "Отзывы",
-      //   link: "/reviews",
-      // },
-      // {
-      //   title: "Вниманию объединений садоводов",
-      //   link: "/gardeners",
-      // },
     ],
   },
   {

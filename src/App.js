@@ -46,7 +46,7 @@ import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
 import EventDetails from "./pages/SpecialProjects/EventDetails";
 import InformationOnBonds from "./pages/InformationOnBonds";
 import Vacancies from "./pages/Vacancy/Vacancies";
-
+import Investors from "./pages/Investors/Investors";
 
 function App() {
   useEffect(() => {
@@ -69,6 +69,9 @@ function App() {
             element={<InformationDisclosures />}
           />
           <Route path="/filials" element={<Filials />} />
+
+          <Route path="/investors" element={<Investors />} />
+          
           <Route path="/filials/:id" element={<Filial />} />
           <Route path="/about" element={<About />} />
           <Route path="/history" element={<History />} />
