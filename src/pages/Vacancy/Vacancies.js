@@ -35,14 +35,12 @@ export default function Vacancies() {
           </div>
           <div className="vacancies vacancies-main__item">
             <div className="vacancies__text-area">
-              <h3>
-                Актуальные вакансии можно посмотреть на платформе hh.ru{" "}
-              </h3>
+              <h3>Актуальные вакансии можно посмотреть на платформе hh.ru </h3>
               <div className="vacancies__button-area">
                 {" "}
                 <a
-                  // href="https://hh.ru/employer/221874"
-                  href="https://www.rabota.ru/company/1745869/"
+                  href="https://hh.ru/employer/221874"
+                  // href="https://www.rabota.ru/company/1745869/"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="open-map__button"
