@@ -50,6 +50,11 @@ export const mainMenu = [
     ],
   },
   {
+    mainTitle: "ИНВЕСТОРАМ",
+    link: "/investors",
+    submenu: [],
+  },
+  {
     mainTitle: "Потребителям",
     link: "/consumers",
     submenu: [
@@ -152,10 +157,6 @@ export const mainMenu = [
         title: "Реквизиты компании",
         link: "/requisites",
       },
-      // {
-      //   title: "Интернет-приемная",
-      //   link: "",
-      // },
     ],
   },
 ];
