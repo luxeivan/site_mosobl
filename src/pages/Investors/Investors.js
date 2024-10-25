@@ -12,7 +12,7 @@ export default function Investors() {
     fetch(`${addressServer}/api/investorams?populate=*`)
       .then((response) => response.json())
       .then((data) => {
-        console.log('Проверка связи', data); 
+        console.log("Проверка связи", data);
         setInvestorSections(
           data.data.sort((a, b) => a.attributes.sort - b.attributes.sort)
         );
@@ -63,14 +63,13 @@ export default function Investors() {
           </a>
         </p>
 
-
         <ul>
           {investorSections &&
             investorSections.map((item, index) => (
               <li key={index} className="investorSections__item">
                 <Link
                   className="link-row link-row--change"
-                  href={`/investors/${item.id}`}
+                  to={`/investors/${item.id}`} // Здесь заменяем href на to
                 >
                   <span className="link-row__text">
                     {item.attributes.title}

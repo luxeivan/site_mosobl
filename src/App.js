@@ -47,6 +47,7 @@ import EventDetails from "./pages/SpecialProjects/EventDetails";
 import InformationOnBonds from "./pages/InformationOnBonds";
 import Vacancies from "./pages/Vacancy/Vacancies";
 import Investors from "./pages/Investors/Investors";
+import InvestorDetail from "./pages/Investors/InvestorDetail";
 
 function App() {
   useEffect(() => {
@@ -71,7 +72,8 @@ function App() {
           <Route path="/filials" element={<Filials />} />
 
           <Route path="/investors" element={<Investors />} />
-          
+          <Route path="/investors/:id" element={<InvestorDetail />} />
+
           <Route path="/filials/:id" element={<Filial />} />
           <Route path="/about" element={<About />} />
           <Route path="/history" element={<History />} />
