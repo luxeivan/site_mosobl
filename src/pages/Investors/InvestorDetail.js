@@ -98,7 +98,11 @@ export default function InvestorDetail() {
                                   {item.attributes.name}
                                 </span>
                                 <span className="doc-line__file-info">
-                                  {item.type} {Math.round(item.size)}kb
+                                  {item.attributes.type}{" "}
+                                  {Math.round(
+                                    item.attributes.file.data.attributes.size
+                                  )}
+                                  kb
                                 </span>
                               </div>
                             </a>
