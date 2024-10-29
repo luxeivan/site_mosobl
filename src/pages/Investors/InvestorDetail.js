@@ -24,22 +24,20 @@ const type = {
 export default function InvestorDetail() {
   const params = useParams();
   const [section, setSection] = useState(null);
-  const [copy, setCopy] = useState(null);
 
   useEffect(() => {
     fetch(
-      `${addressServer}/api/investorams/${params.id}?populate[groupInfo][populate]=files`
+      `${addressServer}/api/investorams/${params.id}?populate[groupInfo][populate][files_sort][populate]=files`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Полученные данные:", data); // Отладочный вывод
+        console.log("Полученные данные:", data);
         setSection(data.data);
-        setCopy(data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params.id]);
 
   if (!section || !section.attributes) return <div>Загрузочка...</div>;
 
@@ -70,34 +68,43 @@ export default function InvestorDetail() {
                     {group.title}
                   </h3>
                   <ul>
-                    {Array.isArray(group.files.data) &&
-                    group.files.data.length > 0 ? (
-                      group.files.data.map((file, fileIndex) => (
-                        <li key={fileIndex} className="page-grid__content__li">
-                          <a
-                            className="doc-line"
-                            href={`${addressServer}${file.attributes.url}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                    {Array.isArray(group.files_sort) &&
+                    group.files_sort.length > 0 ? (
+                      group.files_sort.map((fileEntry, fileIndex) => {
+                        const fileData = fileEntry.files?.data?.[0]?.attributes;
+
+                        return fileData && fileData.url ? (
+                          <li
+                            key={fileIndex}
+                            className="page-grid__content__li"
                           >
-                            <div className="doc-line__wrap-icon">
-                              <img
-                                src={type[file.attributes.ext.slice(1)] || pdf}
-                                alt={`icon ${file.attributes.ext.slice(1)}`}
-                              />
-                            </div>
-                            <div className="doc-line__wrap-text">
-                              <span className="doc-line__name">
-                                {file.attributes.name}
-                              </span>
-                              <span className="doc-line__file-info">
-                                {file.attributes.ext.slice(1).toUpperCase()}{" "}
-                                {Math.round(file.attributes.size)} kb
-                              </span>
-                            </div>
-                          </a>
-                        </li>
-                      ))
+                            <a
+                              className="doc-line"
+                              href={`${addressServer}${fileData.url}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <div className="doc-line__wrap-icon">
+                                <img
+                                  src={type[fileData.ext.slice(1)] || pdf}
+                                  alt={`icon ${fileData.ext.slice(1)}`}
+                                />
+                              </div>
+                              <div className="doc-line__wrap-text">
+                                <span className="doc-line__name">
+                                  {fileData.name}
+                                </span>
+                                <span className="doc-line__file-info">
+                                  {fileData.ext.slice(1).toUpperCase()}{" "}
+                                  {Math.round(fileData.size)} kb
+                                </span>
+                              </div>
+                            </a>
+                          </li>
+                        ) : (
+                          <p key={fileIndex}>Файл недоступен</p>
+                        );
+                      })
                     ) : (
                       <p>Нет доступных файлов</p>
                     )}
