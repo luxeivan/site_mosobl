@@ -12,7 +12,7 @@ import rar from "../../img/rar.svg";
 import xls from "../../img/xls.svg";
 import jpg from "../../img/jpg.svg";
 
-const typeIcons = {
+const type = {
   pdf,
   doc,
   docx,
@@ -24,6 +24,7 @@ const typeIcons = {
 export default function InvestorDetail() {
   const params = useParams();
   const [section, setSection] = useState(null);
+  const [copy, setCopy] = useState(null);
 
   useEffect(() => {
     fetch(
@@ -31,17 +32,14 @@ export default function InvestorDetail() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Полученные данные:", data);
-        if (data && data.data) {
-          setSection(data.data);
-        } else {
-          console.error("Данные не найдены или структура данных не совпадает");
-        }
+        console.log("Полученные данные:", data); // Отладочный вывод
+        setSection(data.data);
+        setCopy(data.data);
       })
       .catch((err) => {
-        console.error("Ошибка при загрузке данных:", err);
+        console.log(err);
       });
-  }, [params.id]);
+  }, []);
 
   if (!section || !section.attributes) return <div>Загрузочка...</div>;
 
@@ -71,39 +69,37 @@ export default function InvestorDetail() {
                   <h3 className="row-docs-age__caption line-bottom">
                     {group.title}
                   </h3>
-
                   <ul>
-                    {Array.isArray(group.files) ? (
-                      group.files.map((file, fileIndex) => (
+                    {Array.isArray(group.files.data) &&
+                    group.files.data.length > 0 ? (
+                      group.files.data.map((file, fileIndex) => (
                         <li key={fileIndex} className="page-grid__content__li">
                           <a
                             className="doc-line"
-                            href={`${addressServer}${file.url}`}
+                            href={`${addressServer}${file.attributes.url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             <div className="doc-line__wrap-icon">
                               <img
-                                src={
-                                  typeIcons[file.ext.replace(".", "")] || pdf
-                                }
-                                alt={`icon ${file.ext}`}
+                                src={type[file.attributes.ext.slice(1)] || pdf}
+                                alt={`icon ${file.attributes.ext.slice(1)}`}
                               />
                             </div>
                             <div className="doc-line__wrap-text">
                               <span className="doc-line__name">
-                                {file.name}
+                                {file.attributes.name}
                               </span>
                               <span className="doc-line__file-info">
-                                {file.ext.replace(".", "")}{" "}
-                                {Math.round(file.size)} KB
+                                {file.attributes.ext.slice(1).toUpperCase()}{" "}
+                                {Math.round(file.attributes.size)} kb
                               </span>
                             </div>
                           </a>
                         </li>
                       ))
                     ) : (
-                      <li>Нет доступных файлов</li>
+                      <p>Нет доступных файлов</p>
                     )}
                   </ul>
                 </div>
