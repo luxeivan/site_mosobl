@@ -37,11 +37,11 @@ export const mainMenu = [
       },
     ],
   },
-  {
-    mainTitle: "ИНВЕСТОРАМ",
-    link: "/investors",
-    submenu: [],
-  },
+  // {
+  //   mainTitle: "ИНВЕСТОРАМ",
+  //   link: "/investors",
+  //   submenu: [],
+  // },
   {
     mainTitle: "Потребителям",
     link: "/consumers",
