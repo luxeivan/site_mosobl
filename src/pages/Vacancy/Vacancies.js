@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import vacan_img from "../../img/d21248be80705e7a80efdf5efde73cc5.jpg";
-import qr_rabota_ru from "../../img/qr_rabota_ru.svg";
+import qr_rabota_ru from "../../img/QR_HH.png";
 
 export default function Vacancies() {
   console.log("Test");
@@ -35,19 +35,17 @@ export default function Vacancies() {
           </div>
           <div className="vacancies vacancies-main__item">
             <div className="vacancies__text-area">
-              <h3>
-                Актуальные вакансии можно посмотреть на платформе Работа.ру{" "}
-              </h3>
+              <h3>Актуальные вакансии можно посмотреть на платформе hh.ru </h3>
               <div className="vacancies__button-area">
                 {" "}
                 <a
-                  // href="https://hh.ru/employer/221874"
-                  href="https://www.rabota.ru/company/1745869/"
+                  href="https://hh.ru/employer/221874"
+                  // href="https://www.rabota.ru/company/1745869/"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="open-map__button"
                 >
-                  Перейти на Работа.ру
+                  Перейти на hh.ru
                 </a>
               </div>
             </div>

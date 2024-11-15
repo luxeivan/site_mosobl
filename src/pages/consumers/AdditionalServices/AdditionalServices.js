@@ -115,6 +115,7 @@ const AdditionalServices = () => {
           key: `subsection-${index}`,
           isSubSectionHeader: true,
           subSectionName: attributes.subSectionName,
+          filesDoc: attributes.filesDoc,
         };
       } else {
         return {
@@ -145,7 +146,26 @@ const AdditionalServices = () => {
         render: (text, record) => {
           if (record.isSubSectionHeader) {
             return {
-              children: <strong>{record.subSectionName}</strong>,
+              children: (
+                <div>
+                  <strong>{record.subSectionName}</strong>
+                  {record.filesDoc?.data && (
+                    <ul className={styles.list}>
+                      {record.filesDoc.data.map((doc, idx) => (
+                        <li key={idx}>
+                          <a
+                            href={`${addressServer}${doc.attributes.url}`}
+                            className={styles.documentLink}
+                          >
+                            {getIconByExtension(doc.attributes.ext)}
+                            {doc.attributes.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ),
               props: {
                 colSpan: 4,
               },
@@ -311,8 +331,6 @@ const AdditionalServices = () => {
 };
 
 export default AdditionalServices;
-
-
 
 // import React, { useEffect, useState } from "react";
 // import pdf from "../../../img/pdf.svg";

@@ -387,7 +387,8 @@ button.wrap-link {
   cursor: pointer;
 }
 
-.informationDisclosures__item {
+.informationDisclosures__item
+.investorSections__item {
   margin: 20px;
 }
 

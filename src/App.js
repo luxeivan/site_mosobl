@@ -16,7 +16,7 @@ import Goals from "./pages/Goals";
 import MainDirections from "./pages/MainDirections";
 import Recuisites from "./pages/Recuisites";
 import AntiCorruption from "./pages/AntiCorruption";
-import Certs from "./pages/Certs";
+import Certs from "./pages/Certs/Certs";
 // import Reviews from './pages/Reviews';
 import Gardeners from "./pages/Gardeners";
 import ContactForMedia from "./pages/ContactForMedia";
@@ -46,7 +46,8 @@ import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
 import EventDetails from "./pages/SpecialProjects/EventDetails";
 import InformationOnBonds from "./pages/InformationOnBonds";
 import Vacancies from "./pages/Vacancy/Vacancies";
-
+import Investors from "./pages/Investors/Investors";
+import InvestorDetail from "./pages/Investors/InvestorDetail";
 
 function App() {
   useEffect(() => {
@@ -69,6 +70,10 @@ function App() {
             element={<InformationDisclosures />}
           />
           <Route path="/filials" element={<Filials />} />
+
+          <Route path="/investors" element={<Investors />} />
+          <Route path="/investors/:id" element={<InvestorDetail />} />
+
           <Route path="/filials/:id" element={<Filial />} />
           <Route path="/about" element={<About />} />
           <Route path="/history" element={<History />} />
