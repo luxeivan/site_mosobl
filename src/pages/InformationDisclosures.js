@@ -66,7 +66,7 @@ export default function InformationDisclosures() {
         <ul>
           {informationDisclosures &&
             informationDisclosures.map((item, index) => (
-              <li key={index} className="informationDisclosures__item">
+              <li key={index} className="informationDisclosures__item li__margin-top">
                 <Link
                   className="link-row link-row--change"
                   to={`/informationDisclosures/${item.id}`}
