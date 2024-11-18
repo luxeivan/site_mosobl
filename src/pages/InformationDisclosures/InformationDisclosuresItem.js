@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { addressServer } from "../config";
-import pdf from "../img/pdf.svg";
-import doc from "../img/doc.svg";
-import docx from "../img/docx.svg";
-import rar from "../img/rar.svg";
-import xls from "../img/xls.svg";
-import jpg from "../img/jpg.svg";
+import { addressServer } from "../../config";
+import pdf from "../../img/pdf.svg";
+import doc from "../../img/doc.svg";
+import docx from "../../img/docx.svg";
+import rar from "../../img/rar.svg";
+import xls from "../../img/xls.svg";
+import jpg from "../../img/jpg.svg";
 import { motion } from "framer-motion";
 
-import TopImage from "../components/TopImage";
-import imgf4f40bee4b8a3fb6f95707a4da41d873 from "../img/f4f40bee4b8a3fb6f95707a4da41d873.jpg";
+import TopImage from "../../components/TopImage";
+import imgf4f40bee4b8a3fb6f95707a4da41d873 from "../../img/f4f40bee4b8a3fb6f95707a4da41d873.jpg";
 
 const type = {
   pdf,

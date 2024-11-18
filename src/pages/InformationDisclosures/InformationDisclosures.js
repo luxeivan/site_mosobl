@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { addressServer } from "../config";
+import { addressServer } from "../../config";
 import { motion } from "framer-motion";
-import TopImage from "../components/TopImage";
-import imgb04877a3110d6b586d064fc3a2853c70 from "../img/b04877a3110d6b586d064fc3a2853c70.jpg";
+import TopImage from "../../components/TopImage";
+import imgb04877a3110d6b586d064fc3a2853c70 from "../../img/b04877a3110d6b586d064fc3a2853c70.jpg";
 
 export default function InformationDisclosures() {
   const [informationDisclosures, setInformationDisclosures] = useState([]);
@@ -38,6 +38,22 @@ export default function InformationDisclosures() {
       />
       <div className="page-grid__content" id="content">
         <p style={{ textAlign: "center", marginBottom: "10px" }}>
+          <Link
+            to="/informationDisclosures/companyratings"
+            className="planned-notification__link"
+            style={{
+              border: "1px solid rgb(227, 112, 33)",
+              boxShadow: "0px 0px 9px 3px rgba(227, 112, 33, 0.2)",
+              padding: "10px 20px",
+              display: "inline-block",
+              textDecoration: "none",
+            }}
+          >
+            Рейтинги Компании
+          </Link>
+        </p>
+
+        {/* <p style={{ textAlign: "center", marginBottom: "10px" }}>
           <a
             className="planned-notification__link"
             style={{
@@ -51,7 +67,7 @@ export default function InformationDisclosures() {
             Кредитный рейтинг компании АО "Мособлэнерго" на уровне АА+(RU),
             прогноз «Стабильный»
           </a>
-        </p>
+        </p> */}
         <p style={{ textAlign: "center" }}>
           <a
             className="planned-notification__link"
@@ -66,7 +82,10 @@ export default function InformationDisclosures() {
         <ul>
           {informationDisclosures &&
             informationDisclosures.map((item, index) => (
-              <li key={index} className="informationDisclosures__item li__margin-top">
+              <li
+                key={index}
+                className="informationDisclosures__item li__margin-top"
+              >
                 <Link
                   className="link-row link-row--change"
                   to={`/informationDisclosures/${item.id}`}
