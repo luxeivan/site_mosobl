@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import Contact from "./pages/Contact";
-import InformationDisclosures from "./pages/InformationDisclosures";
-import InformationDisclosuresItem from "./pages/InformationDisclosuresItem";
+import InformationDisclosures from "./pages/InformationDisclosures/InformationDisclosures";
+import InformationDisclosuresItem from "./pages/InformationDisclosures/InformationDisclosuresItem";
 import Filials from "./pages/Filials";
 import Filial from "./pages/Filial";
 import About from "./pages/About";
@@ -48,6 +48,7 @@ import InformationOnBonds from "./pages/InformationOnBonds";
 import Vacancies from "./pages/Vacancy/Vacancies";
 import Investors from "./pages/Investors/Investors";
 import InvestorDetail from "./pages/Investors/InvestorDetail";
+import CompanyRatings from "./pages/InformationDisclosures/CompanyRatings/CompanyRatings";
 
 function App() {
   useEffect(() => {
@@ -68,6 +69,10 @@ function App() {
           <Route
             path="/informationDisclosures"
             element={<InformationDisclosures />}
+          />
+          <Route
+            path="/informationDisclosures/companyratings"
+            element={<CompanyRatings />}
           />
           <Route path="/filials" element={<Filials />} />
 

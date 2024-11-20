@@ -29,7 +29,7 @@ img {
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #FFF;
+  border: 5px solid #fff;
   border-bottom-color: #0061aa;
   border-radius: 50%;
   display: inline-block;
@@ -46,7 +46,6 @@ img {
     transform: rotate(360deg);
   }
 }
-
 
 @keyframes rotate {
   0% {
@@ -228,7 +227,7 @@ button.wrap-link {
   color: #0061aa;
 }
 
-.contact-information>.contact-information__grid-text:first-child {
+.contact-information > .contact-information__grid-text:first-child {
   margin-bottom: 0;
 }
 
@@ -387,8 +386,7 @@ button.wrap-link {
   cursor: pointer;
 }
 
-.informationDisclosures__item
-.investorSections__item {
+.informationDisclosures__item .investorSections__item {
   margin: 20px;
 }
 
@@ -604,6 +602,10 @@ button.wrap-link {
 .open-map__button:active {
   transform: scale(0.95);
   box-shadow: none;
+}
+
+.li__margin-top {
+  margin-top: 10px;
 }
 
 @keyframes charging__button {
