@@ -69,6 +69,23 @@ export default function AntiCorruption() {
               <span className="doc-line__file-info">pdf, 1мб</span>
             </div>
           </a>
+          <a
+            className="doc-line"
+            href={`${addressServer}/uploads/Antikorrupczionnaya_politika_762adf5a21.pdf`}
+            download=""
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <div className="doc-line__wrap-icon">
+              <img src={pdf} alt="icon pdf" />
+            </div>
+            <div className="doc-line__wrap-text">
+              <span className="doc-line__name">
+                Антикоррупционная политика
+              </span>
+              <span className="doc-line__file-info">pdf, 5,4 мб</span>
+            </div>
+          </a>
 
           <a
             className="doc-line"
@@ -82,7 +99,7 @@ export default function AntiCorruption() {
             </div>
             <div className="doc-line__wrap-text">
               <span className="doc-line__name">
-                АНТИКОРРУПЦИОННЫЕ СТАНДАРТЫ акционерного общества «Московская
+                Антикоррупционные стандарты акционерного общества «Московская
                 областная энергосетевая компания»
               </span>
               <span className="doc-line__file-info">pdf, 205 кб</span>
@@ -93,6 +110,8 @@ export default function AntiCorruption() {
           <h3>Антитеррористическая деятельность</h3>
         </div>
         <div className="row-docs-age">
+          
+
           <a
             className="doc-line"
             href={`${addressServer}/uploads/d795d364887f3cf09a4b919d12bdb3a5_compressed_eda29f5cdd.pdf?updated_at=2022-10-28T11:19:25.991Z`}

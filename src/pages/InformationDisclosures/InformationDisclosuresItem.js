@@ -31,7 +31,10 @@ const customOrder = [
   "Изменения № 5 к Уставу акционерного общества «Московская областная энергосетевая компания» (новая редакция № 8) от 04.10.2022 №15ВР-2058",
   "Изменения № 6 к Уставу акционерного общества «Московская областная энергосетевая компания» (новая редакция № 8) от 02.02.2023 № 15ВР-150",
   "Изменения № 7 к Уставу акционерного общества «Московская областная энергосетевая компания» (новая редакция № 8) от 15.05.2024 № 15ВР-898",
+  "Изменения № 8 к Уставу акционерного общества «Московская областная энергосетевая компания» (новая редакция № 8) от 30.09.2024 №  15ВР-1985",
 ];
+
+
 
 export default function InformationDisclosuresItem() {
   const params = useParams();
@@ -48,6 +51,8 @@ export default function InformationDisclosuresItem() {
         return response.json();
       })
       .then((data) => {
+        console.log(data.data);
+        
         setinformationDisclosureItem(data.data);
         setCopy(data.data);
       })
@@ -123,12 +128,74 @@ export default function InformationDisclosuresItem() {
                         </h3>
                         <ul>
                           {item.list_files.data
-                            .filter(
-                              (doc) =>
-                                !doc.attributes.name.includes(
-                                  "Антикоррупционная политика"
-                                )
-                            )
+                            // .filter(
+                            //   (doc) =>
+                            //     !doc.attributes.name.includes("Антикоррупционная политика")
+                            // )
+                           
+                            .sort((a, b) => {
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                  -1
+                              ) {
+                                return -1;
+                              }
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1
+                              ) {
+                                return 1;
+                              }
+                              //a.match(/20[0-9]{3} /gm)[0]
+                              //a.attributes.name.search(/20[0-9]{3} /gm)[0]
+                              return b.id - a.id;
+                            })
+                            .sort((a, b) => {
+                              if (
+                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1 &&
+                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                  -1
+                              ) {
+                                return (
+                                  b.attributes.name
+                                    .match(/[\s.]20[0-9]{2}/gm)[0]
+                                    .slice(1) -
+                                  a.attributes.name
+                                    .match(/[\s.]20[0-9]{2}/gm)[0]
+                                    .slice(1)
+                                );
+                              }
+                            })
+                            .map((item) => {
+                              let searchDate = 0;
+                              if (
+                                item.attributes.name.search(
+                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                                ) != -1
+                              ) {
+                                let arr = item.attributes.name.match(
+                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                                );
+                                let str = arr[arr.length - 1].split(".");
+                                let reredate = new Date(
+                                  str[2],
+                                  str[1] - 1,
+                                  str[0]
+                                );
+                                searchDate = reredate.getTime();
+                                // console.log(reredate.getTime());
+                              }
+                              return { ...item, searchDate };
+                            })
+                            .sort((a, b) => {
+                              // console.log();
+                              return b.searchDate - a.searchDate;
+                            })
                             .sort((a, b) => {
                               if (
                                 a.attributes.name.includes(
