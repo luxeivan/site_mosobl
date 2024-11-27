@@ -37,11 +37,7 @@ export const mainMenu = [
       },
     ],
   },
-  // {
-  //   mainTitle: "ИНВЕСТОРАМ",
-  //   link: "/investors",
-  //   submenu: [],
-  // },
+
   {
     mainTitle: "Потребителям",
     link: "/consumers",
@@ -103,6 +99,11 @@ export const mainMenu = [
         link: "/productionPrograms",
       },
     ],
+  },
+  {
+    mainTitle: "ИНВЕСТОРАМ",
+    link: "/investors",
+    submenu: [],
   },
   {
     mainTitle: "Филиалы",
