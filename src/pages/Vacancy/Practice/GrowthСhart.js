@@ -13,13 +13,6 @@ import {
 const { Title, Paragraph } = Typography;
 
 export default function GrowthСhart() {
-  const moscowCities = [
-    "Москва",
-    "Зеленоград",
-    "Троицк",
-    "Щербинка",
-    // Добавьте другие города Московской области
-  ];
 
   const timelineData = [
     {

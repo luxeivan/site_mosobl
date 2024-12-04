@@ -1,13 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Typography, Space, Splitter, Form, Divider } from "antd";
+import { Splitter} from "antd";
 import TopImage from "../../components/TopImage";
 import vacan_img from "../../img/d21248be80705e7a80efdf5efde73cc5.jpg";
-import VacanciesForm from "./VacanciesForm";
-import GrowthСhart from "./Practice/GrowthСhart";
-import JobPart from "./Job/JobPart";
 
-const { Title, Paragraph } = Typography;
+import JobPart from "./Job/JobPart";
+import PracticePart from "./Practice/PracticePart";
 
 export default function Vacancies() {
   return (
@@ -26,17 +24,7 @@ export default function Vacancies() {
           </Splitter.Panel>
           {/* Блок с практикой */}
           <Splitter.Panel>
-            <Space
-              direction="vertical"
-              size="large"
-              style={{ padding: "20px" }}
-            >
-              <Title level={2}>Практика</Title>
-              <Title level={3}>Путь к успеху в Мособлэнерго</Title>
-              <GrowthСhart />
-              <Divider />
-              <VacanciesForm />
-            </Space>
+            <PracticePart />
           </Splitter.Panel>
         </Splitter>
       </div>
