@@ -129,9 +129,9 @@ export const mainMenu = [
     ],
   },
   {
-    mainTitle: "Вакансии",
+    mainTitle: "Моя карьера",
     // link: "/job",
-    link: "/vacancies",
+    link: "/mycareer",
     submenu: [],
   },
   {
