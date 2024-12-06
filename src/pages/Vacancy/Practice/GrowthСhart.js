@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Space, Timeline, Badge } from "antd";
+import { Typography, Steps } from "antd";
 import {
   TrophyOutlined,
   GiftOutlined,
@@ -13,39 +13,41 @@ import {
 const { Title, Paragraph } = Typography;
 
 export default function GrowthСhart() {
-
   const timelineData = [
     {
       title: "1 курс",
-      description: "Знакомство с компанией, участие в экскурсиях и семинарах",
+      description: "Заключение договора о целевом обучении",
       icon: <BookOutlined style={{ color: "#1890ff" }} />,
       reward: "Стипендия",
       rewardIcon: <GiftOutlined style={{ color: "#52c41a" }} />,
     },
     {
       title: "2 курс",
-      description: "Участие в учебных проектах, менторство от специалистов",
+      description: "Обучение. Прохождение практики",
       icon: <SmileOutlined style={{ color: "#1890ff" }} />,
       reward: "Стипендия",
       rewardIcon: <GiftOutlined style={{ color: "#52c41a" }} />,
     },
     {
       title: "3 курс",
-      description: "Прохождение практики с реальными задачами",
+      description:
+        "Заключение срочного трудового договора. Направление на бесплатное обучение",
       icon: <RocketOutlined style={{ color: "#1890ff" }} />,
       reward: "Зарплата",
       rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
     },
     {
       title: "4 курс",
-      description: "Стажировка с возможностью трудоустройства",
+      description:
+        "Пабота по срочному трудовому договору. Обучение по индивидуальному графику.",
       icon: <StarOutlined style={{ color: "#1890ff" }} />,
       reward: "Зарплата",
       rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
     },
     {
       title: "Работа в Мособлэнерго",
-      description: "Начало карьеры в нашей компании",
+      description:
+        "Работа на постоянной основе. Перспектива профессионального роста. Возможность получения высшего образования",
       icon: <TrophyOutlined style={{ color: "#1890ff" }} />,
       reward: "Зарплата",
       rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
@@ -53,23 +55,20 @@ export default function GrowthСhart() {
   ];
 
   return (
-    <Timeline mode="alternate">
+    <Steps>
       {timelineData.map((item, index) => (
-        <Timeline.Item key={index} dot={item.icon} color="green">
-          <Title level={4}>{item.title}</Title>
-          <Paragraph>{item.description}</Paragraph>
-          <Space>
-            {item.rewardIcon}
-            <Badge
-              count={item.reward}
-              style={{
-                backgroundColor:
-                  item.reward === "Стипендия" ? "#52c41a" : "#faad14",
-              }}
-            />
-          </Space>
-        </Timeline.Item>
+        <Steps.Step
+          key={index}
+          title={item.title}
+          icon={item.icon}
+          description={
+            <>
+              <p>{item.description}</p>
+              {item.rewardIcon} {item.reward}
+            </>
+          }
+        />
       ))}
-    </Timeline>
+    </Steps>
   );
 }
