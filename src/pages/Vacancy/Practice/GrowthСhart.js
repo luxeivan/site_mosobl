@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Steps } from "antd";
+import { Steps } from "antd";
 import {
   TrophyOutlined,
   GiftOutlined,
@@ -9,8 +9,6 @@ import {
   RocketOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-
-const { Title, Paragraph } = Typography;
 
 export default function GrowthСhart() {
   const timelineData = [
@@ -55,7 +53,7 @@ export default function GrowthСhart() {
   ];
 
   return (
-    <Steps>
+    <Steps current={timelineData.length}>
       {timelineData.map((item, index) => (
         <Steps.Step
           key={index}

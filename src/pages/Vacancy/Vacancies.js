@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Splitter} from "antd";
+import { Splitter } from "antd";
 import TopImage from "../../components/TopImage";
 import vacan_img from "../../img/d21248be80705e7a80efdf5efde73cc5.jpg";
+import styles from "./Vacancies.module.css";
 
 import JobPart from "./Job/JobPart";
 import PracticePart from "./Practice/PracticePart";
@@ -19,11 +20,16 @@ export default function Vacancies() {
       <div className="page-grid__content" id="content">
         <Splitter style={{ height: "auto" }}>
           {/* Блок с работой */}
-          <Splitter.Panel defaultSize="50%" min="30%" max="70%">
+          <Splitter.Panel
+            defaultSize="50%"
+            min="30%"
+            max="70%"
+            className={styles.right}
+          >
             <JobPart />
           </Splitter.Panel>
           {/* Блок с практикой */}
-          <Splitter.Panel>
+          <Splitter.Panel className={styles.left}>
             <PracticePart />
           </Splitter.Panel>
         </Splitter>
