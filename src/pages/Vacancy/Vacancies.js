@@ -16,7 +16,8 @@ export default function Vacancies() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <TopImage image={vacan_img} title={"Моя карьера"} />
+      {/* <TopImage image={vacan_img} title={"Моя карьера"} /> */}
+      <TopImage title={"Моя карьера"} />
       <div className="page-grid__content" id="content">
         <Splitter style={{ height: "auto" }}>
           {/* Блок с работой */}
