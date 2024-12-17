@@ -58,21 +58,7 @@ export default function Vacancies() {
 //     >
 //       <TopImage image={vacan_img} title={"Моя карьера"} />
 //       <div className="page-grid__content" id="content">
-//         <p style={{ textAlign: "center", marginBottom: "10px" }}>
-//           {/* <Link
-//             to="/vacancies/youth"
-//             className="planned-notification__link"
-//             style={{
-//               border: "1px solid rgb(227, 112, 33)",
-//               boxShadow: "0px 0px 9px 3px rgba(227, 112, 33, 0.2)",
-//               padding: "10px 20px",
-//               display: "inline-block",
-//               textDecoration: "none",
-//             }}
-//           >
-//             Здесь будет кнопочка с переходом к страничке с привлечением молодёжи
-//           </Link> */}
-//         </p>
+//         <p style={{ textAlign: "center", marginBottom: "10px" }}></p>
 //         <div className="vacancies-main">
 //           <div className="vacancies-main__item vacancies">
 //             <div className="vacancies__text-area">
