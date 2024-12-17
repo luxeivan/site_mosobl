@@ -1,72 +1,104 @@
 import React from "react";
-import { Steps } from "antd";
-import {
-  TrophyOutlined,
-  GiftOutlined,
-  DollarCircleOutlined,
-  BookOutlined,
-  SmileOutlined,
-  RocketOutlined,
-  StarOutlined,
-} from "@ant-design/icons";
+import { Typography, Steps, Card, List, Space } from "antd";
+import { CheckCircleTwoTone, BookOutlined, SolutionOutlined, SmileOutlined, DollarCircleOutlined } from "@ant-design/icons";
 
-export default function GrowthСhart() {
-  const timelineData = [
+const { Title, Text } = Typography;
+
+export default function GrowthChart() {
+
+  const spoSteps = [
     {
-      title: "1 курс",
-      description: "Заключение договора о целевом обучении",
+      title: "Заключение договора",
+      description: "• после 9 или 11 класса\n• стипендия",
       icon: <BookOutlined style={{ color: "#1890ff" }} />,
-      reward: "Стипендия",
-      rewardIcon: <GiftOutlined style={{ color: "#52c41a" }} />,
     },
     {
-      title: "2 курс",
-      description: "Обучение. Прохождение практики",
+      title: "Практика",
+      description: `• по достижению 18 лет можно трудоустроиться (срочный трудовой договор)\n• стипендия`,
       icon: <SmileOutlined style={{ color: "#1890ff" }} />,
-      reward: "Стипендия",
-      rewardIcon: <GiftOutlined style={{ color: "#52c41a" }} />,
-    },
-    {
-      title: "3 курс",
-      description:
-        "Заключение срочного трудового договора. Направление на бесплатное обучение",
-      icon: <RocketOutlined style={{ color: "#1890ff" }} />,
-      reward: "Зарплата",
-      rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
-    },
-    {
-      title: "4 курс",
-      description:
-        "Пабота по срочному трудовому договору. Обучение по индивидуальному графику.",
-      icon: <StarOutlined style={{ color: "#1890ff" }} />,
-      reward: "Зарплата",
-      rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
-    },
-    {
-      title: "Работа в Мособлэнерго",
-      description:
-        "Работа на постоянной основе. Перспектива профессионального роста. Возможность получения высшего образования",
-      icon: <TrophyOutlined style={{ color: "#1890ff" }} />,
-      reward: "Зарплата",
-      rewardIcon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
     },
   ];
 
+  const higherEdSteps = [
+    {
+      title: "Заключение договора",
+      description: "• после 11 класса или СПО\n• стипендия",
+      icon: <BookOutlined style={{ color: "#1890ff" }} />,
+    },
+    {
+      title: "Практика",
+      description: "• зарплата",
+      icon: <DollarCircleOutlined style={{ color: "#faad14" }} />,
+    },
+  ];
+
+
+  const employmentList = [
+    "Работа рядом с домом;",
+    "Гарантии и компенсации",
+    "Обеспечение спецодеждой (лето/зима).",
+    "ДМС в лучших клиниках, включая стоматологическое обеспечение.",
+    "Возможность совмещения работы и учёбы.",
+  ];
+
   return (
-    <Steps current={timelineData.length}>
-      {timelineData.map((item, index) => (
-        <Steps.Step
-          key={index}
-          title={item.title}
-          icon={item.icon}
-          description={
-            <>
-              <p>{item.description}</p>
-              {item.rewardIcon} {item.reward}
-            </>
-          }
+    <div style={{ marginTop: 20 }}>
+      <Title level={4} style={{ textAlign: "center", marginBottom: 20 }}>
+        Среднее профессиональное образование
+      </Title>
+      <Steps direction="horizontal" current={spoSteps.length} style={{ marginBottom: 40 }}>
+        {spoSteps.map((item, index) => (
+          <Steps.Step
+            key={index}
+            title={item.title}
+            icon={item.icon}
+            description={
+              <Text style={{ whiteSpace: "pre-line" }}>{item.description}</Text>
+            }
+          />
+        ))}
+      </Steps>
+
+      <Title level={4} style={{ textAlign: "center", marginBottom: 20 }}>
+        Высшее образование
+      </Title>
+      <Steps direction="horizontal" current={higherEdSteps.length} style={{ marginBottom: 40 }}>
+        {higherEdSteps.map((item, index) => (
+          <Steps.Step
+            key={index}
+            title={item.title}
+            icon={item.icon}
+            description={
+              <Text style={{ whiteSpace: "pre-line" }}>{item.description}</Text>
+            }
+          />
+        ))}
+      </Steps>
+
+      <Title level={4} style={{ textAlign: "center", marginBottom: 20 }}>
+        Трудоустройство
+      </Title>
+      
+      <Card
+        style={{
+          maxWidth: 600,
+          margin: "0 auto",
+          borderRadius: 10,
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        <List
+          dataSource={employmentList}
+          renderItem={(item) => (
+            <List.Item style={{ border: "none" }}>
+              <Space align="start">
+                <CheckCircleTwoTone twoToneColor="#52c41a" style={{ marginRight: 4 }} />
+                <Text>{item}</Text>
+              </Space>
+            </List.Item>
+          )}
         />
-      ))}
-    </Steps>
+      </Card>
+    </div>
   );
 }
