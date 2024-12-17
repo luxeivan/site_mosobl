@@ -35,7 +35,7 @@ export default function JobPart() {
         Перейти на hh.ru
       </Button>
       <Image src={qr_rabota_ru} alt="QR Code hh.ru" width={200} />
-      <Title level={2}>МОСОБЛЭНЕРГО ЭТО:</Title>
+      {/* <Title level={2}>МОСОБЛЭНЕРГО ЭТО:</Title>
       <Space direction="vertical" size="middle">
         <div>
           <Title level={3}>10</Title>
@@ -59,7 +59,7 @@ export default function JobPart() {
             Объем переданной электроэнергии в 2022 г. (млрд. киловатт-часов)
           </Paragraph>
         </div>
-      </Space>
+      </Space> */}
     </Space>
   );
 }
