@@ -7,7 +7,7 @@ import styles from "./Vacancies.module.css";
 
 import JobPart from "./Job/JobPart";
 import PracticePart from "./Practice/PracticePart";
-import DownBlock from "./DownBlock";
+import DownBlock from "./DownBlock/DownBlock";
 
 const { Title, Text } = Typography;
 
@@ -51,7 +51,7 @@ export default function Vacancies() {
                 <PracticePart />
               </Splitter.Panel>
             </Splitter>
-            <DownBlock />
+            <DownBlock/>
           </>
         )}
       </div>

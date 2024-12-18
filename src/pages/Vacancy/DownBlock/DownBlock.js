@@ -6,6 +6,7 @@ import {
   ReadOutlined,
   UserSwitchOutlined,
 } from "@ant-design/icons";
+import ModalJob from "./Modal/ModalJob"; // Импортируем созданный компонент
 
 const { Title, Text } = Typography;
 
@@ -79,14 +80,7 @@ export default function DownBlock() {
       </Space>
 
       {/* Модалки */}
-      <Modal
-        title="Ищу работу"
-        visible={openModal === "job"}
-        onCancel={handleCloseModal}
-        footer={null}
-      >
-        <Text>Форма для тех, кто ищет работу...</Text>
-      </Modal>
+      <ModalJob visible={openModal === "job"} onCancel={handleCloseModal} />
 
       <Modal
         title="Ищу практику"
@@ -108,6 +102,117 @@ export default function DownBlock() {
     </Card>
   );
 }
+
+// import React, { useState } from "react";
+// import { Card, Typography, Button, Modal, Space } from "antd";
+// import {
+//   CheckSquareTwoTone,
+//   SolutionOutlined,
+//   ReadOutlined,
+//   UserSwitchOutlined,
+// } from "@ant-design/icons";
+
+// const { Title, Text } = Typography;
+
+// export default function DownBlock() {
+//   const [openModal, setOpenModal] = useState(null);
+
+//   const handleOpenModal = (type) => {
+//     setOpenModal(type);
+//   };
+
+//   const handleCloseModal = () => {
+//     setOpenModal(null);
+//   };
+
+//   return (
+//     <Card
+//       style={{
+//         margin: 10,
+//         padding: 20,
+//         borderRadius: 10,
+//         border: "2px solid #d9d9d9",
+//         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+//         position: "relative",
+//         backgroundSize: "cover",
+//         backgroundPosition: "center",
+//       }}
+//     >
+//       <Title
+//         level={3}
+//         style={{ margin: 0, textAlign: "center", width: "100%" }}
+//       >
+//         Выберите направление:
+//       </Title>
+
+//       <Space
+//         style={{
+//           marginTop: 20,
+//           justifyContent: "center",
+//           width: "100%",
+//           gap: "24px",
+//         }}
+//         wrap
+//       >
+//         <Button
+//           type="primary"
+//           icon={<SolutionOutlined style={{ fontSize: 18 }} />}
+//           onClick={() => handleOpenModal("job")}
+//           className="hh-button"
+//           style={{ padding: "10px 24px" }}
+//         >
+//           Ищу работу
+//         </Button>
+//         <Button
+//           type="primary"
+//           icon={<UserSwitchOutlined style={{ fontSize: 18 }} />}
+//           onClick={() => handleOpenModal("practice")}
+//           className="hh-button"
+//           style={{ padding: "10px 24px" }}
+//         >
+//           Ищу практику
+//         </Button>
+//         <Button
+//           type="primary"
+//           icon={<ReadOutlined style={{ fontSize: 18 }} />}
+//           onClick={() => handleOpenModal("education")}
+//           className="hh-button"
+//           style={{ padding: "10px 24px" }}
+//         >
+//           Ищу обучение
+//         </Button>
+//       </Space>
+
+//       {/* Модалки */}
+//       <Modal
+//         title="Ищу работу"
+//         visible={openModal === "job"}
+//         onCancel={handleCloseModal}
+//         footer={null}
+//       >
+//         <Text>Форма для тех, кто ищет работу...</Text>
+//       </Modal>
+
+//       <Modal
+//         title="Ищу практику"
+//         visible={openModal === "practice"}
+//         onCancel={handleCloseModal}
+//         footer={null}
+//       >
+//         <Text>Форма для тех, кто ищет практику...</Text>
+//       </Modal>
+
+//       <Modal
+//         title="Ищу обучение"
+//         visible={openModal === "education"}
+//         onCancel={handleCloseModal}
+//         footer={null}
+//       >
+//         <Text>Форма для тех, кто ищет обучение...</Text>
+//       </Modal>
+//     </Card>
+//   );
+// }
 
 // import React, { useState } from "react";
 // import { Card, Typography, Button, Modal, Space } from "antd";
