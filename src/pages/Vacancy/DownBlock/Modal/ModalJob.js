@@ -1,34 +1,50 @@
-import { Modal, Form, Input, Button, message, Typography } from "antd";
+import React, { useState } from "react";
+import {
+  Modal,
+  Form,
+  Input,
+  Button,
+  message,
+  Typography,
+  Upload,
+  Checkbox,
+} from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 
 const { Paragraph } = Typography;
 
 export default function ModalJob({ visible, onCancel }) {
   const [form] = Form.useForm();
+  const [fileList, setFileList] = useState([]);
 
   const handleFinish = (values) => {
     console.log("Полученные данные с формы:", values);
+    console.log("Файл(ы) резюме:", fileList);
     message.success("Данные успешно отправлены!");
     form.resetFields();
+    setFileList([]);
     onCancel();
   };
 
-  return (
-    <Modal
-      title="Отклик на вакансию"
-      visible={visible}
-      onCancel={onCancel}
-      footer={null}
-      destroyOnClose
-    >
-      <Paragraph>
-        Заполните форму, и мы обязательно свяжемся с вами по указанным
-        контактам.
-      </Paragraph>
+  // Общая функция для добавления звездочки к названию поля
+  const labelWithStar = (text) => (
+    <span>
+      {text} <span style={{ color: "red" }}>*</span>
+    </span>
+  );
 
+  const beforeUpload = (file) => {
+    // Отключаем автоматическую загрузку, просто сохраняем файл в state
+    setFileList([file]);
+    return false;
+  };
+
+  return (
+    <Modal visible={visible} onCancel={onCancel} footer={null} destroyOnClose>
       <Form form={form} layout="vertical" onFinish={handleFinish}>
         <Form.Item
           name="firstName"
-          label="Имя"
+          label={labelWithStar("Имя")}
           rules={[{ required: true, message: "Введите ваше имя" }]}
         >
           <Input placeholder="Иван" />
@@ -36,7 +52,7 @@ export default function ModalJob({ visible, onCancel }) {
 
         <Form.Item
           name="lastName"
-          label="Фамилия"
+          label={labelWithStar("Фамилия")}
           rules={[{ required: true, message: "Введите вашу фамилию" }]}
         >
           <Input placeholder="Иванов" />
@@ -44,7 +60,7 @@ export default function ModalJob({ visible, onCancel }) {
 
         <Form.Item
           name="email"
-          label="Email"
+          label={labelWithStar("Email")}
           rules={[
             { required: true, message: "Введите email" },
             { type: "email", message: "Введите корректный email" },
@@ -55,7 +71,7 @@ export default function ModalJob({ visible, onCancel }) {
 
         <Form.Item
           name="phone"
-          label="Телефон"
+          label={labelWithStar("Телефон")}
           rules={[
             { required: true, message: "Введите номер телефона" },
             {
@@ -69,7 +85,7 @@ export default function ModalJob({ visible, onCancel }) {
 
         <Form.Item
           name="sity"
-          label="Город (населенный пункт)"
+          label={labelWithStar("Город (населенный пункт)")}
           rules={[{ required: true, message: "Введите город" }]}
         >
           <Input placeholder="Красногорск" />
@@ -77,12 +93,39 @@ export default function ModalJob({ visible, onCancel }) {
 
         <Form.Item
           name="activity"
-          label="Сфера деятельности"
+          label={labelWithStar("Сфера деятельности")}
           rules={[
             { required: true, message: "Введите свою сферу деятельности" },
           ]}
         >
           <Input placeholder="Кладовщик" />
+        </Form.Item>
+
+        <Form.Item
+          name="resume"
+          label={labelWithStar("Резюме (прикрепить файл)")}
+          rules={[{ required: true, message: "Прикрепите файл с резюме" }]}
+          valuePropName="fileList"
+          getValueFromEvent={() => fileList}
+        >
+          <Upload
+            beforeUpload={beforeUpload}
+            fileList={fileList}
+            onRemove={() => setFileList([])}
+          >
+            <Button icon={<UploadOutlined />}>Выберите файл</Button>
+          </Upload>
+        </Form.Item>
+
+        {/* Чекбокс согласия на обработку данных */}
+        <Form.Item
+          name="consent"
+          valuePropName="checked"
+          rules={[{ required: true, message: "Вы должны дать согласие" }]}
+        >
+          <Checkbox>
+            Я даю свое согласие на обработку персональных данных
+          </Checkbox>
         </Form.Item>
 
         <Form.Item style={{ textAlign: "right", marginTop: 20 }}>

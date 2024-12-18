@@ -7,6 +7,8 @@ import {
   UserSwitchOutlined,
 } from "@ant-design/icons";
 import ModalJob from "./Modal/ModalJob"; // Импортируем созданный компонент
+import ModalPracrice from "./Modal/ModalPracrice";
+import ModalStudy from "./Modal/ModalStudy";
 
 const { Title, Text } = Typography;
 
@@ -82,23 +84,24 @@ export default function DownBlock() {
       {/* Модалки */}
       <ModalJob visible={openModal === "job"} onCancel={handleCloseModal} />
 
-      <Modal
-        title="Ищу практику"
+      <ModalPracrice
         visible={openModal === "practice"}
         onCancel={handleCloseModal}
-        footer={null}
-      >
-        <Text>Форма для тех, кто ищет практику...</Text>
-      </Modal>
+      />
 
-      <Modal
+      <ModalStudy
+        visible={openModal === "education"}
+        onCancel={handleCloseModal}
+      />
+
+      {/* <Modal
         title="Ищу обучение"
         visible={openModal === "education"}
         onCancel={handleCloseModal}
         footer={null}
       >
         <Text>Форма для тех, кто ищет обучение...</Text>
-      </Modal>
+      </Modal> */}
     </Card>
   );
 }
