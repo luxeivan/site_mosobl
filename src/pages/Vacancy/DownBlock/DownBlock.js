@@ -37,7 +37,7 @@ export default function DownBlock() {
       }}
     >
       <Title
-        level={3}
+        level={1}
         style={{ margin: 0, textAlign: "center", width: "100%" }}
       >
         Выберите направление:

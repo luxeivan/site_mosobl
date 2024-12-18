@@ -8,7 +8,7 @@ const { Title } = Typography;
 export default function JobPart() {
   return (
     <Flex vertical align="center" justify="center">
-      <Title level={2} style={{ textAlign: "center" }}>
+      <Title level={1} style={{ textAlign: "center" }}>
         Работа
       </Title>
       <QrCodeHH />

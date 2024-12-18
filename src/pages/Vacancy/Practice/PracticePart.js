@@ -7,12 +7,13 @@ const { Title, Text } = Typography;
 export default function PracticePart() {
   return (
     <Flex vertical align="center" justify="center">
-      <Title level={2} style={{ textAlign: "center" }}>
+      <Title level={1} style={{ textAlign: "center" }}>
         Практика
       </Title>
       <Card
         style={{
           margin: 10,
+          marginLeft: "5%",
           padding: 20,
           borderRadius: 10,
           border: "2px solid #d9d9d9",
@@ -20,6 +21,7 @@ export default function PracticePart() {
           position: "relative",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          width: "100%",
         }}
       >
         <Title
@@ -32,6 +34,7 @@ export default function PracticePart() {
       <Card
         style={{
           margin: 10,
+          marginLeft: "5%",
           padding: 20,
           borderRadius: 10,
           border: "2px solid #d9d9d9",
@@ -39,6 +42,7 @@ export default function PracticePart() {
           position: "relative",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          width: "100%",
         }}
       >
         <GrowthСhart />
