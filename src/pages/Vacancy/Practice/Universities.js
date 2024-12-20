@@ -10,7 +10,14 @@ import univer3 from "../../../img/vacancies/practice/univerlogo/uniber3.jpg";
 import univer4 from "../../../img/vacancies/practice/univerlogo/univer4.png";
 import univer5 from "../../../img/vacancies/practice/univerlogo/univer5.png";
 import univer6 from "../../../img/vacancies/practice/univerlogo/univer6.png";
-
+import univer7 from "../../../img/vacancies/practice/univerlogo/univer7.png";
+import univer8 from "../../../img/vacancies/practice/univerlogo/univer8.png";
+import univer9 from "../../../img/vacancies/practice/univerlogo/univer9.jpg";
+import univer10 from "../../../img/vacancies/practice/univerlogo/univer10.png";
+import univer11 from "../../../img/vacancies/practice/univerlogo/univer11.png";
+import univer12 from "../../../img/vacancies/practice/univerlogo/univer12.png";
+import univer13 from "../../../img/vacancies/practice/univerlogo/univer13.png";
+import univer14 from "../../../img/vacancies/practice/univerlogo/univer14.png";
 
 const { Title, Text } = Typography;
 
@@ -58,56 +65,56 @@ const universities = [
   },
   {
     name: "ГБПОУ МО «Колледж «Подмосковье»",
-    logo: "/path/to/podmoskovie-college.png",
+    logo: univer7,
     link: "https://klincollege.ru/",
     description:
       "Предоставляет образовательные услуги в сфере среднего профессионального образования.",
   },
   {
     name: "ГБПОУ МО «Дмитровский техникум»",
-    logo: "/path/to/dmitrov-tech.png",
+    logo: univer8,
     link: "https://dmitrovt.ru/",
     description:
       "Образовательное учреждение, специализирующееся на подготовке специалистов в различных областях.",
   },
   {
     name: "ГБПОУ МО «Орехово-Зуевский железнодорожный техникум имени В.И. Бондаренко»",
-    logo: "/path/to/orehovo-bondarenko-tech.png",
+    logo: univer9,
     link: "https://ozgt.ru/",
     description:
       "Готовит специалистов для железнодорожного транспорта и других отраслей.",
   },
   {
     name: "ГБПОУ МО «Павлово-Посадский техникум»",
-    logo: "/path/to/pavlovo-posad-tech.png",
+    logo: univer10,
     link: "https://www.pp-teh.ru/",
     description:
       "Предлагает программы среднего профессионального образования по различным направлениям.",
   },
   {
     name: "ГАПОУ МО «МЦК— Техникум имени С.П. Королева»",
-    logo: "/path/to/korolev-tech.png",
+    logo: univer11,
     link: "https://www.tspk-mo.ru/",
     description:
       "Специализируется на подготовке специалистов в области космических технологий и смежных дисциплин.",
   },
   {
     name: "ГБПОУ МО «Орехово-Зуевский техникум»",
-    logo: "/path/to/orehovo-tech.png",
+    logo: univer12,
     link: "https://oztech.ru/",
     description:
       "Образовательное учреждение, предлагающее программы среднего профессионального образования.",
   },
   {
     name: "ГБПОУ МО «Щелковский колледж»",
-    logo: "/path/to/schelkovsky-college.png",
+    logo: univer13,
     link: "https://schelcol.ru/",
     description:
       "Предоставляет образовательные услуги в сфере среднего профессионального образования по различным направлениям.",
   },
   {
     name: "ГБПОУ МО «Шатурский энергетический техникум»",
-    logo: "/path/to/shatura-energy-tech.png",
+    logo: univer14,
     link: "https://xn--r1alp.xn--p1ai/",
     description:
       "Специализируется на подготовке специалистов для энергетической отрасли и смежных сфер.",
