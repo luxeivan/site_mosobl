@@ -51,7 +51,7 @@ export default function Vacancies() {
                 <PracticePart />
               </Splitter.Panel>
             </Splitter>
-            <DownBlock/>
+            {/* <DownBlock/> */}
           </>
         )}
       </div>

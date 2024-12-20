@@ -49,6 +49,7 @@ import Vacancies from "./pages/Vacancy/Vacancies";
 import Investors from "./pages/Investors/Investors";
 import InvestorDetail from "./pages/Investors/InvestorDetail";
 import CompanyRatings from "./pages/InformationDisclosures/CompanyRatings/CompanyRatings";
+import Universities from "./pages/Vacancy/Practice/Universities";
 
 
 function App() {
@@ -132,6 +133,7 @@ function App() {
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
+          <Route path="/universities" element={<Universities />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
         <GosuslugiBanner />
