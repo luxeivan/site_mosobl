@@ -129,7 +129,7 @@ export const mainMenu = [
     ],
   },
   {
-    mainTitle: "Моя карьера",
+    mainTitle: "Вакансии",
     // link: "/job",
     link: "/mycareer",
     submenu: [],

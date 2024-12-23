@@ -35,7 +35,8 @@ export default function QrCodeHH() {
           </Title>
           <Button
             type="primary"
-            href="https://hh.ru/employer/221874"
+            // href="https://hh.ru/employer/221874"
+            href="https://hh.ru/employer/221874/vacancies?page=1"
             className="hh-button"
           >
             Перейти на hh.ru
