@@ -52,12 +52,12 @@ export default function RegulatoryLegalActs() {
       <div className="page-grid__content">
         <ul>
           {acts &&
-            acts.attributes &&
-            acts.attributes.files.data
+            acts &&
+            acts.files.data
               .sort((a, b) => {
                 return (
-                  parseInt(a.attributes.name, 10) -
-                  parseInt(b.attributes.name, 10)
+                  parseInt(a.name, 10) -
+                  parseInt(b.name, 10)
                 );
               })
 
@@ -65,17 +65,17 @@ export default function RegulatoryLegalActs() {
                 <li key={index} className="page-grid__content__li">
                   <a
                     className="doc-line"
-                    href={`${addressServer}${item.attributes.url}`}
+                    href={`${addressServer}${item.url}`}
                     download=""
                     rel="noopener noreferrer"
                     target="_blank"
                   >
                     <div className="doc-line__wrap-icon">
-                      <img src={type[item.attributes.ext.slice(1)]} alt={`icon ${item.attributes.ext.slice(1)}`} />
+                      <img src={type[item.ext.slice(1)]} alt={`icon ${item.ext.slice(1)}`} />
                     </div>
                     <div className="doc-line__wrap-text">
-                      <span className="doc-line__name">{item.attributes.name}</span>
-                      <span className="doc-line__file-info">{Number(item.attributes.size) > 1000 ? `${(item.attributes.size / 1000).toFixed(2)} МБ`:`${Math.round(item.attributes.size)} КБ`}</span>
+                      <span className="doc-line__name">{item.name}</span>
+                      <span className="doc-line__file-info">{Number(item.size) > 1000 ? `${(item.size / 1000).toFixed(2)} МБ`:`${Math.round(item.size)} КБ`}</span>
                     </div>
                   </a>
                 </li>

@@ -67,10 +67,10 @@ const AdditionalServices = () => {
         const response1 = await axios.get(
           "https://www.mosoblenergo.ru/back/api/dopolnitelnye-uslugi?populate[0]=section&populate[1]=section.documents&populate[2]=price&populate[3]=section.sectionName"
         );
-        const data1 = response1.data.data.attributes;
+        const data1 = response1.data.data;
         const servicesData = data1.section;
         const descriptionData = data1.description;
-        const priceFileData = data1.price?.data?.attributes || null;
+        const priceFileData = data1.price?.data || null;
 
         const allPriceData = await fetchAllPriceData();
 
@@ -96,7 +96,7 @@ const AdditionalServices = () => {
   // Функция для рендера таблицы прайсов
   const renderPriceTable = (sectionName) => {
     const filteredData = priceData.filter(
-      (item) => item.attributes.sectionName?.name === sectionName
+      (item) => item.sectionName?.name === sectionName
     );
 
     if (filteredData.length === 0) {
@@ -104,7 +104,7 @@ const AdditionalServices = () => {
     }
 
     // Сортировка данных по полю 'sort'
-    filteredData.sort((a, b) => a.attributes.sort - b.attributes.sort);
+    filteredData.sort((a, b) => a.sort - b.sort);
 
     // Формируем dataSource
     const dataSource = filteredData.map((item, index) => {
@@ -154,11 +154,11 @@ const AdditionalServices = () => {
                       {record.filesDoc.data.map((doc, idx) => (
                         <li key={idx}>
                           <a
-                            href={`${addressServer}${doc.attributes.url}`}
+                            href={`${addressServer}${doc.url}`}
                             className={styles.documentLink}
                           >
-                            {getIconByExtension(doc.attributes.ext)}
-                            {doc.attributes.name}
+                            {getIconByExtension(doc.ext)}
+                            {doc.name}
                           </a>
                         </li>
                       ))}
@@ -257,11 +257,11 @@ const AdditionalServices = () => {
             {section.documents.data.map((doc, idx) => (
               <li key={idx}>
                 <a
-                  href={`${addressServer}${doc.attributes.url}`}
+                  href={`${addressServer}${doc.url}`}
                   className={styles.documentLink}
                 >
-                  {getIconByExtension(doc.attributes.ext)}
-                  {doc.attributes.name}
+                  {getIconByExtension(doc.ext)}
+                  {doc.name}
                 </a>
               </li>
             ))}

@@ -16,8 +16,8 @@ export default function Filial() {
         return response.json();
       })
       .then((data) => {
+        console.log("data",data)
         setFilial(data.data)
-        console.log(data.data)
       })
       .catch((err) => {
         console.log(err);
@@ -39,6 +39,7 @@ export default function Filial() {
       drop.style.maxHeight = "";
     }
   };
+  console.log(filial)
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage title={"Информация о компании"} />
@@ -48,7 +49,7 @@ export default function Filial() {
           Назад
         </Link>
       </div> */}
-        {/* <h1 className="page-title">{filial.attributes && filial.attributes.name}</h1> */}
+        {/* <h1 className="page-title">{filial && filial.name}</h1> */}
 
         <section className="inner-post">
           <div className="container">
@@ -58,20 +59,20 @@ export default function Filial() {
                   Назад
                 </Link>
               </div>{" "}
-              <h1 className="inner-post__title inner-post__margin">{filial.attributes && filial.attributes.name}</h1>
-              <span className="inner-post__date inner-post__margin">{filial.attributes && filial.attributes.address} </span>
+              <h1 className="inner-post__title inner-post__margin">{filial && filial.name}</h1>
+              <span className="inner-post__date inner-post__margin">{filial && filial.address} </span>
               <div style={{ display: "flex", flexDirection: "column",marginLeft:20,marginTop:10 }}>
 
-                {filial.attributes && filial.attributes.work_schedule.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
+                {filial && filial.work_schedule.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
               </div>
 
-              {filial.attributes && filial.attributes.name && filial.attributes.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px", marginLeft: "20px" }}><b style={{ fontWeight: "700" }}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{ fontWeight: "700" }}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{ fontWeight: "700" }}>+7 (495) 785-00-00</b>.   <br />Приносим извинения за доставленные неудобства!</p> : false}
+              {filial && filial.name && filial.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px", marginLeft: "20px" }}><b style={{ fontWeight: "700" }}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{ fontWeight: "700" }}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{ fontWeight: "700" }}>+7 (495) 785-00-00</b>.   <br />Приносим извинения за доставленные неудобства!</p> : false}
             </div>
             <div className="inner-post__middle">
               <div className="branches">
                 <div className="branches__grid-sm branches__grid-sm--border branches__grid-sm--change">
-                  {filial.attributes &&
-                    filial.attributes.kontakties.data.map((item) => (
+                  {filial &&
+                    filial.kontakties.map((item) => (
                       <div className="positions-post">
                         <div className="positions-post__wrapper">
                           <div className="positions-post__up">
@@ -81,13 +82,13 @@ export default function Filial() {
                           </div>
                           <div className="positions-post__down">
                             <div className="positions-post__row-name">
-                              <h4 className="positions-post__name">{item.attributes.post}</h4>
+                              <h4 className="positions-post__name">{item.post}</h4>
                             </div>
                             <div className="positions-post__wrap-text">
                               <span>
                                 тел.:
-                                <a className="positions-post__tel" href={`tel:${item.attributes.tel}`}>
-                                  {item.attributes.tel}
+                                <a className="positions-post__tel" href={`tel:${item.tel}`}>
+                                  {item.tel}
                                 </a>
                               </span>
                             </div>
@@ -98,11 +99,11 @@ export default function Filial() {
                 </div>
               </div>
 
-              {filial.attributes &&
-                filial.attributes.proizvodstvennye_otdeleniyas.data.map((item) => (
+              {filial &&
+                filial.proizvodstvennye_otdeleniyas.map((item) => (
                   <div className="accordion-row">
                     <div className="accordion-row__up" onClick={handlerRowUp}>
-                      <span className="accordion-row__text">{item.attributes.name}</span>
+                      <span className="accordion-row__text">{item.name}</span>
                       <div className="accordion-row__wrap-arrow">
                         {/* <svg className="accordion-row__arrow">
                             <use href="/local/templates/vg/assets/img/arrow-nav.svg#arrow-nav"></use>
@@ -113,27 +114,27 @@ export default function Filial() {
                       <div className="accordion-row__wrapper">
                         <div className="text-area">
                           <p style={{marginBottom:10}}>
-                            Адрес: <em>{item.attributes.address}</em>
+                            Адрес: <em>{item.address}</em>
                           </p>
                           <div>
-                            {item.attributes.work_schedule?.map((item,index)=>
+                            {item.work_schedule?.map((item,index)=>
                             <p style={{marginBottom:0}} key={index}>{item.days} - <em>{item.times}</em></p>
                             )}
                           </div>
                         </div>
                         <div className="accordion-row__grid">
-                          {item.attributes.kontakties.data.map((item) => (
+                          {item.kontakties.map((item) => (
                             <div className="positions-post">
                               <div className="positions-post__wrapper">
                                 <div className="positions-post__down">
                                   <div className="positions-post__row-name">
-                                    <h4 className="positions-post__name">{item.attributes.post}</h4>
+                                    <h4 className="positions-post__name">{item.post}</h4>
                                   </div>
                                   <div className="positions-post__wrap-text">
                                     <span>
                                       тел.:{" "}
-                                      <a className="positions-post__tel" href={`tel:${item.attributes.tel}`}>
-                                        {item.attributes.tel}
+                                      <a className="positions-post__tel" href={`tel:${item.tel}`}>
+                                        {item.tel}
                                       </a>
                                     </span>
                                   </div>
@@ -164,17 +165,17 @@ export default function Filial() {
       <YMaps className="YMaps">
         <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
           <ZoomControl />
-          {filial.attributes &&
-            filial.attributes.proizvodstvennye_otdeleniyas.data.map((item, index) => (
+          {filial &&
+            filial.proizvodstvennye_otdeleniyas.map((item, index) => (
               <Placemark
                 key={index}
                 geometry={{
                   type: "Point",
-                  coordinates: [item.attributes.latitude, item.attributes.longitude],
+                  coordinates: [item.latitude, item.longitude],
                 }}
                 properties={{
-                  balloonContent: `<div class="ballon-down">${item.attributes.name}</div>`,
-                  hintContent: item.attributes.address,
+                  balloonContent: `<div class="ballon-down">${item.name}</div>`,
+                  hintContent: item.address,
                 }}
                 options={{
                   preset: "islands#greenDotIconWithCaption",

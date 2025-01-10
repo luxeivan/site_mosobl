@@ -44,8 +44,8 @@ export default function Main() {
               {publication &&
                 publication.map((item, index) => (
                   <div className="post-block" key={item.id}>
-                    {item.attributes.url && item.attributes.url.includes("http") ? (
-                      <a className="post-block__wrapper" href={item.attributes.url}>
+                    {item.url && item.url.includes("http") ? (
+                      <a className="post-block__wrapper" href={item.url}>
                         {index < 4 ? (
                           <div>
                             <div className="post-block__bg"></div>
@@ -55,19 +55,19 @@ export default function Main() {
                           false
                         )}
                         <picture className="post-block__image-hover">
-                          <source srcSet={addressServer + item.attributes.image.data.attributes.url} type="image/webp" />
+                          <source srcSet={addressServer + item.image.url} type="image/webp" />
                           {/* <source srcSet={imgc369cfb9b079726e4c79af4b2d7aff07} type="image/jpeg" /> */}
-                          <img src={addressServer + item.attributes.image.data.attributes.url} alt="ПЛАНОВЫЕ ОТКЛЮЧЕНИЯ" />
+                          <img src={addressServer + item.image.url} alt="ПЛАНОВЫЕ ОТКЛЮЧЕНИЯ" />
                         </picture>
                         <div className="post-block__wrap-img">
-                          <img className="post-block__img" src={addressServer + item.attributes.pic.data.attributes.url} alt="icon" />
+                          <img className="post-block__img" src={addressServer + item.pic.url} alt="icon" />
                         </div>
                         <div className="post-block__wrap-text">
                           <div className="post-block__up">
-                            <h4 className="post-block__caption">{item.attributes.title}</h4>
+                            <h4 className="post-block__caption">{item.title}</h4>
                           </div>
                           <div className="post-block__down">
-                            <p className="post-block__text">{item.attributes.description}</p>
+                            <p className="post-block__text">{item.description}</p>
                             <button className="block-btn">
                               <span className="block-btn__text">Смотреть</span>
                               <div className="block-btn__wrap-svg">
@@ -80,7 +80,7 @@ export default function Main() {
                         </div>
                       </a>
                     ) : (
-                      <Link className="post-block__wrapper" to={item.attributes.url}>
+                      <Link className="post-block__wrapper" to={item.url}>
                         {index < 4 ? (
                           <div>
                             <div className="post-block__bg"></div>
@@ -90,19 +90,19 @@ export default function Main() {
                           false
                         )}
                         <picture className="post-block__image-hover">
-                          <source srcSet={addressServer + item.attributes.image.data.attributes.url} type="image/webp" />
+                          <source srcSet={addressServer + item.image.url} type="image/webp" />
                           {/* <source srcSet={imgc369cfb9b079726e4c79af4b2d7aff07} type="image/jpeg" /> */}
-                          <img src={addressServer + item.attributes.image.data.attributes.url} alt="ПЛАНОВЫЕ ОТКЛЮЧЕНИЯ" />
+                          <img src={addressServer + item.image.url} alt="ПЛАНОВЫЕ ОТКЛЮЧЕНИЯ" />
                         </picture>
                         <div className="post-block__wrap-img">
-                          <img className="post-block__img" src={addressServer + item.attributes.pic.data.attributes.url} alt="icon" />
+                          <img className="post-block__img" src={addressServer + item.pic.url} alt="icon" />
                         </div>
                         <div className="post-block__wrap-text">
                           <div className="post-block__up">
-                            <h4 className="post-block__caption">{item.attributes.title}</h4>
+                            <h4 className="post-block__caption">{item.title}</h4>
                           </div>
                           <div className="post-block__down">
-                            <p className="post-block__text">{item.attributes.description}</p>
+                            <p className="post-block__text">{item.description}</p>
                             <button className="block-btn">
                               <span className="block-btn__text">Смотреть</span>
                               <div className="block-btn__wrap-svg">

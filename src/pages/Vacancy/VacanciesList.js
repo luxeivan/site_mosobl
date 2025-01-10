@@ -18,7 +18,7 @@
 //       .then(response => {
 //         const vacanciesData = response.data.data.map(vacancy => ({
 //           id: vacancy.id,
-//           ...vacancy.attributes,
+//           ...vacancy,
 //         }));
 //         setVacancies(vacanciesData);
 //         setFilteredVacancies(vacanciesData);

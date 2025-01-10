@@ -17,7 +17,7 @@ export default function InformationDisclosures() {
       })
       .then((data) =>
         setInformationDisclosures(
-          data.data.sort((a, b) => a.attributes.sort - b.attributes.sort)
+          data.data.sort((a, b) => a.sort - b.sort)
         )
       )
       .catch((err) => {
@@ -91,7 +91,7 @@ export default function InformationDisclosures() {
                   to={`/informationDisclosures/${item.id}`}
                 >
                   <span className="link-row__text">
-                    {item.attributes.title}
+                    {item.title}
                   </span>
                   <div className="link-row__wrap-arrow">
                     <svg className="nav-menu__arrow">

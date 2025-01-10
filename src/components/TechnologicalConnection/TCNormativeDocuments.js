@@ -22,8 +22,8 @@ export default function TCNormativeDocuments() {
     axios.get(`${addressServer}/api/tp-normativno-pravovye-akty?populate=*`)
       .then(response => {
         if (response.data) {
-          // console.log(response.data.data.attributes.docs.data)
-          setDocs(response.data.data.attributes.docs.data)
+          // console.log(response.data.data.docs.data)
+          setDocs(response.data.data.docs.data)
           // setDocs()
         }
       })
@@ -36,23 +36,23 @@ export default function TCNormativeDocuments() {
     <div className="page-grid__content">
       <div className="row-docs-age">
         {docs.length > 0 &&
-          docs.sort((a, b) => Number(a.attributes.caption) - Number(b.attributes.caption)).map((item, index) =>
+          docs.sort((a, b) => Number(a.caption) - Number(b.caption)).map((item, index) =>
             <a
               className="doc-line"
-              href={`${addressServer}${item.attributes.url}`}
+              href={`${addressServer}${item.url}`}
               download=""
               rel="noopener noreferrer"
               target="_blank"
             >
               <div className="doc-line__wrap-icon">
                 <img
-                  src={type[item.attributes.ext.slice(1)]}
-                  alt={`icon ${item.attributes.ext.slice(1)}`}
+                  src={type[item.ext.slice(1)]}
+                  alt={`icon ${item.ext.slice(1)}`}
                 />
               </div>
               <div className="doc-line__wrap-text">
-                <span className="doc-line__name">{item.attributes.name}</span>
-                <span className="doc-line__file-info">{Number(item.attributes.size) > 1000 ? `${(item.attributes.size / 1000).toFixed(2)} МБ` : `${Math.round(item.attributes.size)} КБ`}</span>
+                <span className="doc-line__name">{item.name}</span>
+                <span className="doc-line__file-info">{Number(item.size) > 1000 ? `${(item.size / 1000).toFixed(2)} МБ` : `${Math.round(item.size)} КБ`}</span>
               </div>
             </a>
           )}
