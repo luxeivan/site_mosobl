@@ -68,7 +68,7 @@ export default function Filials() {
             <div className="branches__grid">
               {filials &&
                 filials.map((item,index) => (
-                  <Link className="post-branches" to={`/filials/${item.id}`} key={index}>
+                  <Link className="post-branches" to={`/filials/${item.documentId}`} key={index}>
                     <div className="post-branches__up">
                       <span className="post-branches__title">{item.name}</span>
                     </div>
@@ -110,7 +110,7 @@ export default function Filials() {
               }}
               properties={{
                 balloonContent: `<div className="ballon-down">${item.name}<br>
-                  <a href="/filials/${item.id}" className="yandex-map__button">
+                  <a href="/filials/${item.documentId}" className="yandex-map__button">
                     Подробнее
                   </a>
                 </div>`,

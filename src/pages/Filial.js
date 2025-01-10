@@ -9,6 +9,7 @@ const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scroll
 export default function Filial() {
   const [filial, setFilial] = useState({});
   const params = useParams();
+console.log(params);
 
   useEffect(() => {
     fetch(`${addressServer}/api/filialies/${params.id}?populate[0]=proizvodstvennye_otdeleniyas&populate[1]=kontakties&populate[2]=proizvodstvennye_otdeleniyas.kontakties&populate[3]=work_schedule&populate[4]=proizvodstvennye_otdeleniyas.work_schedule`)
@@ -63,7 +64,7 @@ export default function Filial() {
               <span className="inner-post__date inner-post__margin">{filial && filial.address} </span>
               <div style={{ display: "flex", flexDirection: "column",marginLeft:20,marginTop:10 }}>
 
-                {filial && filial.work_schedule.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
+                {filial && filial.work_schedule?.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
               </div>
 
               {filial && filial.name && filial.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px", marginLeft: "20px" }}><b style={{ fontWeight: "700" }}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{ fontWeight: "700" }}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{ fontWeight: "700" }}>+7 (495) 785-00-00</b>.   <br />Приносим извинения за доставленные неудобства!</p> : false}
@@ -72,7 +73,7 @@ export default function Filial() {
               <div className="branches">
                 <div className="branches__grid-sm branches__grid-sm--border branches__grid-sm--change">
                   {filial &&
-                    filial.kontakties.map((item) => (
+                    filial.kontakties?.map((item) => (
                       <div className="positions-post">
                         <div className="positions-post__wrapper">
                           <div className="positions-post__up">
@@ -100,7 +101,7 @@ export default function Filial() {
               </div>
 
               {filial &&
-                filial.proizvodstvennye_otdeleniyas.map((item) => (
+                filial.proizvodstvennye_otdeleniyas?.map((item) => (
                   <div className="accordion-row">
                     <div className="accordion-row__up" onClick={handlerRowUp}>
                       <span className="accordion-row__text">{item.name}</span>
@@ -123,7 +124,7 @@ export default function Filial() {
                           </div>
                         </div>
                         <div className="accordion-row__grid">
-                          {item.kontakties.map((item) => (
+                          {item.kontakties?.map((item) => (
                             <div className="positions-post">
                               <div className="positions-post__wrapper">
                                 <div className="positions-post__down">
@@ -166,7 +167,7 @@ export default function Filial() {
         <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
           <ZoomControl />
           {filial &&
-            filial.proizvodstvennye_otdeleniyas.map((item, index) => (
+            filial.proizvodstvennye_otdeleniyas?.map((item, index) => (
               <Placemark
                 key={index}
                 geometry={{
