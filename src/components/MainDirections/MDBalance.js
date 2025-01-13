@@ -19,7 +19,7 @@ const type = {
 
 export default function MDBalance() {
   const [files, setFiles] = useState([]);
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,12 +30,14 @@ export default function MDBalance() {
       .then((data) => {
         setIsLoading(false);
         setFiles(data.data);
+        console.log(data.data);
       })
       .catch((err) => {
         console.log(err);
         setFiles([]);
       });
   }, []);
+
   return (
     <div className="page-grid__content">
       {files &&
@@ -51,7 +53,7 @@ export default function MDBalance() {
               <ul>
                 {item &&
                   item.files &&
-                  item.files.data.reverse().map((item, index) => (
+                  item.files?.map((item, index) => (
                     <li key={index} className="page-grid__content__li">
                       <a
                         className="doc-line"
@@ -67,12 +69,9 @@ export default function MDBalance() {
                           />
                         </div>
                         <div className="doc-line__wrap-text">
-                          <span className="doc-line__name">
-                            {item.name}
-                          </span>
+                          <span className="doc-line__name">{item.name}</span>
                           <span className="doc-line__file-info">
-                            {item.ext.slice(1)}{" "}
-                            {Math.round(item.size)}kb
+                            {item.ext.slice(1)} {Math.round(item.size)}kb
                           </span>
                         </div>
                       </a>
