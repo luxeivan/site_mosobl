@@ -27,7 +27,7 @@ export default function TCStandartForms() {
       })
       .then((data) => {
         setIsLoading(false);
-        setForms(data.data);
+        setForms(data);
       })
       .catch((err) => {
         console.log(err);
@@ -49,7 +49,7 @@ export default function TCStandartForms() {
               <ul>
                 {item &&
                   item.files &&
-                  item.files.data.reverse().map((item, index) => (
+                  item.files?.map((item, index) => (
                     <li key={index} className="page-grid__content__li">
                       <a
                         className="doc-line"
