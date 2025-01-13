@@ -64,10 +64,10 @@ export default function InformationDisclosuresItem() {
 
   const handlerSearch = (event) => {
     let copyObj = JSON.parse(JSON.stringify(copy));
-    if (copyObj.attributes) {
-      copyObj.attributes.groupInfo.forEach((element) => {
+    if (copyObj) {
+      copyObj.groupInfo.forEach((element) => {
         element.list_files.data = element.list_files.data.filter((item) =>
-          item.attributes.name
+          item.name
             .toLowerCase()
             .includes(event.target.value.toLowerCase())
         );
@@ -91,8 +91,8 @@ export default function InformationDisclosuresItem() {
       <TopImage
         image={imgf4f40bee4b8a3fb6f95707a4da41d873}
         title={
-          informationDisclosureItem.attributes &&
-          informationDisclosureItem.attributes.title
+          informationDisclosureItem &&
+          informationDisclosureItem.title
         }
       />
       <div className="page-grid__content" id="content">
@@ -113,9 +113,9 @@ export default function InformationDisclosuresItem() {
         </div>
         <ul>
           {informationDisclosureItem &&
-            informationDisclosureItem.attributes &&
-            informationDisclosureItem.attributes.groupInfo &&
-            informationDisclosureItem.attributes.groupInfo.map(
+            informationDisclosureItem &&
+            informationDisclosureItem.groupInfo &&
+            informationDisclosureItem.groupInfo.map(
               (item, index) => {
                 if (item.list_files.data.length < 1) {
                   return false;
@@ -130,42 +130,42 @@ export default function InformationDisclosuresItem() {
                           {item.list_files.data
                             // .filter(
                             //   (doc) =>
-                            //     !doc.attributes.name.includes("Антикоррупционная политика")
+                            //     !doc.name.includes("Антикоррупционная политика")
                             // )
                            
                             .sort((a, b) => {
                               if (
-                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                a.name.search(/[\s.]20[0-9]{2}/gm) !=
                                   -1 &&
-                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                b.name.search(/[\s.]20[0-9]{2}/gm) ==
                                   -1
                               ) {
                                 return -1;
                               }
                               if (
-                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) ==
+                                a.name.search(/[\s.]20[0-9]{2}/gm) ==
                                   -1 &&
-                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                b.name.search(/[\s.]20[0-9]{2}/gm) !=
                                   -1
                               ) {
                                 return 1;
                               }
                               //a.match(/20[0-9]{3} /gm)[0]
-                              //a.attributes.name.search(/20[0-9]{3} /gm)[0]
+                              //a.name.search(/20[0-9]{3} /gm)[0]
                               return b.id - a.id;
                             })
                             .sort((a, b) => {
                               if (
-                                a.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                a.name.search(/[\s.]20[0-9]{2}/gm) !=
                                   -1 &&
-                                b.attributes.name.search(/[\s.]20[0-9]{2}/gm) !=
+                                b.name.search(/[\s.]20[0-9]{2}/gm) !=
                                   -1
                               ) {
                                 return (
-                                  b.attributes.name
+                                  b.name
                                     .match(/[\s.]20[0-9]{2}/gm)[0]
                                     .slice(1) -
-                                  a.attributes.name
+                                  a.name
                                     .match(/[\s.]20[0-9]{2}/gm)[0]
                                     .slice(1)
                                 );
@@ -174,11 +174,11 @@ export default function InformationDisclosuresItem() {
                             .map((item) => {
                               let searchDate = 0;
                               if (
-                                item.attributes.name.search(
+                                item.name.search(
                                   /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
                                 ) != -1
                               ) {
-                                let arr = item.attributes.name.match(
+                                let arr = item.name.match(
                                   /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
                                 );
                                 let str = arr[arr.length - 1].split(".");
@@ -198,15 +198,15 @@ export default function InformationDisclosuresItem() {
                             })
                             .sort((a, b) => {
                               if (
-                                a.attributes.name.includes(
+                                a.name.includes(
                                   "Устав акционерного общества"
                                 )
                               ) {
                                 return -1; // Устав всегда должен быть первым
                               }
                               return (
-                                customOrder.indexOf(a.attributes.name) -
-                                customOrder.indexOf(b.attributes.name)
+                                customOrder.indexOf(a.name) -
+                                customOrder.indexOf(b.name)
                               );
                             })
                             .map((item, index) => (
@@ -216,25 +216,25 @@ export default function InformationDisclosuresItem() {
                               >
                                 <a
                                   className="doc-line"
-                                  href={`${addressServer}${item.attributes.file.data.attributes.url}`}
+                                  href={`${addressServer}${item.file.data.url}`}
                                   download=""
                                   rel="noopener noreferrer"
                                   target="_blank"
                                 >
                                   <div className="doc-line__wrap-icon">
                                     <img
-                                      src={type[item.attributes.type]}
-                                      alt={`icon ${item.attributes.type}`}
+                                      src={type[item.type]}
+                                      alt={`icon ${item.type}`}
                                     />
                                   </div>
                                   <div className="doc-line__wrap-text">
                                     <span className="doc-line__name">
-                                      {item.attributes.name}
+                                      {item.name}
                                     </span>
                                     <span className="doc-line__file-info">
-                                      {item.attributes.type}{" "}
+                                      {item.type}{" "}
                                       {Math.round(
-                                        item.attributes.file.data.attributes
+                                        item.file.data
                                           .size
                                       )}
                                       kb

@@ -24,14 +24,14 @@ export default function SpecialProjects() {
         console.log(response.data)
         const eventData = response.data.data.map((event) => ({
           id: event.id,
-          title: event.attributes.title,
-          sort: event.attributes.sort,
-          date: event.attributes.dateEvent
-            ? new Date(event.attributes.dateEvent).toLocaleDateString()
+          title: event.title,
+          sort: event.sort,
+          date: event.dateEvent
+            ? new Date(event.dateEvent).toLocaleDateString()
             : false,
-          shortDescription: event.attributes.shortDescription,
-          description: event.attributes.description,
-          image: `${addressServer}${event.attributes.mainPhoto.data.attributes.url}`,
+          shortDescription: event.shortDescription,
+          description: event.description,
+          image: `${addressServer}${event.mainPhoto.data.url}`,
           link: `/specialProjects/${event.id}`,
         }));
         setEvents(eventData);

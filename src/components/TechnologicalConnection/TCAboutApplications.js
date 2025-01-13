@@ -292,20 +292,20 @@ export default function TCAboutApplications() {
         `${addressServer}/api/teh-pris-o-zayavkah-i-ispolnenii?populate=files`
       )
       .then((response) => {
-        const fetchedFiles = response.data.data.attributes.files.data
+        const fetchedFiles = response.data.data.files.data
           .map((file) => ({
-            ...file.attributes,
+            ...file,
             icon:
-              file.attributes.ext === ".pdf"
+              file.ext === ".pdf"
                 ? pdfIcon
-                : file.attributes.ext === ".xls"
+                : file.ext === ".xls"
                 ? xlsIcon
                 : undefined,
             sizeFormatted:
-              file.attributes.size > 1000
-                ? `${(file.attributes.size / 1000).toFixed(1)} мб`
-                : `${file.attributes.size.toFixed()} кб`,
-            year: parseInt(file.attributes.name.split(/,| /)[0]),
+              file.size > 1000
+                ? `${(file.size / 1000).toFixed(1)} мб`
+                : `${file.size.toFixed()} кб`,
+            year: parseInt(file.name.split(/,| /)[0]),
           }))
           .sort((a, b) => b.year - a.year);
         setFiles(fetchedFiles);

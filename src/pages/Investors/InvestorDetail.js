@@ -47,7 +47,7 @@ export default function InvestorDetail() {
   }, [params.id]);
 
 
-  if (!section || !section.attributes) return <div>Загрузочка...</div>;
+  if (!section || !section) return <div>Загрузочка...</div>;
 
   return (
     <motion.div
@@ -58,7 +58,7 @@ export default function InvestorDetail() {
     >
       <TopImage
         image={img4c2c362e8d8fa557788c556795d32fae}
-        title={section.attributes.title}
+        title={section.title}
       />
       <div className="page-grid__content" id="content">
         <div>
@@ -68,8 +68,8 @@ export default function InvestorDetail() {
         </div>
 
         <ul>
-          {section.attributes.groupInfo &&
-            section.attributes.groupInfo.map((group, groupIndex) => (
+          {section.groupInfo &&
+            section.groupInfo.map((group, groupIndex) => (
               <li key={groupIndex} className="page-grid__content__li">
                 <div className="row-docs-age">
                   <h3 className="row-docs-age__caption line-bottom">
@@ -93,7 +93,7 @@ export default function InvestorDetail() {
                       group.files_sort.length > 0 ? (
                         group.files_sort.map((fileEntry, fileIndex) => {
                           const fileData =
-                            fileEntry.files?.data?.[0]?.attributes;
+                            fileEntry.files?.data?.[0];
 
                           return fileData && fileData.url ? (
                             <li
@@ -182,7 +182,7 @@ export default function InvestorDetail() {
 //       });
 //   }, [params.id]);
 
-//   if (!section || !section.attributes) return <div>Загрузочка...</div>;
+//   if (!section || !section) return <div>Загрузочка...</div>;
 
 //   return (
 //     <motion.div
@@ -193,7 +193,7 @@ export default function InvestorDetail() {
 //     >
 //       <TopImage
 //         image={img4c2c362e8d8fa557788c556795d32fae}
-//         title={section.attributes.title}
+//         title={section.title}
 //       />
 //       <div className="page-grid__content" id="content">
 //         <div>
@@ -203,8 +203,8 @@ export default function InvestorDetail() {
 //         </div>
 
 //         <ul>
-//           {section.attributes.groupInfo &&
-//             section.attributes.groupInfo.map((group, groupIndex) => (
+//           {section.groupInfo &&
+//             section.groupInfo.map((group, groupIndex) => (
 //               <li key={groupIndex} className="page-grid__content__li">
 //                 <div className="row-docs-age">
 //                   <h3 className="row-docs-age__caption line-bottom">
@@ -214,7 +214,7 @@ export default function InvestorDetail() {
 //                     {Array.isArray(group.files_sort) &&
 //                     group.files_sort.length > 0 ? (
 //                       group.files_sort.map((fileEntry, fileIndex) => {
-//                         const fileData = fileEntry.files?.data?.[0]?.attributes;
+//                         const fileData = fileEntry.files?.data?.[0]?;
 
 //                         return fileData && fileData.url ? (
 //                           <li
@@ -302,7 +302,7 @@ export default function InvestorDetail() {
 //       });
 //   }, [params.id]);
 
-//   if (!section || !section.attributes) return <div>Загрузочка...</div>;
+//   if (!section || !section) return <div>Загрузочка...</div>;
 
 //   return (
 //     <motion.div
@@ -313,7 +313,7 @@ export default function InvestorDetail() {
 //     >
 //       <TopImage
 //         image={img4c2c362e8d8fa557788c556795d32fae}
-//         title={section.attributes.title}
+//         title={section.title}
 //       />
 //       <div className="page-grid__content" id="content">
 //         <div>
@@ -323,8 +323,8 @@ export default function InvestorDetail() {
 //         </div>
 
 //         <ul>
-//           {section.attributes.groupInfo &&
-//             section.attributes.groupInfo.map((group, groupIndex) => (
+//           {section.groupInfo &&
+//             section.groupInfo.map((group, groupIndex) => (
 //               <li key={groupIndex} className="page-grid__content__li">
 //                 <div className="row-docs-age">
 //                   <h3 className="row-docs-age__caption line-bottom">
@@ -334,7 +334,7 @@ export default function InvestorDetail() {
 //                     {Array.isArray(group.files_sort) &&
 //                     group.files_sort.length > 0 ? (
 //                       group.files_sort.map((fileEntry, fileIndex) => {
-//                         const fileData = fileEntry.files?.data?.[0]?.attributes;
+//                         const fileData = fileEntry.files?.data?.[0]?;
 
 //                         return fileData && fileData.url ? (
 //                           <li

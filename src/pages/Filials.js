@@ -38,7 +38,7 @@ export default function Filials() {
       .then((data) => {
         setIsLoading(false);
         setFilials(data.data);
-        console.log(data.data);
+        // console.log(data.data)
       })
       .catch((err) => {
         console.log(err);
@@ -81,50 +81,29 @@ export default function Filials() {
           ) : (
             <div className="branches__grid">
               {filials &&
-                filials.map((item, index) => (
-                  <Link
-                    className="post-branches"
-                    to={`/filials/${item.id}`}
-                    key={index}
-                  >
+                filials.map((item,index) => (
+                  <Link className="post-branches" to={`/filials/${item.documentId}`} key={index}>
                     <div className="post-branches__up">
-                      <span className="post-branches__title">
-                        {item.attributes.name}
-                      </span>
+                      <span className="post-branches__title">{item.name}</span>
                     </div>
                     <div className="post-branches__down">
                       <ul className="post-branches__list">
-                        {item.attributes.proizvodstvennye_otdeleniyas.data.map(
-                          (item, index) => (
-                            <li className="post-branches__item" key={index}>
-                              <svg
-                                className="post-branches__icon"
-                                stroke="#e37021"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039"
-                                  strokeWidth="2"
-                                  strokeMiterlimit="10"
-                                  strokeLinejoin="round"
-                                />
-                                <path
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
-                                  strokeWidth="2"
-                                  strokeMiterlimit="10"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
-                              <span className="post-branches__text">
-                                {item.attributes.name}
-                              </span>
-                            </li>
-                          )
-                        )}
+                        {item.proizvodstvennye_otdeleniyas.map((item,index) => (
+                          <li className="post-branches__item" key={index}>
+                            <svg className="post-branches__icon" stroke="#e37021" viewBox="0 0 20 20">
+                              <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039" strokeWidth="2" strokeMiterlimit="10" strokeLinejoin="round" />
+                              <path
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                strokeWidth="2"
+                                strokeMiterlimit="10"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span className="post-branches__text">{item.name}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </Link>
@@ -145,18 +124,15 @@ export default function Filials() {
               key={index}
               geometry={{
                 type: "Point",
-                coordinates: [
-                  item.attributes.latitude,
-                  item.attributes.longitude,
-                ],
+                coordinates: [item.latitude, item.longitude],
               }}
               properties={{
-                balloonContent: `<div className="ballon-down">${item.attributes.name}<br>
-                  <a href="/filials/${item.id}" className="yandex-map__button">
+                balloonContent: `<div className="ballon-down">${item.name}<br>
+                  <a href="/filials/${item.documentId}" className="yandex-map__button">
                     Подробнее
                   </a>
                 </div>`,
-                hintContent: item.attributes.address,
+                hintContent: item.address,
               }}
               options={{
                 preset: "islands#greenDotIconWithCaption",

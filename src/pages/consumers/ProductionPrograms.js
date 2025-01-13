@@ -20,10 +20,10 @@ export default function ProductionPrograms() {
         //console.log(data)
         setProductionPrograms(
           data.data.sort((a, b) => {
-            if (a.attributes.name < b.attributes.name) {
+            if (a.name < b.name) {
               return -1;
             }
-            if (a.attributes.name > b.attributes.name) {
+            if (a.name > b.name) {
               return 1;
             }
             return 0;
@@ -75,26 +75,26 @@ export default function ProductionPrograms() {
                   <Placemark
                     // onClick={(event) => {
                     //     event.preventDefault()
-                    //     console.log(item.attributes.address)
+                    //     console.log(item.address)
                     // }}
                     key={index}
                     geometry={{
                       type: "Point",
                       coordinates: [
-                        item.attributes.latitude,
-                        item.attributes.longitude,
+                        item.latitude,
+                        item.longitude,
                       ],
                     }}
                     properties={{
                       balloonContent: `<div className="ballon-down">
-                                            <p style="color: #000; margin-bottom: 5px">Производственная программа ${item.attributes.name}</p>
-                                            <a href="${addressServer}${item.attributes.file.data[0].attributes.url}" rel="noopener noreferrer" target="_blank" >Посмотреть</a>
+                                            <p style="color: #000; margin-bottom: 5px">Производственная программа ${item.name}</p>
+                                            <a href="${addressServer}${item.file.data[0].url}" rel="noopener noreferrer" target="_blank" >Посмотреть</a>
                                             </div>`,
                       //iconContent: "X",
                       //hintContent: "Ну давай уже тащи",
                       //balloonContent: 'А эта — новогодняя',
-                      iconContent: `${item.attributes.name}`,
-                      hintContent: `${item.attributes.name}`,
+                      iconContent: `${item.name}`,
+                      hintContent: `${item.name}`,
                     }}
                     options={{
                       //iconLayout: 'default#image',
@@ -135,11 +135,11 @@ export default function ProductionPrograms() {
                 key={index}
               >
                 <a
-                  href={`${addressServer}${item.attributes.file.data[0].attributes.url}`}
+                  href={`${addressServer}${item.file.data[0].url}`}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  {item.attributes.name}
+                  {item.name}
                 </a>
               </li>
             ))}

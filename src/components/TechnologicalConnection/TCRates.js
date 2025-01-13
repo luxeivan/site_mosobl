@@ -213,37 +213,37 @@ export default function TCRates() {
           {/* <h2>Документы:</h2> */}
           <ul>
             {documents &&
-              documents.attributes &&
-              documents.attributes.files.data
+              documents &&
+              documents.files.data
                 .sort((a, b) => {
                   return (
-                    parseInt(a.attributes.name, 10) -
-                    parseInt(b.attributes.name, 10)
+                    parseInt(a.name, 10) -
+                    parseInt(b.name, 10)
                   );
                 })
                 .map((item, index) => (
                   <li key={index} className="page-grid__content__li">
                     <a
                       className="doc-line"
-                      href={`${addressServer}${item.attributes.url}`}
+                      href={`${addressServer}${item.url}`}
                       download=""
                       rel="noopener noreferrer"
                       target="_blank"
                     >
                       <div className="doc-line__wrap-icon">
                         <img
-                          src={type[item.attributes.ext.slice(1)]}
-                          alt={`icon ${item.attributes.ext.slice(1)}`}
+                          src={type[item.ext.slice(1)]}
+                          alt={`icon ${item.ext.slice(1)}`}
                         />
                       </div>
                       <div className="doc-line__wrap-text">
                         <span className="doc-line__name">
-                          {index + 1}. {item.attributes.name}
+                          {index + 1}. {item.name}
                         </span>
                         <span className="doc-line__file-info">
-                          {Number(item.attributes.size) > 1000
-                            ? `${(item.attributes.size / 1000).toFixed(2)} МБ`
-                            : `${Math.round(item.attributes.size)} КБ`}
+                          {Number(item.size) > 1000
+                            ? `${(item.size / 1000).toFixed(2)} МБ`
+                            : `${Math.round(item.size)} КБ`}
                         </span>
                       </div>
                     </a>

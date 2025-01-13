@@ -43,38 +43,38 @@ export default function MDNetworkLosses() {
       {files &&
         files
           // .sort((a, b) => {
-          //   return parseInt(a.attributes.title, 10) - parseInt(b.attributes.title, 10);
+          //   return parseInt(a.title, 10) - parseInt(b.title, 10);
           // })
           .map((item, index) => (
             <div key={index}>
               <h3 className="row-docs-age__caption line-bottom">
-                {item.attributes.title}
+                {item.title}
               </h3>
               <ul>
-                {item.attributes &&
-                  item.attributes.files &&
-                  item.attributes.files.data.reverse().map((item, index) => (
+                {item &&
+                  item.files &&
+                  item.files.data.reverse().map((item, index) => (
                     <li key={index} className="page-grid__content__li">
                       <a
                         className="doc-line"
-                        href={`${addressServer}${item.attributes.url}`}
+                        href={`${addressServer}${item.url}`}
                         download=""
                         rel="noopener noreferrer"
                         target="_blank"
                       >
                         <div className="doc-line__wrap-icon">
                           <img
-                            src={type[item.attributes.ext.slice(1)]}
-                            alt={`icon ${item.attributes.ext.slice(1)}`}
+                            src={type[item.ext.slice(1)]}
+                            alt={`icon ${item.ext.slice(1)}`}
                           />
                         </div>
                         <div className="doc-line__wrap-text">
                           <span className="doc-line__name">
-                            {item.attributes.name}
+                            {item.name}
                           </span>
                           <span className="doc-line__file-info">
-                            {item.attributes.ext.slice(1)}{" "}
-                            {Math.round(item.attributes.size)}kb
+                            {item.ext.slice(1)}{" "}
+                            {Math.round(item.size)}kb
                           </span>
                         </div>
                       </a>
@@ -82,7 +82,7 @@ export default function MDNetworkLosses() {
                   ))}
               </ul>
               <div className="text-area">
-                <p class="text-md">{item.attributes.text}</p>
+                <p class="text-md">{item.text}</p>
               </div>
             </div>
           ))}

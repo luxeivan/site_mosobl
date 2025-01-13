@@ -98,8 +98,8 @@ export default function PlannedOutages() {
                 </thead>
                 <tbody>
                   {disconnects.sort((a, b) => {
-                    const nameA = a.attributes.go.toUpperCase(); // ignore upper and lowercase
-                    const nameB = b.attributes.go.toUpperCase(); // ignore upper and lowercase
+                    const nameA = a.go.toUpperCase(); // ignore upper and lowercase
+                    const nameB = b.go.toUpperCase(); // ignore upper and lowercase
                     if (nameA < nameB) {
                       return -1;
                     }
@@ -111,10 +111,10 @@ export default function PlannedOutages() {
                     return 0;
                   }).map((item, index) =>
                     <tr key={index}>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.durationSolution}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.go}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.addressDisconnected}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.durationSolution}</td>
                     </tr>
                   )}
                 </tbody>

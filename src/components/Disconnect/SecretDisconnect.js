@@ -69,15 +69,15 @@ export default function SecretDisconnect() {
       .then((response) => {
         const groupedData = response.data.data.reduce((acc, item) => {
           const city =
-            item.attributes.uzel_podklyucheniya.data.attributes.gorod.data.attributes.name.replace(
+            item.uzel_podklyucheniya.data.gorod.data.name.replace(
               /^г\s/,
               ""
             );
           let streets =
-            item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data
+            item.uzel_podklyucheniya.data.uliczas.data
               .map(
                 (street) =>
-                  street.attributes.name + ` ` + street.attributes.comment
+                  street.name + ` ` + street.comment
               )
               .join(", ");
 
@@ -87,15 +87,15 @@ export default function SecretDisconnect() {
           );
           streets = streets.replace(cityPattern, "").trim();
 
-          const comment = item.attributes.comment || "Без комментария";
-          const begin = DateTime.fromISO(item.attributes.begin).toFormat(
+          const comment = item.comment || "Без комментария";
+          const begin = DateTime.fromISO(item.begin).toFormat(
             "dd.MM.yyyy (HH:mm"
           );
-          const end = DateTime.fromISO(item.attributes.end).toFormat("HH:mm");
-          const addedAt = DateTime.fromISO(item.attributes.updatedAt).toFormat(
+          const end = DateTime.fromISO(item.end).toFormat("HH:mm");
+          const addedAt = DateTime.fromISO(item.updatedAt).toFormat(
             "dd.MM.yyyy HH:mm"
           );
-          const addedAtTimestamp = DateTime.fromISO(item.attributes.updatedAt).toMillis(); // Конвертируем время обновления в таймстамп
+          const addedAtTimestamp = DateTime.fromISO(item.updatedAt).toMillis(); // Конвертируем время обновления в таймстамп
           const formattedDisconnect = {
             text: `${begin}-${end}) г. о. ${city}, ${streets}.${comment}`,
             addedAt,

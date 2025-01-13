@@ -15,7 +15,7 @@ export default function Investors() {
       .then((data) => {
         console.log("Проверка связи", data);
         setInvestorSections(
-          data.data.sort((a, b) => a.attributes.sort - b.attributes.sort)
+          data.data.sort((a, b) => a.sort - b.sort)
         );
       })
       .catch((err) => {
@@ -82,7 +82,7 @@ export default function Investors() {
                   to={`/investors/${item.id}`}
                 >
                   <span className="link-row__text">
-                    {item.attributes.title}
+                    {item.title}
                   </span>
                   <div className="link-row__wrap-arrow">
                     <svg className="nav-menu__arrow">
@@ -118,7 +118,7 @@ export default function Investors() {
 //       .then((data) => {
 //         console.log("Проверка связи", data);
 //         setInvestorSections(
-//           data.data.sort((a, b) => a.attributes.sort - b.attributes.sort)
+//           data.data.sort((a, b) => a.sort - b.sort)
 //         );
 //       })
 //       .catch((err) => {
@@ -176,7 +176,7 @@ export default function Investors() {
 //                   to={`/investors/${item.id}`} // Здесь заменяем href на to
 //                 >
 //                   <span className="link-row__text">
-//                     {item.attributes.title}
+//                     {item.title}
 //                   </span>
 //                   <div className="link-row__wrap-arrow">
 //                     <svg className="nav-menu__arrow">

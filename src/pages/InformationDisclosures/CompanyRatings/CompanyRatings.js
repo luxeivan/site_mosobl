@@ -28,7 +28,7 @@ export default function CompanyRatings() {
       .then((response) => response.json())
       .then((data) => {
         const sortedData = data.data.sort(
-          (a, b) => a.attributes.sort - b.attributes.sort
+          (a, b) => a.sort - b.sort
         );
         setRatings(sortedData);
       })
@@ -53,7 +53,7 @@ export default function CompanyRatings() {
           {ratings.map((rating, index) => (
             <li key={index} className="page-grid__content__li">
               <a
-                href={`${addressServer}${rating.attributes.files.data[0].attributes.url}`}
+                href={`${addressServer}${rating.files.data[0].url}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="doc-line"
@@ -62,24 +62,24 @@ export default function CompanyRatings() {
                   <img
                     src={
                       type[
-                        rating.attributes.files.data[0].attributes.ext.slice(1)
+                        rating.files.data[0].ext.slice(1)
                       ] || pdf
                     }
-                    alt={`icon ${rating.attributes.files.data[0].attributes.ext.slice(
+                    alt={`icon ${rating.files.data[0].ext.slice(
                       1
                     )}`}
                   />
                 </div>
                 <div className="doc-line__wrap-text">
                   <span className="doc-line__name">
-                    {rating.attributes.title}
+                    {rating.title}
                   </span>
                   <span className="doc-line__file-info">
-                    {rating.attributes.files.data[0].attributes.ext
+                    {rating.files.data[0].ext
                       .slice(1)
                       .toUpperCase()}{" "}
                     {Math.round(
-                      rating.attributes.files.data[0].attributes.size
+                      rating.files.data[0].size
                     )}{" "}
                     kb
                   </span>

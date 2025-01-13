@@ -37,18 +37,18 @@ export default function EventDetails() {
         console.log(response.data)
         const eventData = {
           id: response.data.data.id,
-          title: response.data.data.attributes.title,
-          date: response.data.data.attributes.dateEvent
+          title: response.data.data.title,
+          date: response.data.data.dateEvent
             ? new Date(
-              response.data.data.attributes.dateEvent
+              response.data.data.dateEvent
             ).toLocaleDateString()
             : false,
-          description: response.data.data.attributes.description,
-          mainPhoto: `${addressServer}${response.data.data.attributes.mainPhoto.data.attributes.url}`,
-          images: response.data.data.attributes.photos.data.map((photo) => ({
-            src: `${addressServer}${photo.attributes.url}`,
-            width: photo.attributes.width,
-            height: photo.attributes.height,
+          description: response.data.data.description,
+          mainPhoto: `${addressServer}${response.data.data.mainPhoto.data.url}`,
+          images: response.data.data.photos.data.map((photo) => ({
+            src: `${addressServer}${photo.url}`,
+            width: photo.width,
+            height: photo.height,
           })),
         };
         setEvent(eventData);
