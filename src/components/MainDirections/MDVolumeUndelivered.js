@@ -53,7 +53,7 @@ export default function MDVolumeUndelivered() {
               <ul>
                 {item &&
                   item.files &&
-                  item.files.data.reverse().map((item, index) => (
+                  item.files?.map((item, index) => (
                     <li key={index} className="page-grid__content__li">
                       <a
                         className="doc-line"

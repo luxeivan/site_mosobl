@@ -19,7 +19,7 @@ const type = {
 
 export default function MDReservedPower() {
   const [files, setFiles] = useState([]);
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -53,7 +53,7 @@ export default function MDReservedPower() {
               <ul>
                 {item &&
                   item.files &&
-                  item.files.data.reverse().map((item, index) => (
+                  item.files?.map((item, index) => (
                     <li key={index} className="page-grid__content__li">
                       <a
                         className="doc-line"
@@ -69,12 +69,9 @@ export default function MDReservedPower() {
                           />
                         </div>
                         <div className="doc-line__wrap-text">
-                          <span className="doc-line__name">
-                            {item.name}
-                          </span>
+                          <span className="doc-line__name">{item.name}</span>
                           <span className="doc-line__file-info">
-                            {item.ext.slice(1)}{" "}
-                            {Math.round(item.size)}kb
+                            {item.ext.slice(1)} {Math.round(item.size)}kb
                           </span>
                         </div>
                       </a>
