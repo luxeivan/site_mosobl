@@ -3,10 +3,10 @@ import qs from "qs";
 import { DateTime } from "luxon";
 import dayjs from "dayjs";
 import axios from "axios";
-import {DatePicker,ConfigProvider} from 'antd'
+import { DatePicker, ConfigProvider } from "antd";
 import locale from "antd/es/locale/ru_RU";
 // import DatePicker from "react-date-picker";
-import 'react-date-picker/dist/DatePicker.css';
+import "react-date-picker/dist/DatePicker.css";
 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
@@ -68,8 +68,8 @@ export default function Disconnect() {
       .then((response) => {
         const newarray = response.data.data.reduce((objectsByKeyValue, obj) => {
           const value =
-            obj.uzel_podklyucheniya.data.gorod.data
-              .name;
+            obj.attributes.uzel_podklyucheniya.data.attributes.gorod.data
+              .attributes.name;
           objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(
             obj
           );
@@ -102,20 +102,19 @@ export default function Disconnect() {
     <div className="disconnect">
       <span style={{ fontWeight: 700 }}>Дата отключений: </span>
       <ConfigProvider locale={locale}>
-
-      <DatePicker
-         onChange={(value, mode)=>{
-          console.log(value,mode)
-          setCurrentDate(value)
-        }}
-         defaultValue={currentDate}
-        // value={currentDate}
-        // showLeadingZeros={true}
-        // clearIcon={null}
-        allowClear={false}
-        format={"DD.MM.YYYY"}
+        <DatePicker
+          onChange={(value, mode) => {
+            console.log(value, mode);
+            setCurrentDate(value);
+          }}
+          defaultValue={currentDate}
+          // value={currentDate}
+          // showLeadingZeros={true}
+          // clearIcon={null}
+          allowClear={false}
+          format={"DD.MM.YYYY"}
         />
-        </ConfigProvider>
+      </ConfigProvider>
 
       <YMaps>
         <Map
@@ -151,10 +150,10 @@ export default function Disconnect() {
                   geometry={{
                     type: "Point",
                     coordinates: [
-                      item[1][0].uzel_podklyucheniya.data
-                        .gorod.data.fias.data.geo_lat,
-                      item[1][0].uzel_podklyucheniya.data
-                        .gorod.data.fias.data.geo_lon,
+                      item[1][0].attributes.uzel_podklyucheniya.data.attributes
+                        .gorod.data.attributes.fias.data.geo_lat,
+                      item[1][0].attributes.uzel_podklyucheniya.data.attributes
+                        .gorod.data.attributes.fias.data.geo_lon,
                     ],
                   }}
                   properties={{
@@ -211,10 +210,10 @@ export default function Disconnect() {
                           </li>
                           {item[1].map((item, index) => {
                             const begin = DateTime.fromISO(
-                              item.begin
+                              item.attributes.begin
                             ).toLocal().c;
                             const end = DateTime.fromISO(
-                              item.end
+                              item.attributes.end
                             ).toLocal().c;
                             return (
                               <li
@@ -223,7 +222,7 @@ export default function Disconnect() {
                               >
                                 <div className="street-table__td street-table">
                                   <ul>
-                                    {item.uzel_podklyucheniya.data.uliczas.data.map(
+                                    {item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data.map(
                                       (item, index) => (
                                         <li
                                           className="street-table__item"
@@ -231,8 +230,8 @@ export default function Disconnect() {
                                           style={{ listStyle: "none" }}
                                           key={index}
                                         >
-                                          <b>{addGO(item.name)}</b> -{" "}
-                                          {item.comment}
+                                          <b>{addGO(item.attributes.name)}</b> -{" "}
+                                          {item.attributes.comment}
                                         </li>
                                       )
                                     )}
@@ -242,7 +241,7 @@ export default function Disconnect() {
                                   className="street-table__td"
                                   style={{ wordBreak: "break-word" }}
                                 >
-                                  {item.comment}
+                                  {item.attributes.comment}
                                 </div>
                                 <div className="street-table__td">
                                   {begin.day < 10 ? "0" + begin.day : begin.day}
@@ -283,10 +282,10 @@ export default function Disconnect() {
                           </li>
                           {item[1].map((item, index) => {
                             const begin = DateTime.fromISO(
-                              item.begin
+                              item.attributes.begin
                             ).toLocal().c;
                             const end = DateTime.fromISO(
-                              item.end
+                              item.attributes.end
                             ).toLocal().c;
                             return (
                               <li
@@ -295,7 +294,7 @@ export default function Disconnect() {
                               >
                                 <div className="street-table__td street-table">
                                   <ul>
-                                    {item.uzel_podklyucheniya.data.uliczas.data.map(
+                                    {item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data.map(
                                       (item, index) => (
                                         <li
                                           className="street-table__item"
@@ -303,15 +302,15 @@ export default function Disconnect() {
                                           style={{ listStyle: "none" }}
                                           key={index}
                                         >
-                                          <b>{item.name}</b> -{" "}
-                                          {item.comment}
+                                          <b>{item.attributes.name}</b> -{" "}
+                                          {item.attributes.comment}
                                         </li>
                                       )
                                     )}
                                   </ul>
                                 </div>
                                 <div className="street-table__td">
-                                  {item.comment}
+                                  {item.attributes.comment}
                                 </div>
                                 <div className="street-table__td">
                                   <b>Начало:</b>
@@ -369,11 +368,11 @@ export default function Disconnect() {
                             <Map
                               state={{
                                 center: [
-                                  item[1][0].uzel_podklyucheniya.data
-                                    .gorod.data.fias.data
+                                  item[1][0].attributes.uzel_podklyucheniya.data
+                                    .attributes.gorod.data.attributes.fias.data
                                     .geo_lat,
-                                  item[1][0].uzel_podklyucheniya.data
-                                    .gorod.data.fias.data
+                                  item[1][0].attributes.uzel_podklyucheniya.data
+                                    .attributes.gorod.data.attributes.fias.data
                                     .geo_lon,
                                 ],
                                 zoom: 10,
@@ -387,7 +386,7 @@ export default function Disconnect() {
                             >
                               <ZoomControl />
                               {item[1].map((item, index) => {
-                                return item.uzel_podklyucheniya.data.uliczas.data.map(
+                                return item.attributes.uzel_podklyucheniya.data.attributes.uliczas.data.map(
                                   (item, index) => {
                                     return (
                                       <Placemark
@@ -395,14 +394,14 @@ export default function Disconnect() {
                                         geometry={{
                                           type: "Point",
                                           coordinates: [
-                                            item.fias.data.geo_lat,
-                                            item.fias.data.geo_lon,
+                                            item.attributes.fias.data.geo_lat,
+                                            item.attributes.fias.data.geo_lon,
                                           ],
                                         }}
                                         properties={{
                                           iconContent: "X",
                                           hintContent:
-                                            item.fias.value,
+                                            item.attributes.fias.value,
                                         }}
                                         options={{
                                           preset: "islands#redDotIcon",
