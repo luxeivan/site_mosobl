@@ -53,8 +53,7 @@ export default function RegulatoryLegalActs() {
         <ul>
           {acts &&
             acts &&
-            acts.files.data
-              .sort((a, b) => {
+            acts.files?.sort((a, b) => {
                 return (
                   parseInt(a.name, 10) -
                   parseInt(b.name, 10)
