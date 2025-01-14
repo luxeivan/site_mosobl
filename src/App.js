@@ -49,6 +49,9 @@ import Vacancies from "./pages/Vacancy/Vacancies";
 import Investors from "./pages/Investors/Investors";
 import InvestorDetail from "./pages/Investors/InvestorDetail";
 import CompanyRatings from "./pages/InformationDisclosures/CompanyRatings/CompanyRatings";
+import Universities from "./pages/Vacancy/Practice/Universities";
+import VacanciesTwo from "./pages/Vacancy/VacanciesTwo";
+
 
 function App() {
   useEffect(() => {
@@ -85,7 +88,8 @@ function App() {
           <Route path="/goals" element={<Goals />} />
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
-          <Route path="/vacancies" element={<Vacancies />} />
+          <Route path="/mycareer" element={<Vacancies />} />
+         
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/informationOnBonds" element={<InformationOnBonds />} />
@@ -130,6 +134,8 @@ function App() {
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
+          <Route path="/secrethr" element={<VacanciesTwo />} />
+          <Route path="/universities" element={<Universities />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
         <GosuslugiBanner />

@@ -5,7 +5,11 @@ import { addressServer } from "../config";
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import loading from "../img/loading.png";
-const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')", "drag"] };
+const mapState = {
+  center: [55.76, 37.64],
+  zoom: 8,
+  behaviors: ["disable('scrollZoom')", "drag"],
+};
 // const filials = [
 //   { name: "Сергиев Посад", coordinates: [56.284814, 38.124429],location: "Московская область, г. Сергиев Посад, Московское шоссе, д. 40" },
 //   { name: "Щелково", coordinates: [55.912773, 37.996608],location: "Московская область, г. Щелково, ул. Советская, д. 23" },
@@ -25,14 +29,16 @@ export default function Filials() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${addressServer}/api/filialies?populate=proizvodstvennye_otdeleniyas`)
+    fetch(
+      `${addressServer}/api/filialies?populate=proizvodstvennye_otdeleniyas`
+    )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setIsLoading(false);
         setFilials(data.data);
-        console.log(data.data)
+        console.log(data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,12 +47,20 @@ export default function Filials() {
   }, []);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <TopImage title={"Информация о компании"} />
       <div className="page-grid__content" id="content">
         <div className="branch-post">
           <h4 className="branch-post__caption">Аппарат управления</h4>
-          <span className="branch-post__adrees">Московская область, Красногорский район, 26 км автодороги Балтия, Бизнес Центр "RigaLand", строение 6, подъезд 4 </span>
+          <span className="branch-post__adrees">
+            Московская область, Красногорский район, 26 км автодороги Балтия,
+            Бизнес Центр "RigaLand", строение 6, подъезд 4{" "}
+          </span>
           <span className="branch-post__tel">8 (495) 780-39-62 </span>
           <a className="branch-post__email" href="tel:mail@mosoblenergo.ru">
             mail@mosoblenergo.ru
@@ -67,29 +81,50 @@ export default function Filials() {
           ) : (
             <div className="branches__grid">
               {filials &&
-                filials.map((item,index) => (
-                  <Link className="post-branches" to={`/filials/${item.id}`} key={index}>
+                filials.map((item, index) => (
+                  <Link
+                    className="post-branches"
+                    to={`/filials/${item.id}`}
+                    key={index}
+                  >
                     <div className="post-branches__up">
-                      <span className="post-branches__title">{item.attributes.name}</span>
+                      <span className="post-branches__title">
+                        {item.attributes.name}
+                      </span>
                     </div>
                     <div className="post-branches__down">
                       <ul className="post-branches__list">
-                        {item.attributes.proizvodstvennye_otdeleniyas.data.map((item,index) => (
-                          <li className="post-branches__item" key={index}>
-                            <svg className="post-branches__icon" stroke="#e37021" viewBox="0 0 20 20">
-                              <path fill="none" xmlns="http://www.w3.org/2000/svg" d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039" strokeWidth="2" strokeMiterlimit="10" strokeLinejoin="round" />
-                              <path
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
-                                strokeWidth="2"
-                                strokeMiterlimit="10"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                            <span className="post-branches__text">{item.attributes.name}</span>
-                          </li>
-                        ))}
+                        {item.attributes.proizvodstvennye_otdeleniyas.data.map(
+                          (item, index) => (
+                            <li className="post-branches__item" key={index}>
+                              <svg
+                                className="post-branches__icon"
+                                stroke="#e37021"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  d="M6.40039 10.0004L9.10039 12.7004L13.6004 6.40039"
+                                  strokeWidth="2"
+                                  strokeMiterlimit="10"
+                                  strokeLinejoin="round"
+                                />
+                                <path
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  d="M10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                                  strokeWidth="2"
+                                  strokeMiterlimit="10"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                              <span className="post-branches__text">
+                                {item.attributes.name}
+                              </span>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   </Link>
@@ -99,14 +134,21 @@ export default function Filials() {
         </div>
       </div>
       <YMaps>
-        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
+        <Map
+          state={mapState}
+          className="yandex-map"
+          modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+        >
           <ZoomControl />
           {filials.map((item, index) => (
             <Placemark
               key={index}
               geometry={{
                 type: "Point",
-                coordinates: [item.attributes.latitude, item.attributes.longitude],
+                coordinates: [
+                  item.attributes.latitude,
+                  item.attributes.longitude,
+                ],
               }}
               properties={{
                 balloonContent: `<div className="ballon-down">${item.attributes.name}<br>
