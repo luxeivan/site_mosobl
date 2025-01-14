@@ -34,7 +34,7 @@ export default function InvestorDetail() {
 
   useEffect(() => {
     fetch(
-      `${addressServer}/api/investorams/${params.id}?populate[groupInfo][populate][files_sort][populate]=files`
+      `${addressServer}/api/investorams/${params.documentId}?populate[groupInfo][populate][files_sort][populate]=files`
     )
       .then((response) => response.json())
       .then((data) => {
