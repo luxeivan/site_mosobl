@@ -8,7 +8,7 @@ export default function TCInformationAboutConnection() {
       <div className="row-docs-age">
         <a
           className="doc-line"
-          href={`${addressServer}/uploads/Vygruzka_TP_dfc896df84.pdf`}
+          href={`${addressServer}/uploads/Vygruzka_TP_dfc896df84_4d7d5a70c0.pdf`}
           // href={`${addressServer}/uploads/71983ef3cda2a4cb2c9cee492c405ad0_szhatyj_6f1ee1772a.pdf?updated_at=2022-11-15T11:49:25.233Z`}
           download=""
           rel="noopener noreferrer"
