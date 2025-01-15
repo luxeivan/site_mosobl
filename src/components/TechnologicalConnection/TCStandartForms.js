@@ -17,7 +17,7 @@ const type = {
 
 export default function TCStandartForms() {
   const [forms, setForms] = useState([]);
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,58 +27,50 @@ export default function TCStandartForms() {
       })
       .then((data) => {
         setIsLoading(false);
-        setForms(data);
+        setForms(data.data);
       })
       .catch((err) => {
         console.log(err);
         setForms([]);
       });
   }, []);
+  
   return (
     <div className="page-grid__content">
       {forms &&
-        forms
-          // .sort((a, b) => {
-          //   return parseInt(a.title, 10) - parseInt(b.title, 10);
-          // })
-          .map((item, index) => (
-            <div key={index}>
-              <h3 className="row-docs-age__caption line-bottom">
-                {item.title}
-              </h3>
-              <ul>
-                {item &&
-                  item.files &&
-                  item.files?.map((item, index) => (
-                    <li key={index} className="page-grid__content__li">
-                      <a
-                        className="doc-line"
-                        href={`${addressServer}${item.url}`}
-                        download=""
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <div className="doc-line__wrap-icon">
-                          <img
-                            src={type[item.ext.slice(1)]}
-                            alt={`icon ${item.ext.slice(1)}`}
-                          />
-                        </div>
-                        <div className="doc-line__wrap-text">
-                          <span className="doc-line__name">
-                            {item.name}
-                          </span>
-                          <span className="doc-line__file-info">
-                            {item.ext.slice(1)}{" "}
-                            {Math.round(item.size)}kb
-                          </span>
-                        </div>
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
+        forms?.map((item, index) => (
+          <div key={index}>
+            <h3 className="row-docs-age__caption line-bottom">{item.title}</h3>
+            <ul>
+              {item &&
+                item.files &&
+                item.files?.map((item, index) => (
+                  <li key={index} className="page-grid__content__li">
+                    <a
+                      className="doc-line"
+                      href={`${addressServer}${item.url}`}
+                      download=""
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <div className="doc-line__wrap-icon">
+                        <img
+                          src={type[item.ext.slice(1)]}
+                          alt={`icon ${item.ext.slice(1)}`}
+                        />
+                      </div>
+                      <div className="doc-line__wrap-text">
+                        <span className="doc-line__name">{item.name}</span>
+                        <span className="doc-line__file-info">
+                          {item.ext.slice(1)} {Math.round(item.size)}kb
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
     </div>
   );
 }

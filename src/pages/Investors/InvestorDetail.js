@@ -38,14 +38,12 @@ export default function InvestorDetail() {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Полученные данные:", data);
         setSection(data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [params.id]);
-
 
   if (!section || !section) return <div>Загрузочка...</div>;
 
@@ -82,9 +80,7 @@ export default function InvestorDetail() {
                       {/* Отображение rich text */}
                       <MarkDownText>
                         {addressServerAdd(group.text)}
-                       
                       </MarkDownText>
-                        
                     </div>
                   ) : (
                     // Если isText == false, то отображаем файлы, как раньше
@@ -92,8 +88,7 @@ export default function InvestorDetail() {
                       {Array.isArray(group.files_sort) &&
                       group.files_sort.length > 0 ? (
                         group.files_sort?.map((fileEntry, fileIndex) => {
-                          const fileData =
-                            fileEntry.files?.[0];
+                          const fileData = fileEntry.files?.[0];
 
                           return fileData && fileData.url ? (
                             <li

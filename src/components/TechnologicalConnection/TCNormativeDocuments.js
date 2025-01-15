@@ -31,8 +31,6 @@ export default function TCNormativeDocuments() {
       });
   }, []);
 
-  console.log(docs);
-
   return (
     <div className="page-grid__content">
       <div className="row-docs-age">
@@ -46,6 +44,7 @@ export default function TCNormativeDocuments() {
                 download=""
                 rel="noopener noreferrer"
                 target="_blank"
+                key={index}
               >
                 <div className="doc-line__wrap-icon">
                   <img

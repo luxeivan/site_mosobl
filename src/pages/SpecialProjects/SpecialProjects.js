@@ -23,7 +23,6 @@ export default function SpecialProjects() {
         const response = await axios.get(
           `${addressServer}/api/speczialnye-proekties?populate=*`
         );
-        console.log(response.data)
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.title,
@@ -34,7 +33,7 @@ export default function SpecialProjects() {
           shortDescription: event.shortDescription,
           description: event.description,
           image: `${addressServer}${event.mainPhoto.url}`,
-          link: `/specialProjects/${event.id}`,
+          link: `/specialProjects/${event.documentId}`,
         }));
         setEvents(eventData);
       } catch (error) {

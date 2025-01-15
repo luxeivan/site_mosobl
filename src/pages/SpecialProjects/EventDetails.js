@@ -45,6 +45,7 @@ export default function EventDetails() {
         );
         // Один раз достаём объект спецпроекта:
         const eventItem = response.data.data;
+        // console.log(eventItem);
 
         // Собираем нужные поля в eventData
         const eventData = {
@@ -55,12 +56,13 @@ export default function EventDetails() {
             : false,
           description: eventItem.description,
           mainPhoto: `${addressServer}${eventItem.mainPhoto.url}`,
-          images: eventItem.photos.data.map((photo) => ({
+          images: eventItem.photos?.map((photo) => ({
             src: `${addressServer}${photo.url}`,
             width: photo.width,
             height: photo.height,
           })),
         };
+
 
         setEvent(eventData);
       } catch (error) {

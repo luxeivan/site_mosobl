@@ -13,7 +13,7 @@ export default function Investors() {
     fetch(`${addressServer}/api/investorams?populate=*`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Проверка связи", data);
+       
         setInvestorSections(
           data.data.sort((a, b) => a.sort - b.sort)
         );
