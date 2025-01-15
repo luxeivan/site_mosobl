@@ -69,7 +69,6 @@ import qr_rabota_ru from "../../img/QR_HH.png";
 import { Link } from "react-router-dom";
 
 export default function Vacancies() {
-  console.log("Test");
 
   return (
     <motion.div

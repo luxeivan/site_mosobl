@@ -34,7 +34,7 @@ export default function InvestorDetail() {
 
   useEffect(() => {
     fetch(
-      `${addressServer}/api/investorams/${params.documentId}?populate[groupInfo][populate][files_sort][populate]=files`
+      `${addressServer}/api/investorams/${params.id}?populate[groupInfo][populate][files_sort][populate]=files`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -91,9 +91,9 @@ export default function InvestorDetail() {
                     <ul>
                       {Array.isArray(group.files_sort) &&
                       group.files_sort.length > 0 ? (
-                        group.files_sort.map((fileEntry, fileIndex) => {
+                        group.files_sort?.map((fileEntry, fileIndex) => {
                           const fileData =
-                            fileEntry.files?.data?.[0];
+                            fileEntry.files?.[0];
 
                           return fileData && fileData.url ? (
                             <li

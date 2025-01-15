@@ -79,7 +79,7 @@ export default function Investors() {
               <li key={index} className="investorSections__item li__margin-top">
                 <Link
                   className="link-row link-row--change"
-                  to={`/investors/${item.id}`}
+                  to={`/investors/${item.documentId}`}
                 >
                   <span className="link-row__text">
                     {item.title}
