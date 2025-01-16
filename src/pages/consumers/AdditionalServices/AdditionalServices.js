@@ -67,10 +67,10 @@ const AdditionalServices = () => {
         const response1 = await axios.get(
           "https://www.mosoblenergo.ru/back/api/dopolnitelnye-uslugi?populate[0]=section&populate[1]=section.documents&populate[2]=price&populate[3]=section.sectionName"
         );
-        const data1 = response1.data.data.attributes;
+        const data1 = response1.data.data;
         const servicesData = data1.section;
         const descriptionData = data1.description;
-        const priceFileData = data1.price?.data?.attributes || null;
+        const priceFileData = data1.price?.data || null;
 
         const allPriceData = await fetchAllPriceData();
 
@@ -96,7 +96,7 @@ const AdditionalServices = () => {
   // Функция для рендера таблицы прайсов
   const renderPriceTable = (sectionName) => {
     const filteredData = priceData.filter(
-      (item) => item.attributes.sectionName?.name === sectionName
+      (item) => item.sectionName?.name === sectionName
     );
 
     if (filteredData.length === 0) {
@@ -104,35 +104,35 @@ const AdditionalServices = () => {
     }
 
     // Сортировка данных по полю 'sort'
-    filteredData.sort((a, b) => a.attributes.sort - b.attributes.sort);
+    filteredData.sort((a, b) => a.sort - b.sort);
 
     // Формируем dataSource
     const dataSource = filteredData.map((item, index) => {
       const { attributes } = item;
 
-      if (attributes.isSubSection) {
+      if (item.isSubSection) {
         return {
           key: `subsection-${index}`,
           isSubSectionHeader: true,
-          subSectionName: attributes.subSectionName,
-          filesDoc: attributes.filesDoc,
+          subSectionName: item.subSectionName,
+          filesDoc: item.filesDoc,
         };
       } else {
         return {
           key: index,
-          code: attributes.code,
-          name: attributes.name,
-          unit: attributes.unit,
-          price: attributes.price,
+          code: item.code,
+          name: item.name,
+          unit: item.unit,
+          price: item.price,
           isSubSectionHeader: false,
           rowSpanCode:
-            attributes.rowSpanCode !== null ? attributes.rowSpanCode : 1,
+          item.rowSpanCode !== null ? item.rowSpanCode : 1,
           rowSpanName:
-            attributes.rowSpanName !== null ? attributes.rowSpanName : 1,
+          item.rowSpanName !== null ? item.rowSpanName : 1,
           rowSpanUnit:
-            attributes.rowSpanUnit !== null ? attributes.rowSpanUnit : 1,
+          item.rowSpanUnit !== null ? item.rowSpanUnit : 1,
           rowSpanPrice:
-            attributes.rowSpanPrice !== null ? attributes.rowSpanPrice : 1,
+          item.rowSpanPrice !== null ? item.rowSpanPrice : 1,
         };
       }
     });
@@ -144,6 +144,7 @@ const AdditionalServices = () => {
         dataIndex: "code",
         key: "code",
         render: (text, record) => {
+          // console.log(record)
           if (record.isSubSectionHeader) {
             return {
               children: (
@@ -154,11 +155,11 @@ const AdditionalServices = () => {
                       {record.filesDoc.data.map((doc, idx) => (
                         <li key={idx}>
                           <a
-                            href={`${addressServer}${doc.attributes.url}`}
+                            href={`${addressServer}${doc.url}`}
                             className={styles.documentLink}
                           >
-                            {getIconByExtension(doc.attributes.ext)}
-                            {doc.attributes.name}
+                            {getIconByExtension(doc.ext)}
+                            {doc.name}
                           </a>
                         </li>
                       ))}
