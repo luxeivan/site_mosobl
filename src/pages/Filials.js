@@ -5,7 +5,11 @@ import { addressServer } from "../config";
 import { motion } from "framer-motion";
 import TopImage from "../components/TopImage";
 import loading from "../img/loading.png";
-const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scrollZoom')", "drag"] };
+const mapState = {
+  center: [55.76, 37.64],
+  zoom: 8,
+  behaviors: ["disable('scrollZoom')", "drag"],
+};
 // const filials = [
 //   { name: "Сергиев Посад", coordinates: [56.284814, 38.124429],location: "Московская область, г. Сергиев Посад, Московское шоссе, д. 40" },
 //   { name: "Щелково", coordinates: [55.912773, 37.996608],location: "Московская область, г. Щелково, ул. Советская, д. 23" },
@@ -25,7 +29,9 @@ export default function Filials() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${addressServer}/api/filialies?populate=proizvodstvennye_otdeleniyas`)
+    fetch(
+      `${addressServer}/api/filialies?populate=proizvodstvennye_otdeleniyas`
+    )
       .then((response) => {
         return response.json();
       })
@@ -41,12 +47,20 @@ export default function Filials() {
   }, []);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <TopImage title={"Информация о компании"} />
       <div className="page-grid__content" id="content">
         <div className="branch-post">
           <h4 className="branch-post__caption">Аппарат управления</h4>
-          <span className="branch-post__adrees">Московская область, Красногорский район, 26 км автодороги Балтия, Бизнес Центр "RigaLand", строение 6, подъезд 4 </span>
+          <span className="branch-post__adrees">
+            Московская область, Красногорский район, 26 км автодороги Балтия,
+            Бизнес Центр "RigaLand", строение 6, подъезд 4{" "}
+          </span>
           <span className="branch-post__tel">8 (495) 780-39-62 </span>
           <a className="branch-post__email" href="tel:mail@mosoblenergo.ru">
             mail@mosoblenergo.ru
@@ -99,7 +113,11 @@ export default function Filials() {
         </div>
       </div>
       <YMaps>
-        <Map state={mapState} className="yandex-map" modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}>
+        <Map
+          state={mapState}
+          className="yandex-map"
+          modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+        >
           <ZoomControl />
           {filials.map((item, index) => (
             <Placemark

@@ -7,8 +7,10 @@ import TopImage from "../../components/TopImage";
 import img5d1dda82e3641ae19df5a51619ffb49c from "../../img/5d1dda82e3641ae19df5a51619ffb49c.jpg";
 import styles from "./SpecialProjects.module.css";
 
-const addressServer =
-  process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
+import { addressServer } from "../../config";
+
+// const addressServer =
+//   process.env.REACT_APP_BACKEND_SERVER || "https://mosoblenergo.ru/back";
 
 export default function SpecialProjects() {
   const [events, setEvents] = useState([]);
@@ -21,7 +23,6 @@ export default function SpecialProjects() {
         const response = await axios.get(
           `${addressServer}/api/speczialnye-proekties?populate=*`
         );
-        console.log(response.data)
         const eventData = response.data.data.map((event) => ({
           id: event.id,
           title: event.title,
@@ -31,8 +32,8 @@ export default function SpecialProjects() {
             : false,
           shortDescription: event.shortDescription,
           description: event.description,
-          image: `${addressServer}${event.mainPhoto.data.url}`,
-          link: `/specialProjects/${event.id}`,
+          image: `${addressServer}${event.mainPhoto.url}`,
+          link: `/specialProjects/${event.documentId}`,
         }));
         setEvents(eventData);
       } catch (error) {

@@ -116,7 +116,6 @@ button {
 }
 
 @media (max-width: 767px) {
-
   a,
   body,
   button,
@@ -524,7 +523,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -608,7 +608,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -768,7 +769,8 @@ button {
   -o-transition: -o-transform 20s ease;
   -moz-transition: transform 20s ease, -moz-transform 20s ease;
   transition: transform 20s ease;
-  transition: transform 20s ease, -webkit-transform 20s ease, -moz-transform 20s ease, -o-transform 20s ease;
+  transition: transform 20s ease, -webkit-transform 20s ease,
+    -moz-transform 20s ease, -o-transform 20s ease;
 }
 
 .post-block:hover .post-block__caption,
@@ -804,10 +806,34 @@ button {
 }
 
 .post-block__bg {
-  background: -webkit-linear-gradient(314.14deg, #0061aa 12.34%, rgba(0, 97, 170, 0) 49.36%), -webkit-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%), #0061aa;
-  background: -moz-linear-gradient(314.14deg, #0061aa 12.34%, rgba(0, 97, 170, 0) 49.36%), -moz-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%), #0061aa;
-  background: -o-linear-gradient(314.14deg, #0061aa 12.34%, rgba(0, 97, 170, 0) 49.36%), -o-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%), #0061aa;
-  background: linear-gradient(135.86deg, #0061aa 12.34%, rgba(0, 97, 170, 0) 49.36%), linear-gradient(134.7deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%), #0061aa;
+  background: -webkit-linear-gradient(
+      314.14deg,
+      #0061aa 12.34%,
+      rgba(0, 97, 170, 0) 49.36%
+    ),
+    -webkit-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%),
+    #0061aa;
+  background: -moz-linear-gradient(
+      314.14deg,
+      #0061aa 12.34%,
+      rgba(0, 97, 170, 0) 49.36%
+    ),
+    -moz-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%),
+    #0061aa;
+  background: -o-linear-gradient(
+      314.14deg,
+      #0061aa 12.34%,
+      rgba(0, 97, 170, 0) 49.36%
+    ),
+    -o-linear-gradient(315.3deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%),
+    #0061aa;
+  background: linear-gradient(
+      135.86deg,
+      #0061aa 12.34%,
+      rgba(0, 97, 170, 0) 49.36%
+    ),
+    linear-gradient(134.7deg, #008ed4 52.91%, rgba(0, 142, 212, 0) 84.1%),
+    #0061aa;
   z-index: 1;
 }
 
@@ -837,7 +863,8 @@ button {
   -o-transition: -o-transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out, -moz-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out, -moz-transform 0.5s ease-in-out, -o-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out,
+    -moz-transform 0.5s ease-in-out, -o-transform 0.5s ease-in-out;
   z-index: 3;
   opacity: 0;
   overflow: hidden;
@@ -850,10 +877,28 @@ button {
   top: 0;
   bottom: 0;
   right: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.5)), to(rgba(1, 31, 84, 0.5)));
-  background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(1, 31, 84, 0.5)),
+    to(rgba(1, 31, 84, 0.5))
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
   background: linear-gradient(0deg, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
   z-index: 2;
 }
@@ -1367,7 +1412,6 @@ button {
 }
 
 @media (max-width: 767px) {
-
   .pagination__item:nth-child(4),
   .pagination__item:nth-child(5),
   .pagination__item:nth-child(6) {
@@ -1683,7 +1727,9 @@ button {
 }
 
 .drop-down-adrees__item:hover .drop-down-adrees__wrap,
-.drop-down-adrees__item:hover+.drop-down-adrees__item .drop-down-adrees__wrap {
+.drop-down-adrees__item:hover
+  + .drop-down-adrees__item
+  .drop-down-adrees__wrap {
   border-color: transparent;
 }
 
@@ -1896,7 +1942,7 @@ button {
   margin: 0;
 }
 
-.accordion-row.open-accordion>.accordion-row__up::before {
+.accordion-row.open-accordion > .accordion-row__up::before {
   opacity: 1;
   left: -1px;
   top: -1px;
@@ -1907,12 +1953,14 @@ button {
   border-radius: 4px 4px 0 0;
 }
 
-.accordion-row.open-accordion .accordion-row__up:hover .accordion-row__wrap-arrow {
+.accordion-row.open-accordion
+  .accordion-row__up:hover
+  .accordion-row__wrap-arrow {
   width: 16px;
   margin-left: 12.5px;
 }
 
-.accordion-row.open-accordion .accordion-row__up.active>.accordion-row__text {
+.accordion-row.open-accordion .accordion-row__up.active > .accordion-row__text {
   color: #fff;
 }
 
@@ -2159,7 +2207,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
   -webkit-transform: translateY(-3px);
   -moz-transform: translateY(-3px);
   -ms-transform: translateY(-3px);
@@ -2248,7 +2297,7 @@ button {
 }
 
 .custom-select__item:hover .custom-select__row-text,
-.custom-select__item:hover+.custom-select__item .custom-select__row-text {
+.custom-select__item:hover + .custom-select__item .custom-select__row-text {
   border-color: transparent;
 }
 
@@ -2977,10 +3026,28 @@ button {
   right: 0;
   top: 0;
   bottom: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.5)), to(rgba(1, 31, 84, 0.5)));
-  background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(1, 31, 84, 0.5)),
+    to(rgba(1, 31, 84, 0.5))
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
   background: linear-gradient(0deg, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
   z-index: 2;
 }
@@ -3317,7 +3384,7 @@ button {
   height: 10px;
 }
 
-.link-block__item:hover+.link-block__item .link-block__link-row {
+.link-block__item:hover + .link-block__item .link-block__link-row {
   border-top-color: transparent;
 }
 
@@ -3419,10 +3486,28 @@ button {
 
 .block-info__wrap-img picture::before {
   content: "";
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.4)), to(rgba(1, 31, 84, 0.4)));
-  background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
-  background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
-  background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(1, 31, 84, 0.4)),
+    to(rgba(1, 31, 84, 0.4))
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
   background: linear-gradient(0deg, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
   z-index: 2;
 }
@@ -3436,7 +3521,8 @@ button {
   -o-transition: -o-transform 0.5s ease-in-out;
   -moz-transition: transform 0.5s ease-in-out, -moz-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out, -moz-transform 0.5s ease-in-out, -o-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out,
+    -moz-transform 0.5s ease-in-out, -o-transform 0.5s ease-in-out;
 }
 
 .block-info__wrap-text {
@@ -4083,7 +4169,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
 }
 
 .reviews-post__wrapper {
@@ -5089,10 +5176,28 @@ button {
   right: 0;
   bottom: 0;
   top: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.5)), to(rgba(1, 31, 84, 0.5)));
-  background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-  background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(1, 31, 84, 0.5)),
+    to(rgba(1, 31, 84, 0.5))
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.5),
+    rgba(1, 31, 84, 0.5)
+  );
   background: linear-gradient(0deg, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -5719,7 +5824,6 @@ button {
 }
 
 @media (max-width: 767px) {
-
   .form-page .file-field__label,
   .form-page .file-field__wrapper {
     margin-bottom: 16px;
@@ -7418,7 +7522,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
 }
 
 .positions-post picture {
@@ -8136,12 +8241,12 @@ button {
   border-top: 1px solid #d8dade;
 }
 
-.nav-menu__item--active+.nav-menu__item .nav-menu__link,
-.nav-menu__item:hover+.nav-menu__item .nav-menu__link {
+.nav-menu__item--active + .nav-menu__item .nav-menu__link,
+.nav-menu__item:hover + .nav-menu__item .nav-menu__link {
   border-top-color: transparent;
 }
 
-.nav-menu__item--active+.nav-menu__item .nav-menu__link:hover {
+.nav-menu__item--active + .nav-menu__item .nav-menu__link:hover {
   border: 1px solid #d8dade;
 }
 
@@ -8671,7 +8776,8 @@ button {
   -o-transition: -o-transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+    -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -moz-inline-box;
@@ -9057,10 +9163,28 @@ button {
   top: 0;
   bottom: 0;
   right: 0;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.4)), to(rgba(1, 31, 84, 0.4)));
-  background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
-  background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
-  background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(1, 31, 84, 0.4)),
+    to(rgba(1, 31, 84, 0.4))
+  );
+  background: -webkit-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
+  background: -moz-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(1, 31, 84, 0.4),
+    rgba(1, 31, 84, 0.4)
+  );
   background: linear-gradient(0deg, rgba(1, 31, 84, 0.4), rgba(1, 31, 84, 0.4));
   z-index: 10;
 }
@@ -9620,8 +9744,8 @@ button {
   border: 1px solid #767d8b;
 }
 
-.check-form__input:checked+.check-form__square::before,
-.check-form__input:checked+.topics-modal__square::before {
+.check-form__input:checked + .check-form__square::before,
+.check-form__input:checked + .topics-modal__square::before {
   position: absolute;
   content: "";
   left: 4px;
@@ -9901,7 +10025,7 @@ button {
   }
 }
 
-.topics-modal__wrap input:checked+.topics-modal__square::before {
+.topics-modal__wrap input:checked + .topics-modal__square::before {
   position: absolute;
   content: "";
   left: 3px;
@@ -10274,7 +10398,8 @@ button {
     -o-transition: -o-transform 0.3s ease-in-out;
     -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out,
+      -moz-transform 0.3s ease-in-out, -o-transform 0.3s ease-in-out;
   }
 
   .link-block__wrap-arrow svg {
@@ -11072,7 +11197,7 @@ button {
   }
 
   .mob-menu-drop__item--active,
-  .mob-menu-drop__item--active+.mob-menu-drop__item {
+  .mob-menu-drop__item--active + .mob-menu-drop__item {
     border-top-color: transparent;
   }
 
@@ -11545,11 +11670,33 @@ button {
     right: 0;
     top: 0;
     bottom: 0;
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(1, 31, 84, 0.5)), to(rgba(1, 31, 84, 0.5)));
-    background: -webkit-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-    background: -moz-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-    background: -o-linear-gradient(bottom, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
-    background: linear-gradient(0deg, rgba(1, 31, 84, 0.5), rgba(1, 31, 84, 0.5));
+    background: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      from(rgba(1, 31, 84, 0.5)),
+      to(rgba(1, 31, 84, 0.5))
+    );
+    background: -webkit-linear-gradient(
+      bottom,
+      rgba(1, 31, 84, 0.5),
+      rgba(1, 31, 84, 0.5)
+    );
+    background: -moz-linear-gradient(
+      bottom,
+      rgba(1, 31, 84, 0.5),
+      rgba(1, 31, 84, 0.5)
+    );
+    background: -o-linear-gradient(
+      bottom,
+      rgba(1, 31, 84, 0.5),
+      rgba(1, 31, 84, 0.5)
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(1, 31, 84, 0.5),
+      rgba(1, 31, 84, 0.5)
+    );
     z-index: 2;
   }
 
@@ -12120,4 +12267,8 @@ button {
   .header-inner .logo {
     max-width: 180px;
   }
+}
+
+.hh-button.ant-btn-primary span {
+  color: #fff !important;
 }

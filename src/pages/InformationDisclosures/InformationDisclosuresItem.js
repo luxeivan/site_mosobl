@@ -34,13 +34,14 @@ const customOrder = [
   "Изменения № 8 к Уставу акционерного общества «Московская областная энергосетевая компания» (новая редакция № 8) от 30.09.2024 №  15ВР-1985",
 ];
 
-
-
 export default function InformationDisclosuresItem() {
   const params = useParams();
+  // console.log("Ну давай уже проверим params", params);
+
   const [informationDisclosureItem, setinformationDisclosureItem] = useState(
     {}
   );
+
   const [copy, setCopy] = useState({});
 
   useEffect(() => {
@@ -51,8 +52,7 @@ export default function InformationDisclosuresItem() {
         return response.json();
       })
       .then((data) => {
-        console.log(data.data);
-        
+        // console.log("ПРОВЕРКА КАКИЕ ДАННЫЕ ПРИХОДЯТ", data.data);
         setinformationDisclosureItem(data.data);
         setCopy(data.data);
       })
@@ -67,9 +67,7 @@ export default function InformationDisclosuresItem() {
     if (copyObj) {
       copyObj.groupInfo.forEach((element) => {
         element.list_files.data = element.list_files.data.filter((item) =>
-          item.name
-            .toLowerCase()
-            .includes(event.target.value.toLowerCase())
+          item.name.toLowerCase().includes(event.target.value.toLowerCase())
         );
       });
       setinformationDisclosureItem(copyObj);
@@ -90,10 +88,7 @@ export default function InformationDisclosuresItem() {
     >
       <TopImage
         image={imgf4f40bee4b8a3fb6f95707a4da41d873}
-        title={
-          informationDisclosureItem &&
-          informationDisclosureItem.title
-        }
+        title={informationDisclosureItem && informationDisclosureItem.title}
       />
       <div className="page-grid__content" id="content">
         <div>
@@ -115,141 +110,125 @@ export default function InformationDisclosuresItem() {
           {informationDisclosureItem &&
             informationDisclosureItem &&
             informationDisclosureItem.groupInfo &&
-            informationDisclosureItem.groupInfo.map(
-              (item, index) => {
-                if (item.list_files.data.length < 1) {
-                  return false;
-                } else {
-                  return (
-                    <li className="page-grid__content" id="content" key={index}>
-                      <div className="row-docs-age">
-                        <h3 className="row-docs-age__caption line-bottom">
-                          {item.title}
-                        </h3>
-                        <ul>
-                          {item.list_files.data
-                            // .filter(
-                            //   (doc) =>
-                            //     !doc.name.includes("Антикоррупционная политика")
-                            // )
-                           
-                            .sort((a, b) => {
-                              if (
-                                a.name.search(/[\s.]20[0-9]{2}/gm) !=
-                                  -1 &&
-                                b.name.search(/[\s.]20[0-9]{2}/gm) ==
-                                  -1
-                              ) {
-                                return -1;
-                              }
-                              if (
-                                a.name.search(/[\s.]20[0-9]{2}/gm) ==
-                                  -1 &&
-                                b.name.search(/[\s.]20[0-9]{2}/gm) !=
-                                  -1
-                              ) {
-                                return 1;
-                              }
-                              //a.match(/20[0-9]{3} /gm)[0]
-                              //a.name.search(/20[0-9]{3} /gm)[0]
-                              return b.id - a.id;
-                            })
-                            .sort((a, b) => {
-                              if (
-                                a.name.search(/[\s.]20[0-9]{2}/gm) !=
-                                  -1 &&
-                                b.name.search(/[\s.]20[0-9]{2}/gm) !=
-                                  -1
-                              ) {
-                                return (
-                                  b.name
-                                    .match(/[\s.]20[0-9]{2}/gm)[0]
-                                    .slice(1) -
-                                  a.name
-                                    .match(/[\s.]20[0-9]{2}/gm)[0]
-                                    .slice(1)
-                                );
-                              }
-                            })
-                            .map((item) => {
-                              let searchDate = 0;
-                              if (
-                                item.name.search(
-                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
-                                ) != -1
-                              ) {
-                                let arr = item.name.match(
-                                  /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
-                                );
-                                let str = arr[arr.length - 1].split(".");
-                                let reredate = new Date(
-                                  str[2],
-                                  str[1] - 1,
-                                  str[0]
-                                );
-                                searchDate = reredate.getTime();
-                                // console.log(reredate.getTime());
-                              }
-                              return { ...item, searchDate };
-                            })
-                            .sort((a, b) => {
-                              // console.log();
-                              return b.searchDate - a.searchDate;
-                            })
-                            .sort((a, b) => {
-                              if (
-                                a.name.includes(
-                                  "Устав акционерного общества"
-                                )
-                              ) {
-                                return -1; // Устав всегда должен быть первым
-                              }
+            informationDisclosureItem.groupInfo?.map((item, index) => {
+              console.log(
+                "informationDisclosureItem.groupInfo",
+                informationDisclosureItem.groupInfo
+
+              );
+
+              if (item.list_files?.length < 1) {
+                console.log("item.list_files", item.list_files);
+                return false;
+              } else {
+                return (
+                  <li className="page-grid__content" id="content" key={index}>
+                    <div className="row-docs-age">
+                      <h3 className="row-docs-age__caption line-bottom">
+                        {item.title}
+                      </h3>
+                      <ul>
+                        {item.list_files
+
+                          ?.sort((a, b) => {
+                            console.log(
+                              "item.list_files.data",
+                              item.list_files
+                            );
+                            if (
+                              a.name.search(/[\s.]20[0-9]{2}/gm) != -1 &&
+                              b.name.search(/[\s.]20[0-9]{2}/gm) == -1
+                            ) {
+                              return -1;
+                            }
+                            if (
+                              a.name.search(/[\s.]20[0-9]{2}/gm) == -1 &&
+                              b.name.search(/[\s.]20[0-9]{2}/gm) != -1
+                            ) {
+                              return 1;
+                            }
+
+                            return b.id - a.id;
+                          })
+                          ?.sort((a, b) => {
+                            if (
+                              a.name.search(/[\s.]20[0-9]{2}/gm) != -1 &&
+                              b.name.search(/[\s.]20[0-9]{2}/gm) != -1
+                            ) {
                               return (
-                                customOrder.indexOf(a.name) -
-                                customOrder.indexOf(b.name)
+                                b.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1) -
+                                a.name.match(/[\s.]20[0-9]{2}/gm)[0].slice(1)
                               );
-                            })
-                            .map((item, index) => (
-                              <li
-                                key={index}
-                                className="page-grid__content__li"
+                            }
+                          })
+                          ?.map((item) => {
+                            let searchDate = 0;
+                            if (
+                              item.name.search(
+                                /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                              ) != -1
+                            ) {
+                              let arr = item.name.match(
+                                /[0-3][0-9].[0-1][0-9].2[0-9][0-9][0-9]/gm
+                              );
+                              let str = arr[arr.length - 1].split(".");
+                              let reredate = new Date(
+                                str[2],
+                                str[1] - 1,
+                                str[0]
+                              );
+                              searchDate = reredate.getTime();
+                            }
+                            return { ...item, searchDate };
+                          })
+                          ?.sort((a, b) => {
+                            return b.searchDate - a.searchDate;
+                          })
+                          ?.sort((a, b) => {
+                            if (
+                              a.name.includes("Устав акционерного общества")
+                            ) {
+                              return -1;
+                            }
+                            return (
+                              customOrder.indexOf(a.name) -
+                              customOrder.indexOf(b.name)
+                            );
+                          })
+                          ?.map((item, index) => (
+                            <li key={index} className="page-grid__content__li">
+                              <a
+                                className="doc-line"
+                                href={`${addressServer}${item.file.url}`}
+                                download=""
+                                rel="noopener noreferrer"
+                                target="_blank"
                               >
-                                <a
-                                  className="doc-line"
-                                  href={`${addressServer}${item.file.data.url}`}
-                                  download=""
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                >
-                                  <div className="doc-line__wrap-icon">
-                                    <img
-                                      src={type[item.type]}
-                                      alt={`icon ${item.type}`}
-                                    />
-                                  </div>
-                                  <div className="doc-line__wrap-text">
-                                    <span className="doc-line__name">
-                                      {item.name}
-                                    </span>
-                                    <span className="doc-line__file-info">
-                                      {item.type}{" "}
-                                      {Math.round(
-                                        item.file.data
-                                          .size
-                                      )}
-                                      kb
-                                    </span>
-                                  </div>
-                                </a>
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    </li>
-                  );
-                }
+                                <div className="doc-line__wrap-icon">
+                                  <img
+                                    src={type[item.type]}
+                                    alt={`icon ${item.type}`}
+                                  />
+                                </div>
+                                <div className="doc-line__wrap-text">
+                                  <span className="doc-line__name">
+                                    {item.name}
+                                  </span>
+                                  <span className="doc-line__file-info">
+                                    {item.type}{" "}
+                                    {Math.round(item.file.size)}
+                                    kb
+                                  </span>
+                                </div>
+                              </a>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </li>
+                );
               }
-            )}
+            })}
         </ul>
       </div>
     </motion.div>

@@ -17,7 +17,7 @@ import Cookies from "js-cookie";
 import { utils, writeFileXLSX } from "xlsx";
 
 const iconImageSize = [130 / 4, 221 / 4];
-let tempArray = []
+let tempArray = [];
 
 export default React.memo(function ElectricChargingStations() {
   const [loadingAllStation, setLoadingAllStation] = useState(false);
@@ -59,13 +59,15 @@ export default React.memo(function ElectricChargingStations() {
       .then(async (res) => {
         //await setAllListStation((prev) => prev.concat(res.data.data));
         //console.log('0: ',res.data.data);
-        tempArray = tempArray.concat(res.data.data)
+        tempArray = tempArray.concat(res.data.data);
         //console.log('1: ',tempArray);
-        if (res.data.meta.pagination.pageCount !== res.data.meta.pagination.page) {
+        if (
+          res.data.meta.pagination.pageCount !== res.data.meta.pagination.page
+        ) {
           await getAllStation(res.data.meta.pagination.page + 1);
         } else {
           // console.log('2: ',tempArray);
-          setAllListStation(tempArray)
+          setAllListStation(tempArray);
         }
       })
       .catch((err) => {
@@ -130,12 +132,12 @@ export default React.memo(function ElectricChargingStations() {
       );
       //console.log(res.data)
       const statusArray = listAllStation.map((station) => {
-        if (station.idStation) {
+        if (station.attributes.idStation) {
           const result = res.data.find(
             (plugmeStation) =>
-              station.idStation === plugmeStation.label
+              station.attributes.idStation === plugmeStation.label
           );
-          //console.log(station.idStation)
+          //console.log(station.attributes.idStation)
           if (result) {
             if (!result.connected) {
               return { ...station, statecode: "not available" };
@@ -174,11 +176,11 @@ export default React.memo(function ElectricChargingStations() {
     //console.log(listAllStation)
   }, [listAllStation]);
   useEffect(() => {
-    // const temp = Object.groupBy(listAllStationWithStatus,({attributes})=>attributes.gorodskoj_okrug.data.city)
+    // const temp = Object.groupBy(listAllStationWithStatus,({attributes})=>attributes.gorodskoj_okrug.data.attributes.city)
     let temp = listAllStationWithStatus.reduce((acc, obj) => {
       let property = "Без названия";
-      if (obj.gorodskoj_okrug.data) {
-        property = obj.gorodskoj_okrug.data.city;
+      if (obj.attributes.gorodskoj_okrug.data) {
+        property = obj.attributes.gorodskoj_okrug.data.attributes.city;
       }
       acc[property] = acc[property] || [];
       acc[property].push(obj);
@@ -236,18 +238,18 @@ export default React.memo(function ElectricChargingStations() {
     setLoadingAllStation(true);
     const arrayStation = listAllStation.map((item) => {
       return {
-        Адрес: item.address,
-        "Режим зарядки": item.charging_mode,
-        "Тип разьема": item.connector_type,
-        Статус: item.disabled ? "Временно отключена" : "Работает",
-        Широта: item.latitude,
-        Долгота: item.longitude,
-        "Метод установки": item.method_of_installation,
-        "Мобильное приложение": item.mobile_applications,
-        "Кол-во разьемов": item.number_of_connectors,
-        "Режим работы": item.operating_mode,
-        Мощность: item.power,
-        "Тех. поддержка": item.support_phone_number,
+        Адрес: item.attributes.address,
+        "Режим зарядки": item.attributes.charging_mode,
+        "Тип разьема": item.attributes.connector_type,
+        Статус: item.attributes.disabled ? "Временно отключена" : "Работает",
+        Широта: item.attributes.latitude,
+        Долгота: item.attributes.longitude,
+        "Метод установки": item.attributes.method_of_installation,
+        "Мобильное приложение": item.attributes.mobile_applications,
+        "Кол-во разьемов": item.attributes.number_of_connectors,
+        "Режим работы": item.attributes.operating_mode,
+        Мощность: item.attributes.power,
+        "Тех. поддержка": item.attributes.support_phone_number,
       };
     });
     const wb = utils.book_new();
@@ -316,8 +318,6 @@ export default React.memo(function ElectricChargingStations() {
           </div>
         </div>
       </div>
-
-
 
       {listAllStationWithStatus.length > 0 ? (
         <>
@@ -424,11 +424,11 @@ export default React.memo(function ElectricChargingStations() {
                 .filter((item) => {
                   if (item.statecode != "available" && !filter.unavailable)
                     return false;
-                  if (item.disabled && !filter.unavailable)
+                  if (item.attributes.disabled && !filter.unavailable)
                     return false;
-                  if (item.power == 22 && filter.power22)
+                  if (item.attributes.power == 22 && filter.power22)
                     return true;
-                  if (item.power == 3.5 && filter.power3_5)
+                  if (item.attributes.power == 3.5 && filter.power3_5)
                     return true;
                   return false;
                 })
@@ -437,69 +437,78 @@ export default React.memo(function ElectricChargingStations() {
                     <Placemark
                       // onClick={(event) => {
                       //     event.preventDefault()
-                      //     console.log(item.address)
+                      //     console.log(item.attributes.address)
                       // }}
                       key={index}
                       geometry={{
                         type: "Point",
                         coordinates: [
-                          item.latitude,
-                          item.longitude,
+                          item.attributes.latitude,
+                          item.attributes.longitude,
                         ],
                       }}
                       properties={{
                         balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${item
-                            .address
-                          }<br>
-                                                            <b>Мощность:</b> ${item
-                            .power
-                          } кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${item
-                            .connector_type
-                          }<br>
-                                                            <b>Режим зарядки:</b> ${item
-                            .charging_mode
-                          }<br>
-                                                            <b>Способ монтажа:</b> ${item
-                            .method_of_installation
-                          }<br>
-                                                            <b>Мобильное приложение:</b> ${item
-                            .mobile_applications
-                          }<br>
-                                                            <b>Тех. поддержка:</b> ${item
-                            .support_phone_number
-                          }<br>
-                                                            <b>Режим работы:</b> ${item
-                            .operating_mode
-                          }<br>
-                                                            ${item
-                            .disabled ||
-                            item.statecode !=
-                            "available"
-                            ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
-                            : ""
-                          }
+                                                            <b>Адрес:</b> ${
+                                                              item.attributes
+                                                                .address
+                                                            }<br>
+                                                            <b>Мощность:</b> ${
+                                                              item.attributes
+                                                                .power
+                                                            } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${
+                                                              item.attributes
+                                                                .connector_type
+                                                            }<br>
+                                                            <b>Режим зарядки:</b> ${
+                                                              item.attributes
+                                                                .charging_mode
+                                                            }<br>
+                                                            <b>Способ монтажа:</b> ${
+                                                              item.attributes
+                                                                .method_of_installation
+                                                            }<br>
+                                                            <b>Мобильное приложение:</b> ${
+                                                              item.attributes
+                                                                .mobile_applications
+                                                            }<br>
+                                                            <b>Тех. поддержка:</b> ${
+                                                              item.attributes
+                                                                .support_phone_number
+                                                            }<br>
+                                                            <b>Режим работы:</b> ${
+                                                              item.attributes
+                                                                .operating_mode
+                                                            }<br>
+                                                            ${
+                                                              item.attributes
+                                                                .disabled ||
+                                                              item.statecode !=
+                                                                "available"
+                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                                                                : ""
+                                                            }
                                                             </div>`,
                         //iconContent: "X",
                         //hintContent: "Ну давай уже тащи",
                         //balloonContent: 'А эта — новогодняя',
                         iconContent: "12",
-                        hintContent: `${item.address}`,
+                        hintContent: `${item.attributes.address}`,
                       }}
                       options={{
                         iconLayout: "default#image",
                         // Своё изображение иконки метки.
                         iconImageHref:
-                          item.power == 22
-                            ? item.disabled ||
+                          item.attributes.power == 22
+                            ? item.attributes.disabled ||
                               item.statecode != "available"
                               ? chargingIco_dis
                               : chargingIco22
-                            : item.disabled ||
+                            : item.attributes.disabled ||
                               item.statecode != "available"
-                              ? chargingIco_dis
-                              : chargingIco,
+                            ? chargingIco_dis
+                            : chargingIco,
                         // Размеры метки.
                         iconImageSize,
                         // Смещение левого верхнего угла иконки относительно
@@ -525,7 +534,7 @@ export default React.memo(function ElectricChargingStations() {
           </div>
         </>
       )}
-      {copy.length > 0 &&
+      {copy.length > 0 && (
         <>
           <input
             type="text"
@@ -538,7 +547,7 @@ export default React.memo(function ElectricChargingStations() {
             Очистить
           </button>
         </>
-      }
+      )}
       {/*--------------------------------------------------------------------------------------------------------------*/}
       {allStationForListCity.map((item, index) => {
         if (item.ezs.length === 0) return null;
@@ -586,46 +595,46 @@ export default React.memo(function ElectricChargingStations() {
                       </tr>
                       {item.ezs.map((item, index) => (
                         <tr key={index}>
-                          <td>{item.address}</td>
+                          <td>{item.attributes.address}</td>
                           <td>
-                            {item.latitude}{" "}
-                            {item.longitude}
+                            {item.attributes.latitude}{" "}
+                            {item.attributes.longitude}
                           </td>
                           <td
                             style={
-                              item.power == 22
+                              item.attributes.power == 22
                                 ? {
-                                  backgroundColor: "rgba(0,0,255,1)",
-                                  color: "#fff",
-                                  textAlign: "center",
-                                }
+                                    backgroundColor: "rgba(0,0,255,1)",
+                                    color: "#fff",
+                                    textAlign: "center",
+                                  }
                                 : {
-                                  backgroundColor: "rgba(0,255,0,1)",
-                                  color: "#000",
-                                  textAlign: "center",
-                                }
+                                    backgroundColor: "rgba(0,255,0,1)",
+                                    color: "#000",
+                                    textAlign: "center",
+                                  }
                             }
                           >
-                            {item.power}
+                            {item.attributes.power}
                           </td>
-                          <td>{item.connector_type}</td>
-                          <td>{item.charging_mode}</td>
-                          <td>{item.method_of_installation}</td>
-                          <td>{item.number_of_connectors}</td>
+                          <td>{item.attributes.connector_type}</td>
+                          <td>{item.attributes.charging_mode}</td>
+                          <td>{item.attributes.method_of_installation}</td>
+                          <td>{item.attributes.number_of_connectors}</td>
                           <td
                             style={
-                              item.disabled ||
-                                item.statecode != "available"
+                              item.attributes.disabled ||
+                              item.statecode != "available"
                                 ? {
-                                  backgroundColor: "rgba(255,0,0,1)",
-                                  color: "#fff",
-                                  textAlign: "center",
-                                }
+                                    backgroundColor: "rgba(255,0,0,1)",
+                                    color: "#fff",
+                                    textAlign: "center",
+                                  }
                                 : { textAlign: "center" }
                             }
                           >
-                            {item.disabled ||
-                              item.statecode != "available"
+                            {item.attributes.disabled ||
+                            item.statecode != "available"
                               ? "Временно недоступна"
                               : "Доступна"}
                           </td>
@@ -657,8 +666,8 @@ export default React.memo(function ElectricChargingStations() {
                       <Map
                         state={{
                           center: [
-                            item.ezs[0].latitude,
-                            item.ezs[0].longitude,
+                            item.ezs[0].attributes.latitude,
+                            item.ezs[0].attributes.longitude,
                           ],
                           zoom: 11,
                           behaviors: ["disable('scrollZoom')", "drag"],
@@ -677,60 +686,68 @@ export default React.memo(function ElectricChargingStations() {
                               geometry={{
                                 type: "Point",
                                 coordinates: [
-                                  item.latitude,
-                                  item.longitude,
+                                  item.attributes.latitude,
+                                  item.attributes.longitude,
                                 ],
                               }}
                               properties={{
                                 balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${item
-                                    .address
-                                  }<br>
-                                                            <b>Мощность:</b> ${item
-                                    .power
-                                  } кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${item
-                                    .connector_type
-                                  }<br>
-                                                            <b>Режим зарядки:</b> ${item
-                                    .charging_mode
-                                  }<br>
-                                                            <b>Мобильное приложение:</b> ${item
-                                    .mobile_applications
-                                  }<br>
-                                                            <b>Тех. поддержка:</b> ${item
-                                    .support_phone_number
-                                  }<br>
-                                                            <b>Режим работы:</b> ${item
-                                    .operating_mode
-                                  }<br>
-                                                            ${item
-                                    .disabled ||
-                                    item.statecode !=
-                                    "available"
-                                    ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
-                                    : ""
-                                  }
+                                                            <b>Адрес:</b> ${
+                                                              item.attributes
+                                                                .address
+                                                            }<br>
+                                                            <b>Мощность:</b> ${
+                                                              item.attributes
+                                                                .power
+                                                            } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${
+                                                              item.attributes
+                                                                .connector_type
+                                                            }<br>
+                                                            <b>Режим зарядки:</b> ${
+                                                              item.attributes
+                                                                .charging_mode
+                                                            }<br>
+                                                            <b>Мобильное приложение:</b> ${
+                                                              item.attributes
+                                                                .mobile_applications
+                                                            }<br>
+                                                            <b>Тех. поддержка:</b> ${
+                                                              item.attributes
+                                                                .support_phone_number
+                                                            }<br>
+                                                            <b>Режим работы:</b> ${
+                                                              item.attributes
+                                                                .operating_mode
+                                                            }<br>
+                                                            ${
+                                                              item.attributes
+                                                                .disabled ||
+                                                              item.statecode !=
+                                                                "available"
+                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                                                                : ""
+                                                            }
                                                             </div>`,
                                 //iconContent: "X",
                                 //hintContent: "Ну давай уже тащи",
                                 //balloonContent: 'А эта — новогодняя',
                                 iconContent: "12",
-                                hintContent: `${item.address}`,
+                                hintContent: `${item.attributes.address}`,
                               }}
                               options={{
                                 iconLayout: "default#image",
                                 // Своё изображение иконки метки.
                                 iconImageHref:
-                                  item.power == 22
-                                    ? item.disabled ||
+                                  item.attributes.power == 22
+                                    ? item.attributes.disabled ||
                                       item.statecode != "available"
                                       ? chargingIco_dis
                                       : chargingIco22
-                                    : item.disabled ||
+                                    : item.attributes.disabled ||
                                       item.statecode != "available"
-                                      ? chargingIco_dis
-                                      : chargingIco,
+                                    ? chargingIco_dis
+                                    : chargingIco,
                                 // Размеры метки.
                                 iconImageSize,
                                 // Смещение левого верхнего угла иконки относительно

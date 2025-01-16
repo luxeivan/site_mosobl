@@ -22,6 +22,7 @@ export default function PlannedOutages() {
       .then(res => setCountSubscriber(res.data.count))
       .catch(err => console.log(err));
   }, []);
+console.log(disconnects);
 
   return (
     <motion.div
@@ -111,10 +112,10 @@ export default function PlannedOutages() {
                     return 0;
                   }).map((item, index) =>
                     <tr key={index}>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.go}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.addressDisconnected}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
-                      <td style={{ textAlign: "center", padding: "10px" }}>{item.durationSolution}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.go}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.addressDisconnected}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{DateTime.fromISO(item.attributes.dateDisconnected).toLocaleString(DateTime.DATETIME_SHORT)}</td>
+                      <td style={{ textAlign: "center", padding: "10px" }}>{item.attributes.durationSolution}</td>
                     </tr>
                   )}
                 </tbody>

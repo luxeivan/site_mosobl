@@ -41,7 +41,7 @@ export default function SPMain() {
       <ul>
         {pasports &&
           pasports &&
-          pasports.files.data.map((item, index) => (
+          pasports.files?.map((item, index) => (
             <li key={index} className="page-grid__content__li">
               <a
                 className="doc-line"

@@ -214,8 +214,7 @@ export default function TCRates() {
           <ul>
             {documents &&
               documents &&
-              documents.files.data
-                .sort((a, b) => {
+              documents.files?.sort((a, b) => {
                   return (
                     parseInt(a.name, 10) -
                     parseInt(b.name, 10)

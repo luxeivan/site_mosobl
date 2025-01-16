@@ -16,15 +16,16 @@ export default function InformationDisclosures() {
         return response.json();
       })
       .then((data) =>
-        setInformationDisclosures(
-          data.data.sort((a, b) => a.sort - b.sort)
-        )
+        setInformationDisclosures(data.data.sort((a, b) => a.sort - b.sort))
       )
       .catch((err) => {
         console.log(err);
         setInformationDisclosures([]);
       });
   }, []);
+
+
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -52,22 +53,6 @@ export default function InformationDisclosures() {
             Рейтинги Компании
           </Link>
         </p>
-
-        {/* <p style={{ textAlign: "center", marginBottom: "10px" }}>
-          <a
-            className="planned-notification__link"
-            style={{
-              border: "1px solid rgb(227, 112, 33)",
-              boxShadow: "0px 0px 9px 3px rgba(227, 112, 33, 0.2)",
-            }}
-            href={`${addressServer}/uploads/20231123_Mosoblenergo_press_reliz_rus_5a57749dff.pdf?updated_at=2023-11-24T05:19:45.894Z`}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Кредитный рейтинг компании АО "Мособлэнерго" на уровне АА+(RU),
-            прогноз «Стабильный»
-          </a>
-        </p> */}
         <p style={{ textAlign: "center" }}>
           <a
             className="planned-notification__link"
@@ -81,18 +66,16 @@ export default function InformationDisclosures() {
         </p>
         <ul>
           {informationDisclosures &&
-            informationDisclosures.map((item, index) => (
+            informationDisclosures?.map((item, index) => (
               <li
                 key={index}
                 className="informationDisclosures__item li__margin-top"
               >
                 <Link
                   className="link-row link-row--change"
-                  to={`/informationDisclosures/${item.id}`}
+                  to={`/informationDisclosures/${item.documentId}`}
                 >
-                  <span className="link-row__text">
-                    {item.title}
-                  </span>
+                  <span className="link-row__text">{item.title}</span>
                   <div className="link-row__wrap-arrow">
                     <svg className="nav-menu__arrow">
                       <path
