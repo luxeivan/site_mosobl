@@ -99,8 +99,8 @@ console.log(disconnects);
                 </thead>
                 <tbody>
                   {disconnects.sort((a, b) => {
-                    const nameA = a.go.toUpperCase(); // ignore upper and lowercase
-                    const nameB = b.go.toUpperCase(); // ignore upper and lowercase
+                    const nameA = a.go?.toUpperCase(); // ignore upper and lowercase
+                    const nameB = b.go?.toUpperCase(); // ignore upper and lowercase
                     if (nameA < nameB) {
                       return -1;
                     }
