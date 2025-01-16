@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { addressServer } from "../../../config";
 import axios from "axios";
 
-
 const { Title } = Typography;
 
 export default function PracticePart() {
@@ -17,17 +16,51 @@ export default function PracticePart() {
         const response = await axios.get(
           `${addressServer}/api/moya-kareras/?populate=*`
         );
-        const fetchedText =
-          response.data.data[0].Practice?.UpperBlock || "Данные не найдены";
+  
+        // Массив всех записей:
+        const items = response.data?.data;
+  
+        if (!Array.isArray(items) || !items.length) {
+          setPracticeText("Данные не найдены");
+          return;
+        }
+
+        const lastItem = items.slice(-1)[0];
+  
+        // Достаём нужный текст:
+        const fetchedText = lastItem?.Practice?.UpperBlock || "Данные не найдены";
         setPracticeText(fetchedText);
       } catch (error) {
         console.error("Ошибка при загрузке текста:", error);
         setPracticeText("Ошибка загрузки данных");
       }
     };
-
+  
     fetchPracticeText();
   }, []);
+  
+
+  // useEffect(() => {
+  //   const fetchPracticeText = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${addressServer}/api/moya-kareras/?populate=*`
+  //       );
+  //       // const fetchedText =
+  //       //   response.data.data[0].Practice?.UpperBlock || "Данные не найдены";
+  //       // setPracticeText(fetchedText);
+  //       const fetchedText =
+  //         response.data?.data?.[0]?.Practice?.UpperBlock || "Данные не найдены";
+  //       setPracticeText(fetchedText);
+  //     } catch (error) {
+  //       console.error("Ошибка при загрузке текста:", error);
+  //       console.log("error.response", error.response);
+  //       setPracticeText("Ошибка загрузки данных");
+  //     }
+  //   };
+
+  //   fetchPracticeText();
+  // }, []);
 
   return (
     <Flex vertical align="center" justify="center">
