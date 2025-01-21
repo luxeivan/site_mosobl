@@ -59,7 +59,7 @@ const AdditionalServices = () => {
       throw error;
     }
   };
-
+console.log(services)
   // Получение всех данных услуг
   useEffect(() => {
     const fetchData = async () => {
@@ -241,28 +241,28 @@ const AdditionalServices = () => {
     children: (
       <>
         {/* Контактная информация */}
-        <Paragraph>
+        <Paragraph style={{fontSize:18}}>
           По вопросам оказания дополнительных услуг свяжитесь с нами: тел.:{" "}
-          <a href="tel:+74957803962">
+          <a href="tel:+74957803962" style={{fontSize:18}}>
             <b>8 (495) 780-39-62</b>
           </a>{" "}
           доб. 3327, доб. 1096; e-mail:{" "}
-          <a href="mailto:uslugi@mosoblenergo.ru">
+          <a href="mailto:uslugi@mosoblenergo.ru" style={{fontSize:18}}>
             <b>uslugi@mosoblenergo.ru</b>
           </a>
         </Paragraph>
 
         {/* Документы */}
-        {section.documents?.data && (
+        {section.documents && (
           <ul className={styles.list}>
-            {section.documents.data.map((doc, idx) => (
+            {section.documents.map((doc, idx) => (
               <li key={idx}>
                 <a
-                  href={`${addressServer}${doc.attributes.url}`}
+                  href={`${addressServer}${doc.url}`}
                   className={styles.documentLink}
                 >
-                  {getIconByExtension(doc.attributes.ext)}
-                  {doc.attributes.name}
+                  {getIconByExtension(doc.ext)}
+                  {doc.name}
                 </a>
               </li>
             ))}
