@@ -43,7 +43,7 @@ export default function ProductionPrograms() {
     >
       <TopImage
         image={img37550ba6c53ac1236dc634e6c4f22cc1}
-        title={"Производственные программы на 2025 год"}
+        title={"Производственные программы на 2024 год"}
       />
       <div className="page-grid__content" id="content">
         <div className="text-area">
