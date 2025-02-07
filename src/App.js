@@ -51,6 +51,7 @@ import InvestorDetail from "./pages/Investors/InvestorDetail";
 import CompanyRatings from "./pages/InformationDisclosures/CompanyRatings/CompanyRatings";
 import Universities from "./pages/Vacancy/Practice/Universities";
 import VacanciesTwo from "./pages/Vacancy/VacanciesTwo";
+import ProductionPrograms2025 from "./pages/consumers/ProductionPrograms2025";
 
 
 function App() {
@@ -129,7 +130,8 @@ function App() {
           <Route path="/chargingStations" element={<ChargingStations />} />
           <Route path="/saleOfItems" element={<SaleOfItems />} />
           <Route path="/attentionFraud" element={<AttentionFraud />} />
-          <Route path="/productionPrograms" element={<ProductionPrograms />} />
+          <Route path="/productionPrograms2024" element={<ProductionPrograms />} />
+          <Route path="/productionPrograms2025" element={<ProductionPrograms2025/>} />
 
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
