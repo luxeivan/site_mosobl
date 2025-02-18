@@ -3,7 +3,7 @@ import { Typography } from "antd";
 import Markdown from "markdown-to-jsx";
 import styles from "./MarkDownText.module.css";
 
-export default function MarkDownText({ children }) {
+export default function MarkDownText({ children, }) {
   if (typeof children !== "string") {
     return false;
   }
@@ -78,7 +78,7 @@ export default function MarkDownText({ children }) {
           },
           li: {
             props: {
-              className: styles.li,
+              // className: styles.li,
             },
           },
         },
