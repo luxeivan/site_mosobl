@@ -9,7 +9,7 @@ const mapState = { center: [55.76, 37.64], zoom: 8, behaviors: ["disable('scroll
 export default function Filial() {
   const [filial, setFilial] = useState({});
   const params = useParams();
-console.log(params);
+// console.log(params);
 
   useEffect(() => {
     fetch(`${addressServer}/api/filialies/${params.id}?populate[0]=proizvodstvennye_otdeleniyas&populate[1]=kontakties&populate[2]=proizvodstvennye_otdeleniyas.kontakties&populate[3]=work_schedule&populate[4]=proizvodstvennye_otdeleniyas.work_schedule`)
@@ -17,7 +17,7 @@ console.log(params);
         return response.json();
       })
       .then((data) => {
-        console.log("data",data)
+        // console.log("data",data)
         setFilial(data.data)
       })
       .catch((err) => {
@@ -62,10 +62,11 @@ console.log(params);
               </div>{" "}
               <h1 className="inner-post__title inner-post__margin">{filial && filial.name}</h1>
               <span className="inner-post__date inner-post__margin">{filial && filial.address} </span>
-              <div style={{ display: "flex", flexDirection: "column",marginLeft:20,marginTop:10 }}>
+              <div style={{ display: "flex", flexDirection: "column",marginLeft:20,marginTop:10,marginBottom:10 }}>
 
                 {filial && filial.work_schedule?.map((item, index) => <p key={index}><span className="inner-post__date ">{item.days} - </span><span style={{ fontWeight: 700,marginLeft:0 }} className="inner-post__date inner-post__margin">{item.times}</span></p>)}
               </div>
+              <p className="inner-post__date inner-post__margin">{filial && filial.email && <span className="inner-post__date">Email: <a className="inner-post__date" href={`mailto:${filial.email}`}>{filial.email}</a></span> } </p>
 
               {filial && filial.name && filial.name.toLowerCase() == 'мытищинский филиал' ? <p style={{ marginTop: "10px", lineHeight: "150%", fontSize: "20px", marginLeft: "20px" }}><b style={{ fontWeight: "700" }}>Уважаемые потребители!</b> В связи с аварийной ситуацией, произошедшей на линии телефонной связи в г.о.Мытищи, дозвон по номеру +7 (495) 586-70-07 временно затруднен. По вопросам аварийных отключений и качеству электроэнергии вы можете обращаться по номеру <b style={{ fontWeight: "700" }}>«Горячей линии» +7 (495) 99-500-99</b>, по вопросам технологического присоединения <b style={{ fontWeight: "700" }}>+7 (495) 785-00-00</b>.   <br />Приносим извинения за доставленные неудобства!</p> : false}
             </div>

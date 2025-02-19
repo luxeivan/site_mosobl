@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import telImg from "../img/contacts-icon2.svg";
 import emailImg from "../img/contacts-icon4.svg";
 import mapImg from "../img/contacts-icon1.svg";
@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import imgfile178scaled from "../img/file_178-scaled.jpg";
 import TopImage from "../components/TopImage";
 import FeedbackForm from "../components/FeedbackForm/FeedbackForm";
+import { Divider, Descriptions, List, Typography, Card, Flex } from "antd";
+import { addressServer } from "../config";
 
 export default function Contact() {
   // const [contact, setContact] = useState({});
@@ -21,6 +23,25 @@ export default function Contact() {
   //       setContact({});
   //     });
   // }, []);
+  const [filials, setFilials] = useState([]);
+  useEffect(() => {
+    fetch(`${addressServer}/api/filialies/?fields[0]=name&fields[1]=email`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data", data.data)
+        setFilials(data.data.map(item => ({
+          key: item.id,
+          label: item.name,
+          children: <a href={`mailto:${item.email}`}>{item.email}</a>,
+        })))
+      })
+      .catch((err) => {
+        console.log(err);
+        setFilials([]);
+      });
+  }, []);
 
   return (
     <motion.div
@@ -133,9 +154,22 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+            <Divider />
+            <Typography.Title level={2}>Адреса электронных почт филиалов</Typography.Title>
+            <Flex wrap="wrap" gap={20} >
+              {filials.map(item=><Card style={{width:300}} key={item.key} title={item.label}>{item.children}</Card>)}
+            </Flex>
+            {}
+          
+            {/* <Descriptions title={
+              <Typography.Title level={2}>Адреса электронных почт филиалов</Typography.Title>
+              } 
+              items={filials} 
+              column={{ xs: 1, sm: 1, md: 1,lg:2,xl:2,xxl:3}} 
+              styles={{label:{border:0},content:{border:0},root:{border:0}}}/> */}
 
             {/* Напишите нам */}
-            <div className="contact-information__down">
+            <div className="contact-information__down" style={{ marginTop: 20 }}>
               <div className="wrapper__btn">
                 <FeedbackForm />
               </div>
