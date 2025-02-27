@@ -155,7 +155,7 @@ export default function Contact() {
               </div>
             </div>
             <Divider />
-            <Typography.Title level={2}>Адреса электронных почт филиалов</Typography.Title>
+            <Typography.Title level={2}>Адреса электронной почты филиалов</Typography.Title>
             <Flex wrap="wrap" gap={20} >
               {filials.map(item=><Card style={{width:300}} key={item.key} title={item.label}>{item.children}</Card>)}
             </Flex>
