@@ -6,6 +6,7 @@ import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { chargingAddressServer } from "../config";
 import chargingIco from "../img/Chargingico.png";
 import chargingIco22 from "../img/Chargingico22.png";
+import chargingIco150 from "../img/Chargingico150.png";
 import chargingIco_dis from "../img/Chargingico_dis.png";
 import qrPlaymarket from "../img/qr_plugme_playmarket.svg";
 import qrAppstore from "../img/qr_plugme_appstore.svg";
@@ -30,6 +31,7 @@ export default React.memo(function ElectricChargingStations() {
   const [filter, setFilter] = useState({
     power3_5: true,
     power22: true,
+    power150: true,
     unavailable: true,
   });
   // function getStation(page = 1) {
@@ -114,6 +116,9 @@ export default React.memo(function ElectricChargingStations() {
       Cookies.set("plugmetoken", res.data.access_token, { expires: 1 });
       getChargePoint();
     } catch (error) {
+      setAllListStationWithStatus(listAllStation.map((station) => {
+        return { ...station, statecode: "available" }
+      }))
       console.error("Ошибка при получении токена PlugMe: ", error);
     }
   };
@@ -266,6 +271,9 @@ export default React.memo(function ElectricChargingStations() {
   const changePower22 = (event) => {
     setFilter({ ...filter, power22: !filter.power22 });
   };
+  const changePower150 = (event) => {
+    setFilter({ ...filter, power150: !filter.power150 });
+  };
   const changeUnavailable = (event) => {
     setFilter({ ...filter, unavailable: !filter.unavailable });
   };
@@ -390,6 +398,35 @@ export default React.memo(function ElectricChargingStations() {
               <input
                 className="form-check-input"
                 type="checkbox"
+                onChange={changePower150}
+                checked={filter.power150}
+                id="power150"
+                style={{ width: "20px", height: "20px", marginRight: "10px" }}
+              />
+              <label
+                className="form-check-label"
+                htmlFor="power150"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <h4 style={{ marginBottom: "0" }}>- 150 кВт: </h4>
+                <img
+                  style={{ width: `25px` }}
+                  src={chargingIco150}
+                  alt="текст"
+                />
+              </label>
+            </div>
+            <div
+              className="form-check"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "20px",
+              }}
+            >
+              <input
+                className="form-check-input"
+                type="checkbox"
                 onChange={changeUnavailable}
                 checked={filter.unavailable}
                 id="unavailable"
@@ -430,6 +467,8 @@ export default React.memo(function ElectricChargingStations() {
                     return true;
                   if (item.attributes.power == 3.5 && filter.power3_5)
                     return true;
+                  if (item.attributes.power == 150 && filter.power150)
+                    return true;
                   return false;
                 })
                 .map((item, index) => {
@@ -449,46 +488,37 @@ export default React.memo(function ElectricChargingStations() {
                       }}
                       properties={{
                         balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${
-                                                              item.attributes
-                                                                .address
-                                                            }<br>
-                                                            <b>Мощность:</b> ${
-                                                              item.attributes
-                                                                .power
-                                                            } кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${
-                                                              item.attributes
-                                                                .connector_type
-                                                            }<br>
-                                                            <b>Режим зарядки:</b> ${
-                                                              item.attributes
-                                                                .charging_mode
-                                                            }<br>
-                                                            <b>Способ монтажа:</b> ${
-                                                              item.attributes
-                                                                .method_of_installation
-                                                            }<br>
-                                                            <b>Мобильное приложение:</b> ${
-                                                              item.attributes
-                                                                .mobile_applications
-                                                            }<br>
-                                                            <b>Тех. поддержка:</b> ${
-                                                              item.attributes
-                                                                .support_phone_number
-                                                            }<br>
-                                                            <b>Режим работы:</b> ${
-                                                              item.attributes
-                                                                .operating_mode
-                                                            }<br>
-                                                            ${
-                                                              item.attributes
-                                                                .disabled ||
-                                                              item.statecode !=
-                                                                "available"
-                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
-                                                                : ""
-                                                            }
+                                                            <b>Адрес:</b> ${item.attributes
+                            .address
+                          }<br>
+                                                            <b>Мощность:</b> ${item.attributes
+                            .power
+                          } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${item.attributes
+                            .connector_type
+                          }<br>
+                                                            <b>Режим зарядки:</b> ${item.attributes
+                            .charging_mode
+                          }<br>
+                                                            <b>Способ монтажа:</b> ${item.attributes
+                            .method_of_installation
+                          }<br>
+                                                            <b>Мобильное приложение:</b> ${item.attributes
+                            .mobile_applications
+                          }<br>
+                                                            <b>Тех. поддержка:</b> ${item.attributes
+                            .support_phone_number
+                          }<br>
+                                                            <b>Режим работы:</b> ${item.attributes
+                            .operating_mode
+                          }<br>
+                                                            ${item.attributes
+                            .disabled ||
+                            item.statecode !=
+                            "available"
+                            ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                            : ""
+                          }
                                                             </div>`,
                         //iconContent: "X",
                         //hintContent: "Ну давай уже тащи",
@@ -499,16 +529,26 @@ export default React.memo(function ElectricChargingStations() {
                       options={{
                         iconLayout: "default#image",
                         // Своё изображение иконки метки.
-                        iconImageHref:
-                          item.attributes.power == 22
-                            ? item.attributes.disabled ||
-                              item.statecode != "available"
-                              ? chargingIco_dis
-                              : chargingIco22
-                            : item.attributes.disabled ||
-                              item.statecode != "available"
-                            ? chargingIco_dis
-                            : chargingIco,
+                        iconImageHref: (() => {
+                          if (item.attributes.disabled || item.statecode != "available") {
+                            return chargingIco_dis
+                          }else if(item.attributes.power == 22){
+                            return chargingIco22
+                          }else if(item.attributes.power == 150){
+                            return chargingIco150
+                          }else {
+                            return chargingIco
+                          }
+                        })(),
+                        // item.attributes.power == 22
+                        //   ? item.attributes.disabled ||
+                        //     item.statecode != "available"
+                        //     ? chargingIco_dis
+                        //     : chargingIco22
+                        //   : item.attributes.disabled ||
+                        //     item.statecode != "available"
+                        //     ? chargingIco_dis
+                        //     : chargingIco,
                         // Размеры метки.
                         iconImageSize,
                         // Смещение левого верхнего угла иконки относительно
@@ -601,18 +641,38 @@ export default React.memo(function ElectricChargingStations() {
                             {item.attributes.longitude}
                           </td>
                           <td
-                            style={
-                              item.attributes.power == 22
-                                ? {
-                                    backgroundColor: "rgba(0,0,255,1)",
-                                    color: "#fff",
-                                    textAlign: "center",
-                                  }
-                                : {
-                                    backgroundColor: "rgba(0,255,0,1)",
-                                    color: "#000",
-                                    textAlign: "center",
-                                  }
+                            style={(() => {
+                              if (item.attributes.power == 22) {
+                                return {
+                                  backgroundColor: "rgba(0,0,255,1)",
+                                  color: "#fff",
+                                  textAlign: "center",
+                                }
+                              } else if (item.attributes.power == 150) {
+                                return {
+                                  backgroundColor: "rgba(218,132,64,1)",
+                                  color: "#000",
+                                  textAlign: "center",
+                                }
+                              } else {
+                                return {
+                                  backgroundColor: "rgba(0,255,0,1)",
+                                  color: "#000",
+                                  textAlign: "center",
+                                }
+                              }
+                            })()
+                              // item.attributes.power == 22
+                              //   ? {
+                              //       backgroundColor: "rgba(0,0,255,1)",
+                              //       color: "#fff",
+                              //       textAlign: "center",
+                              //     }
+                              //   : {
+                              //       backgroundColor: "rgba(0,255,0,1)",
+                              //       color: "#000",
+                              //       textAlign: "center",
+                              //     }
                             }
                           >
                             {item.attributes.power}
@@ -624,17 +684,17 @@ export default React.memo(function ElectricChargingStations() {
                           <td
                             style={
                               item.attributes.disabled ||
-                              item.statecode != "available"
+                                item.statecode != "available"
                                 ? {
-                                    backgroundColor: "rgba(255,0,0,1)",
-                                    color: "#fff",
-                                    textAlign: "center",
-                                  }
+                                  backgroundColor: "rgba(255,0,0,1)",
+                                  color: "#fff",
+                                  textAlign: "center",
+                                }
                                 : { textAlign: "center" }
                             }
                           >
                             {item.attributes.disabled ||
-                            item.statecode != "available"
+                              item.statecode != "available"
                               ? "Временно недоступна"
                               : "Доступна"}
                           </td>
@@ -692,42 +752,34 @@ export default React.memo(function ElectricChargingStations() {
                               }}
                               properties={{
                                 balloonContent: `<div className="ballon-down">
-                                                            <b>Адрес:</b> ${
-                                                              item.attributes
-                                                                .address
-                                                            }<br>
-                                                            <b>Мощность:</b> ${
-                                                              item.attributes
-                                                                .power
-                                                            } кВт/ч<br>
-                                                            <b>Тип разьема:</b> ${
-                                                              item.attributes
-                                                                .connector_type
-                                                            }<br>
-                                                            <b>Режим зарядки:</b> ${
-                                                              item.attributes
-                                                                .charging_mode
-                                                            }<br>
-                                                            <b>Мобильное приложение:</b> ${
-                                                              item.attributes
-                                                                .mobile_applications
-                                                            }<br>
-                                                            <b>Тех. поддержка:</b> ${
-                                                              item.attributes
-                                                                .support_phone_number
-                                                            }<br>
-                                                            <b>Режим работы:</b> ${
-                                                              item.attributes
-                                                                .operating_mode
-                                                            }<br>
-                                                            ${
-                                                              item.attributes
-                                                                .disabled ||
-                                                              item.statecode !=
-                                                                "available"
-                                                                ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
-                                                                : ""
-                                                            }
+                                                            <b>Адрес:</b> ${item.attributes
+                                    .address
+                                  }<br>
+                                                            <b>Мощность:</b> ${item.attributes
+                                    .power
+                                  } кВт/ч<br>
+                                                            <b>Тип разьема:</b> ${item.attributes
+                                    .connector_type
+                                  }<br>
+                                                            <b>Режим зарядки:</b> ${item.attributes
+                                    .charging_mode
+                                  }<br>
+                                                            <b>Мобильное приложение:</b> ${item.attributes
+                                    .mobile_applications
+                                  }<br>
+                                                            <b>Тех. поддержка:</b> ${item.attributes
+                                    .support_phone_number
+                                  }<br>
+                                                            <b>Режим работы:</b> ${item.attributes
+                                    .operating_mode
+                                  }<br>
+                                                            ${item.attributes
+                                    .disabled ||
+                                    item.statecode !=
+                                    "available"
+                                    ? "<h4 style='color: red; margin-bottom: 0'>ВРЕМЕННО НЕДОСТУПНА</h4>"
+                                    : ""
+                                  }
                                                             </div>`,
                                 //iconContent: "X",
                                 //hintContent: "Ну давай уже тащи",
@@ -746,8 +798,8 @@ export default React.memo(function ElectricChargingStations() {
                                       : chargingIco22
                                     : item.attributes.disabled ||
                                       item.statecode != "available"
-                                    ? chargingIco_dis
-                                    : chargingIco,
+                                      ? chargingIco_dis
+                                      : chargingIco,
                                 // Размеры метки.
                                 iconImageSize,
                                 // Смещение левого верхнего угла иконки относительно
