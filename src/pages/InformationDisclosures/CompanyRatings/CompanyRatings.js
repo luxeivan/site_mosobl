@@ -53,7 +53,7 @@ export default function CompanyRatings() {
           {ratings.map((rating, index) => (
             <li key={index} className="page-grid__content__li">
               <a
-                href={`${addressServer}${rating.files.data[0].url}`}
+                href={`${addressServer}${rating.files[0].url}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="doc-line"
@@ -62,10 +62,10 @@ export default function CompanyRatings() {
                   <img
                     src={
                       type[
-                        rating.files.data[0].ext.slice(1)
+                        rating.files[0].ext.slice(1)
                       ] || pdf
                     }
-                    alt={`icon ${rating.files.data[0].ext.slice(
+                    alt={`icon ${rating.files[0].ext.slice(
                       1
                     )}`}
                   />
@@ -75,11 +75,11 @@ export default function CompanyRatings() {
                     {rating.title}
                   </span>
                   <span className="doc-line__file-info">
-                    {rating.files.data[0].ext
+                    {rating.files[0].ext
                       .slice(1)
                       .toUpperCase()}{" "}
                     {Math.round(
-                      rating.files.data[0].size
+                      rating.files[0].size
                     )}{" "}
                     kb
                   </span>
