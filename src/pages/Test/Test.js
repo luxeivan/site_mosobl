@@ -18,18 +18,22 @@ const { Search } = Input;
 const { Option } = Select;
 const { Text } = Typography;
 
-const buildPath = (cat) => {
-  if (!cat) return "—";
-  const parent = cat.parent;
-  return parent ? `${parent.title} / ${cat.title}` : cat.title;
+/* ───────── helpers ───────── */
+
+const buildPath = (catAttr) => {
+  if (!catAttr) return "—";
+  const rawParent = catAttr.parents;
+  const parentAttr = rawParent?.data?.attributes ?? rawParent ?? null;
+  const parentTitle = parentAttr?.title;
+  return parentTitle ? `${parentTitle} / ${catAttr.title}` : catAttr.title;
 };
 
 const buildTree = (paths) => {
   const root = {};
   paths.forEach((p) =>
-    p.split(" / ").reduce((n, s, i, a) => {
+    p.split(" / ").reduce((n, s, i, arr) => {
       n.children ??= {};
-      n.children[s] ??= { title: s, value: a.slice(0, i + 1).join(" / ") };
+      n.children[s] ??= { title: s, value: arr.slice(0, i + 1).join(" / ") };
       return n.children[s];
     }, root)
   );
@@ -44,6 +48,8 @@ const buildTree = (paths) => {
 
 const palette = ["blue", "green", "volcano", "purple", "gold"];
 
+/* ───────── component ───────── */
+
 export default function Test() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -51,41 +57,62 @@ export default function Test() {
   const [catFilter, setCatFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
 
+  /* load from Strapi */
   useEffect(() => {
-    const url =
+    fetch(
       `${addressServer}/api/information-files` +
-      "?populate[0]=file" +
-      "&populate[1]=informacziya_kategorii.parent" +
-      "&pagination[pageSize]=1000" +
-      "&sort=year:desc";
-
-    fetch(url)
+        "?populate[0]=file" +
+        "&populate[1]=informacziya_kategorii.parents" +
+        "&pagination[pageSize]=1000" +
+        "&sort=year:desc"
+    )
       .then((r) => r.json())
       .then(({ data }) => {
-        if (!Array.isArray(data)) return setRows([]);
-        setRows(
-          data.map((item) => {
-            const cat = item.informacziya_kategorii;
-            return {
-              key: item.id,
-              title: item.title,
-              type: item.type,
-              year: Number(String(item.year).replace(/[^\d]/g, "")) || 0,
-              category: buildPath(cat),
-              url: addressServer + (item.file?.url || ""),
-            };
-          })
-        );
+        if (!Array.isArray(data)) {
+          //  защита от 403/500
+          setRows([]);
+          return;
+        }
+
+        const mapped = data.map((item) => {
+          // сама категория
+          const cat = item.informacziya_kategorii;
+
+          // Первый родитель: либо parents[0], либо parent
+          const parent =
+            cat?.parents?.[0] ?? // new populate → parents (массив)
+            cat?.parent ?? // old populate → parent  (объект)
+            null;
+
+          const categoryStr = parent
+            ? `${parent.title} / ${cat?.title ?? "—"}`
+            : cat?.title ?? "—";
+
+          return {
+            key: item.id,
+            title: item.title ?? "",
+            type: item.type ?? "",
+            year: Number(String(item.year ?? "").replace(/[^\d]/g, "")) || 0,
+            category: categoryStr,
+            url: item.file?.url ? addressServer + item.file.url : "",
+          };
+        });
+
+        setRows(mapped);
       })
+
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 
+  /* dictionaries */
   const categoryPaths = useMemo(
-    () => Array.from(new Set(rows.map((r) => r.category).filter(Boolean))),
+    () =>
+      [...new Set(rows.map((r) => r.category))].filter(
+        (p) => p && p !== "—" && !p.startsWith("undefined")
+      ),
     [rows]
   );
-
   const cascaderOptions = useMemo(
     () => buildTree(categoryPaths),
     [categoryPaths]
@@ -93,9 +120,10 @@ export default function Test() {
 
   const yearOptions = useMemo(() => {
     const set = new Set(rows.map((r) => r.year).filter(Boolean));
-    return ["all", ...Array.from(set).sort((a, b) => b - a)];
+    return ["all", ...[...set].sort((a, b) => b - a)];
   }, [rows]);
 
+  /* filtering */
   const dataSource = useMemo(
     () =>
       rows.filter((r) => {
@@ -107,6 +135,7 @@ export default function Test() {
     [rows, catFilter, yearFilter, searchText]
   );
 
+  /* columns */
   const columns = [
     {
       title: "Название",
@@ -119,7 +148,7 @@ export default function Test() {
     {
       title: "Категория",
       dataIndex: "category",
-      width: 350,
+      width: 420,
       render: (p) =>
         p.split(" / ").map((s, i) => (
           <Tag
@@ -142,7 +171,7 @@ export default function Test() {
     {
       title: "Скачать",
       dataIndex: "url",
-      width: 100,
+      width: 90,
       render: (u) =>
         u ? (
           <a href={u} target="_blank" rel="noopener noreferrer">
@@ -154,9 +183,10 @@ export default function Test() {
     },
   ];
 
+  /* UI */
   return (
     <>
-      <TopImage image={headerImg} title="Раскрытие информации TEST" />
+      <TopImage image={headerImg} title="Раскрытие информации" />
       <div className="page-grid__content">
         <Space direction="vertical" style={{ width: "100%" }} size="large">
           <Space wrap>
@@ -172,9 +202,7 @@ export default function Test() {
               placeholder="Все категории"
               allowClear
               value={catFilter === "all" ? undefined : catFilter.split(" / ")}
-              onChange={(v) =>
-                setCatFilter(v && v.length ? v.join(" / ") : "all")
-              }
+              onChange={(v) => setCatFilter(v?.length ? v.join(" / ") : "all")}
               showSearch
             />
             <Select
