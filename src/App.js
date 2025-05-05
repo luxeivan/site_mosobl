@@ -52,7 +52,7 @@ import CompanyRatings from "./pages/InformationDisclosures/CompanyRatings/Compan
 import Universities from "./pages/Vacancy/Practice/Universities";
 import VacanciesTwo from "./pages/Vacancy/VacanciesTwo";
 import ProductionPrograms2025 from "./pages/consumers/ProductionPrograms2025";
-
+import Test from "./pages/Test/Test";
 
 function App() {
   useEffect(() => {
@@ -90,7 +90,7 @@ function App() {
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
           <Route path="/mycareer" element={<Vacancies />} />
-         
+
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/informationOnBonds" element={<InformationOnBonds />} />
@@ -130,13 +130,20 @@ function App() {
           <Route path="/chargingStations" element={<ChargingStations />} />
           <Route path="/saleOfItems" element={<SaleOfItems />} />
           <Route path="/attentionFraud" element={<AttentionFraud />} />
-          <Route path="/productionPrograms2024" element={<ProductionPrograms />} />
-          <Route path="/productionPrograms2025" element={<ProductionPrograms2025/>} />
+          <Route
+            path="/productionPrograms2024"
+            element={<ProductionPrograms />}
+          />
+          <Route
+            path="/productionPrograms2025"
+            element={<ProductionPrograms2025 />}
+          />
 
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
           <Route path="/secrethr" element={<VacanciesTwo />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/universities" element={<Universities />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
