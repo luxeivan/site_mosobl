@@ -18,8 +18,6 @@ const { Search } = Input;
 const { Option } = Select;
 const { Text } = Typography;
 
-/* ───────── helpers ───────── */
-
 const buildPath = (catAttr) => {
   if (!catAttr) return "—";
   const rawParent = catAttr.parents;
@@ -48,8 +46,6 @@ const buildTree = (paths) => {
 
 const palette = ["blue", "green", "volcano", "purple", "gold"];
 
-/* ───────── component ───────── */
-
 export default function Test() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,7 +53,6 @@ export default function Test() {
   const [catFilter, setCatFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
 
-  /* load from Strapi */
   useEffect(() => {
     fetch(
       `${addressServer}/api/information-files` +
@@ -69,20 +64,14 @@ export default function Test() {
       .then((r) => r.json())
       .then(({ data }) => {
         if (!Array.isArray(data)) {
-          //  защита от 403/500
           setRows([]);
           return;
         }
 
         const mapped = data.map((item) => {
-          // сама категория
           const cat = item.informacziya_kategorii;
 
-          // Первый родитель: либо parents[0], либо parent
-          const parent =
-            cat?.parents?.[0] ?? // new populate → parents (массив)
-            cat?.parent ?? // old populate → parent  (объект)
-            null;
+          const parent = cat?.parents?.[0] ?? cat?.parent ?? null;
 
           const categoryStr = parent
             ? `${parent.title} / ${cat?.title ?? "—"}`
@@ -105,7 +94,6 @@ export default function Test() {
       .finally(() => setLoading(false));
   }, []);
 
-  /* dictionaries */
   const categoryPaths = useMemo(
     () =>
       [...new Set(rows.map((r) => r.category))].filter(
@@ -123,7 +111,6 @@ export default function Test() {
     return ["all", ...[...set].sort((a, b) => b - a)];
   }, [rows]);
 
-  /* filtering */
   const dataSource = useMemo(
     () =>
       rows.filter((r) => {
