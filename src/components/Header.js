@@ -786,6 +786,7 @@ export default function Header() {
                           display: "flex",
                           alignItems: "flex-end",
                           gap: "20px",
+                          justifyContent:"center"
                         }}
                       >
                         <img
