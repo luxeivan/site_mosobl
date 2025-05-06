@@ -14,13 +14,22 @@ import TopImage from "../../components/TopImage";
 import headerImg from "../../img/b04877a3110d6b586d064fc3a2853c70.jpg";
 import { addressServer } from "../../config";
 
+import pdf from "../../img/pdf.svg";
+import doc from "../../img/doc.svg";
+import docx from "../../img/docx.svg";
+import rar from "../../img/rar.svg";
+import xls from "../../img/xls.svg";
+import jpg from "../../img/jpg.svg";
+
+const fileIcons = { pdf, doc, docx, rar, xls, jpg };
+
 const { Search } = Input;
 const { Option } = Select;
 const { Text } = Typography;
 
 const buildPath = (cat) => {
   if (!cat) return "—";
-  const parent = cat.parent ?? null;
+  const parent = cat.parent?.parent ? null : cat.parent;
   return parent ? `${parent.title} / ${cat.title}` : cat.title;
 };
 
@@ -68,21 +77,19 @@ export default function Test() {
         }
 
         const mapped = data.map((item) => {
-          const cat = item.informacziya_kategorii ?? null;   // без .data/.attributes
+          const cat = item.informacziya_kategorii ?? null;
           return {
-            key:        item.id,
-            title:      item.title ?? "",
-            type:       item.type  ?? "",
-            year:       Number(String(item.year ?? "").replace(/[^\d]/g, "")) || 0,
-            category:   buildPath(cat),
-            url:        item.file?.url ? addressServer + item.file.url : "",
+            key: item.id,
+            title: item.title ?? "",
+            type: item.type ?? "",
+            year: Number(String(item.year ?? "").replace(/[^\d]/g, "")) || 0,
+            category: buildPath(cat),
+            url: item.file?.url ? addressServer + item.file.url : "",
           };
         });
-        
 
         setRows(mapped);
       })
-
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
@@ -107,7 +114,11 @@ export default function Test() {
   const dataSource = useMemo(
     () =>
       rows.filter((r) => {
-        const okCat = catFilter === "all" || r.category === catFilter;
+        const okCat =
+          catFilter === "all" ||
+          r.category === catFilter ||
+          r.category.startsWith(`${catFilter} / `); // Убрать сложные проверки
+
         const okYear = yearFilter === "all" || r.year === yearFilter;
         const okText = r.title.toLowerCase().includes(searchText.toLowerCase());
         return okCat && okYear && okText;
@@ -115,15 +126,37 @@ export default function Test() {
     [rows, catFilter, yearFilter, searchText]
   );
 
-  /* columns */
   const columns = [
     {
       title: "Название",
       dataIndex: "title",
-      width: 350,
+      width: 480,
       ellipsis: true,
       sorter: (a, b) => a.title.localeCompare(b.title),
-      render: (t) => <Text title={t}>{t}</Text>,
+      render: (_, rec) => (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {fileIcons[rec.type] && (
+            <img
+              src={fileIcons[rec.type]}
+              alt={rec.type}
+              style={{ width: 16, height: 16, marginRight: 8 }}
+            />
+          )}
+          <div style={{ flex: 1 }}>
+            <Text title={rec.title}>{rec.title}</Text>
+          </div>
+          {rec.url && (
+            <a
+              href={rec.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginLeft: 12 }}
+            >
+              <DownloadOutlined />
+            </a>
+          )}
+        </div>
+      ),
     },
     {
       title: "Категория",
@@ -140,30 +173,9 @@ export default function Test() {
           </Tag>
         )),
     },
-    {
-      title: "Год",
-      dataIndex: "year",
-      width: 100,
-      sorter: (a, b) => a.year - b.year,
-      defaultSortOrder: "descend",
-    },
     { title: "Тип", dataIndex: "type", width: 90 },
-    {
-      title: "Скачать",
-      dataIndex: "url",
-      width: 90,
-      render: (u) =>
-        u ? (
-          <a href={u} target="_blank" rel="noopener noreferrer">
-            <DownloadOutlined />
-          </a>
-        ) : (
-          "-"
-        ),
-    },
   ];
 
-  /* UI */
   return (
     <>
       <TopImage image={headerImg} title="Раскрытие информации" />
@@ -177,7 +189,7 @@ export default function Test() {
               style={{ width: 280 }}
             />
             <Cascader
-              style={{ width: 520 }}
+              style={{ width: 920 }}
               options={cascaderOptions}
               placeholder="Все категории"
               allowClear
