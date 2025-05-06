@@ -27,8 +27,6 @@ const { Option } = Select;
 const { Paragraph } = Typography;
 const palette = ["blue", "green", "volcano", "purple", "gold"];
 
-/* ───────── helpers ───────── */
-
 const buildPath = (cat) => {
   if (!cat) return "—";
   const parent = cat.parent?.parent ? null : cat.parent;
@@ -56,6 +54,19 @@ const buildTree = (paths) => {
   return walk(root);
 };
 
+function forceDownload(url, filename = "file") {
+  fetch(url, { mode: "cors" })
+    .then((r) => r.blob())
+    .then((blob) => {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    })
+    .catch(console.error);
+}
+
 /* ───────── component ───────── */
 
 export default function Test() {
@@ -65,7 +76,6 @@ export default function Test() {
   const [catFilter, setCatFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
 
-  /* fetch once */
   useEffect(() => {
     fetch(
       `${addressServer}/api/information-files?populate[0]=file&populate[1]=informacziya_kategorii.parent&pagination[pageSize]=1000&sort=year:desc`
@@ -78,7 +88,7 @@ export default function Test() {
             key: it.id,
             title: it.title ?? "",
             type: it.type ?? "",
-            year: Number(String(it.year ?? "").replace(/[^\d]/g, "")) || "", // пустая строка – чтобы не было «0»
+            year: Number(String(it.year ?? "").replace(/[^\d]/g, "")) || "", 
             category: buildPath(it.informacziya_kategorii ?? null),
             url: it.file?.url ? addressServer + it.file.url : "",
           }))
@@ -88,7 +98,6 @@ export default function Test() {
       .finally(() => setLoading(false));
   }, []);
 
-  /* paths & cascader tree */
   const cascaderOptions = useMemo(() => {
     const paths = [...new Set(rows.map((r) => r.category))].filter(
       (p) => p && p !== "—"
@@ -96,13 +105,11 @@ export default function Test() {
     return buildTree(paths);
   }, [rows]);
 
-  /* год-select */
   const yearOptions = useMemo(() => {
     const set = new Set(rows.map((r) => r.year).filter(Boolean));
     return ["all", ...[...set].sort((a, b) => b - a)];
   }, [rows]);
 
-  /* фильтрация */
   const dataSource = useMemo(
     () =>
       rows.filter(({ title, category, year }) => {
@@ -117,55 +124,7 @@ export default function Test() {
     [rows, catFilter, yearFilter, searchText]
   );
 
-  /* columns */
-  // const columns = [
-  //   {
-  //     title: "Название",
-  //     dataIndex: "title",
-  //     render: (_, rec) => (
-  //       <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-  //         {icons[rec.type] && (
-  //           <img src={icons[rec.type]} alt="" style={{ width: 16 }} />
-  //         )}
 
-  //         <Paragraph
-  //           style={{ margin: 0, flex: 1, wordBreak: "break-word" }}
-  //           ellipsis={{ rows: 3, tooltip: rec.title }}
-  //         >
-  //           {rec.title}
-  //         </Paragraph>
-
-  //         {rec.url && (
-  //           <a href={rec.url} target="_blank" rel="noopener noreferrer">
-  //             <DownloadOutlined />
-  //           </a>
-  //         )}
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     title: "Категория",
-  //     dataIndex: "category",
-  //     render: (val) =>
-  //       val.split(" / ").map((seg, i) => (
-  //         <Tag
-  //           key={i}
-  //           color={palette[i % palette.length]}
-  //           style={{ display: "inline-block", marginTop: 4 }}
-  //         >
-  //           {seg}
-  //         </Tag>
-  //       )),
-  //   },
-  //   {
-  //     title: "Тип",
-  //     dataIndex: "type",
-  //     align: "center",
-  //     responsive: ["sm"], // скрываем <576 px
-  //   },
-  // ];
-  /* === колонки таблицы === */
-  /* === колонки таблицы === */
   const columns = [
     {
       title: "Название",
@@ -179,32 +138,32 @@ export default function Test() {
             <img src={icons[rec.type]} alt="" style={{ width: 16 }} />
           )}
 
-          {/* длинные названия переносятся на новую строку */}
-          <span
-            style={{ flex: 1, wordBreak: "break-word", whiteSpace: "normal" }}
+          <span style={{ flex: 1, wordBreak: "break-word" }}>{rec.title}</span>
+
+          {/* открыть */}
+          <a
+            href={rec.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Открыть"
+            style={{ fontSize: 16 }}
           >
-            {rec.title}
+            <EyeOutlined />
+          </a>
+
+          {/* скачать */}
+          <span
+            title="Скачать"
+            style={{ fontSize: 16, cursor: "pointer" }}
+            onClick={() =>
+              forceDownload(
+                rec.url,
+                `${rec.title}.${rec.type}`.replace(/[\\/:*?"<>|]+/g, "_")
+              )
+            }
+          >
+            <DownloadOutlined />
           </span>
-
-          {/* открыть во вкладке  */}
-          {rec.url && (
-            <a
-              href={rec.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Открыть"
-              style={{ fontSize: 16 }}
-            >
-              <EyeOutlined />
-            </a>
-          )}
-
-          {/* скачать сразу  */}
-          {rec.url && (
-            <a href={rec.url} download title="Скачать" style={{ fontSize: 16 }}>
-              <DownloadOutlined />
-            </a>
-          )}
         </div>
       ),
     },
@@ -279,7 +238,6 @@ export default function Test() {
                 locale: { items_per_page: "строк" },
               }}
               size="middle"
-              /* scroll УБИРАЕМ – всё помещается без гориз. скролла */
             />
           </Spin>
         </Space>
