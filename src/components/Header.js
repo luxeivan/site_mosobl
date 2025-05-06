@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useHref, useLocation, useNavigate } from "react-router";
 import { mainMenu } from "../store/menu";
 import logo from "../img/logo.svg";
-// import creditRating from "../img/PHOTO-2023-01-27-13-58-30.jpg";
 import logo2 from "../img/logo2.svg";
 import logoTwo from "../img/logo-two.svg";
+import pobeda from "../img/Pobeda80_logo_main.png";
 import searchIcon2 from "../img/search-icon2.svg";
 import firstScreenLogo from "../img/first-screen-logo.svg";
 import img34512673ce61b0db299f7e2405ac60e9 from "../img/34512673ce61b0db299f7e2405ac60e9.svg";
 import img7ad387832d629a52c87195d9cb795e3c from "../img/7ad387832d629a52c87195d9cb795e3c.svg";
 import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8b49a4e9b.svg";
 import img629d5332fa7791fcb59127d93f320c66 from "../img/629d5332fa7791fcb59127d93f320c66.jpg";
-// import img37550ba6c53ac1236dc634e6c4f22cc1 from "../img/37550ba6c53ac1236dc634e6c4f22cc1.jpg";
 import { Link } from "react-router-dom";
 import { Flex } from "antd";
 
@@ -43,8 +42,9 @@ export default function Header() {
   return (
     <header>
       <section
-        className={`page-header vg-modal-fixed ${scroll}  ${openSearchLine ? "hide-line" : ""
-          }`}
+        className={`page-header vg-modal-fixed ${scroll}  ${
+          openSearchLine ? "hide-line" : ""
+        }`}
         id="myHeader"
       >
         <div className="container">
@@ -351,24 +351,6 @@ export default function Header() {
                 </ul>
               </nav>
               <div className="page-header__right-block">
-                {/* <div
-                  className="search-block"
-                  onClick={() => {
-                    setOpenSearchLine(true);
-                  }}
-                >
-                  <svg className="search-block__icon" viewBox="0 0 24 24" height="24" width="24" fill="none">
-                    <path
-                      fill="none"
-                      d="M9.88461 18.7692C14.7915 18.7692 18.7692 14.7915 18.7692 9.88461C18.7692 4.97778 14.7915 1 9.88461 1C4.97778 1 1 4.97778 1 9.88461C1 14.7915 4.97778 18.7692 9.88461 18.7692Z"
-                      strokeWidth="2"
-                      strokeMiterlimit="10"
-                    />
-                    <path d="M16.2307 16.2307L22.9999 22.9999" strokeWidth="2" strokeMiterlimit="10" />
-                    <path d="M4.38464 9.46157C4.38464 6.65826 6.65826 4.38464 9.46157 4.38464" strokeWidth="2" strokeMiterlimit="10" />
-                  </svg>
-                  <span className="search-block__text">поиск </span>
-                </div> */}
                 <div
                   className="burger"
                   onClick={() => {
@@ -586,11 +568,6 @@ export default function Header() {
                                 } else {
                                   drop.style.maxHeight = "";
                                 }
-                                // if (event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight === "") {
-                                //   event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "inherit";
-                                // } else {
-                                //   event.currentTarget.getElementsByClassName("mob-menu-drop")[0].style.maxHeight = "";
-                                // }
                               } else {
                                 navigate(item.link);
                               }
@@ -803,24 +780,56 @@ export default function Header() {
                 >
                   <div className="container">
                     <div className="first-screen__block">
-                      <img
-                        className="first-screen__img"
-                        src={firstScreenLogo}
-                        alt="logo"
-                        style={{ marginTop: "50px" }}
-                      />
+                      <div
+                        className="logo_two"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-end",
+                          gap: "20px",
+                        }}
+                      >
+                        <img
+                          className="first-screen__img"
+                          src={firstScreenLogo}
+                          alt="logo"
+                        />
+                        <img
+                          className="pobeda"
+                          src={pobeda}
+                          alt="80 лет Победа!"
+                          style={{
+                            width: "200px",
+                            zIndex: 10,
+                            marginLeft: "-10px",
+                            marginBottom: "-25px",
+                            height: "auto",
+                            maxWidth: "100%", 
+                          }}
+                        />
+                      </div>
                       <br />
                       {/* ------------------------------------------------------ */}
                       <Flex wrap={"wrap"} className="creditRatingFlex" gap={20}>
                         <div className="creditRating">
                           {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
                           <div className="creditRating__desc">
-                            <h3 className="creditRating__title">Внеплановые отключения</h3>
+                            <h3 className="creditRating__title">
+                              Внеплановые отключения
+                            </h3>
                             <p className="creditRating__text">
-                              АО «Мособлэнерго» предлагает воспользоваться сервисом информирования населения о перерывах электроснабжения – плановых работах и технологических нарушениях в сетях(внеплановых отключениях). Получить информацию об отключениях можно, перейдя по кнопке в верхнем правом углу сайта «Узнать об отключениях» или по кнопке ниже.
+                              АО «Мособлэнерго» предлагает воспользоваться
+                              сервисом информирования населения о перерывах
+                              электроснабжения – плановых работах и
+                              технологических нарушениях в сетях(внеплановых
+                              отключениях). Получить информацию об отключениях
+                              можно, перейдя по кнопке в верхнем правом углу
+                              сайта «Узнать об отключениях» или по кнопке ниже.
                             </p>
                             <div className="creditRating__link-area">
-                              <Link className="creditRating__link block-btn" to="/plannedOutages">
+                              <Link
+                                className="creditRating__link block-btn"
+                                to="/plannedOutages"
+                              >
                                 Узнать об отключениях
                               </Link>
                             </div>
@@ -829,12 +838,20 @@ export default function Header() {
                         <div className="creditRating">
                           {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
                           <div className="creditRating__desc">
-                            <h3 className="creditRating__title" style={{color:"red", textAlign:"center"}}>ВНИМАНИЕ МОШЕННИКИ!!!</h3>
+                            <h3
+                              className="creditRating__title"
+                              style={{ color: "red", textAlign: "center" }}
+                            >
+                              ВНИМАНИЕ МОШЕННИКИ!!!
+                            </h3>
                             <p className="creditRating__text">
-                              Работники АО «Мособлэнерго» и наши представители НИКОГДА не запрашивают персональные данные (номер паспорта, СНИЛС и т.д.) по телефону.
+                              Работники АО «Мособлэнерго» и наши представители
+                              НИКОГДА не запрашивают персональные данные (номер
+                              паспорта, СНИЛС и т.д.) по телефону.
                             </p>
                             <p className="creditRating__text">
-                              Передача персональных данных возможна только в личном кабинете или в офисе при подаче заявок.
+                              Передача персональных данных возможна только в
+                              личном кабинете или в офисе при подаче заявок.
                             </p>
                             <p className="creditRating__text">
                               Берегите себя и своих близких!
@@ -842,50 +859,6 @@ export default function Header() {
                           </div>
                         </div>
                       </Flex>
-                      {/* <div className="creditRating">
-                        <div className="creditRating__desc">
-                          <div
-                            style={{
-                              margin: "0 auto",
-                              fontSize: "25px",
-                              padding: "10px 40px",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            <h2
-                              style={{
-                                color: "red",
-                                marginBottom: "10px",
-                                textAlign: "center",
-                              }}
-                            >
-                              Внимание!
-                            </h2>
-                            <p
-                              style={{ fontWeight: 700, marginBottom: "10px" }}
-                            >
-                              Уважаемые клиенты!
-                            </p>
-                            <p style={{ marginBottom: "10px" }}>
-                              Обращаем ваше внимание! Участились случаи, когда{" "}
-                              <b style={{ color: "red" }}>мошенники</b> под
-                              видом и именем сетевой компании «Мособлэнерго»
-                              направляют смс с просьбой осуществить обратный
-                              звонок!
-                            </p>
-                            <p style={{ marginBottom: "10px" }}>
-                              <b>Не сообщайте</b> свои личные данные!{" "}
-                              <b>Не сообщайте</b> данные о ваших заключенных
-                              договорах! <b>Не переходите</b> по ссылкам, они
-                              могут быть вредоносными!
-                            </p>
-                            <p style={{ marginBottom: "10px" }}>
-                              Актуальные номера телефонов Акционерного Общества
-                              «Мособлэнерго» размещены на официальном сайте.
-                            </p>
-                          </div>
-                        </div>
-                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -893,27 +866,6 @@ export default function Header() {
             ) : (
               false
             )}
-
-            {/* {hreff === "/about" ? (
-              <section className="first-screen-inner">
-                <picture className="first-screen-inner__bg-image">
-                  {/* <source srcSet={img37550ba6c53ac1236dc634e6c4f22cc1} type="image/webp" />
-                  <source srcset="/upload/iblock/375/37550ba6c53ac1236dc634e6c4f22cc1.jpg" type="image/jpeg" /> }
-                  <img src={img37550ba6c53ac1236dc634e6c4f22cc1} alt="Информация о компании" />
-                </picture>
-                <div className="container">
-                  <div className="first-screen-inner__container">
-                    <div className="first-screen-inner__wrapper">
-                      <div className="first-screen-inner__down">
-                        <h1 className="title-page">О компании</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            ) : (
-              false
-            )*/}
           </div>
         </div>
       </section>

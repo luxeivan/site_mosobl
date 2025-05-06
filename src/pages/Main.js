@@ -23,16 +23,8 @@ export default function Main() {
         style={{ backgroundColor: "#E37021" }}
         data-speed="1"
       >
-        <style>{`
-  @media (max-width: 767px) {
-    .pobeda-logo {
-      top: 1rem !important;      
-      right: 0rem !important;    
-      width: 88px !important;    
-    }
-  }
-`}</style>
-        <img
+
+        {/* <img
           src={pobeda}
           alt="80 лет Победа!"
           className="pobeda-logo"
@@ -45,7 +37,7 @@ export default function Main() {
             zIndex: 10,
             pointerEvents: "none",
           }}
-        />
+        /> */}
 
         <div className="items-wrap">
           <div className="items marquee">
