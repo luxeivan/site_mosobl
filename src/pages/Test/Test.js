@@ -18,13 +18,12 @@ const { Search } = Input;
 const { Option } = Select;
 const { Text } = Typography;
 
-const buildPath = (catAttr) => {
-  if (!catAttr) return "—";
-  const rawParent = catAttr.parents;
-  const parentAttr = rawParent?.data?.attributes ?? rawParent ?? null;
-  const parentTitle = parentAttr?.title;
-  return parentTitle ? `${parentTitle} / ${catAttr.title}` : catAttr.title;
+const buildPath = (cat) => {
+  if (!cat) return "—";
+  const parent = cat.parent ?? null;
+  return parent ? `${parent.title} / ${cat.title}` : cat.title;
 };
+
 
 const buildTree = (paths) => {
   const root = {};
@@ -57,7 +56,7 @@ export default function Test() {
     fetch(
       `${addressServer}/api/information-files` +
         "?populate[0]=file" +
-        "&populate[1]=informacziya_kategorii.parents" +
+        "&populate[1]=informacziya_kategorii.parent" +
         "&pagination[pageSize]=1000" +
         "&sort=year:desc"
     )
@@ -69,23 +68,17 @@ export default function Test() {
         }
 
         const mapped = data.map((item) => {
-          const cat = item.informacziya_kategorii;
-
-          const parent = cat?.parents?.[0] ?? cat?.parent ?? null;
-
-          const categoryStr = parent
-            ? `${parent.title} / ${cat?.title ?? "—"}`
-            : cat?.title ?? "—";
-
+          const cat = item.informacziya_kategorii ?? null;   // без .data/.attributes
           return {
-            key: item.id,
-            title: item.title ?? "",
-            type: item.type ?? "",
-            year: Number(String(item.year ?? "").replace(/[^\d]/g, "")) || 0,
-            category: categoryStr,
-            url: item.file?.url ? addressServer + item.file.url : "",
+            key:        item.id,
+            title:      item.title ?? "",
+            type:       item.type  ?? "",
+            year:       Number(String(item.year ?? "").replace(/[^\d]/g, "")) || 0,
+            category:   buildPath(cat),
+            url:        item.file?.url ? addressServer + item.file.url : "",
           };
         });
+        
 
         setRows(mapped);
       })
