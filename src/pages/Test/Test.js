@@ -27,12 +27,14 @@ const { Option } = Select;
 const { Paragraph } = Typography;
 const palette = ["blue", "green", "volcano", "purple", "gold"];
 
-const buildPath = (cat) => {
-  if (!cat) return "—";
-  const parent = cat.parent?.parent ? null : cat.parent;
-  return parent ? `${parent.title} / ${cat.title}` : cat.title;
+// Массив из путей категории (для фильтрации)
+const buildCategoryArray = (cat) => {
+  if (!cat) return [];
+  const parent = cat.parent ? buildCategoryArray(cat.parent) : [];
+  return [...parent, cat.title];
 };
 
+// Построение дерева для Cascader
 const buildTree = (paths) => {
   const root = {};
   paths.forEach((p) =>
@@ -67,8 +69,6 @@ function forceDownload(url, filename = "file") {
     .catch(console.error);
 }
 
-/* ───────── component ───────── */
-
 export default function Test() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -88,8 +88,10 @@ export default function Test() {
             key: it.id,
             title: it.title ?? "",
             type: it.type ?? "",
-            year: Number(String(it.year ?? "").replace(/[^\d]/g, "")) || "", 
-            category: buildPath(it.informacziya_kategorii ?? null),
+            year: Number(String(it.year ?? "").replace(/[^\d]/g, "")) || "",
+            categoryArray: buildCategoryArray(
+              it.informacziya_kategorii ?? null
+            ), // массив категорий
             url: it.file?.url ? addressServer + it.file.url : "",
           }))
         );
@@ -99,9 +101,9 @@ export default function Test() {
   }, []);
 
   const cascaderOptions = useMemo(() => {
-    const paths = [...new Set(rows.map((r) => r.category))].filter(
-      (p) => p && p !== "—"
-    );
+    const paths = [
+      ...new Set(rows.map((r) => r.categoryArray.join(" / "))),
+    ].filter((p) => p && p !== "—");
     return buildTree(paths);
   }, [rows]);
 
@@ -112,18 +114,19 @@ export default function Test() {
 
   const dataSource = useMemo(
     () =>
-      rows.filter(({ title, category, year }) => {
+      rows.filter(({ title, categoryArray, year }) => {
+        //если "all" — пропускаем, иначе ищем совпадение в пути
         const okCat =
           catFilter === "all" ||
-          category === catFilter ||
-          category.startsWith(`${catFilter} / `);
+          categoryArray.some((cat) => catFilter.includes(cat));
+          // categoryArray.join(" / ").startsWith(catFilter)
+          // Проверяем год
         const okYear = yearFilter === "all" || year === yearFilter;
         const okText = title.toLowerCase().includes(searchText.toLowerCase());
         return okCat && okYear && okText;
       }),
     [rows, catFilter, yearFilter, searchText]
   );
-
 
   const columns = [
     {
@@ -170,10 +173,10 @@ export default function Test() {
 
     {
       title: "Категория",
-      dataIndex: "category",
+      dataIndex: "categoryArray",
       width: 380,
       render: (val) =>
-        val.split(" / ").map((seg, i) => (
+        val.map((seg, i) => (
           <Tag
             key={i}
             color={palette[i % palette.length]}
@@ -245,6 +248,7 @@ export default function Test() {
     </>
   );
 }
+
 
 // import React, { useEffect, useState, useMemo } from "react";
 // import {
