@@ -8,13 +8,11 @@ import {
   Modal,
   Divider,
   Space,
+  Drawer,
+  Grid,
 } from "antd";
 import {
-  FilePdfOutlined,
-  FileWordOutlined,
-  FileExcelOutlined,
-  FileImageOutlined,
-  FileUnknownOutlined,
+  MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
 import { addressServer } from "../../config";
@@ -22,30 +20,39 @@ import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import imgb04877a3110d6b586d064fc3a2853c70 from "../../img/b04877a3110d6b586d064fc3a2853c70.jpg";
 
+import pdfIcon from "../../img/pdf.svg";
+import docIcon from "../../img/doc.svg";
+import docxIcon from "../../img/docx.svg";
+import xlsIcon from "../../img/xls.svg";
+import jpgIcon from "../../img/jpg.svg";
+import rarIcon from "../../img/rar.svg";
+
 const { Sider, Content } = Layout;
 const { Search } = Input;
 const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
-// фирменный оранжевый из макетов
 const highlightColor = "#E37021";
 
-// Быстрый хелпер для иконки по расширению
 const iconByType = (ext) => {
   switch ((ext || "").toLowerCase()) {
     case "pdf":
-      return <FilePdfOutlined />;
+      return <img src={pdfIcon} alt="pdf" style={{ width: 24 }} />;
     case "doc":
+      return <img src={docIcon} alt="doc" style={{ width: 24 }} />;
     case "docx":
-      return <FileWordOutlined />;
+      return <img src={docxIcon} alt="docx" style={{ width: 24 }} />;
     case "xls":
     case "xlsx":
-      return <FileExcelOutlined />;
+      return <img src={xlsIcon} alt="xls" style={{ width: 24 }} />;
     case "jpg":
     case "jpeg":
     case "png":
-      return <FileImageOutlined />;
+      return <img src={jpgIcon} alt="img" style={{ width: 24 }} />;
+    case "rar":
+      return <img src={rarIcon} alt="rar" style={{ width: 24 }} />;
     default:
-      return <FileUnknownOutlined />;
+      return <img src={pdfIcon} alt="file" style={{ width: 24, opacity: 0.5 }} />;
   }
 };
 
@@ -83,6 +90,10 @@ const normalizeDoc = (raw) => {
 };
 
 export default function InformationDisclosureTest() {
+  const screens = useBreakpoint();
+  const isMobile = !screens.md; 
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedCatId, setSelectedCatId] = useState(null);
   const [sortMode, setSortMode] = useState("name");
@@ -165,6 +176,46 @@ export default function InformationDisclosureTest() {
     color: highlightColor,
   };
 
+  const SidebarContent = (
+    <>
+      <Search
+        placeholder="Поиск по всем файлам"
+        enterButton={<SearchOutlined />}
+        allowClear
+        onSearch={(v) => {
+          setGlobalQuery(v);
+          setGlobalVisible(true);
+          if (isMobile) setDrawerOpen(false);
+        }}
+        style={{ marginBottom: 16 }}
+      />
+      <Divider style={{ margin: "8px 0" }} />
+      <List
+        size="small"
+        dataSource={categories}
+        renderItem={(item) => (
+          <List.Item
+            style={{
+              cursor: "pointer",
+              padding: "8px 12px",
+              background:
+                item.id === selectedCatId ? highlightColor : "transparent",
+              borderRadius: 4,
+            }}
+            onClick={() => {
+              setSelectedCatId(item.id);
+              if (isMobile) setDrawerOpen(false);
+            }}
+          >
+            <Text style={{ color: item.id === selectedCatId ? "#fff" : undefined }}>
+              {item.title}
+            </Text>
+          </List.Item>
+        )}
+      />
+    </>
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -172,52 +223,26 @@ export default function InformationDisclosureTest() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <TopImage
-        image={imgb04877a3110d6b586d064fc3a2853c70}
-        title="Раскрытие информации"
-      />
+      <TopImage image={imgb04877a3110d6b586d064fc3a2853c70} title="Раскрытие информации" />
+
+      {isMobile && (
+        <Button
+          type="text"
+          icon={<MenuOutlined style={{ fontSize: 24 }} />}
+          onClick={() => setDrawerOpen(true)}
+          style={{ position: "fixed", top: 80, left: 16, zIndex: 1000 }}
+        />
+      )}
 
       <Layout style={{ minHeight: "calc(100vh - 300px)", background: "#fff" }}>
-        <Sider width={320} style={{ background: "#fafafa", padding: 16 }}>
-          <Search
-            placeholder="Поиск по всем файлам"
-            enterButton={<SearchOutlined />}
-            allowClear
-            onSearch={(v) => {
-              setGlobalQuery(v);
-              setGlobalVisible(true);
-            }}
-            style={{ marginBottom: 16 }}
-          />
-          <Divider style={{ margin: "8px 0" }} />
-          <List
-            size="small"
-            dataSource={categories}
-            renderItem={(item) => (
-              <List.Item
-                style={{
-                  cursor: "pointer",
-                  padding: "8px 12px",
-                  background:
-                    item.id === selectedCatId ? highlightColor : "transparent",
-                  borderRadius: 4,
-                }}
-                onClick={() => setSelectedCatId(item.id)}
-              >
-                <Text
-                  style={{
-                    color: item.id === selectedCatId ? "#fff" : undefined,
-                  }}
-                >
-                  {item.title}
-                </Text>
-              </List.Item>
-            )}
-          />
-        </Sider>
+        {!isMobile && (
+          <Sider width={320} style={{ background: "#fafafa", padding: 16 }}>
+            {SidebarContent}
+          </Sider>
+        )}
 
         <Layout>
-          <Content style={{ padding: 24, overflowY: "auto" }}>
+          <Content style={{ padding: isMobile ? "16px 8px" : 24, overflowY: "auto" }}>
             {!currentCat && (
               <Title level={3} style={{ textAlign: "center", marginTop: 60 }}>
                 Выберите категорию…
@@ -226,23 +251,15 @@ export default function InformationDisclosureTest() {
             {currentCat && (
               <>
                 <Title level={3}>{currentCat.title}</Title>
-                <Space style={{ marginBottom: 24 }}>
+                <Space style={{ marginBottom: 24, flexWrap: "wrap" }}>
                   <Button
-                    style={
-                      sortMode === "name"
-                        ? buttonStyleActive
-                        : buttonStyleInactive
-                    }
+                    style={sortMode === "name" ? buttonStyleActive : buttonStyleInactive}
                     onClick={() => setSortMode("name")}
                   >
                     Сортировать по названию
                   </Button>
                   <Button
-                    style={
-                      sortMode === "date"
-                        ? buttonStyleActive
-                        : buttonStyleInactive
-                    }
+                    style={sortMode === "date" ? buttonStyleActive : buttonStyleInactive}
                     onClick={() => setSortMode("date")}
                   >
                     Сортировать по дате
@@ -264,17 +281,11 @@ export default function InformationDisclosureTest() {
                             <List.Item.Meta
                               avatar={iconByType(doc.type)}
                               title={
-                                <a
-                                  href={`${addressServer}${docUrl}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
+                                <a href={`${addressServer}${docUrl}`} target="_blank" rel="noopener noreferrer">
                                   {doc.name}
                                 </a>
                               }
-                              description={`${doc.type || "file"} ${Math.round(
-                                docSize
-                              )}kb`}
+                              description={`${doc.type || "file"} ${Math.round(docSize)}kb`}
                             />
                           </List.Item>
                         );
@@ -287,6 +298,17 @@ export default function InformationDisclosureTest() {
           </Content>
         </Layout>
       </Layout>
+
+      {/* MOBILE Drawer */}
+      <Drawer
+        title="Разделы"
+        placement="left"
+        onClose={() => setDrawerOpen(false)}
+        open={drawerOpen}
+        bodyStyle={{ padding: 16 }}
+      >
+        {SidebarContent}
+      </Drawer>
 
       <Modal
         open={globalVisible}
@@ -314,17 +336,11 @@ export default function InformationDisclosureTest() {
                 <List.Item.Meta
                   avatar={iconByType(doc.type)}
                   title={
-                    <a
-                      href={`${addressServer}${docUrl}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={`${addressServer}${docUrl}`} target="_blank" rel="noopener noreferrer">
                       {doc.name}
                     </a>
                   }
-                  description={`${doc.catTitle} • ${
-                    doc.type || "file"
-                  } ${Math.round(docSize)}kb`}
+                  description={`${doc.catTitle} • ${doc.type || "file"} ${Math.round(docSize)}kb`}
                 />
               </List.Item>
             );
