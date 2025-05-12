@@ -131,6 +131,10 @@ export const mainMenu = [
         title: "Специальные проекты",
         link: "/specialProjects",
       },
+      // {
+      //   title: "20 лет «МосОблЭнерго»",
+      //   link: "/20years",
+      // },
     ],
   },
   {

@@ -17,7 +17,6 @@ import MainDirections from "./pages/MainDirections";
 import Recuisites from "./pages/Recuisites";
 import AntiCorruption from "./pages/AntiCorruption";
 import Certs from "./pages/Certs/Certs";
-// import Reviews from './pages/Reviews';
 import Gardeners from "./pages/Gardeners";
 import ContactForMedia from "./pages/ContactForMedia";
 import News from "./pages/News";
@@ -42,7 +41,6 @@ import Plugme from "./pages/Plugme";
 import SpecialProjects from "./pages/SpecialProjects/SpecialProjects";
 import GosuslugiBanner from "./components/GosuslugiBanner";
 import SecretDisconnect from "./components/Disconnect/SecretDisconnect";
-// import Job from "./pages/Vacancy/Job";
 import EventDetails from "./pages/SpecialProjects/EventDetails";
 import InformationOnBonds from "./pages/InformationOnBonds";
 import Vacancies from "./pages/Vacancy/Vacancies";
@@ -53,6 +51,7 @@ import Universities from "./pages/Vacancy/Practice/Universities";
 import VacanciesTwo from "./pages/Vacancy/VacanciesTwo";
 import ProductionPrograms2025 from "./pages/consumers/ProductionPrograms2025";
 import Test from "./pages/Test/Test";
+import TwentyYears from "./pages/Twenty Years/TwentyYears";
 
 function App() {
   useEffect(() => {
@@ -90,18 +89,15 @@ function App() {
           <Route path="/mainDirection" element={<MainDirections />} />
           <Route path="/requisites" element={<Recuisites />} />
           <Route path="/mycareer" element={<Vacancies />} />
-
           <Route path="/antiCorruption" element={<AntiCorruption />} />
           <Route path="/certs" element={<Certs />} />
           <Route path="/informationOnBonds" element={<InformationOnBonds />} />
-          {/* <Route path='/reviews' element={<Reviews/>} /> */}
           <Route path="/gardeners" element={<Gardeners />} />
           <Route path="/contactForMedia" element={<ContactForMedia />} />
           <Route path="/specialProjects" element={<SpecialProjects />} />
           <Route path="/specialProjects/:id" element={<EventDetails />} />
           <Route path="/news" element={<News />} />
           <Route path="/consumers" element={<Consumers />} />
-
           <Route path="/additionalServices" element={<AdditionalServices />} />
           <Route path="/servicePassports" element={<ServicePassports />} />
           <Route path="/territory" element={<Territory />} />
@@ -138,12 +134,12 @@ function App() {
             path="/productionPrograms2025"
             element={<ProductionPrograms2025 />}
           />
-
           <Route path="/plugme" element={<Plugme />} />
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
           <Route path="/secrethr" element={<VacanciesTwo />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/20years" element={<TwentyYears />} />
           <Route path="/universities" element={<Universities />} />
           <Route path="/*" element={<Page404 />} />
         </Routes>
