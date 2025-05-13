@@ -132,7 +132,7 @@ export const mainMenu = [
         link: "/specialProjects",
       },
       // {
-      //   title: "20 лет «МосОблЭнерго»",
+      //   title: "20 лет «Мособлэнерго»",
       //   link: "/20years",
       // },
     ],

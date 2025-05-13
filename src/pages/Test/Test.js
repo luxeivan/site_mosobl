@@ -8,13 +8,9 @@ import {
   Modal,
   Divider,
   Space,
-  Drawer,
   Grid,
 } from "antd";
-import {
-  MenuOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { addressServer } from "../../config";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -34,6 +30,7 @@ const { useBreakpoint } = Grid;
 
 const highlightColor = "#E37021";
 
+/* ---------- helpers ---------- */
 const iconByType = (ext) => {
   switch ((ext || "").toLowerCase()) {
     case "pdf":
@@ -52,54 +49,54 @@ const iconByType = (ext) => {
     case "rar":
       return <img src={rarIcon} alt="rar" style={{ width: 24 }} />;
     default:
-      return <img src={pdfIcon} alt="file" style={{ width: 24, opacity: 0.5 }} />;
+      return (
+        <img src={pdfIcon} alt="file" style={{ width: 24, opacity: 0.4 }} />
+      );
   }
 };
 
 const extractDate = (name) => {
-  const match = (name || "").match(/[0-3][0-9].[0-1][0-9].2[0-9]{3}/);
-  if (!match) return 0;
-  const [d, m, y] = match[0].split(".");
-  return new Date(y, m - 1, d).getTime();
+  const m = (name || "").match(/[0-3][0-9].[0-1][0-9].2[0-9]{3}/);
+  if (!m) return null;
+  const [d, mth, y] = m[0].split(".");
+  return new Date(+y, mth - 1, +d).getTime();
 };
 
+// ⬇️ заменить весь старый normalizeDoc на это
 const normalizeDoc = (raw) => {
   if (!raw) return null;
-  if (raw.name && raw.file) {
-    return {
-      id: raw.id,
-      name: raw.name,
-      type: raw.type || raw.ext || "",
-      url: raw.file.url,
-      size: raw.file.size,
-      ts: extractDate(raw.name),
-    };
-  }
-  if (raw.attributes) {
-    const a = raw.attributes;
-    return {
-      id: raw.id,
-      name: a.name,
-      type: a.type || a.ext || "",
-      url: a.url,
-      size: a.size,
-      ts: extractDate(a.name),
-    };
-  }
-  return null;
+
+  // Strapi-v4: файл лежит в attributes  → a
+  const a = raw.attributes ?? raw;
+  const f = a.file ?? a; // на случай старой структуры
+
+  const name = a.name;
+  const type = a.type || a.ext || "";
+  const url = f.url || "";
+  const size = f.size || 0;
+
+  // 1) дата в названии
+  let ts = extractDate(name);
+
+  // 2) если в названии нет — берём updatedAt / createdAt из Strapi
+  if (!ts && f.updatedAt) ts = new Date(f.updatedAt).getTime();
+  if (!ts && f.createdAt) ts = new Date(f.createdAt).getTime();
+
+  return { id: raw.id, name, type, url, size, ts: ts ?? 0 };
 };
 
+/* ---------- component ---------- */
 export default function InformationDisclosureTest() {
   const screens = useBreakpoint();
-  const isMobile = !screens.md; 
+  const isMobile = !screens.md;
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedCatId, setSelectedCatId] = useState(null);
-  const [sortMode, setSortMode] = useState("name");
+  const [sortMode, setSortMode] = useState("date"); // default date desc
   const [globalVisible, setGlobalVisible] = useState(false);
   const [globalQuery, setGlobalQuery] = useState("");
 
+  /* fetch categories once */
   useEffect(() => {
     fetch(
       `${addressServer}/api/information-disclosures?populate[0]=groupInfo&populate[1]=groupInfo.list_files&populate[2]=groupInfo.list_files.file`
@@ -115,6 +112,17 @@ export default function InformationDisclosureTest() {
       .catch(console.error);
   }, []);
 
+  /* auto‑select first category ONLY on mobile */
+  useEffect(() => {
+    if (isMobile) {
+      if (!selectedCatId && categories.length)
+        setSelectedCatId(categories[0].id);
+    } else {
+      // desktop – показываем "Выберите категорию"
+      setSelectedCatId(null);
+    }
+  }, [isMobile, categories]);
+
   const currentCat = useMemo(
     () => categories.find((c) => c.id === selectedCatId),
     [categories, selectedCatId]
@@ -126,17 +134,18 @@ export default function InformationDisclosureTest() {
       g.attributes ? { id: g.id, ...g.attributes } : g
     );
     return groups.map((g) => {
-      let rawDocs = [];
-      if (Array.isArray(g.list_files)) rawDocs = g.list_files;
-      else if (Array.isArray(g.list_files?.data)) rawDocs = g.list_files.data;
-      const docs = rawDocs
+      const rawArr = Array.isArray(g.list_files)
+        ? g.list_files
+        : g.list_files?.data || [];
+      const docs = rawArr
         .map(normalizeDoc)
         .filter(Boolean)
-        .sort((a, b) =>
-          sortMode === "name"
-            ? a.name.localeCompare(b.name, "ru")
-            : (b.ts || 0) - (a.ts || 0)
-        );
+        .sort((a, b) => {
+          if (sortMode === "name") return a.name.localeCompare(b.name, "ru");
+          // sortMode === "date"  → свежие (больший ts) наверху
+          return (b.ts ?? 0) - (a.ts ?? 0);
+        });
+
       return { ...g, docs };
     });
   }, [currentCat, sortMode]);
@@ -149,71 +158,61 @@ export default function InformationDisclosureTest() {
         g.attributes ? { id: g.id, ...g.attributes } : g
       );
       groups.forEach((g) => {
-        let rawDocs = [];
-        if (Array.isArray(g.list_files)) rawDocs = g.list_files;
-        else if (Array.isArray(g.list_files?.data)) rawDocs = g.list_files.data;
-        rawDocs
+        const rawArr = Array.isArray(g.list_files)
+          ? g.list_files
+          : g.list_files?.data || [];
+        rawArr
           .map(normalizeDoc)
           .filter(Boolean)
-          .forEach((doc) => {
-            if (doc.name.toLowerCase().includes(globalQuery.toLowerCase())) {
-              res.push({ ...doc, catTitle: cat.title });
-            }
+          .forEach((d) => {
+            if (d.name.toLowerCase().includes(globalQuery.toLowerCase()))
+              res.push({ ...d, catTitle: cat.title });
           });
       });
     });
     return res;
   }, [globalQuery, categories]);
 
-  const buttonStyleActive = {
+  /* styles */
+  const btnActive = {
     background: highlightColor,
     borderColor: highlightColor,
     color: "#fff",
   };
-  const buttonStyleInactive = {
+  const btnInactive = {
     background: "transparent",
     borderColor: highlightColor,
     color: highlightColor,
   };
 
-  const SidebarContent = (
-    <>
-      <Search
-        placeholder="Поиск по всем файлам"
-        enterButton={<SearchOutlined />}
-        allowClear
-        onSearch={(v) => {
-          setGlobalQuery(v);
-          setGlobalVisible(true);
-          if (isMobile) setDrawerOpen(false);
-        }}
-        style={{ marginBottom: 16 }}
-      />
-      <Divider style={{ margin: "8px 0" }} />
-      <List
-        size="small"
-        dataSource={categories}
-        renderItem={(item) => (
-          <List.Item
+  /* sidebar list */
+  const CategoryList = (
+    <List
+      size="small"
+      dataSource={categories}
+      renderItem={(item) => (
+        <List.Item
+          style={{
+            cursor: "pointer",
+            padding: "8px 12px",
+            background:
+              item.id === selectedCatId ? highlightColor : "transparent",
+            borderRadius: 4,
+          }}
+          onClick={() => setSelectedCatId(item.id)}
+        >
+          <Text
             style={{
-              cursor: "pointer",
-              padding: "8px 12px",
-              background:
-                item.id === selectedCatId ? highlightColor : "transparent",
-              borderRadius: 4,
-            }}
-            onClick={() => {
-              setSelectedCatId(item.id);
-              if (isMobile) setDrawerOpen(false);
+              color: item.id === selectedCatId ? "#fff" : undefined,
+              whiteSpace: "normal",
+              lineHeight: 1.3,
             }}
           >
-            <Text style={{ color: item.id === selectedCatId ? "#fff" : undefined }}>
-              {item.title}
-            </Text>
-          </List.Item>
-        )}
-      />
-    </>
+            {item.title}
+          </Text>
+        </List.Item>
+      )}
+    />
   );
 
   return (
@@ -221,50 +220,100 @@ export default function InformationDisclosureTest() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.35 }}
     >
-      <TopImage image={imgb04877a3110d6b586d064fc3a2853c70} title="Раскрытие информации" />
+      <TopImage
+        image={imgb04877a3110d6b586d064fc3a2853c70}
+        title="Раскрытие информации"
+      />
 
-      {isMobile && (
-        <Button
-          type="text"
-          icon={<MenuOutlined style={{ fontSize: 24 }} />}
-          onClick={() => setDrawerOpen(true)}
-          style={{ position: "fixed", top: 80, left: 16, zIndex: 1000 }}
-        />
-      )}
-
-      <Layout style={{ minHeight: "calc(100vh - 300px)", background: "#fff" }}>
+      <Layout style={{ minHeight: "calc(100vh - 300px)" }}>
+        {/* Desktop sidebar – 340px, перенос длинных названий */}
         {!isMobile && (
-          <Sider width={320} style={{ background: "#fafafa", padding: 16 }}>
-            {SidebarContent}
+          <Sider
+            width={340}
+            style={{ background: "#fafafa", padding: 16, overflowY: "auto" }}
+          >
+            <Search
+              placeholder="Поиск по всем файлам"
+              enterButton={<SearchOutlined />}
+              allowClear
+              onSearch={(v) => {
+                setGlobalQuery(v);
+                setGlobalVisible(true);
+              }}
+              style={{ marginBottom: 16 }}
+            />
+            <Divider style={{ margin: "8px 0" }} />
+            {CategoryList}
           </Sider>
         )}
 
         <Layout>
-          <Content style={{ padding: isMobile ? "16px 8px" : 24, overflowY: "auto" }}>
+          <Content style={{ padding: isMobile ? "12px 8px" : 24 }}>
+            {/* Mobile top bar */}
+            {isMobile && (
+              <>
+                <Search
+                  placeholder="Поиск по всем файлам"
+                  enterButton={<SearchOutlined />}
+                  allowClear
+                  onSearch={(v) => {
+                    setGlobalQuery(v);
+                    setGlobalVisible(true);
+                  }}
+                  style={{ marginBottom: 8 }}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 8,
+                    overflowX: "auto",
+                    paddingBottom: 8,
+                  }}
+                >
+                  {categories.map((cat) => (
+                    <Button
+                      key={cat.id}
+                      size="small"
+                      style={
+                        cat.id === selectedCatId
+                          ? { ...btnActive, whiteSpace: "nowrap" }
+                          : { ...btnInactive, whiteSpace: "nowrap" }
+                      }
+                      onClick={() => setSelectedCatId(cat.id)}
+                    >
+                      {cat.title}
+                    </Button>
+                  ))}
+                </div>
+              </>
+            )}
+
             {!currentCat && (
               <Title level={3} style={{ textAlign: "center", marginTop: 60 }}>
                 Выберите категорию…
               </Title>
             )}
+
             {currentCat && (
               <>
                 <Title level={3}>{currentCat.title}</Title>
                 <Space style={{ marginBottom: 24, flexWrap: "wrap" }}>
                   <Button
-                    style={sortMode === "name" ? buttonStyleActive : buttonStyleInactive}
+                    style={sortMode === "name" ? btnActive : btnInactive}
                     onClick={() => setSortMode("name")}
                   >
                     Сортировать по названию
                   </Button>
                   <Button
-                    style={sortMode === "date" ? buttonStyleActive : buttonStyleInactive}
+                    style={sortMode === "date" ? btnActive : btnInactive}
                     onClick={() => setSortMode("date")}
                   >
                     Сортировать по дате
                   </Button>
                 </Space>
+
                 {catGroups.map((g) => (
                   <div key={g.id} style={{ marginBottom: 32 }}>
                     <Title level={4}>{g.title}</Title>
@@ -273,23 +322,25 @@ export default function InformationDisclosureTest() {
                       itemLayout="horizontal"
                       size="small"
                       dataSource={g.docs}
-                      renderItem={(doc) => {
-                        const docUrl = doc.url || doc.file?.url || "";
-                        const docSize = doc.size || doc.file?.size || 0;
-                        return (
-                          <List.Item>
-                            <List.Item.Meta
-                              avatar={iconByType(doc.type)}
-                              title={
-                                <a href={`${addressServer}${docUrl}`} target="_blank" rel="noopener noreferrer">
-                                  {doc.name}
-                                </a>
-                              }
-                              description={`${doc.type || "file"} ${Math.round(docSize)}kb`}
-                            />
-                          </List.Item>
-                        );
-                      }}
+                      renderItem={(doc) => (
+                        <List.Item>
+                          <List.Item.Meta
+                            avatar={iconByType(doc.type)}
+                            title={
+                              <a
+                                href={`${addressServer}${doc.url}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {doc.name}
+                              </a>
+                            }
+                            description={`${doc.type || "file"} ${Math.round(
+                              doc.size || 0
+                            )}kb`}
+                          />
+                        </List.Item>
+                      )}
                     />
                   </div>
                 ))}
@@ -299,17 +350,7 @@ export default function InformationDisclosureTest() {
         </Layout>
       </Layout>
 
-      {/* MOBILE Drawer */}
-      <Drawer
-        title="Разделы"
-        placement="left"
-        onClose={() => setDrawerOpen(false)}
-        open={drawerOpen}
-        bodyStyle={{ padding: 16 }}
-      >
-        {SidebarContent}
-      </Drawer>
-
+      {/* Global search modal */}
       <Modal
         open={globalVisible}
         onCancel={() => setGlobalVisible(false)}
@@ -321,6 +362,7 @@ export default function InformationDisclosureTest() {
           placeholder="Введите имя файла"
           allowClear
           value={globalQuery}
+          enterButton={<SearchOutlined />}
           onChange={(e) => setGlobalQuery(e.target.value)}
           style={{ marginBottom: 16 }}
         />
@@ -329,18 +371,23 @@ export default function InformationDisclosureTest() {
           itemLayout="horizontal"
           dataSource={globalResults}
           renderItem={(doc) => {
-            const docUrl = doc.url || doc.file?.url || "";
-            const docSize = doc.size || doc.file?.size || 0;
+            const size = Math.round(doc.size || 0);
             return (
               <List.Item>
                 <List.Item.Meta
                   avatar={iconByType(doc.type)}
                   title={
-                    <a href={`${addressServer}${docUrl}`} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`${addressServer}${doc.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {doc.name}
                     </a>
                   }
-                  description={`${doc.catTitle} • ${doc.type || "file"} ${Math.round(docSize)}kb`}
+                  description={`${doc.catTitle} • ${
+                    doc.type || "file"
+                  } ${size}kb`}
                 />
               </List.Item>
             );
@@ -350,255 +397,3 @@ export default function InformationDisclosureTest() {
     </motion.div>
   );
 }
-
-// import React, { useEffect, useState, useMemo } from "react";
-// import {
-//   Table,
-//   Input,
-//   Cascader,
-//   Select,
-//   Space,
-//   Typography,
-//   Spin,
-//   Tag,
-// } from "antd";
-// import { DownloadOutlined, EyeOutlined } from "@ant-design/icons";
-// import TopImage from "../../components/TopImage";
-// import headerImg from "../../img/b04877a3110d6b586d064fc3a2853c70.jpg";
-// import { addressServer } from "../../config";
-
-// import pdf from "../../img/pdf.svg";
-// import doc from "../../img/doc.svg";
-// import docx from "../../img/docx.svg";
-// import rar from "../../img/rar.svg";
-// import xls from "../../img/xls.svg";
-// import jpg from "../../img/jpg.svg";
-
-// const icons = { pdf, doc, docx, rar, xls, jpg };
-// const { Search } = Input;
-// const { Option } = Select;
-// const { Paragraph } = Typography;
-// const palette = ["blue", "green", "volcano", "purple", "gold"];
-
-// // Массив из путей категории (для фильтрации)
-// const buildCategoryArray = (cat) => {
-//   if (!cat) return [];
-//   const parent = cat.parent ? buildCategoryArray(cat.parent) : [];
-//   return [...parent, cat.title];
-// };
-
-// // Построение дерева для Cascader
-// const buildTree = (paths) => {
-//   const root = {};
-//   paths.forEach((p) =>
-//     p.split(" / ").reduce((n, seg, i, arr) => {
-//       n.children ??= {};
-//       n.children[seg] ??= {
-//         title: seg,
-//         value: arr.slice(0, i + 1).join(" / "),
-//       };
-//       return n.children[seg];
-//     }, root)
-//   );
-
-//   const walk = (obj) =>
-//     Object.values(obj.children ?? {}).map((n) => ({
-//       label: n.title,
-//       value: n.value,
-//       children: walk(n),
-//     }));
-//   return walk(root);
-// };
-
-// function forceDownload(url, filename = "file") {
-//   fetch(url, { mode: "cors" })
-//     .then((r) => r.blob())
-//     .then((blob) => {
-//       const link = document.createElement("a");
-//       link.href = URL.createObjectURL(blob);
-//       link.download = filename;
-//       link.click();
-//       URL.revokeObjectURL(link.href);
-//     })
-//     .catch(console.error);
-// }
-
-// export default function Test() {
-//   const [rows, setRows] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [searchText, setSearchText] = useState("");
-//   const [catFilter, setCatFilter] = useState("all");
-//   const [yearFilter, setYearFilter] = useState("all");
-
-//   useEffect(() => {
-//     fetch(
-//       `${addressServer}/api/information-files?populate[0]=file&populate[1]=informacziya_kategorii.parent&pagination[pageSize]=100&sort=year:desc`
-//     )
-//       .then((r) => r.json())
-//       .then(({ data }) => {
-//         if (!Array.isArray(data)) return setRows([]);
-//         setRows(
-//           data.map((it) => ({
-//             key: it.id,
-//             title: it.title ?? "",
-//             type: it.type ?? "",
-//             year: Number(String(it.year ?? "").replace(/[^\d]/g, "")) || "",
-//             categoryArray: buildCategoryArray(
-//               it.informacziya_kategorii ?? null
-//             ), // массив категорий
-//             url: it.file?.url ? addressServer + it.file.url : "",
-//           }))
-//         );
-//       })
-//       .catch(console.error)
-//       .finally(() => setLoading(false));
-//   }, []);
-
-//   const cascaderOptions = useMemo(() => {
-//     const paths = [
-//       ...new Set(rows.map((r) => r.categoryArray.join(" / "))),
-//     ].filter((p) => p && p !== "—");
-//     return buildTree(paths);
-//   }, [rows]);
-
-//   const yearOptions = useMemo(() => {
-//     const set = new Set(rows.map((r) => r.year).filter(Boolean));
-//     return ["all", ...[...set].sort((a, b) => b - a)];
-//   }, [rows]);
-
-//   const dataSource = useMemo(
-//     () =>
-//       rows.filter(({ title, categoryArray, year }) => {
-//         //если "all" — пропускаем, иначе ищем совпадение в пути
-//         const okCat =
-//           catFilter === "all" ||
-//           categoryArray.some((cat) => catFilter.includes(cat));
-//           // categoryArray.join(" / ").startsWith(catFilter)
-//           // Проверяем год
-//         const okYear = yearFilter === "all" || year === yearFilter;
-//         const okText = title.toLowerCase().includes(searchText.toLowerCase());
-//         return okCat && okYear && okText;
-//       }),
-//     [rows, catFilter, yearFilter, searchText]
-//   );
-
-//   const columns = [
-//     {
-//       title: "Название",
-//       dataIndex: "title",
-//       width: 640,
-//       sorter: (a, b) => a.title.localeCompare(b.title),
-
-//       render: (_, rec) => (
-//         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-//           {icons[rec.type] && (
-//             <img src={icons[rec.type]} alt="" style={{ width: 16 }} />
-//           )}
-
-//           <span style={{ flex: 1, wordBreak: "break-word" }}>{rec.title}</span>
-
-//           {/* открыть */}
-//           <a
-//             href={rec.url}
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             title="Открыть"
-//             style={{ fontSize: 16 }}
-//           >
-//             <EyeOutlined />
-//           </a>
-
-//           {/* скачать */}
-//           <span
-//             title="Скачать"
-//             style={{ fontSize: 16, cursor: "pointer" }}
-//             onClick={() =>
-//               forceDownload(
-//                 rec.url,
-//                 `${rec.title}.${rec.type}`.replace(/[\\/:*?"<>|]+/g, "_")
-//               )
-//             }
-//           >
-//             <DownloadOutlined />
-//           </span>
-//         </div>
-//       ),
-//     },
-
-//     {
-//       title: "Категория",
-//       dataIndex: "categoryArray",
-//       width: 380,
-//       render: (val) =>
-//         val.map((seg, i) => (
-//           <Tag
-//             key={i}
-//             color={palette[i % palette.length]}
-//             style={{ marginTop: 4 }}
-//           >
-//             {seg}
-//           </Tag>
-//         )),
-//     },
-
-//     { title: "Тип", dataIndex: "type", width: 90, align: "center" },
-//   ];
-
-//   /* UI */
-//   return (
-//     <>
-//       <TopImage image={headerImg} title="Раскрытие информации" />
-
-//       <div className="page-grid__content">
-//         <Space direction="vertical" style={{ width: "100%" }} size="large">
-//           {/* фильтры */}
-//           <Space wrap>
-//             <Search
-//               placeholder="Поиск…"
-//               allowClear
-//               onChange={(e) => setSearchText(e.target.value)}
-//               style={{ width: 280 }}
-//             />
-
-//             <Cascader
-//               style={{ minWidth: 260, flex: 1 }}
-//               options={cascaderOptions}
-//               placeholder="Все категории"
-//               allowClear
-//               value={catFilter === "all" ? undefined : catFilter.split(" / ")}
-//               onChange={(v) => setCatFilter(v?.length ? v.join(" / ") : "all")}
-//               showSearch
-//             />
-
-//             <Select
-//               value={yearFilter}
-//               onChange={setYearFilter}
-//               style={{ width: 140 }}
-//             >
-//               {yearOptions.map((y) => (
-//                 <Option key={y} value={y}>
-//                   {y === "all" ? "Все годы" : y}
-//                 </Option>
-//               ))}
-//             </Select>
-//           </Space>
-
-//           {/* таблица */}
-//           <Spin spinning={loading}>
-//             <Table
-//               columns={columns}
-//               dataSource={dataSource}
-//               rowKey="key"
-//               pagination={{
-//                 pageSize: 25,
-//                 showSizeChanger: true,
-//                 locale: { items_per_page: "строк" },
-//               }}
-//               size="middle"
-//             />
-//           </Spin>
-//         </Space>
-//       </div>
-//     </>
-//   );
-// }
