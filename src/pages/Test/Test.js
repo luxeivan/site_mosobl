@@ -6,11 +6,11 @@ import {
   Typography,
   Button,
   Modal,
-  Divider,
   Space,
   Grid,
+  Select,
 } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 import { addressServer } from "../../config";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -26,11 +26,11 @@ import rarIcon from "../../img/rar.svg";
 const { Sider, Content } = Layout;
 const { Search } = Input;
 const { Title, Text } = Typography;
+const { Option } = Select;
 const { useBreakpoint } = Grid;
 
 const highlightColor = "#E37021";
 
-/* ---------- helpers ---------- */
 const iconByType = (ext) => {
   switch ((ext || "").toLowerCase()) {
     case "pdf":
@@ -62,30 +62,24 @@ const extractDate = (name) => {
   return new Date(+y, mth - 1, +d).getTime();
 };
 
-// ⬇️ заменить весь старый normalizeDoc на это
 const normalizeDoc = (raw) => {
   if (!raw) return null;
-
-  // Strapi-v4: файл лежит в attributes  → a
   const a = raw.attributes ?? raw;
-  const f = a.file ?? a; // на случай старой структуры
+  const f = a.file ?? a;
 
   const name = a.name;
   const type = a.type || a.ext || "";
   const url = f.url || "";
   const size = f.size || 0;
 
-  // 1) дата в названии
   let ts = extractDate(name);
 
-  // 2) если в названии нет — берём updatedAt / createdAt из Strapi
   if (!ts && f.updatedAt) ts = new Date(f.updatedAt).getTime();
   if (!ts && f.createdAt) ts = new Date(f.createdAt).getTime();
 
   return { id: raw.id, name, type, url, size, ts: ts ?? 0 };
 };
 
-/* ---------- component ---------- */
 export default function InformationDisclosureTest() {
   const screens = useBreakpoint();
   const isMobile = !screens.md;
@@ -96,7 +90,8 @@ export default function InformationDisclosureTest() {
   const [globalVisible, setGlobalVisible] = useState(false);
   const [globalQuery, setGlobalQuery] = useState("");
 
-  /* fetch categories once */
+  const [catDrawer, setCatDrawer] = useState(false);
+
   useEffect(() => {
     fetch(
       `${addressServer}/api/information-disclosures?populate[0]=groupInfo&populate[1]=groupInfo.list_files&populate[2]=groupInfo.list_files.file`
@@ -112,13 +107,11 @@ export default function InformationDisclosureTest() {
       .catch(console.error);
   }, []);
 
-  /* auto‑select first category ONLY on mobile */
   useEffect(() => {
     if (isMobile) {
       if (!selectedCatId && categories.length)
         setSelectedCatId(categories[0].id);
     } else {
-      // desktop – показываем "Выберите категорию"
       setSelectedCatId(null);
     }
   }, [isMobile, categories]);
@@ -142,7 +135,7 @@ export default function InformationDisclosureTest() {
         .filter(Boolean)
         .sort((a, b) => {
           if (sortMode === "name") return a.name.localeCompare(b.name, "ru");
-          // sortMode === "date"  → свежие (больший ts) наверху
+      
           return (b.ts ?? 0) - (a.ts ?? 0);
         });
 
@@ -173,7 +166,6 @@ export default function InformationDisclosureTest() {
     return res;
   }, [globalQuery, categories]);
 
-  /* styles */
   const btnActive = {
     background: highlightColor,
     borderColor: highlightColor,
@@ -185,7 +177,6 @@ export default function InformationDisclosureTest() {
     color: highlightColor,
   };
 
-  /* sidebar list */
   const CategoryList = (
     <List
       size="small"
@@ -199,7 +190,10 @@ export default function InformationDisclosureTest() {
               item.id === selectedCatId ? highlightColor : "transparent",
             borderRadius: 4,
           }}
-          onClick={() => setSelectedCatId(item.id)}
+          onClick={() => {
+            setSelectedCatId(item.id);
+            setCatDrawer(false);
+          }}
         >
           <Text
             style={{
@@ -228,30 +222,42 @@ export default function InformationDisclosureTest() {
       />
 
       <Layout style={{ minHeight: "calc(100vh - 300px)" }}>
-        {/* Desktop sidebar – 340px, перенос длинных названий */}
-        {!isMobile && (
-          <Sider
-            width={340}
-            style={{ background: "#fafafa", padding: 16, overflowY: "auto" }}
-          >
-            <Search
-              placeholder="Поиск по всем файлам"
-              enterButton={<SearchOutlined />}
-              allowClear
-              onSearch={(v) => {
-                setGlobalQuery(v);
-                setGlobalVisible(true);
+        {isMobile && (
+          <>
+
+            {/* плавающий бургер */}
+            <Button
+              type="primary"
+              shape="circle"
+              icon={<MenuOutlined />}
+              onClick={() => setCatDrawer(true)}
+              style={{
+                position: "fixed",
+                bottom: 20,
+                left: 300,
+                zIndex: 1001,
+                background: highlightColor,
+                borderColor: highlightColor,
               }}
-              style={{ marginBottom: 16 }}
             />
-            <Divider style={{ margin: "8px 0" }} />
-            {CategoryList}
-          </Sider>
+
+            {/* боковая шторка с категориями */}
+            <Modal
+              open={catDrawer}
+              onCancel={() => setCatDrawer(false)}
+              footer={null}
+              title="Категории"
+              bodyStyle={{ padding: 0 }}
+              width="80%"
+              style={{ top: 0 }}
+            >
+              {CategoryList}
+            </Modal>
+          </>
         )}
 
         <Layout>
           <Content style={{ padding: isMobile ? "12px 8px" : 24 }}>
-            {/* Mobile top bar */}
             {isMobile && (
               <>
                 <Search
@@ -272,20 +278,6 @@ export default function InformationDisclosureTest() {
                     paddingBottom: 8,
                   }}
                 >
-                  {categories.map((cat) => (
-                    <Button
-                      key={cat.id}
-                      size="small"
-                      style={
-                        cat.id === selectedCatId
-                          ? { ...btnActive, whiteSpace: "nowrap" }
-                          : { ...btnInactive, whiteSpace: "nowrap" }
-                      }
-                      onClick={() => setSelectedCatId(cat.id)}
-                    >
-                      {cat.title}
-                    </Button>
-                  ))}
                 </div>
               </>
             )}
@@ -300,18 +292,19 @@ export default function InformationDisclosureTest() {
               <>
                 <Title level={3}>{currentCat.title}</Title>
                 <Space style={{ marginBottom: 24, flexWrap: "wrap" }}>
-                  <Button
-                    style={sortMode === "name" ? btnActive : btnInactive}
-                    onClick={() => setSortMode("name")}
+                  <Typography.Text strong>
+                    Сортировать&nbsp;по:&nbsp;
+                  </Typography.Text>
+
+                  <Select
+                    value={sortMode}
+                    onChange={(val) => setSortMode(val)}
+                    style={{ width: 160 }}
+                    dropdownStyle={{ zIndex: 1300 }} 
                   >
-                    Сортировать по названию
-                  </Button>
-                  <Button
-                    style={sortMode === "date" ? btnActive : btnInactive}
-                    onClick={() => setSortMode("date")}
-                  >
-                    Сортировать по дате
-                  </Button>
+                    <Option value="name">Наименованию</Option>
+                    <Option value="date">Дате</Option>
+                  </Select>
                 </Space>
 
                 {catGroups.map((g) => (
@@ -350,7 +343,6 @@ export default function InformationDisclosureTest() {
         </Layout>
       </Layout>
 
-      {/* Global search modal */}
       <Modal
         open={globalVisible}
         onCancel={() => setGlobalVisible(false)}
