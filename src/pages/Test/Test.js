@@ -9,6 +9,7 @@ import {
   Space,
   Grid,
   Select,
+  Divider,
 } from "antd";
 import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 import { addressServer } from "../../config";
@@ -135,7 +136,7 @@ export default function InformationDisclosureTest() {
         .filter(Boolean)
         .sort((a, b) => {
           if (sortMode === "name") return a.name.localeCompare(b.name, "ru");
-      
+
           return (b.ts ?? 0) - (a.ts ?? 0);
         });
 
@@ -224,7 +225,6 @@ export default function InformationDisclosureTest() {
       <Layout style={{ minHeight: "calc(100vh - 300px)" }}>
         {isMobile && (
           <>
-
             {/* плавающий бургер */}
             <Button
               type="primary"
@@ -234,7 +234,7 @@ export default function InformationDisclosureTest() {
               style={{
                 position: "fixed",
                 bottom: 20,
-                left: 300,
+                left: 320,
                 zIndex: 1001,
                 background: highlightColor,
                 borderColor: highlightColor,
@@ -254,6 +254,27 @@ export default function InformationDisclosureTest() {
               {CategoryList}
             </Modal>
           </>
+        )}
+
+        {/*  ▼ десктоп – список категорий в сайдбаре */}
+        {!isMobile && (
+          <Sider
+            width={340}
+            style={{ background: "#fafafa", padding: 16, overflowY: "auto" }}
+          >
+            <Search
+              placeholder="Поиск по всем файлам"
+              enterButton={<SearchOutlined />}
+              allowClear
+              onSearch={(v) => {
+                setGlobalQuery(v);
+                setGlobalVisible(true);
+              }}
+              style={{ marginBottom: 16 }}
+            />
+            <Divider style={{ margin: "8px 0" }} />
+            {CategoryList}
+          </Sider>
         )}
 
         <Layout>
@@ -277,8 +298,7 @@ export default function InformationDisclosureTest() {
                     overflowX: "auto",
                     paddingBottom: 8,
                   }}
-                >
-                </div>
+                ></div>
               </>
             )}
 
@@ -300,7 +320,7 @@ export default function InformationDisclosureTest() {
                     value={sortMode}
                     onChange={(val) => setSortMode(val)}
                     style={{ width: 160 }}
-                    dropdownStyle={{ zIndex: 1300 }} 
+                    dropdownStyle={{ zIndex: 1300 }}
                   >
                     <Option value="name">Наименованию</Option>
                     <Option value="date">Дате</Option>
