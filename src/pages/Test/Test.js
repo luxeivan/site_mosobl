@@ -6,12 +6,17 @@ import {
   Typography,
   Button,
   Modal,
+  Drawer,
   Space,
   Grid,
   Select,
   Divider,
 } from "antd";
-import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  MenuOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import { addressServer } from "../../config";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
@@ -227,17 +232,16 @@ export default function InformationDisclosureTest() {
           <>
             {/* плавающий бургер */}
             <Button
-              type="primary"
-              shape="circle"
-              icon={<MenuOutlined />}
+              icon={
+                <UnorderedListOutlined
+                  style={{ fontSize: 22, color: "#595959" }}
+                />
+              }
               onClick={() => setCatDrawer(true)}
               style={{
                 position: "fixed",
-                bottom: 20,
-                left: 320,
+                top: 560,
                 zIndex: 1001,
-                background: highlightColor,
-                borderColor: highlightColor,
               }}
             />
 
