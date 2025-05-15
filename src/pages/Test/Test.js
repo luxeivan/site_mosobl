@@ -242,6 +242,9 @@ export default function InformationDisclosureTest() {
                 position: "fixed",
                 top: 560,
                 zIndex: 1001,
+                width: 34,
+                height: 34,
+                borderRadius: "0 8px 8px 0",
               }}
             />
 
