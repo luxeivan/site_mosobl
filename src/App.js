@@ -69,9 +69,10 @@ function App() {
             path="/informationDisclosures/:id"
             element={<InformationDisclosuresItem />}
           />
+          {/* Новое раскрытие информации */}
           <Route
             path="/informationDisclosures"
-            element={<InformationDisclosures />}
+            element={<Test />}
           />
           <Route
             path="/informationDisclosures/companyratings"
@@ -138,6 +139,7 @@ function App() {
           <Route path="/creditRating" element={<CreditRating />} />
           <Route path="/secret" element={<SecretDisconnect />} />
           <Route path="/secrethr" element={<VacanciesTwo />} />
+          {/* Старое Раскрытие информации */}
           <Route path="/test" element={<Test />} />
           <Route path="/20years" element={<TwentyYears />} />
           <Route path="/universities" element={<Universities />} />
