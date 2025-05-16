@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHref, useLocation, useNavigate } from "react-router";
 import { mainMenu } from "../store/menu";
+// import logo from "../img/header/logo_20yearold_3.png";
+// import logo2 from "../img/header/logo_20yearold_1.png";
+// import logoTwo from "../img/header/logo_20yearold_1.png";
 import logo from "../img/logo.svg";
 import logo2 from "../img/logo2.svg";
 import logoTwo from "../img/logo-two.svg";
-import pobeda from "../img/Pobeda80_logo_main.png";
+// import pobeda from "../img/Pobeda80_logo_main.png";
 import searchIcon2 from "../img/search-icon2.svg";
 import firstScreenLogo from "../img/first-screen-logo.svg";
 import img34512673ce61b0db299f7e2405ac60e9 from "../img/34512673ce61b0db299f7e2405ac60e9.svg";
@@ -62,12 +65,14 @@ export default function Header() {
                       src={logo}
                       alt="АО «Мособлэнерго»"
                       title="АО «Мособлэнерго»"
-                    />
+                      style={{width:200}}
+                      />
                     <img
                       className="logo logo--inner-mob"
                       src={logo2}
                       alt="АО «Мособлэнерго»"
                       title="АО «Мособлэнерго»"
+                      style={{width:200}}
                     />
                   </Link>{" "}
                   <div
@@ -301,6 +306,7 @@ export default function Header() {
                     src={logoTwo}
                     alt="АО «Мособлэнерго»"
                     title="АО «Мособлэнерго»"
+                    style={{width:200}}
                   />
                 </Link>{" "}
               </div>
@@ -782,19 +788,19 @@ export default function Header() {
                     <div className="first-screen__block">
                       <div
                         className="logo_two"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-end",
-                          gap: "20px",
-                          justifyContent:"center"
-                        }}
+                        // style={{
+                        //   display: "flex",
+                        //   alignItems: "flex-end",
+                        //   gap: "20px",
+                        //   justifyContent:"center"
+                        // }}
                       >
                         <img
                           className="first-screen__img"
                           src={firstScreenLogo}
                           alt="logo"
                         />
-                        <img
+                        {/* <img
                           className="pobeda"
                           src={pobeda}
                           alt="80 лет Победа!"
@@ -806,7 +812,7 @@ export default function Header() {
                             height: "auto",
                             maxWidth: "100%", 
                           }}
-                        />
+                        /> */}
                       </div>
                       <br />
                       {/* ------------------------------------------------------ */}
