@@ -96,8 +96,13 @@ export const mainMenu = [
       },
       {
         title: "Производственные программы на 2024 год",
-        link: "/productionPrograms",
+        link: "/productionPrograms2024",
       },
+      {
+        title: "Производственные программы на 2025 год",
+        link: "/productionPrograms2025",
+      },
+
     ],
   },
   {
@@ -126,6 +131,10 @@ export const mainMenu = [
         title: "Специальные проекты",
         link: "/specialProjects",
       },
+      // {
+      //   title: "20 лет «Мособлэнерго»",
+      //   link: "/20years",
+      // },
     ],
   },
   {
