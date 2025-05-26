@@ -121,7 +121,7 @@ export default function Vacancies() {
 
             <div className="main-info__item">
               <div className="main-info__col-left">
-                <p className="main-info__filialcount">10</p>
+                <p className="main-info__filialcount">11</p>
                 <p className="main-info__filialcount-info">
                   УКРУПНЕННЫХ ФИЛИАЛОВ
                 </p>
@@ -133,19 +133,19 @@ export default function Vacancies() {
                     <p>Специалистов в коллективе</p>
                   </div>
                   <div className="main-info__col">
-                    <p>49 968</p>
+                    <p>54 000</p>
                     <p>Кабельные и воздушные линии (км)</p>
                   </div>
                 </div>
                 <div className="main-info__row">
                   <div className="main-info__col">
-                    <p>13 400</p>
+                    <p>15 000</p>
                     <p>ТП, РП (шт)</p>
                   </div>
                   <div className="main-info__col">
-                    <p>14,9</p>
+                    <p>15,9</p>
                     <p>
-                      Объем переданной электроэнергии в 2022 г. (млрд.
+                      Объем переданной электроэнергии в 2024 г. (млрд.
                       киловатт-часов)
                     </p>
                   </div>
