@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TopImage({ image, title }) {
+export default function TopImage({ image, title, more = undefined, paddingTop = undefined, paddingBottom = undefined }) {
   if (image) {
     return (
       <section className="first-screen-inner">
@@ -10,18 +10,19 @@ export default function TopImage({ image, title }) {
           <img src={image} alt="Информация о компании" />
         </picture>
         <div className="container">
-          <div className="first-screen-inner__container">
+          <div className="first-screen-inner__container" style={{ paddingTop, paddingBottom }}>
             <div className="first-screen-inner__wrapper">
               <div className="first-screen-inner__down">
                 <h1 className="title-page">{title}</h1>
               </div>
+              {more}
             </div>
           </div>
         </div>
       </section>
     );
-  }else{
-    return(<div className="dummy"></div>)
+  } else {
+    return (<div className="dummy"></div>)
   }
 }
 
