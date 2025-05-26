@@ -1,7 +1,12 @@
+.more {
+  max-width: 50%;
+}
+
 .list {
   list-style-type: disc;
   margin-left: 20px;
 }
+
 
 .list li {
   margin-bottom: 10px;
@@ -104,3 +109,8 @@
   text-decoration: none;
   color: inherit;
 } */
+ @media(max-width:900px){
+  .more {
+    max-width: 100%;
+  }
+ }

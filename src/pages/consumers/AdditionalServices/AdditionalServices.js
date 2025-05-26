@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Collapse, Table } from "antd";
+import { Typography, Collapse, Table, Button } from "antd";
 import axios from "axios";
 import pdfIcon from "../../../img/pdf.svg";
 import docxIcon from "../../../img/docx.svg";
@@ -59,7 +59,7 @@ const AdditionalServices = () => {
       throw error;
     }
   };
-console.log(services)
+  console.log(services)
   // Получение всех данных услуг
   useEffect(() => {
     const fetchData = async () => {
@@ -126,13 +126,13 @@ console.log(services)
           price: item.price,
           isSubSectionHeader: false,
           rowSpanCode:
-          item.rowSpanCode !== null ? item.rowSpanCode : 1,
+            item.rowSpanCode !== null ? item.rowSpanCode : 1,
           rowSpanName:
-          item.rowSpanName !== null ? item.rowSpanName : 1,
+            item.rowSpanName !== null ? item.rowSpanName : 1,
           rowSpanUnit:
-          item.rowSpanUnit !== null ? item.rowSpanUnit : 1,
+            item.rowSpanUnit !== null ? item.rowSpanUnit : 1,
           rowSpanPrice:
-          item.rowSpanPrice !== null ? item.rowSpanPrice : 1,
+            item.rowSpanPrice !== null ? item.rowSpanPrice : 1,
         };
       }
     });
@@ -241,13 +241,13 @@ console.log(services)
     children: (
       <>
         {/* Контактная информация */}
-        <Paragraph style={{fontSize:18}}>
+        <Paragraph style={{ fontSize: 18 }}>
           По вопросам оказания дополнительных услуг свяжитесь с нами: тел.:{" "}
-          <a href="tel:+74957803962" style={{fontSize:18}}>
+          <a href="tel:+74957803962" style={{ fontSize: 18 }}>
             <b>8 (495) 780-39-62</b>
           </a>{" "}
           доб. 3327, доб. 1096; e-mail:{" "}
-          <a href="mailto:uslugi@mosoblenergo.ru" style={{fontSize:18}}>
+          <a href="mailto:uslugi@mosoblenergo.ru" style={{ fontSize: 18 }}>
             <b>uslugi@mosoblenergo.ru</b>
           </a>
         </Paragraph>
@@ -285,8 +285,41 @@ console.log(services)
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <TopImage image={imgTop} title={"Дополнительные услуги"} />
-      <div className="page-grid__content" id="content">
+      <TopImage image={imgTop} title={"Дополнительные услуги"} more={
+        <div
+          // style={{ position: "absolute", top: -120, left: 0, zIndex: 1000, backgroundColor: "white", padding: 10, borderRadius: 10, margin: 20, }}
+          style={{
+            backgroundColor: "#fffc",
+            padding: 20,
+            borderRadius: 10,
+            // margin: "0 auto",
+            marginTop: 40,
+            marginBottom: 20,
+            // border: "1px solid #d9d9d9",
+            // maxWidth: "50%"
+          }}
+          className={styles.more}
+        >
+          <Typography.Paragraph>
+            <b>Согласовать топографическую съемку</b> для подтверждения наличия/отсутствия инженерных сетей на территории земельного участка в электронном виде Вы можете посредством сервиса <b>«ВсеСети» на Портале государственных и муниципальных услуг</b> Московской области.
+          </Typography.Paragraph>
+          <div style={{ textAlign: "center" }}>
+            <a href="https://uslugi.mosreg.ru/services/20809?step=110530&target=66979&applicant=15267" target="_blank" className="creditRating__link block-btn">
+
+              Перейти на "ВсеСети"
+            </a>
+          </div>
+        </div>
+      }
+        paddingTop={270}
+        paddingBottom={100}
+      />
+      <div
+        className="page-grid__content"
+        id="content"
+      // style={{ position: "relative" }}
+      >
+
         <Collapse
           accordion
           className={styles.accordion}
