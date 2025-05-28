@@ -9,18 +9,15 @@ import HTMLFlipBook from "react-pageflip";
 
 const { Title, Paragraph, Link } = Typography;
 
-/* ===================  BOOK  =================== */
-const PAGES = 17; // jpg pages
+const PAGES = 17; 
 
-/* ==========  ARCHIVE auto-import  ========== */
-/* берём все картинки рекурсивно из Archive */
+
 const archiveReq = require.context(
   "../../img/20years/Archive",
   true,
   /\.(jpe?g|png|webp)$/i
 );
 
-/* группируем по папкам */
 const archiveMap = archiveReq.keys().reduce((acc, path) => {
   const [, branch, file] = path.match(/^\.\/([^/]+)\/(.+)$/);
   const prettyName = file
@@ -31,12 +28,12 @@ const archiveMap = archiveReq.keys().reduce((acc, path) => {
     caption: prettyName,
   });
   return acc;
-}, {}); // { 'Домодедовский филиал': [{src, caption}, ...], ... }
+}, {}); 
 
 export default function TwentyYears() {
   const [open, setOpen] = useState(false);
 
-  /* списки филиалов отсортированные */
+
   const branchNames = useMemo(
     () => Object.keys(archiveMap).sort((a, b) => a.localeCompare(b, "ru")),
     []
