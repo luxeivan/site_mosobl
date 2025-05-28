@@ -34,9 +34,8 @@
   text-transform: uppercase;
 }
 
-/* ---------- TABLET ≤1024px ---------- */
 @media (max-width: 1024px) {
-  .flex {                     /* делаем опорой для absolute */
+  .flex {
     background: linear-gradient(
       90deg,
       #005cb8 0%,
@@ -44,42 +43,43 @@
       #fff 60%,
       #005cb8 100%
     );
-    position: relative;       /* НОВОЕ */
+    position: relative;
   }
 
   .logo {
     width: 350px;
     margin-top: 100px;
-    margin-bottom: 0;         /* раньше было 100px — убрали лишнее */
+    margin-bottom: 0;
   }
 
-  .line {                     /* переносим полосу вниз */
-    top: auto;                /* отключаем прежнее */
-    bottom: 0;                /* фиксируем к низу */
+  .line {
+    top: auto;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 40px;
     font-size: 18px;
   }
 
-  .right { display: none; }
+  .right {
+    display: none;
+  }
 }
 
-/* ---------- MOBILE ≤768px ---------- */
 @media (max-width: 768px) {
   .flex {
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    position: relative;       /* чтобы .line прижалась к низу */
+    position: relative;
   }
 
   .logo {
     width: 280px;
-    margin: 60px 0 40px;      /* небольшой буфер, ничего не перекрывает */
+    margin: 60px 0 40px;
   }
 
-  .line {                     /* та же логика, но мобильные размеры */
+  .line {
     position: absolute;
     top: auto;
     bottom: 0;
@@ -91,7 +91,6 @@
     margin: 0;
   }
 }
-
 
 /* .line {
     width: 100%;
