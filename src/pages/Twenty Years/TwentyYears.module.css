@@ -36,26 +36,10 @@
   justify-content: center;
 }
 
-.book {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-}
-
 .bookIntro {
   max-width: 1000px;
   margin: 48px auto;
   padding: 0 16px;
-}
-
-.sectionTitle {
-  margin-bottom: 8px;
-  position: relative;
 }
 
 .sectionTitle::after {
@@ -77,26 +61,6 @@
   align-items: center;
   z-index: 2000;
   padding: 24px;
-}
-
-.bookWrapper {
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 24px;
-}
-
-.book {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
 }
 
 .pageImg {
