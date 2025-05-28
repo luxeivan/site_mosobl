@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import back from "../../img/20years/back.svg";
@@ -8,10 +8,39 @@ import { Flex, Typography } from "antd";
 import HTMLFlipBook from "react-pageflip";
 
 const { Title, Paragraph, Link } = Typography;
-const PAGES = 17; // jpg-страниц в /public/20years/pages/
+
+/* ===================  BOOK  =================== */
+const PAGES = 17; // jpg pages
+
+/* ==========  ARCHIVE auto-import  ========== */
+/* берём все картинки рекурсивно из Archive */
+const archiveReq = require.context(
+  "../../img/20years/Archive",
+  true,
+  /\.(jpe?g|png|webp)$/i
+);
+
+/* группируем по папкам */
+const archiveMap = archiveReq.keys().reduce((acc, path) => {
+  const [, branch, file] = path.match(/^\.\/([^/]+)\/(.+)$/);
+  const prettyName = file
+    .replace(/\.(jpe?g|png|webp)$/i, "")
+    .replace(/[_-]+/g, " ");
+  (acc[branch] = acc[branch] || []).push({
+    src: archiveReq(path),
+    caption: prettyName,
+  });
+  return acc;
+}, {}); // { 'Домодедовский филиал': [{src, caption}, ...], ... }
 
 export default function TwentyYears() {
   const [open, setOpen] = useState(false);
+
+  /* списки филиалов отсортированные */
+  const branchNames = useMemo(
+    () => Object.keys(archiveMap).sort((a, b) => a.localeCompare(b, "ru")),
+    []
+  );
 
   return (
     <motion.div
@@ -30,12 +59,11 @@ export default function TwentyYears() {
         <div className={styles.line}>20 лет во благо Подмосковья!</div>
       </Flex>
 
-      {/* интро-блок */}
+      {/* Памятная книга */}
       <section className={styles.bookIntro}>
         <Title level={2} className={styles.sectionTitle}>
           Памятная книга
         </Title>
-
         <Paragraph>
           Специально к юбилею АО «Мособлэнерго» выпустило памятную книгу,
           посвященную истории развития компании и ее филиалов. История АО
@@ -46,15 +74,14 @@ export default function TwentyYears() {
           самые яркие вехи истории электросетевых предприятий легли в основу
           нашей памятной книги.
         </Paragraph>
-
         <Link onClick={() => setOpen(true)}>Читать онлайн</Link>
       </section>
 
+      {/* Архив */}
       <section className={styles.bookIntro}>
         <Title level={2} className={styles.sectionTitle}>
           Архивные материалы
         </Title>
-
         <Paragraph>
           В процессе работы над исследованием мы обнаружили уникальные архивные
           документы первых электросетевых предприятий городов Подмосковья, в том
@@ -65,19 +92,31 @@ export default function TwentyYears() {
           которая теперь стала частью «Мособлэнерго», физически невозможно,
           поэтому мы постарались выбрать и включить в книгу основные события.
           Для всех, кто хотел бы более подробно погрузиться в историю
-          электросетей Подмосковья мы разместили здесь всю найденную информацию.
+          электросетей Подмосковья мы разместили здесь всю найденную информацию
         </Paragraph>
-
       </section>
+
+      {/* галереи по филиалам */}
+      {branchNames.map((branch) => (
+        <section key={branch} className={styles.branchSection}>
+          <Title level={3}>{branch}</Title>
+          <div className={styles.gallery}>
+            {archiveMap[branch].map(({ src, caption }, idx) => (
+              <figure key={idx} className={styles.galleryItem}>
+                <img src={src} alt={caption} />
+                <figcaption>{caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {/* overlay-книга */}
       {open && (
         <div className={styles.overlay} onClick={() => setOpen(false)}>
           <div
             className={styles.bookWrapper}
-            onClick={(e) =>
-              e.stopPropagation()
-            } /* чтобы клик по книге не закрывал */
+            onClick={(e) => e.stopPropagation()}
           >
             <HTMLFlipBook
               width={1000}
