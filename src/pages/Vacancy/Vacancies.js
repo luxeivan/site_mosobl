@@ -129,7 +129,7 @@ export default function Vacancies() {
               <div className="main-info__col-right">
                 <div className="main-info__row">
                   <div className="main-info__col">
-                    <p>6 200</p>
+                    <p>6 408</p>
                     <p>Специалистов в коллективе</p>
                   </div>
                   <div className="main-info__col">

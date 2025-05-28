@@ -1,4 +1,99 @@
+/* контейнер Flex */
+.flex {
+  position: relative;
+}
+
+/* общий декор-изображения */
+.img {
+  width: 400px;
+}
+
+/* отражённая версия первого back.svg */
+.reverse {
+  transform: scaleX(-1);
+}
+
+.logo {
+  width: 400px;
+  margin-bottom: 100px;
+}
+
+/* оранжевая полоса-слоган */
 .line {
+  width: 100%;
+  height: 50px;
+  background-color: #ec691f;
+  position: absolute;
+  top: 260px;
+  z-index: -1;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* ---------- TABLET ≤1024px ---------- */
+@media (max-width: 1024px) {
+  .flex {                     /* делаем опорой для absolute */
+    background: linear-gradient(
+      90deg,
+      #005cb8 0%,
+      #fff 40%,
+      #fff 60%,
+      #005cb8 100%
+    );
+    position: relative;       /* НОВОЕ */
+  }
+
+  .logo {
+    width: 350px;
+    margin-top: 100px;
+    margin-bottom: 0;         /* раньше было 100px — убрали лишнее */
+  }
+
+  .line {                     /* переносим полосу вниз */
+    top: auto;                /* отключаем прежнее */
+    bottom: 0;                /* фиксируем к низу */
+    left: 0;
+    right: 0;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .right { display: none; }
+}
+
+/* ---------- MOBILE ≤768px ---------- */
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;       /* чтобы .line прижалась к низу */
+  }
+
+  .logo {
+    width: 280px;
+    margin: 60px 0 40px;      /* небольшой буфер, ничего не перекрывает */
+  }
+
+  .line {                     /* та же логика, но мобильные размеры */
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    margin: 0;
+  }
+}
+
+
+/* .line {
     width: 100%;
     height: 50px;
     background-color: #EC691F;
@@ -18,4 +113,4 @@
         display: none;
     }
 
-}
+} */
