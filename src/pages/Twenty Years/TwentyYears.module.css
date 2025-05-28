@@ -1,14 +1,11 @@
-/* контейнер Flex */
 .flex {
   position: relative;
 }
 
-/* общий декор-изображения */
 .img {
   width: 400px;
 }
 
-/* отражённая версия первого back.svg */
 .reverse {
   transform: scaleX(-1);
 }
@@ -18,7 +15,6 @@
   margin-bottom: 100px;
 }
 
-/* оранжевая полоса-слоган */
 .line {
   width: 100%;
   height: 50px;
@@ -91,6 +87,84 @@
     margin: 0;
   }
 }
+
+.bookWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.book {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.bookIntro {
+  max-width: 1000px;
+  margin: 48px auto;
+  padding: 0 16px;
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: #c75b00;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.bookWrapper {
+width: 100%;
+  height: 90vh;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.book {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.pageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
 
 /* .line {
     width: 100%;
