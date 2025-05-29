@@ -7,10 +7,12 @@ import styles from "./TwentyYears.module.css";
 import { Flex, Typography } from "antd";
 import HTMLFlipBook from "react-pageflip";
 
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 const { Title, Paragraph, Link } = Typography;
 
-const PAGES = 17; 
-
+const PAGES = 17;
 
 const archiveReq = require.context(
   "../../img/20years/Archive",
@@ -28,11 +30,13 @@ const archiveMap = archiveReq.keys().reduce((acc, path) => {
     caption: prettyName,
   });
   return acc;
-}, {}); 
+}, {});
 
 export default function TwentyYears() {
   const [open, setOpen] = useState(false);
-
+  const [lbOpen, setLbOpen] = useState(false);
+  const [lbSlides, setLbSlides] = useState([]);
+  const [lbIndex, setLbIndex] = useState(0);
 
   const branchNames = useMemo(
     () => Object.keys(archiveMap).sort((a, b) => a.localeCompare(b, "ru")),
@@ -100,7 +104,18 @@ export default function TwentyYears() {
           <div className={styles.gallery}>
             {archiveMap[branch].map(({ src, caption }, idx) => (
               <figure key={idx} className={styles.galleryItem}>
-                <img src={src} alt={caption} />
+                {/* <img src={src} alt={caption} /> */}
+                <img
+                  src={src}
+                  alt={caption}
+                  onClick={() => {
+                    setLbSlides(archiveMap[branch].map(({ src }) => ({ src })));
+                    setLbIndex(idx);
+                    setLbOpen(true);
+                  }}
+                  style={{ cursor: "zoom-in" }}
+                />
+
                 <figcaption>{caption}</figcaption>
               </figure>
             ))}
@@ -141,6 +156,16 @@ export default function TwentyYears() {
             </HTMLFlipBook>
           </div>
         </div>
+      )}
+
+      {/* Lightbox */}
+      {lbOpen && (
+        <Lightbox
+          open
+          close={() => setLbOpen(false)}
+          slides={lbSlides}
+          index={lbIndex}
+        />
       )}
     </motion.div>
   );
