@@ -3,8 +3,13 @@ import { motion } from "framer-motion";
 import TopImage from "../../components/TopImage";
 import back from "../../img/20years/back.svg";
 import logo from "../../img/20years/logo.png";
+import bigOne from "../../img/20years/bigone.jpg";
+import bigTwo from "../../img/20years/bigtwo.jpg";
+import pdfFile from "../../img/20years/book.pdf";
+import pdfURL from "../../img/20years/book.pdf?url";
 import styles from "./TwentyYears.module.css";
-import { Flex, Typography } from "antd";
+
+import { Flex, Typography, Modal } from "antd";
 import HTMLFlipBook from "react-pageflip";
 
 import Lightbox from "yet-another-react-lightbox";
@@ -32,11 +37,23 @@ const archiveMap = archiveReq.keys().reduce((acc, path) => {
   return acc;
 }, {});
 
+function PdfSlide({ src }) {
+  return (
+    <iframe
+      src={src}
+      style={{ width: "100%", height: "100%", border: "none" }}
+      title="PDF"
+    />
+  );
+}
+
 export default function TwentyYears() {
   const [open, setOpen] = useState(false);
   const [lbOpen, setLbOpen] = useState(false);
   const [lbSlides, setLbSlides] = useState([]);
   const [lbIndex, setLbIndex] = useState(0);
+
+  const [pdfLbOpen, setPdfLbOpen] = useState(false);
 
   const branchNames = useMemo(
     () => Object.keys(archiveMap).sort((a, b) => a.localeCompare(b, "ru")),
@@ -75,7 +92,17 @@ export default function TwentyYears() {
           самые яркие вехи истории электросетевых предприятий легли в основу
           нашей памятной книги.
         </Paragraph>
-        <Link onClick={() => setOpen(true)}>Читать онлайн</Link>
+        {/* <Link onClick={() => setOpen(true)}>Читать онлайн</Link> */}
+        <Link onClick={() => setOpen(true)}>Читать онлайн (листалка)</Link>
+
+        <Link style={{ marginLeft: 24 }}
+          onClick={() => {
+            // mobile & desktop одинаково: новая вкладка/окно
+            window.open(pdfURL, "_blank", "noopener,noreferrer");
+          }}
+        >
+          Читать онлайн PDF
+        </Link>
       </section>
 
       {/* Архив */}
@@ -131,14 +158,15 @@ export default function TwentyYears() {
             onClick={(e) => e.stopPropagation()}
           >
             <HTMLFlipBook
-              width={1000}
-              height={700}
-              size="stretch"
+              width={700}
+              height={1000}
               minWidth={300}
-              maxWidth={1800}
-              minHeight={300}
+              maxWidth={700}
+              minHeight={400}
               maxHeight={1000}
               showCover
+              usePortrait
+              autoCenter
               mobileScrollSupport
               className={styles.book}
             >
@@ -158,13 +186,31 @@ export default function TwentyYears() {
         </div>
       )}
 
-      {/* Lightbox */}
+      {/* Архив увеличение*/}
       {lbOpen && (
         <Lightbox
           open
           close={() => setLbOpen(false)}
           slides={lbSlides}
           index={lbIndex}
+        />
+      )}
+
+      {/* Книга в pdf */}
+      {pdfLbOpen && (
+        <Lightbox
+          open
+          close={() => setPdfLbOpen(false)}
+          slides={[{ src: pdfFile }]}
+          render={{
+            slide: ({ slide }) => (
+              <iframe
+                src={slide.src}
+                title="Памятная книга PDF"
+                style={{ width: "100%", height: "100%", border: 0 }}
+              />
+            ),
+          }}
         />
       )}
     </motion.div>
