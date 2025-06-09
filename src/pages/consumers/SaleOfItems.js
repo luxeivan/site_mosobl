@@ -21,7 +21,7 @@ export default function SaleOfItems() {
         <div className="row-docs-age">
           <a
             className="doc-line"
-            href={`${addressServer}/uploads/1668d5e383449e6cfd286375cf07e9a6_d4a2bbdb07.pdf?updated_at=2022-11-14T12:03:06.386Z`}
+            href={`${addressServer}/uploads/Perechen_877289d59d.pdf`}
             download=""
             rel="noopener noreferrer"
             target="_blank"
