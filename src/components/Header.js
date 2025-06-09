@@ -16,7 +16,7 @@ import img7ad387832d629a52c87195d9cb795e3c from "../img/7ad387832d629a52c87195d9
 import img639bae9c47ff56a3f33bc8f8b49a4e9b from "../img/639bae9c47ff56a3f33bc8f8b49a4e9b.svg";
 import img629d5332fa7791fcb59127d93f320c66 from "../img/629d5332fa7791fcb59127d93f320c66.jpg";
 import { Link } from "react-router-dom";
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 
 export default function Header() {
   const [scroll, setScroll] = useState();
@@ -46,9 +46,8 @@ export default function Header() {
   return (
     <header>
       <section
-        className={`page-header vg-modal-fixed ${scroll}  ${
-          openSearchLine ? "hide-line" : ""
-        }`}
+        className={`page-header vg-modal-fixed ${scroll}  ${openSearchLine ? "hide-line" : ""
+          }`}
         id="myHeader"
       >
         <div className="container">
@@ -66,14 +65,14 @@ export default function Header() {
                       src={logo}
                       alt="АО «Мособлэнерго»"
                       title="АО «Мособлэнерго»"
-                      style={{width:200}}
-                      />
+                      style={{ width: 200 }}
+                    />
                     <img
                       className="logo logo--inner-mob"
                       src={logo2}
                       alt="АО «Мособлэнерго»"
                       title="АО «Мособлэнерго»"
-                      style={{width:200}}
+                      style={{ width: 200 }}
                     />
                   </Link>{" "}
                   <div
@@ -307,7 +306,7 @@ export default function Header() {
                     src={logoTwo}
                     alt="АО «Мособлэнерго»"
                     title="АО «Мособлэнерго»"
-                    style={{width:200}}
+                    style={{ width: 200 }}
                   />
                 </Link>{" "}
               </div>
@@ -409,7 +408,7 @@ export default function Header() {
         </div>
       </section>
       {/* ------------------------------------------------------------------------------ */}
-      <section className="mob-contact" style={{marginTop:50}}>
+      <section className="mob-contact" style={{ marginTop: 50 }}>
         <div className="page-header__wrap_mob">
           <span className="page-header__text_mob">Горячая линия:</span>{" "}
           <a className="page-header__tel_mob" href="tel:+74959950099">
@@ -793,14 +792,14 @@ export default function Header() {
                           display: "flex",
                           alignItems: "center",
                           gap: "20px",
-                          justifyContent:"center"
+                          justifyContent: "center"
                         }}
                       >
                         <img
                           className="first-screen__img"
                           src={firstScreenLogo}
                           alt="logo"
-                          style={{marginTop:100}}
+                          style={{ marginTop: 100 }}
                         />
                         {/* <img
                           className="pobeda"
@@ -865,6 +864,23 @@ export default function Header() {
                             <p className="creditRating__text">
                               Берегите себя и своих близких!
                             </p>
+                          </div>
+                        </div>
+                        <div className="creditRating">
+                          {/* <img className="creditRating__img" src={creditRating} alt="logo" /> */}
+                          <div className="creditRating__desc">
+                            <h3 className="creditRating__title">
+                              Дополнительные услуги
+                            </h3>
+                            <p className="creditRating__text">
+                              Согласовать топографическую съемку для подтверждения наличия/отсутствия инженерных сетей на территории земельного участка в электронном виде Вы можете посредством сервиса «ВсеСети» на Портале государственных и муниципальных услуг Московской области.
+                            </p>
+                            <div className="creditRating__link-area">
+                              <a href="https://uslugi.mosreg.ru/services/20809?step=110530&target=66979&applicant=15267" target="_blank" className="creditRating__link block-btn">
+
+                                Перейти на "ВсеСети"
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </Flex>
