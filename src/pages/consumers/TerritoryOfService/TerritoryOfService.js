@@ -198,8 +198,8 @@ export default function TerritoryOfService() {
                         loading={loading}
                         style={{ width: "100%" }}
                         pagination={{
-                            current: pagination?.current || defaultPage,
-                            pageSize: pagination?.pageSize || defaultPageSize,
+                            current: pagination?.current ,
+                            pageSize: pagination?.pageSize ,
                             total: total || 0,
                             showSizeChanger: true,
                             pageSizeOptions: ["10", "25", "50", "100"],
