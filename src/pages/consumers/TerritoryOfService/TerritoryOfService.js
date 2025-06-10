@@ -133,8 +133,7 @@ export default function TerritoryOfService() {
         setOpenModal(docId)
         fetchTerritory(docId)
     }
-    const changeValue = debounce((type, value) => {
-        if (value) {
+    const changeValue = debounce((type, value) => {        
             if (type === 'cityDistrict') {
                 setCityDistrict(value)
             }
@@ -144,7 +143,7 @@ export default function TerritoryOfService() {
             if (type === 'street') {
                 setStreet(value)
             }
-        }
+        
     }, 1000)
 
     return (
