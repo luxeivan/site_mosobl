@@ -40,7 +40,7 @@ export default function Filial() {
       drop.style.maxHeight = "";
     }
   };
-  console.log(filial)
+  // console.log(filial)
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
       <TopImage title={"Информация о компании"} />
@@ -72,8 +72,8 @@ export default function Filial() {
               <div className="branches">
                 <div className="branches__grid-sm branches__grid-sm--border branches__grid-sm--change">
                   {filial &&
-                    filial.kontakties?.map((item) => (
-                      <div className="positions-post">
+                    filial.kontakties?.map((item, index) => (
+                      <div key={index} className="positions-post">
                         <div className="positions-post__wrapper">
                           <div className="positions-post__up">
                             <div className="positions-post__wrap-image">
@@ -100,8 +100,8 @@ export default function Filial() {
               </div>
 
               {filial &&
-                filial.proizvodstvennye_otdeleniyas?.map((item) => (
-                  <div className="accordion-row">
+                filial.proizvodstvennye_otdeleniyas?.map((item, index) => (
+                  <div key={index} className="accordion-row">
                     <div className="accordion-row__up" onClick={handlerRowUp}>
                       <span className="accordion-row__text">{item.name}</span>
                       <div className="accordion-row__wrap-arrow">
@@ -124,8 +124,8 @@ export default function Filial() {
                           {item && item.email && <div> <p>Email: <a className="inner-post__date" href={`mailto:${item.email}`}>{item.email}</a></p>  </div>}
                         </div>
                         <div className="accordion-row__grid">
-                          {item.kontakties?.map((item) => (
-                            <div className="positions-post">
+                          {item.kontakties?.map((item, index) => (
+                            <div key={index} className="positions-post">
                               <div className="positions-post__wrapper">
                                 <div className="positions-post__down">
                                   <div className="positions-post__row-name">
