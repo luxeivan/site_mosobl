@@ -9,7 +9,7 @@ import IMG_0487 from "../../img/vacancies/new/IMG_0487.JPG";
 import IMG_0488 from "../../img/vacancies/new/IMG_0488.JPG";
 import IMG_0489 from "../../img/vacancies/new/IMG_0489.JPG";
 import IMG_0494 from "../../img/vacancies/new/IMG_0494.WEBP";
-import IMG_PILL from "../../img/vacancies/new/Успешные выпуск.png";
+import IMG_PILL from "../../img/vacancies/new/Успешные выпуск2.png";
 import IMG_MEN from "../../img/vacancies/new/Чувачок.png";
 
 const { Title, Paragraph, Text } = Typography;
