@@ -287,28 +287,34 @@ const AdditionalServices = () => {
       transition={{ duration: 0.5 }}
     >
       <TopImage image={imgTop} title={"Дополнительные услуги"} more={
-        <div
-          // style={{ position: "absolute", top: -120, left: 0, zIndex: 1000, backgroundColor: "white", padding: 10, borderRadius: 10, margin: 20, }}
-          style={{
-            backgroundColor: "#fffc",
-            padding: 20,
-            borderRadius: 10,
-            // margin: "0 auto",
-            marginTop: 40,
-            marginBottom: 20,
-            // border: "1px solid #d9d9d9",
-            // maxWidth: "50%"
-          }}
-          className={styles.more}
-        >
-          <Typography.Paragraph>
-            <b>Согласовать топографическую съемку</b> для подтверждения наличия/отсутствия инженерных сетей на территории земельного участка в электронном виде Вы можете посредством сервиса <b>«ВсеСети» на Портале государственных и муниципальных услуг</b> Московской области.
-          </Typography.Paragraph>
-          <div style={{ textAlign: "center" }}>
-            <a href="https://uslugi.mosreg.ru/services/20809?step=110530&target=66979&applicant=15267" target="_blank" className="creditRating__link block-btn">
+        <div>
 
-              Перейти на "ВсеСети"
-            </a>
+          <div
+            // style={{ position: "absolute", top: -120, left: 0, zIndex: 1000, backgroundColor: "white", padding: 10, borderRadius: 10, margin: 20, }}
+            style={{
+              backgroundColor: "#fffc",
+              padding: 20,
+              borderRadius: 10,
+              // margin: "0 auto",
+              marginTop: 40,
+              marginBottom: 20,
+              // border: "1px solid #d9d9d9",
+              // maxWidth: "50%"
+            }}
+            className={styles.more}
+          >
+            <Typography.Paragraph>
+              <b>Согласовать топографическую съемку</b> для подтверждения наличия/отсутствия инженерных сетей на территории земельного участка в электронном виде Вы можете посредством сервиса <b>«ВсеСети» на Портале государственных и муниципальных услуг</b> Московской области.
+            </Typography.Paragraph>
+            <div style={{ textAlign: "center" }}>
+              <a href="https://uslugi.mosreg.ru/services/20809?step=110530&target=66979&applicant=15267" target="_blank" className="creditRating__link block-btn">
+
+                Перейти на "ВсеСети"
+              </a>
+            </div>
+          </div>
+          <div style={{ marginTop: 20, textAlign: "center" }} className={`${styles.more} block-btn`}>
+            <Link className={styles.more_link} style={{ width: "100%", textAlign: "center",  }} to={"/passportscommercialservices"}>Паспорта коммерческих услуг, оказываемых АО «МОСОБЛЭНЕРГО»</Link>
           </div>
         </div>
       }
@@ -329,10 +335,7 @@ const AdditionalServices = () => {
         />
 
         {/* Описание внизу страницы */}
-        <div style={{marginTop:20}}>
 
-        <Link to={"/passportscommercialservices"}><Button type="primary" ><span style={{color:"white"}}>ПАСПОРТА КОММЕРЧЕСКИХ УСЛУГ, ОКАЗЫВАЕМЫХ АО «МОСОБЛЭНЕРГО»</span></Button></Link>
-        </div>
         {description && (
           <div className={styles.description}>
             <MarkDownText>{description}</MarkDownText>
