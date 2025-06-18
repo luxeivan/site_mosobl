@@ -133,17 +133,17 @@ export default function TerritoryOfService() {
         setOpenModal(docId)
         fetchTerritory(docId)
     }
-    const changeValue = debounce((type, value) => {        
-            if (type === 'cityDistrict') {
-                setCityDistrict(value)
-            }
-            if (type === 'locality') {
-                setLocality(value)
-            }
-            if (type === 'street') {
-                setStreet(value)
-            }
-        
+    const changeValue = debounce((type, value) => {
+        if (type === 'cityDistrict') {
+            setCityDistrict(value)
+        }
+        if (type === 'locality') {
+            setLocality(value)
+        }
+        if (type === 'street') {
+            setStreet(value)
+        }
+
     }, 1000)
 
     return (
@@ -173,9 +173,9 @@ export default function TerritoryOfService() {
                         }} />
                         </Flex>
                         </Flex> */}
-                        <Typography.Paragraph>
-                            <span style={{color:"red", fontSize:16}}>Внимание!</span> Поиск чувствителен к заглавным буквам в словах.
-                        </Typography.Paragraph>
+                <Typography.Paragraph>
+                    <span style={{ color: "red", fontSize: 16 }}>Внимание!</span> Поиск чувствителен к заглавным буквам в словах.
+                </Typography.Paragraph>
                 <Flex gap={10} wrap={"wrap"} style={{ marginBottom: 20 }}>
 
                     <Input className={styles.input} placeholder='Городской округ' name='cityDistrict' onChange={(event) => {
@@ -197,11 +197,16 @@ export default function TerritoryOfService() {
                         loading={loading}
                         style={{ width: "100%" }}
                         pagination={{
-                            current: pagination?.current ,
-                            pageSize: pagination?.pageSize ,
+                            current: pagination?.current,
+                            pageSize: pagination?.pageSize,
                             total: total || 0,
-                            showSizeChanger: true,
-                            pageSizeOptions: ["10", "25", "50", "100"],
+                            showSizeChanger: { options: [
+                                { value: 10, label: "10/стр." }, 
+                                { value: 25, label: "25/стр." }, 
+                                { value: 50, label: "50/стр." }, 
+                                { value: 100, label: "100/стр." }
+                            ] },
+                            // pageSizeOptions: ["10", "25", "50", "100"],
                             showTotal: (total, range) =>
                                 `${range[0]}-${range[1]} из ${total} всего`,
                             // onChange: handlerChange,
@@ -334,10 +339,10 @@ export default function TerritoryOfService() {
                     })()
                 }
                 {currentFilial &&
-                <Flex style={{margin:20}} align='center' justify='center'>
+                    <Flex style={{ margin: 20 }} align='center' justify='center'>
 
-                    <Link to={`/filials/${currentFilial}`}><Button type='primary'><span style={{color:"white"}}>Перейти на страницу филиала</span></Button></Link>
-                </Flex>
+                        <Link to={`/filials/${currentFilial}`}><Button type='primary'><span style={{ color: "white" }}>Перейти на страницу филиала</span></Button></Link>
+                    </Flex>
                 }
             </Modal>
         </motion.div >)

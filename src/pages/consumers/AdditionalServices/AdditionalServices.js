@@ -9,6 +9,7 @@ import TopImage from "../../../components/TopImage";
 import imgTop from "../../../img/4c2c362e8d8fa557788c556795d32fae.jpg";
 import styles from "./AdditionalServices.module.css";
 import MarkDownText from "../../../components/MarkDownText/MarkDownText";
+import { Link } from "react-router";
 
 const { Paragraph } = Typography;
 
@@ -59,7 +60,7 @@ const AdditionalServices = () => {
       throw error;
     }
   };
-  console.log(services)
+  // console.log(services)
   // Получение всех данных услуг
   useEffect(() => {
     const fetchData = async () => {
@@ -328,6 +329,10 @@ const AdditionalServices = () => {
         />
 
         {/* Описание внизу страницы */}
+        <div style={{marginTop:20}}>
+
+        <Link to={"/passportscommercialservices"}><Button type="primary" ><span style={{color:"white"}}>ПАСПОРТА КОММЕРЧЕСКИХ УСЛУГ, ОКАЗЫВАЕМЫХ АО «МОСОБЛЭНЕРГО»</span></Button></Link>
+        </div>
         {description && (
           <div className={styles.description}>
             <MarkDownText>{description}</MarkDownText>
