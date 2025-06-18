@@ -53,6 +53,7 @@ import ProductionPrograms2025 from "./pages/consumers/ProductionPrograms2025";
 import Test from "./pages/Test/Test";
 import TwentyYears from "./pages/Twenty Years/TwentyYears";
 import TerritoryOfService from "./pages/consumers/TerritoryOfService/TerritoryOfService";
+import PassportsCommercialServices from "./pages/consumers/AdditionalServices/PassportsCommercialServices";
 
 function App() {
   useEffect(() => {
@@ -101,6 +102,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/consumers" element={<Consumers />} />
           <Route path="/additionalServices" element={<AdditionalServices />} />
+          <Route path="/passportscommercialservices" element={<PassportsCommercialServices />} />
           <Route path="/servicePassports" element={<ServicePassports />} />
           <Route path="/territory" element={<Territory />} />
           <Route path="/territoryOfService" element={<TerritoryOfService />} />
