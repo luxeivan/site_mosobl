@@ -1,5 +1,14 @@
 .more {
-  max-width: 50%;
+  width: clamp(30%, 600px, 100%);
+}
+
+.more_link {
+  color: white;
+  transition: all .3s ease-in-out;
+}
+
+.more:hover .more_link {
+  color: black;
 }
 
 .list {
@@ -109,8 +118,8 @@
   text-decoration: none;
   color: inherit;
 } */
- @media(max-width:900px){
+/* @media(max-width:900px){
   .more {
     max-width: 100%;
   }
- }
+ } */

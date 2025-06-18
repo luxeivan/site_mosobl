@@ -1069,6 +1069,7 @@ button {
   -ms-flex-item-align: start;
   align-self: flex-start;
   cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .block-btn:hover .block-btn__wrap-svg {
